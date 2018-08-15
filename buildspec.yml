@@ -7,7 +7,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Compiling the Node.js code and syncing if successful.
+      - echo Compiling the Node.js code. Syncing if successful.(webhook test bump)
       - npm run build && aws s3 sync build/ s3://integrify-system-build
 artifacts:
   files:
