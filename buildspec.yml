@@ -3,6 +3,7 @@ version: 0.2
 phases:
   install:
     commands:
+      - git checkout test
       - npm install
   build:
     commands:
