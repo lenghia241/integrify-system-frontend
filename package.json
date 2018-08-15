@@ -1,6 +1,6 @@
 {
   "name": "integrify-system-frontend",
-  "homepage": "http://integrify-system-build.s3-website.eu-west-2.amazonaws.com"
+  "homepage": "http://integrify-system-build.s3-website.eu-west-2.amazonaws.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
