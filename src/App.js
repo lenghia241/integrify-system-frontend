@@ -2,18 +2,31 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Attendance from './containers/Attendance';
 import Profile from './containers/Profile';
-import Landing from './containers/Landing';
+import Login from './containers/Login';
+import Dashboard from './containers/Dashboard';
 
-const App = () => {
-  return (
-    <div>
-      <Switch>
-        <Route exact path="/attendance" component={Attendance}/>
-        <Route exact path="/profile" component={Profile}/>
-        <Route exact path="/" component={Landing}/>
-      </Switch>
-    </div>
+const App = ({ auth }) => {
+  const routes = auth ? (
+    <Switch>
+      <Route exact path="/attendance" component={Attendance} />
+      <Route exact path="/profile" component={Profile} />
+      <Route exact path="/" component={Dashboard} />
+    </Switch>
+  ) : (
+    <Switch>
+      <Route exact path="/" component={Login} />
+    </Switch>
   );
+
+  return <div>{routes}</div>;
 };
 
-export default App;
+App.propTypes = {
+  auth: PropTypes.shape.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(App);
