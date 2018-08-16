@@ -1,5 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import Attendance from './containers/Attendance';
 import Profile from './containers/Profile';
 import Login from './containers/Login';
@@ -22,11 +25,11 @@ const App = ({ auth }) => {
 };
 
 App.propTypes = {
-  auth: PropTypes.shape.isRequired
+  auth: PropTypes.shape.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth
+const mapStateToProps = state => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps)(App);
