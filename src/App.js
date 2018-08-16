@@ -25,7 +25,7 @@ const App = ({ auth }) => {
 };
 
 App.propTypes = {
-  auth: PropTypes.shape.isRequired,
+  auth: PropTypes.shape({}).isRequired,
 };
 
 const mapStateToProps = state => ({
