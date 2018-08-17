@@ -9,6 +9,8 @@ import Profile from './containers/Profile';
 import Login from './containers/Login';
 import Dashboard from './containers/Dashboard';
 
+import { getAuth } from './store/reducers';
+
 const App = ({ auth }) => {
   const routes = auth ? (
     <Switch>
@@ -34,8 +36,8 @@ App.propTypes = {
   auth: PropTypes.shape({}).isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
+const mapStateToProps = state => ({
+  auth: getAuth(state),
 });
 
 export default connect(mapStateToProps)(App);
