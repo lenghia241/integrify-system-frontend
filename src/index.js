@@ -5,10 +5,15 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import App from './components/App';
-import reducers from './reducers';
+import App from './App';
 
-const store = createStore(reducers, {});
+import reducers from './store/reducers';
+/*eslint-disable */
+const store = createStore(
+  reducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
+/* eslint-enable */
 
 ReactDOM.render(
   <Provider store={store}>
@@ -16,5 +21,5 @@ ReactDOM.render(
       <App />
     </Router>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
