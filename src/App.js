@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import Aside from './components/Aside';
 import Attendance from './containers/Attendance';
 import Profile from './containers/Profile';
 import Login from './containers/Login';
@@ -21,14 +22,19 @@ const App = ({ auth }) => {
     </Switch>
   );
 
-  return <div>{routes}</div>;
+  return (
+    <div>
+      <Aside />
+      {routes}
+    </div>
+  );
 };
 
 App.propTypes = {
   auth: PropTypes.shape({}).isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
