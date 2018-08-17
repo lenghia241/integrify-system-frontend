@@ -3,7 +3,7 @@
   "plugins": ["prettier", "react"],
   "env": {
     "browser": true,
-    "jasmine": true
+    "jest": true
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
