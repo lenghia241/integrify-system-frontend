@@ -1,0 +1,22 @@
+::root{
+  --color-1:#383838;
+  --color-5:#FA9026;
+}
+.App {
+  display:grid;
+  height:100vh;
+  grid-template-columns: 300px 1fr;
+  grid-template-areas: 'App-Aside App-Body'
+}
+.App-body{
+  grid-area:App-Body;
+  background-color:gray;
+}
+.App-aside{
+  grid-area:App-Aside;
+}
+@media only screen and (max-device-width : 892px) {
+  .App{
+    grid-template-columns: 1fr;
+  }
+  }

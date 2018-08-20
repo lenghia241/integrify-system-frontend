@@ -1,0 +1,14 @@
+.background{
+  top:32px;
+}
+.background img{
+  height:auto;
+  width: 70%;
+}
+.sidenav .user-view{
+  padding-top:32px;
+}
+.sidenav .user-view{
+  padding-top:128px;
+  margin:0 auto;
+}

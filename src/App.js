@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import './App.css';
 
 import Aside from './components/Aside';
 import Attendance from './containers/Attendance';
@@ -25,9 +26,11 @@ const App = ({ auth }) => {
   );
 
   return (
-    <div>
-      <Aside />
-      {routes}
+    <div className="App">
+      <ul className="App-aside sidenav sidenav-fixed center">
+        <Aside />
+      </ul>
+      <div className="App-body">{routes}</div>
     </div>
   );
 };
