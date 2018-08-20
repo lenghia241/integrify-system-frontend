@@ -1,0 +1,18 @@
+.card{
+    width:40%;
+}
+.row{
+    margin-bottom: 0;
+}
+
+.row>p{
+    margin:0;
+}
+
+.title>p{
+    margin:0;
+}
+
+.list{
+    padding:10px;
+}
