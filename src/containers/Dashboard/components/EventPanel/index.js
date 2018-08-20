@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getEvents } from '/Users/abdimuleta/Desktop/eventpanel/integrify-system-frontend/src/store/actions/index';
+import { getEvents } from '../../../../store/actions/index';
 import PropTypes from 'prop-types';
 
 
