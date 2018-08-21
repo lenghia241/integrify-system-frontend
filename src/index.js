@@ -4,26 +4,19 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import reducers from './store/reducers';
 import thunk from 'redux-thunk';
+import reducers from './store/reducers';
 
 
 import App from './App';
 
-//middleware and initialstates
-const initialState = {};
-const middleware = [thunk];
-
-/*eslint-disable */
-const store = createStore(
-  reducers,
-  initialState,
-  compose(
-    applyMiddleware(...middleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-) 
-);
+/* eslint-disable no-underscore-dangle */
+const composeEnhancers = process.env.NODE_ENV === 'development'
+  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  : null || compose;
 /* eslint-enable */
+
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>
