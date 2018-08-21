@@ -6,6 +6,7 @@
     "jest": true
   },
   "rules": {
+    "linebreak-style": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "react/prefer-stateless-function": [1, { "ignorePureComponents": true }],
     "comma-dangle": 1,
