@@ -1,0 +1,14 @@
+::root{
+  --color-1:#FF8000;
+  --color-2:#FF9400;
+  --color-3:#D1C6AD;
+  --color-4:#042658;
+  --color-5:#041A42;
+}
+
+*,  *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+}
