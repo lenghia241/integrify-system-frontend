@@ -10,3 +10,4 @@ export default combineReducers({
 });
 
 export const getAuth = state => state.auth;
+export const getDash = state => state.dash;

@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './index.css';
 
-const StudySync = props => (
+const StudySync = ({ data }) => (
   <div className="card">
-    {props.data.length !== undefined
-      && props.data.map(item => (
+    {data.length !== undefined
+      && data.map(item => (
         <div className="card-panel hoverable list">
           <div className="row">
             <p className="col s9">studysync</p>
@@ -28,3 +29,9 @@ const StudySync = props => (
 );
 
 export default StudySync;
+
+StudySync.propTypes = {
+  data: PropTypes.shape({
+    length: PropTypes.number.isRequired,
+  }).isRequired,
+};

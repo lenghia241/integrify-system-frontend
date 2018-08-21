@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import StudySync from './components/StudySync';
-import { fetchStudySync } from '../../store/actions';
+import { getDash } from '../../store/reducers';
+import * as actions from '../../store/actions';
 
 class Dashboard extends Component {
   componentDidMount = () => {
-    this.props.fetchStudySync();
+    const { fetchStudySync } = this.props;
+    fetchStudySync();
   };
 
   render() {
+    const { dash } = this.props;
     return (
-      <div className="container">
+      <div>
         Dashboard
-        <StudySync data={this.props.dash} />
+        <StudySync data={dash} />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  dash: state.dash,
+  dash: getDash(state),
 });
 
-export default connect(
-  mapStateToProps,
-  { fetchStudySync },
-)(Dashboard);
+Dashboard.propTypes = {
+  fetchStudySync: PropTypes.func.isRequired,
+  dash: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+};
+
+export default connect(mapStateToProps, actions)(Dashboard);

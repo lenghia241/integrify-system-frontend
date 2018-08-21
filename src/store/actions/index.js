@@ -11,7 +11,7 @@ export const fetchUser = () => async dispatch => {
 };
 
 export const fetchStudySync = () => dispatch => {
-  axios.get('https://integrify.network/api/dashboard/studysynch')
+  axios.get('https://integrify.network/api/dashboard/studysync')
   .then(res=>{
     dispatch({
       type: FETCH_STUDYSYNC,
