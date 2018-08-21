@@ -1,4 +1,4 @@
-import { GET_EVENTS, EVENTS_LOADING } from '../actions/types';
+import { GET_EVENT_LIST, EVENTS_LOADING } from '../actions/types';
 
 const intialState = {
   events: [],
@@ -7,7 +7,7 @@ const intialState = {
 
 export default function (state = intialState, action) {
   switch (action.type) {
-    case GET_EVENTS:
+    case GET_EVENT_LIST:
       return {
         ...state,
         events: action.payload,

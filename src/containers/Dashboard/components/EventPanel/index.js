@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getEvents } from '../../../../store/actions/index';
 import PropTypes from 'prop-types';
-
+import * as actions from '../../../../store/actions/index';
+import { getEvent } from '../../../../store/reducers/index';
 
 class EventPanel extends Component {
   componentWillMount() {
-    this.props.getEvents();
+    const { getEventList } = this.props;
+    getEventList();
   }
 
   render() {
-    const { events } = this.props.event;
+    const { events } = this.props;
     return (
             <div className="container">
                 <h1>Upcoming Events</h1>
                 <ul className="collapsible">
-                    { events.map(({_id, title, description, venue, time, event_url}) => (
+                    { events.map(({
+                      _id, title, description, venue, time,
+                    }) => (
                         <li key= {_id}>
                             <div className="collapsible-header"><h5>Event title: {title}</h5></div>
                             <div className="collapsible-body">
                                 <p>Event description: {description}</p>
                                 <p className="black-text"><i className="material-icons">event_available</i>{time}</p>
                                 <p className="black-text"><i className="material-icons">location_on</i>{venue.city}</p>
-                                <p className="black-text"><i className="material-icons">web</i><a href="">{event_url}</a></p>
+                                <p className="blue-text"><i className="material-icons">web</i><a href="/">Link to the actual event goes here.</a></p>
                             </div>
                         </li>
                     ))}
@@ -33,12 +36,12 @@ class EventPanel extends Component {
 }
 
 EventPanel.propTypes = {
-  getEvents: PropTypes.func.isRequired,
-  event: PropTypes.object.isRequired,
+  getEventList: PropTypes.func.isRequired,
+  events: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 const mapStateToProps = state => ({
-  event: state.event,
+  events: getEvent(state).events,
 });
 
-export default connect(mapStateToProps, { getEvents })(EventPanel);
+export default connect(mapStateToProps, actions)(EventPanel);

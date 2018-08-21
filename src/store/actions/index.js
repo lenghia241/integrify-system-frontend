@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, GET_EVENTS, EVENTS_LOADING } from './types';
+import { FETCH_USER, GET_EVENT_LIST, EVENTS_LOADING } from './types';
 
 /*eslint-disable */
 export const fetchUser = () => async dispatch => {
@@ -19,11 +19,11 @@ export const setEventsLoading = () => {
 };
 
 //get all the events in the list
-export const getEvents = () => async dispatch => {
+export const getEventList = () => async dispatch => {
     dispatch(setEventsLoading());
     const res = await axios.get('https://integrify.network/api/dashboard/events');
     dispatch({
-        type: GET_EVENTS,
+        type: GET_EVENT_LIST,
         payload: res.data
     })
 };
