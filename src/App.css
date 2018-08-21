@@ -1,22 +1,33 @@
-::root{
-  --color-1:#383838;
-  --color-5:#FA9026;
+::root {
+  --color-1: #ff8000;
+  --color-2: #ff9400;
+  --color-3: #d1c6ad;
+  --color-4: #042658;
+  --color-5: #041a42;
+}
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 .App {
-  display:grid;
-  height:100vh;
+  display: grid;
+  height: 100vh;
   grid-template-columns: 300px 1fr;
-  grid-template-areas: 'App-Aside App-Body'
+  grid-template-areas: 'App-Aside App-Body';
 }
-.App-body{
-  grid-area:App-Body;
-  background-color:gray;
+.App-body {
+  grid-area: App-Body;
+  background-color: gray;
 }
-.App-aside{
-  grid-area:App-Aside;
+.App-aside {
+  grid-area: App-Aside;
 }
-@media only screen and (max-device-width : 892px) {
-  .App{
+@media only screen and (max-device-width: 892px) {
+  .App {
     grid-template-columns: 1fr;
   }
-  }
+}
