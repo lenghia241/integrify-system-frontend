@@ -13,3 +13,11 @@
 .list{
     padding:10px;
 }
+
+.bold{
+    font-weight: 600;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}

@@ -8,21 +8,22 @@ const StudySync = ({ data }) => (
       && data.map(item => (
         <div className="card-panel hoverable list">
           <div className="row">
-            <p className="col s9">studysync</p>
-            <p className="col s3">Date</p>
+            <p className="col s9 bold blue-text capitalize">studysync</p>
+            <p className="col s3 bold capitalize">{new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}</p>
           </div>
+          <hr/>
           <div className="title">
-            <p className="">{item.title}</p>
+            <p className="bold capitalize">{item.title}</p>
           </div>
           <div className="row">
-            <p className="col s7">{item.description}</p>
-            <p className="col s5">{item.fullname}</p>
+            <p className="col s9 capitalize">{item.description}</p>
+            <p className="col s3">{`${item.firstname} ${item.lastname}`}</p>
           </div>
         </div>
       ))}
     <div>
-      <a href="/" className="waves-effect waves-light btn">
-        button
+      <a href="/" className="btn-floating capitalize bold">
+        <i className="material-icons">add</i>
       </a>
     </div>
   </div>
