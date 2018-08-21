@@ -1,6 +1,5 @@
 import React from 'react';
 import { Field, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
-import { PropTypes } from 'prop-types';
 import renderField from './render/RenderField';
 import validate from './validate/validate';
 
