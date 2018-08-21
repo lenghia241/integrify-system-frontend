@@ -24,7 +24,7 @@ class EventPanel extends Component {
                             <div className="collapsible-body">
                                 <p>Event description: {description}</p>
                                 <p className="black-text"><i className="material-icons">event_available</i>{time}</p>
-                                <p className="black-text"><i className="material-icons">location_on</i>{venue.city}</p>
+                                <p className="black-text"><i className="material-icons">location_on</i><a href={`http://maps.google.com/?q=${venue.city}`}>{venue.city}</a></p>
                                 <p className="blue-text"><i className="material-icons">web</i><a href="/">Link to the actual event goes here.</a></p>
                             </div>
                         </li>
