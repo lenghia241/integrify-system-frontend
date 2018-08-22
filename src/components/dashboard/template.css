@@ -36,6 +36,6 @@
   color: var(--on-dark);
 }
 .zoom_out_map {
-  color: red;
+  color: var(--on-dark);
   font-size: 10px;
 }

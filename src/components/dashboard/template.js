@@ -8,7 +8,7 @@ const ComponentTemplate = () => (
       <div />
     </div>
     <div>
-      <i className="fas fa-bell">asdf</i>
+      <i className="material-icons">add</i>
     </div>
   </div>
 );
