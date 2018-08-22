@@ -16,9 +16,11 @@
   --on-light: #131210;
 }
 
-*,  *:before, *:after {
+*,
+*:before,
+*:after {
   margin: 0;
   padding: 0;
-  box-sizing:border-box;
-  -moz-box-sizing:border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }

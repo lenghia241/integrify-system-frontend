@@ -1,22 +1,23 @@
 import React from 'react';
-import ComponentTemplate from '../../components/dashboard/componentTemplate';
-import HeaderTemplate from '../../components/dashboard/headerTemplate';
-import SearchBar from '../../components/dashboard/searchBar';
+import DashboardComponent from '../../components/Dashboard/DashboardComponent';
+import PageTemplate from '../../components/PageTemplate';
+import './Dashboard.css';
 
-import './dashboard.css';
-
-const Dashboard = () => (
-  <div className="main-container">
-    <div className="aside">Aside</div>
-    <div className="dashboard">
-      <HeaderTemplate header="Dashboard" />
-      <SearchBar />
-      <ComponentTemplate />
-      <ComponentTemplate />
-      <ComponentTemplate />
-      <ComponentTemplate />
-    </div>
-  </div>
-);
+const Dashboard = () => {
+  const DashboardComponents = [
+    { heading: 'Test 1', componentBody: <div>Component Body</div> },
+    { heading: 'Test 2', componentBody: <div>Component Body</div> },
+    { heading: 'Test 3', componentBody: <div>Component Body</div> },
+    { heading: 'Test 4', componentBody: <div>Component Body</div> },
+  ];
+  const renderComponents = DashboardComponents.map(({ heading, componentBody }) => (
+    <DashboardComponent heading={heading}>{componentBody}</DashboardComponent>
+  ));
+  return (
+    <PageTemplate heading="Dashboard">
+      <div className="Dashboard">{renderComponents}</div>
+    </PageTemplate>
+  );
+};
 
 export default Dashboard;

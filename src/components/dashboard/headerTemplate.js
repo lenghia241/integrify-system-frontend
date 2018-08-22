@@ -5,7 +5,7 @@ const HeaderTemplate = (props) => {
   const { header } = props;
   return (
     <div>
-      <h5>{header}</h5>
+      <h1>{header}</h1>
     </div>
   );
 };
