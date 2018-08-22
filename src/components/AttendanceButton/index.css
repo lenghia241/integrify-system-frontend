@@ -1,0 +1,16 @@
+.switch label .lever {
+  background-color: red;
+}
+.switch label .lever:after {
+  background-color: red;
+}
+.switch label input[type="checkbox"]:checked + .lever {
+  background-color: green;
+}
+.switch label input[type="checkbox"]:checked + .lever:after {
+  background-color: green;
+}
+.switch label {
+  font-family: "Roboto";
+  font-size: 1.5rem;
+}
