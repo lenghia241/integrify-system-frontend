@@ -81,7 +81,7 @@ class Aside extends Component {
         </li>
         <li className="logout">
           <div className="divider" />
-          <NavLink to="/logout" className="waves-effect waves-orange">
+          <NavLink to="/api/user/logout" className="waves-effect waves-orange">
             Logout
             <i className="material-icons">power_settings_new</i>
           </NavLink>

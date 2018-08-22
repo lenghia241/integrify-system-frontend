@@ -26,8 +26,9 @@
 .App-aside {
   grid-area: App-Aside;
 }
-@media only screen and (max-device-width: 892px) {
+@media only screen and (min-device-width: 892px) {
   .App {
     grid-template-columns: 1fr;
+    grid-template-areas: 'App-Body';
   }
 }
