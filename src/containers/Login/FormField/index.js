@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /* eslint jsx-a11y/label-has-for: 0 */
-const LoginField = ({ input = {}, type, label, meta: { error, touched, active } }) => {
+const LoginField = ({
+  input = {}, type, label, meta: { error, touched, active },
+}) => {
   let activeClass = '';
 
   if (input.value !== '') activeClass = 'active';
   else if (active) activeClass = 'active';
   else activeClass = '';
-
 
   return (
     <div className="input-field">
