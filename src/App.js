@@ -26,7 +26,7 @@ const App = ({ auth }) => {
   );
 
   return (
-    <div>
+    <div className="App">
       <Aside />
       {routes}
     </div>
