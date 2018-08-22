@@ -14,8 +14,7 @@ class Dashboard extends Component {
   render() {
     const { dash } = this.props;
     return (
-      <div>
-        Dashboard
+      <div className="row">
         <StudySync data={dash} />
       </div>
     );

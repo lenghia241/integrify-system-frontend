@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './index.css';
 
 const StudySync = ({ data }) => (
-  <div className="card">
+  <div className="card col s6">
     {data.length !== undefined
       && data.map(item => (
         <div className="card-panel hoverable list">
