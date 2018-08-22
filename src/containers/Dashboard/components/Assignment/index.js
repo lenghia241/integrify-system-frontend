@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getAssignments as getAssignmentsAction } from '../../../store/actions/index';
+import { getAssignments as getAssignmentsAction } from '../../../../store/actions/index';
 import EachAssignment from './eachAssignment';
 
 class Assignments extends React.Component {
@@ -19,8 +19,8 @@ class Assignments extends React.Component {
       />
     ));
     return (
-      <div>
-        <div>Assignments</div>
+      <div className="card col s6">
+        <p className="bold blue-text capitalize">Assignments</p>
         {displayAssignments}
       </div>
     );

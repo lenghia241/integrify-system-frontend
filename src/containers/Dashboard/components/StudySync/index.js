@@ -12,16 +12,16 @@ class StudySync extends Component {
   };
 
   render() {
-    const { data } = this.props;
+    const { dash } = this.props;
     return (
       <div className="card col s6">
-        {data.length !== undefined
-          && data.map(item => (
+        {dash.length !== undefined
+          && dash.map(item => (
             <div className="card-panel hoverable list">
               <div className="row">
                 <p className="col s9 bold blue-text capitalize">studysync</p>
                 <p className="col s3 bold capitalize">
-                  {new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}
+                  {item.date}
                 </p>
               </div>
               <hr />
@@ -52,6 +52,6 @@ export default connect(mapStateToProps, actions)(StudySync);
 
 StudySync.propTypes = {
   fetchStudySync: PropTypes.func.isRequired,
-  data: PropTypes.shape({
+  dash: PropTypes.shape({
   }).isRequired,
 };
