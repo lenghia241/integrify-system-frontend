@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  FETCH_USER, FETCH_STUDYSYNC, GET_EVENT_LIST, EVENTS_LOADING,
+  FETCH_USER, FETCH_STUDYSYNC, GET_EVENT_LIST, EVENTS_LOADING, FETCH_ASSIGNMENT,
 } from './types';
 
 /*eslint-disable */
@@ -17,6 +17,16 @@ export const fetchStudySync = () => dispatch => {
   axios.get('https://integrify.network/api/dashboard/studysync').then(res => {
     dispatch({
       type: FETCH_STUDYSYNC,
+      payload: res.data,
+    });
+  });
+};
+
+export const getAssignments = () => dispatch => {
+  axios.get('https://integrify.network/api/dashboard/assignments').then(res => {
+    console.log(res.data);
+    dispatch({
+      type: FETCH_ASSIGNMENT,
       payload: res.data,
     });
   });
