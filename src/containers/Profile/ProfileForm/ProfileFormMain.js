@@ -7,6 +7,7 @@ import ProfileFormExamplesOfWork from './ProfileFormExamplesOfWork';
 import ProfileFormWorkExperience from './ProfileFormWorkExperience';
 import ProfileFormLanguages from './ProfileFormLanguages';
 import ProfileFormSkills from './ProfileFormSkills';
+import ProfileFormSummary from './ProfileFormSummary';
 
 const forms = [
   { label: 'Personal Information', Component: ProfileFormPhotoBio },
@@ -17,6 +18,7 @@ const forms = [
   { label: 'Examples of Work', Component: ProfileFormExamplesOfWork },
   { label: 'Experience', Component: ProfileFormWorkExperience },
   { label: 'Languages', Component: ProfileFormLanguages },
+  { label: 'Summary', Component: ProfileFormSummary },
 ];
 
 class ProfileFormMain extends Component {
