@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Aside.css';
+import { NavLink } from 'react-router-dom';
 
 class Aside extends Component {
   state = {
@@ -16,7 +17,6 @@ class Aside extends Component {
 
   render() {
     const { loggedIn } = this.state;
-    console.log(loggedIn);
     return (
       <React.Fragment>
         <li>
@@ -55,24 +55,29 @@ class Aside extends Component {
           </div>
         </li>
         <li>
-          <a href="#!" className="waves-effect waves-teal">
+          <NavLink to="/" activeClassName="active" className="waves-effect waves-orange">
             Dashboard
             <i className="material-icons">dashboard</i>
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a href="#!">Second Link</a>
+          <NavLink to="/profile" activeClassName="active" className="waves-effect waves-orange">
+            Profile
+            <i className="material-icons">account_box</i>
+          </NavLink>
         </li>
         <li>
+          <NavLink to="/attendance" className="waves-effect waves-orange">
+            Attendance
+            <i className="material-icons">today</i>
+          </NavLink>
+        </li>
+        <li className="logout">
           <div className="divider" />
-        </li>
-        <li>
-          <a className="subheader">Subheader</a>
-        </li>
-        <li>
-          <a className="waves-effect" href="#!">
-            Third Link With Waves
-          </a>
+          <NavLink to="/logout" className="waves-effect waves-orange">
+            Logout
+            <i className="material-icons">power_settings_new</i>
+          </NavLink>
         </li>
       </React.Fragment>
     );
