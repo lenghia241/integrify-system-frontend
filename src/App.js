@@ -3,10 +3,13 @@ import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import Aside from './components/Aside';
 import Attendance from './containers/Attendance';
 import Profile from './containers/Profile';
 import Login from './containers/Login';
 import Dashboard from './containers/Dashboard';
+
+import { getAuth } from './store/reducers';
 
 const App = ({ auth }) => {
   const routes = auth ? (
@@ -21,7 +24,12 @@ const App = ({ auth }) => {
     </Switch>
   );
 
-  return <div>{routes}</div>;
+  return (
+    <div>
+      <Aside />
+      {routes}
+    </div>
+  );
 };
 
 App.propTypes = {
@@ -29,7 +37,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth,
+  auth: getAuth(state),
 });
 
 export default connect(mapStateToProps)(App);

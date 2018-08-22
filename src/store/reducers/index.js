@@ -6,3 +6,5 @@ export default combineReducers({
   form: reduxForm,
   auth: authReducer,
 });
+
+export const getAuth = state => state.auth;
