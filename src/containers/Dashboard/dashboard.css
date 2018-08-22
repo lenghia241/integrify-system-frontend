@@ -1,3 +1,29 @@
+:root {
+  --primary: #ff8c00;
+  --primary-dark: #d16900;
+  --primary-light: #ffa245;
+
+  --secondary: #1a2e53;
+  --secondary-dark: #04183c;
+  --secondary-light: #5f6086;
+
+  --surface: #f1ede6;
+  --background: #e3dccd;
+
+  --error: #f90000;
+
+  --on-dark: #f8f6f2;
+  --on-light: #131210;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
 .main-container {
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -12,4 +38,5 @@
   grid-template-rows: 100px 1fr 1fr;
   grid-gap: 20px;
   padding: 20px;
+  background-color: var(--surface);
 }

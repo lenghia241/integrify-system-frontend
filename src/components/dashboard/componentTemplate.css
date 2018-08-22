@@ -26,16 +26,24 @@
 }
 
 .component-template {
-  border: 1px solid red;
+  background-color: white;
+  position: relative;
 }
 .component-template-header {
+  width: 100%;
+  bottom: 0;
+  position: absolute;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0 10px;
   background-color: var(--secondary-dark);
   color: var(--on-dark);
 }
 .zoom_out_map {
   color: var(--on-dark);
-  font-size: 10px;
+}
+.search-bar {
+  display: flex;
+  justify-content: flex-end;
 }
