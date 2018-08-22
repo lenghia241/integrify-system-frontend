@@ -28,17 +28,24 @@ class Aside extends Component {
               />
             </div>
             <div className="user-info" href="#user">
-              <img
-                className="circle user-photo"
-                alt="user"
-                src="https://i1.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?resize=256%2C256&quality=100&ssl=1"
-              />
+              <NavLink to="/profile" activeClassName="active" className="waves-effect waves-orange  user-photo">
+                <img
+                  className="circle"
+                  alt="user"
+                  src="https://i1.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?resize=256%2C256&quality=100&ssl=1"
+                />
+              </NavLink>
+
               <div className="user-name">Hello, John Doe! </div>
               <div className="user-status">
                 <div className="switch">
                   <label htmlFor="Login-switch">
                     <div className="user-check-status">
-                      {loggedIn ? 'Logging In' : 'Logging out'}
+                      {loggedIn ? (
+                        <div className="teal-text">Logging In</div>
+                      ) : (
+                        <div className="red-text">Logging Out</div>
+                      )}
                     </div>
                     <div className="lever-radio">
                       <input
