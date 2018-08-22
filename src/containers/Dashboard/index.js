@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import StudySync from './components/StudySync';
+import EventPanel from './components/EventPanel';
 import { getDash } from '../../store/reducers';
 import * as actions from '../../store/actions';
 
@@ -16,6 +17,7 @@ class Dashboard extends Component {
     return (
       <div className="row">
         <StudySync data={dash} />
+        <EventPanel />
       </div>
     );
   }
