@@ -1,56 +1,78 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
-import { Link } from 'react-router-dom';
-import LoginField from './LoginField';
+
+import LoginForm from './LoginForm';
+import SignUpForm from './SignUpForm';
 
 import './Login.css';
 
-const Login = ({ handleSubmit }) => (
-  <div className="background">
-    <div className="section container" style={{ transform: 'translateY(40%)' }}>
-      <div className="row">
-        <div className="col s12 m6 offset-m3">
-          <div className="card card-wrapper">
-            <div className="card-content">
-              <div className="logo-container">
-                <img
-                  src="https://s3.eu-west-2.amazonaws.com/integrify-system-assets/logo-black.png"
-                  alt="logo"
-                  className="logo"
-                />
-              </div>
-              <form onSubmit={handleSubmit}>
-                <Field name="email" component={LoginField} type="email" label="Email" />
-                <Field name="password" component={LoginField} type="password" label="Password" />
-                <small>
-                  <Link to="/forgot-password/" className="right-align forgot-pw">
-                    Forgot your password?
-                  </Link>
-                </small>
-                <div className="center">
-                  <button type="submit" className="btn">
-                    Submit
-                  </button>
+class Login extends Component {
+  state = {
+    signUp: false,
+  };
+
+  handleLogInTab = () => {
+    this.setState({
+      signUp: false,
+    });
+  };
+
+  handleSignUpTab = () => {
+    this.setState({
+      signUp: true,
+    });
+  };
+
+  render() {
+    const { signUp } = this.state;
+
+    return (
+      <div className="background valign-wrapper">
+        <div className="section container">
+          <div className="row">
+            <div className="col s12 m6 offset-m3">
+              <div className="card card-wrapper">
+                <div className="card-tabs">
+                  <ul className="tabs tabs-fixed-width">
+                    <li className="tab">
+                      <button
+                        type="button"
+                        className={`btn-flat btn-tab ${signUp ? '' : 'active'}`}
+                        onClick={this.handleLogInTab}
+                      >
+                        Log In
+                      </button>
+                    </li>
+                    <li className="tab">
+                      <button
+                        type="button"
+                        className={`btn-flat btn-tab ${signUp ? 'active' : ''}`}
+                        onClick={this.handleSignUpTab}
+                      >
+                        Sign Up
+                      </button>
+                    </li>
+                  </ul>
                 </div>
-              </form>
-            </div>
-            <div className="card-content grey lighten-4 center-align">
-              <p>
-                Don&apos;t have an account? <Link to="/signup">Sign up now!</Link>
-              </p>
+                <div className="card-content">
+                  <div className="logo-container">
+                    <img
+                      src="https://s3.eu-west-2.amazonaws.com/integrify-system-assets/logo-black.png"
+                      alt="logo"
+                      className="logo"
+                    />
+                  </div>
+                  {signUp ? <SignUpForm /> : <LoginForm />}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-);
+    );
+  }
+}
 
-Login.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-};
+Login.propTypes = {};
 
-export default reduxForm({
-  form: 'login',
-})(Login);
+export default Login;
