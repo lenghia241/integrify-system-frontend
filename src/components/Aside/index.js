@@ -28,7 +28,7 @@ class Aside extends Component {
               />
             </div>
             <div className="user-info" href="#user">
-              <NavLink to="/profile" activeClassName="active" className="waves-effect waves-orange  user-photo">
+              <NavLink to="/profile" activeClassName="active" className="user-photo">
                 <img
                   className="circle"
                   alt="user"
