@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -28,7 +27,6 @@ class Aside extends Component {
         checkOut();
       }
     };
-    console.log(auth);
     return <AsideComponent auth={auth} onChange={onChange} />;
   }
 }
