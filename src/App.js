@@ -2,11 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-<<<<<<< HEAD
-=======
 
 import './App.css';
->>>>>>> c3792f686a983fc3c9d05db63fe71f2cd43bf2e1
 import Aside from './components/Aside';
 import Attendance from './containers/Attendance';
 import Profile from './containers/Profile';
