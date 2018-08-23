@@ -6,39 +6,39 @@ import { getAttendance as getAttendanceList } from '../../store/reducers';
 import './index.css';
 
 class AttendanceButton extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      student: {
-        id: '01',
-        presence: true,
-      },
-    };
-  }
-
-  /*
   componentDidMount() {
     const { getAttendance } = this.props;
-    getAttendance('02');
+    getAttendance('5b7ab195f176fd2767d3a954');
   }
-*/
+
   handleClick = () => {
     const { updateAttendance } = this.props;
-    updateAttendance('02');
+    updateAttendance('5b7ab195f176fd2767d3a954');
   };
 
   render() {
-    const { student } = this.state;
+    const { attendance } = this.props;
+    let content;
+    if (attendance.loading === true) {
+      return null;
+    }
     return (
       <div className="switch">
         <label htmlFor="switch">
-          <input id="switch" type="checkbox" checked={student.presence === true} />
+          <input
+            id="switch"
+            type="checkbox"
+            checked={attendance.students.presence === true}
+            onChange={this.handleClick}
+          />
           <span className="lever" />
-          Check In
+          {attendance.students.presence === true ? 'Checked-in' : 'Checked-out'}
         </label>
       </div>
     );
+
+    console.log(attendance.students.presence);
+    return content;
   }
 }
 

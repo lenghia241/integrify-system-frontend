@@ -14,12 +14,13 @@ export default function (state = initialState, action) {
         students: action.payload,
         loading: false,
       };
-    case UPDATE_ATTENDANCE:
-      return {
-        ...state,
-        students: [action.payload],
+    case UPDATE_ATTENDANCE: {
+      const newState = {
+        students: action.payload,
         loading: false,
       };
+      return newState;
+    }
     case ATTENDANCE_LOADING:
       return {
         ...state,
