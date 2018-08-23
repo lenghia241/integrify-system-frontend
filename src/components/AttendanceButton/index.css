@@ -1,0 +1,17 @@
+.switch label .lever {
+  background-color: var(--error-light);
+}
+.switch label .lever:after {
+  background-color: var(--error);
+}
+.switch label input[type="checkbox"]:checked + .lever {
+  background-color: var(--active-light);
+}
+.switch label input[type="checkbox"]:checked + .lever:after {
+  background-color: var(--active);
+}
+.switch label {
+  color: var(--on-light);
+  font-family: "Roboto";
+  font-size: 1.5rem;
+}

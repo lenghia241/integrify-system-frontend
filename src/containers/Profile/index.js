@@ -1,10 +1,5 @@
 import React from 'react';
-import ProfileFormMain from './ProfileForm/ProfileFormMain';
 
-const Profile = () => (
-      <div>
-        <ProfileFormMain />
-      </div>
-);
+const Profile = () => <div>Profile</div>;
 
 export default Profile;
