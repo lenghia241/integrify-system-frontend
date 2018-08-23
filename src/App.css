@@ -7,10 +7,14 @@
   --secondary-dark: #04183C;
   --secondary-light: #5F6086;
 
-  --surface: #F1EDE6;
-  --background: #E3DCCD;
+  --surface: #F4F4F4;
+  --background: #F1EDE6;
 
   --error: #F90000;
+  --error-light: #E57373;
+
+  --active: #1B5E20;
+  --active-light: #66BB6A;
   
   --on-dark: #F8F6F2;
   --on-light: #131210;
