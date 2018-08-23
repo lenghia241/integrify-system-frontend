@@ -16,5 +16,4 @@ EachAssignment.propTypes = {
     date: PropTypes.string,
   }).isRequired,
 };
-
 export default EachAssignment;
