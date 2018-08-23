@@ -20,7 +20,6 @@ class Assignments extends React.Component {
     ));
     return (
       <div className="card col s6">
-        <p className="bold blue-text capitalize">Assignments</p>
         {displayAssignments}
       </div>
     );

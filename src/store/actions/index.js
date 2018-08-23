@@ -24,7 +24,6 @@ export const fetchStudySync = () => dispatch => {
 
 export const getAssignments = () => dispatch => {
   axios.get('https://integrify.network/api/dashboard/assignments').then(res => {
-    console.log(res.data);
     dispatch({
       type: FETCH_ASSIGNMENT,
       payload: res.data,
