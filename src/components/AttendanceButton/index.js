@@ -18,26 +18,20 @@ class AttendanceButton extends Component {
 
   render() {
     const { attendance } = this.props;
-    let content;
-    if (attendance.loading === true) {
-      content = null;
-    } else {
-      content = (
-        <div className="switch">
-          <label htmlFor="switch">
-            <input
-              id="switch"
-              type="checkbox"
-              checked={attendance.students.presence === true}
-              onChange={this.handleClick}
-            />
-            <span className="lever" />
-            {attendance.students.presence === true ? 'Checked-in' : 'Checked-out'}
-          </label>
-        </div>
-      );
-    }
-    return content;
+    return (
+      <div className="switch">
+        <label htmlFor="switch">
+          <input
+            id="switch"
+            type="checkbox"
+            checked={attendance.students.presence === true}
+            onChange={this.handleClick}
+          />
+          <span className="lever" />
+          {attendance.students.presence === true ? 'Checked-in' : 'Checked-out'}
+        </label>
+      </div>
+    );
   }
 }
 
