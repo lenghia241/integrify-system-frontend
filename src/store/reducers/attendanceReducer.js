@@ -2,7 +2,7 @@ import { GET_ATTENDANCE, UPDATE_ATTENDANCE, ATTENDANCE_LOADING } from '../action
 
 // initialize store with data
 const initialState = {
-  students: [],
+  students: {},
   loading: true,
 };
 

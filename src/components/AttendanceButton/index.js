@@ -8,36 +8,35 @@ import './index.css';
 class AttendanceButton extends Component {
   componentDidMount() {
     const { getAttendance } = this.props;
-    getAttendance('5b7ab195f176fd2767d3a954');
+    getAttendance('5b7ab1953129baf45fac3a05');
   }
 
   handleClick = () => {
     const { updateAttendance } = this.props;
-    updateAttendance('5b7ab195f176fd2767d3a954');
+    updateAttendance('5b7ab1953129baf45fac3a05');
   };
 
   render() {
     const { attendance } = this.props;
     let content;
     if (attendance.loading === true) {
-      return null;
+      content = null;
+    } else {
+      content = (
+        <div className="switch">
+          <label htmlFor="switch">
+            <input
+              id="switch"
+              type="checkbox"
+              checked={attendance.students.presence === true}
+              onChange={this.handleClick}
+            />
+            <span className="lever" />
+            {attendance.students.presence === true ? 'Checked-in' : 'Checked-out'}
+          </label>
+        </div>
+      );
     }
-    return (
-      <div className="switch">
-        <label htmlFor="switch">
-          <input
-            id="switch"
-            type="checkbox"
-            checked={attendance.students.presence === true}
-            onChange={this.handleClick}
-          />
-          <span className="lever" />
-          {attendance.students.presence === true ? 'Checked-in' : 'Checked-out'}
-        </label>
-      </div>
-    );
-
-    console.log(attendance.students.presence);
     return content;
   }
 }
@@ -47,7 +46,8 @@ const mapStateToProps = state => ({
 });
 
 AttendanceButton.propTypes = {
-  attendance: PropTypes.shape({ students: PropTypes.array, loading: PropTypes.bool }).isRequired,
+  attendance: PropTypes.shape({ students: PropTypes.shape({}), loading: PropTypes.bool })
+    .isRequired,
   getAttendance: PropTypes.func.isRequired,
   updateAttendance: PropTypes.func.isRequired,
 };
