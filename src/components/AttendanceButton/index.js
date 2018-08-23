@@ -8,12 +8,12 @@ import './index.css';
 class AttendanceButton extends Component {
   componentDidMount() {
     const { getAttendance } = this.props;
-    getAttendance('5b7ab1953129baf45fac3a05');
+    getAttendance('5b7ab195f176fd2767d3a954');
   }
 
   handleClick = () => {
     const { updateAttendance } = this.props;
-    updateAttendance('5b7ab1953129baf45fac3a05');
+    updateAttendance('5b7ab195f176fd2767d3a954');
   };
 
   render() {
