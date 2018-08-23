@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /* eslint jsx-a11y/label-has-for: 0 */
-const LoginField = ({
+const FormField = ({
   input = {}, type, label, meta: { error, touched, active },
 }) => {
   let activeClass = '';
@@ -22,7 +22,7 @@ const LoginField = ({
   );
 };
 
-LoginField.propTypes = {
+FormField.propTypes = {
   input: PropTypes.shape({}).isRequired,
   label: PropTypes.string.isRequired,
   meta: PropTypes.shape({
@@ -32,11 +32,11 @@ LoginField.propTypes = {
   }),
 };
 
-LoginField.defaultProps = {
+FormField.defaultProps = {
   meta: {
     touched: false,
     error: '',
     active: false,
   },
 };
-export default LoginField;
+export default FormField;

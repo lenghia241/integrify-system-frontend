@@ -3,19 +3,23 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import FormField from '../FormField';
 
-const SignUpForm = ({ handleSubmit }) => (
-  <form onSubmit={handleSubmit}>
-    <Field name="firstName" component={FormField} type="text" label="First Name" />
-    <Field name="lastName" component={FormField} type="text" label="Last Name" />
-    <Field name="email" component={FormField} type="email" label="Email" />
-    <div className="center">
-      <button type="submit" className="btn">
-        Submit
-      </button>
-    </div>
-  </form>
+const SignUpForm = ({ handleSubmit, invalid, submitErrors }) => (
+  <React.Fragment>
+    {Object.keys(submitErrors).map(key => (
+      <div className="red-text" key={key}>{submitErrors[key]}</div>
+    ))}
+    <form onSubmit={handleSubmit}>
+      <Field name="firstName" component={FormField} type="text" label="First Name" />
+      <Field name="lastName" component={FormField} type="text" label="Last Name" />
+      <Field name="email" component={FormField} type="email" label="Email" />
+      <div className="center">
+        <button type="submit" className="btn" disabled={invalid}>
+          Submit
+        </button>
+      </div>
+    </form>
+  </React.Fragment>
 );
-
 
 const validate = (values) => {
   const errors = {};
@@ -28,21 +32,18 @@ const validate = (values) => {
 
   if (!values.firstName) {
     errors.firstName = 'Required';
-  } else if (!/[a-zA-Z]+/.test(values.firstName)) {
-    errors.firstName = 'Only alphabet characters allowed';
   }
 
   if (!values.lastName) {
     errors.lastName = 'Required';
-  } else if (!/[a-zA-Z]+/.test(values.firstName)) {
-    errors.lastName = 'Only alphabet characters allowed';
   }
-
   return errors;
 };
 
 SignUpForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  invalid: PropTypes.bool.isRequired,
+  submitErrors: PropTypes.shape({}).isRequired,
 };
 
 export default reduxForm({

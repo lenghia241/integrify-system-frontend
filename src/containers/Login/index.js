@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
+
+import * as actions from '../../store/actions';
+import { getAuth } from '../../store/reducers';
 
 import './Login.css';
 
@@ -25,6 +29,17 @@ class Login extends Component {
 
   render() {
     const { signUp } = this.state;
+
+    const {
+      authUser, signUpUser, loading, authErrors, signUpErrors,
+    } = this.props;
+
+    let form = null;
+    if (loading) {
+      form = <p>loading...</p>;
+    } else if (signUp) {
+      form = <SignUpForm onSubmit={values => signUpUser(values)} submitErrors={signUpErrors} />;
+    } else form = <LoginForm onSubmit={values => authUser(values)} submitErrors={authErrors} />;
 
     return (
       <div className="background valign-wrapper">
@@ -62,7 +77,7 @@ class Login extends Component {
                       className="logo"
                     />
                   </div>
-                  {signUp ? <SignUpForm /> : <LoginForm />}
+                  {form}
                 </div>
               </div>
             </div>
@@ -73,6 +88,21 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {};
+const mapStateToProps = state => ({
+  loading: getAuth(state).loading,
+  authErrors: getAuth(state).authErrors,
+  signUpErrors: getAuth(state).signUpErrors,
+});
 
-export default Login;
+Login.propTypes = {
+  authUser: PropTypes.func.isRequired,
+  signUpUser: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  authErrors: PropTypes.shape({}).isRequired,
+  signUpErrors: PropTypes.shape({}).isRequired,
+};
+
+export default connect(
+  mapStateToProps,
+  actions,
+)(Login);

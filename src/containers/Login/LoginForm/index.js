@@ -4,21 +4,26 @@ import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import FormField from '../FormField';
 
-const LoginForm = ({ handleSubmit }) => (
-  <form onSubmit={handleSubmit}>
-    <Field name="email" component={FormField} type="email" label="Email" />
-    <Field name="password" component={FormField} type="password" label="Password" />
-    <small>
-      <Link to="/forgot-password/" className="right-align forgot-pw">
-        Forgot your password?
-      </Link>
-    </small>
-    <div className="center">
-      <button type="submit" className="btn login-btn">
-        Log In
-      </button>
-    </div>
-  </form>
+const LoginForm = ({ handleSubmit, submitErrors }) => (
+  <React.Fragment>
+    {Object.values(submitErrors).map(error => (
+      <div className="red-text">{error}</div>
+    ))}
+    <form onSubmit={handleSubmit}>
+      <Field name="email" component={FormField} type="email" label="Email" />
+      <Field name="password" component={FormField} type="password" label="Password" />
+      <small>
+        <Link to="/forgot-password/" className="right-align forgot-pw">
+          Forgot your password?
+        </Link>
+      </small>
+      <div className="center">
+        <button type="submit" className="btn login-btn">
+          Log In
+        </button>
+      </div>
+    </form>
+  </React.Fragment>
 );
 
 const validate = (values) => {
@@ -41,6 +46,7 @@ const validate = (values) => {
 
 LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  submitErrors: PropTypes.shape({}).isRequired,
 };
 
 export default reduxForm({
