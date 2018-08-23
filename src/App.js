@@ -2,10 +2,10 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import './App.css';
 
 import { getAuth } from './store/reducers';
 
-import './App.css';
 import Aside from './components/Aside';
 import Attendance from './containers/Attendance';
 import Profile from './containers/Profile';
@@ -28,8 +28,10 @@ const App = ({ auth }) => {
 
   return (
     <div className="App">
-      <Aside />
-      {routes}
+      <ul className="App-aside sidenav sidenav-fixed center">
+        <Aside />
+      </ul>
+      <div className="App-body">{routes}</div>
     </div>
   );
 };
