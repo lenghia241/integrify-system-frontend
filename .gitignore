@@ -1,7 +1,7 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 #for build
-package-lock.json
+
 
 # dependencies
 /node_modules
