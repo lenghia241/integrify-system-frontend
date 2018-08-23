@@ -94,12 +94,17 @@ const mapStateToProps = state => ({
   signUpErrors: getAuth(state).signUpErrors,
 });
 
+Login.defaultProps = {
+  authErrors: null,
+  signUpErrors: null,
+};
+
 Login.propTypes = {
   authUser: PropTypes.func.isRequired,
   signUpUser: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  authErrors: PropTypes.shape({}).isRequired,
-  signUpErrors: PropTypes.shape({}).isRequired,
+  authErrors: PropTypes.shape({}),
+  signUpErrors: PropTypes.shape({}),
 };
 
 export default connect(

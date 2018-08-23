@@ -5,9 +5,13 @@ import FormField from '../FormField';
 
 const SignUpForm = ({ handleSubmit, invalid, submitErrors }) => (
   <React.Fragment>
-    {Object.keys(submitErrors).map(key => (
-      <div className="red-text" key={key}>{submitErrors[key]}</div>
-    ))}
+    {submitErrors
+      ? Object.keys(submitErrors).map(key => (
+          <div className="red-text" key={key}>
+            {submitErrors[key]}
+          </div>
+      ))
+      : null}
     <form onSubmit={handleSubmit}>
       <Field name="firstName" component={FormField} type="text" label="First Name" />
       <Field name="lastName" component={FormField} type="text" label="Last Name" />
@@ -40,10 +44,14 @@ const validate = (values) => {
   return errors;
 };
 
+SignUpForm.defaultProps = {
+  submitErrors: null,
+};
+
 SignUpForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   invalid: PropTypes.bool.isRequired,
-  submitErrors: PropTypes.shape({}).isRequired,
+  submitErrors: PropTypes.shape({}),
 };
 
 export default reduxForm({
