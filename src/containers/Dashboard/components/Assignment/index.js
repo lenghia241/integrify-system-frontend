@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getAssignments as getAssignmentsAction } from '../../../../store/actions/index';
-import EachAssignment from './EachAssignment';
+import EachAssignment from './EachAssignments';
 
 class Assignments extends React.Component {
   componentDidMount() {
