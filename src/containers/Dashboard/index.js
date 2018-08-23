@@ -4,7 +4,7 @@ import EventPanel from './components/EventPanel';
 import Assignments from './components/Assignment';
 import DashboardComponent from '../../components/Dashboard/DashboardComponent';
 import PageTemplate from '../../components/PageTemplate';
-import './dashboard.css';
+import './Dashboard.css';
 
 const Dashboard = () => {
   const DashboardComponents = [
