@@ -1,18 +1,18 @@
 :root {
-  --primary: #ff8c00;
-  --primary-dark: #d16900;
-  --primary-light: #ffa245;
+  --primary: #FF8C00;
+  --primary-dark: #D16900;
+  --primary-light: #FFA245;
 
-  --secondary: #1a2e53;
-  --secondary-dark: #04183c;
-  --secondary-light: #5f6086;
+  --secondary: #1A2E53;
+  --secondary-dark: #04183C;
+  --secondary-light: #5F6086;
 
-  --surface: #f1ede6;
-  --background: #e3dccd;
+  --surface: #F1EDE6;
+  --background: #E3DCCD;
 
-  --error: #f90000;
-
-  --on-dark: #f8f6f2;
+  --error: #F90000;
+  
+  --on-dark: #F8F6F2;
   --on-light: #131210;
 }
 
