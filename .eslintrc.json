@@ -3,11 +3,10 @@
   "plugins": ["prettier", "react"],
   "env": {
     "browser": true,
-    "jest":true
+    "jest": true
   },
   "rules": {
     "linebreak-style": "off",
-    "import/no-extraneous-dependencies":0,
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "react/prefer-stateless-function": [1, { "ignorePureComponents": true }],
     "comma-dangle": 1,

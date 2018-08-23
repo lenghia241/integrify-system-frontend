@@ -1,10 +1,21 @@
-::root {
-  --color-1: #ff8000;
-  --color-2: #ff9400;
-  --color-3: #d1c6ad;
-  --color-4: #042658;
-  --color-5: #041a42;
+:root {
+  --primary: #ff8c00;
+  --primary-dark: #d16900;
+  --primary-light: #ffa245;
+
+  --secondary: #1a2e53;
+  --secondary-dark: #04183c;
+  --secondary-light: #5f6086;
+
+  --surface: #f1ede6;
+  --background: #e3dccd;
+
+  --error: #f90000;
+
+  --on-dark: #f8f6f2;
+  --on-light: #131210;
 }
+
 *,
 *:before,
 *:after {
