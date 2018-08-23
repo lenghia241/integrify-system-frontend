@@ -14,8 +14,6 @@ import Dashboard from './containers/Dashboard';
 import * as actions from './store/actions/index';
 import { getAuth } from './store/reducers';
 
-import './App.css';
-
 class App extends Component {
   componentDidMount() {
     const { fetchUser } = this.props;
