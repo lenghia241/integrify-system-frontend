@@ -18,26 +18,13 @@ class Assignments extends React.Component {
         assignment={assignment}
       />
     ));
-    return (
-      <div className="card col s6">
-        {displayAssignments}
-      </div>
-    );
+    return <div className="card col s6">{displayAssignments}</div>;
   }
 }
 
 Assignments.propTypes = {
   getAssignments: PropTypes.func.isRequired,
-  assignments: PropTypes.arrayOf(
-    PropTypes.shape({
-      // _id: PropTypes.string,
-      // date: PropTypes.string,
-      // duedate: PropTypes.string,
-      // titleOfAssignment: PropTypes.string,
-      // description: PropTypes.string,
-      // submitted: PropTypes.bool,
-    }),
-  ).isRequired,
+  assignments: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 const mapStateToProps = state => ({
   assignments: state.assignments,
