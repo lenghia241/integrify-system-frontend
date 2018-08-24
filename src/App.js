@@ -2,8 +2,9 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import './App.css';
 
-import Aside from './components/Aside';
+import Aside from './containers/Aside';
 import Attendance from './containers/Attendance';
 import Profile from './containers/Profile';
 import Login from './containers/Login';
@@ -25,9 +26,9 @@ const App = ({ auth }) => {
   );
 
   return (
-    <div>
-      <Aside />
-      {routes}
+    <div className="App">
+      <Aside className="App-aside" />
+      <div className="App-body">{routes}</div>
     </div>
   );
 };
