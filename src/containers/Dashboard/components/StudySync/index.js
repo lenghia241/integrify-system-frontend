@@ -15,7 +15,7 @@ class StudySync extends Component {
   render() {
     const { dash } = this.props;
     return (
-      <div className="card col s6">
+      <div className="col s6">
         {dash.length !== undefined
           && dash.map((item, i) => (
             <div className="card-panel hoverable list" key={`${i + 1}+${item.date}`}>

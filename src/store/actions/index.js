@@ -1,6 +1,10 @@
 import axios from 'axios';
 import {
-  FETCH_USER, FETCH_STUDYSYNC, GET_EVENT_LIST, EVENTS_LOADING, FETCH_ASSIGNMENT,
+  FETCH_USER,
+  FETCH_STUDYSYNC,
+  GET_EVENT_LIST,
+  EVENTS_LOADING,
+  FETCH_ASSIGNMENT,
 } from './types';
 
 /*eslint-disable */

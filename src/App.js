@@ -27,8 +27,10 @@ const App = ({ auth }) => {
 
   return (
     <div className="App">
-      <Aside />
-      {routes}
+      <ul className="App-aside sidenav sidenav-fixed center">
+        <Aside />
+      </ul>
+      <div className="App-body">{routes}</div>
     </div>
   );
 };

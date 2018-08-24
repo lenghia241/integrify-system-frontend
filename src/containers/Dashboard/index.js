@@ -6,16 +6,17 @@ import DashboardComponent from '../../components/Dashboard/DashboardComponent';
 import PageTemplate from '../../components/PageTemplate';
 import './Dashboard.css';
 
-
 const Dashboard = () => {
   const DashboardComponents = [
-    { heading: 'Study Sync', componentBody: <StudySync /> },
+    { heading: 'Study-Sync/Lectures', componentBody: <StudySync /> },
     { heading: 'Event Panel', componentBody: <EventPanel /> },
     { heading: 'Assignments', componentBody: <Assignments /> },
-    { heading: 'Notifications', componentBody: <div>Notifications</div> },
+    { heading: 'Notification ', componentBody: <div>Notification</div> },
   ];
-  const renderComponents = DashboardComponents.map(({ heading, componentBody }, i) => (
-    <DashboardComponent heading={heading} key = {`${i + 1}${heading}`}>{componentBody}</DashboardComponent>
+  const renderComponents = DashboardComponents.map(component => (
+    <DashboardComponent heading={component.heading} key={DashboardComponents.indexOf(component)}>
+      {component.componentBody}
+    </DashboardComponent>
   ));
   return (
     <PageTemplate heading="Dashboard">
