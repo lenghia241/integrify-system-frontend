@@ -5,10 +5,6 @@ import Assignments from './components/Assignment';
 import DashboardComponent from '../../components/Dashboard/DashboardComponent';
 import PageTemplate from '../../components/PageTemplate';
 import './Dashboard.css';
-<<<<<<< HEAD
-=======
-
->>>>>>> 7ca457cf95f5a1cba3ce8588433b379a54d3d40d
 
 const Dashboard = () => {
   const DashboardComponents = [

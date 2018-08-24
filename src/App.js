@@ -2,15 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-<<<<<<< HEAD
-import './App.css';
-
-import { getAuth } from './store/reducers';
-
-=======
 
 import './App.css';
->>>>>>> 7ca457cf95f5a1cba3ce8588433b379a54d3d40d
 import Aside from './components/Aside';
 import Attendance from './containers/Attendance';
 import Profile from './containers/Profile';
