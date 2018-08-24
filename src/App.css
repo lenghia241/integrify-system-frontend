@@ -31,3 +31,11 @@
 .App{
   height:100vh;
 }
+
+.bold{
+  font-weight: 600;
+}
+
+.capitalize{
+  text-transform: capitalize;
+}

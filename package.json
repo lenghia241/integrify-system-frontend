@@ -7,6 +7,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
     "@fortawesome/react-fontawesome": "0.1.0-11",
     "axios": "^0.18.0",
+    "dayjs": "^1.7.5",
     "materialize-css": "^1.0.0-rc.2",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
@@ -26,6 +27,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "csslint": "1.0.5",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-config-prettier": "^2.9.0",
@@ -33,7 +35,6 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.1",
     "eslint-plugin-react": "^7.10.0",
-    "prettier": "^1.13.7",
-    "csslint": "1.0.5"
+    "prettier": "^1.13.7"
   }
 }

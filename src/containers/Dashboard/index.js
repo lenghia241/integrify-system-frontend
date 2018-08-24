@@ -9,13 +9,13 @@ import './Dashboard.css';
 
 const Dashboard = () => {
   const DashboardComponents = [
-    { heading: 'Test 1', componentBody: <StudySync /> },
-    { heading: 'Test 2', componentBody: <EventPanel /> },
-    { heading: 'Test 3', componentBody: <Assignments /> },
-    { heading: 'Test 4', componentBody: <div>Component Body</div> },
+    { heading: 'Study Sync', componentBody: <StudySync /> },
+    { heading: 'Event Panel', componentBody: <EventPanel /> },
+    { heading: 'Assignments', componentBody: <Assignments /> },
+    { heading: 'Notifications', componentBody: <div>Notifications</div> },
   ];
-  const renderComponents = DashboardComponents.map(({ heading, componentBody }) => (
-    <DashboardComponent heading={heading}>{componentBody}</DashboardComponent>
+  const renderComponents = DashboardComponents.map(({ heading, componentBody }, i) => (
+    <DashboardComponent heading={heading} key = {`${i + 1}${heading}`}>{componentBody}</DashboardComponent>
   ));
   return (
     <PageTemplate heading="Dashboard">
