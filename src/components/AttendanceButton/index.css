@@ -16,8 +16,8 @@
   font-size: 1.5rem;
 }
 .switch label input[type="checkbox"]:checked:disabled + .lever {
-  background-color: #e0e0e0;
+  background-color: var(--disabled-light);
 }
 .switch label input[type="checkbox"]:checked:disabled + .lever:after {
-  background-color: #949494;
+  background-color: var(--disabled);
 }
