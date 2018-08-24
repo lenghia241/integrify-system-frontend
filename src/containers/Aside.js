@@ -21,7 +21,7 @@ class Aside extends Component {
 
   render() {
     const {
-      auth, className, checkIn, checkOut, logOut,
+      auth, checkIn, checkOut, logOut,
     } = this.props;
     const onChange = (event) => {
       if (event.target.checked) {
@@ -30,7 +30,7 @@ class Aside extends Component {
         checkOut();
       }
     };
-    return <AsideComponent auth={auth} logOut={logOut} onChange={onChange} className={className} />;
+    return <AsideComponent auth={auth} logOut={logOut} onChange={onChange} />;
   }
 }
 Aside.propTypes = {
@@ -39,7 +39,6 @@ Aside.propTypes = {
   logOut: PropTypes.func.isRequired,
   auth: PropTypes.shape({}).isRequired,
   fetchUser: PropTypes.func.isRequired,
-  className: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({

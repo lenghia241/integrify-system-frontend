@@ -5,9 +5,7 @@ import PropTypes from 'prop-types';
 import './Aside.css';
 import AsideSwitch from './AsideSwitch';
 
-const Aside = ({
-  auth, onChange, logOut, className,
-}) => {
+const Aside = ({ auth, onChange, logOut }) => {
   const links = [
     { to: '/', linkName: 'Dashboard', iconsClassName: 'dashboard' },
     { to: '/profile', linkName: 'Profile', iconsClassName: 'account_box' },
@@ -22,7 +20,7 @@ const Aside = ({
     </li>
   ));
   return (
-    <ul className={className}>
+    <ul className="sidenav sidenav-fixed center">
       <li>
         <div className="user-view">
           <div className="background">
@@ -63,7 +61,6 @@ Aside.propTypes = {
   auth: PropTypes.shape({}).isRequired,
   logOut: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  className: PropTypes.string.isRequired,
 };
 
 export default Aside;
