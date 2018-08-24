@@ -12,8 +12,6 @@
 }
 .switch label {
   color: var(--on-light);
-  font-family: "Roboto";
-  font-size: 1.5rem;
 }
 .switch label input[type="checkbox"]:checked:disabled + .lever {
   background-color: var(--disabled-light);

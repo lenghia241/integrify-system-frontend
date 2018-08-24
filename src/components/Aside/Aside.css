@@ -22,8 +22,8 @@
 .sidenav .user-info {
   display: grid;
   grid-template-areas:
-    'user-photo user-name'
-    'user-photo user-status';
+    "user-photo user-name"
+    "user-photo user-status";
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr 1fr;
 }
@@ -36,10 +36,10 @@
 .sidenav .user-info .user-status {
   grid-area: user-status;
 }
-.switch label input[type='checkbox']:checked + .lever:after {
+.switch label input[type="checkbox"]:checked + .lever:after {
   background-color: #fa9026 !important;
 }
-.switch label input[type='checkbox']:checked + .lever {
+.switch label input[type="checkbox"]:checked + .lever {
   background-color: #fa9026 !important;
 }
 .switch label {
