@@ -122,6 +122,5 @@ const AddAssignmentForm = props => {
 
 export default reduxForm({
   form: "assignment", // a unique identifier for this form
-
   validate // validation function
 })(AddAssignmentForm);
