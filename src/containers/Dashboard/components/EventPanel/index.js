@@ -5,7 +5,7 @@ import * as actions from '../../../../store/actions/index';
 import { getEvent } from '../../../../store/reducers/index';
 
 class EventPanel extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const { getEventList } = this.props;
     getEventList();
   }

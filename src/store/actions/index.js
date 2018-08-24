@@ -3,7 +3,6 @@ import {
   FETCH_USER,
   FETCH_STUDYSYNC,
   GET_EVENT_LIST,
-  EVENTS_LOADING,
   FETCH_ASSIGNMENT,
   CHECK_IN,
   CHECK_OUT,
@@ -35,14 +34,8 @@ export const getAssignments = () => (dispatch) => {
   });
 };
 
-// wait data to load
-export const setEventsLoading = () => ({
-  type: EVENTS_LOADING,
-});
-
 // get all the events in the list
 export const getEventList = () => async (dispatch) => {
-  dispatch(setEventsLoading());
   const res = await axios.get('https://integrify.network/api/dashboard/events');
   dispatch({
     type: GET_EVENT_LIST,
