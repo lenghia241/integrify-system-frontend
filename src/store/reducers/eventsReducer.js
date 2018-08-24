@@ -1,4 +1,4 @@
-import { GET_EVENT_LIST, EVENTS_LOADING } from '../actions/types';
+import { GET_EVENT_LIST } from '../actions/types';
 
 const intialState = {
   events: [],
@@ -12,11 +12,6 @@ export default function (state = intialState, action) {
         ...state,
         events: action.payload,
         loading: false,
-      };
-    case EVENTS_LOADING:
-      return {
-        ...state,
-        loading: true,
       };
     default:
       return state;
