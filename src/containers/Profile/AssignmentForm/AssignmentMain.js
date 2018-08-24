@@ -24,8 +24,7 @@ class AssignmentMain extends Component {
         <td>{dateTime}</td>
         <td>{item.assignment}</td>
         <td>{item.github}</td>
-        <td>
-        </td>
+        <td></td>
         <td>{item.teacher}</td>
         <td>
           <button className="edit-btn">Edit</button>

@@ -3,6 +3,7 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 
 import AssignmentFormStyle from "./AssignmentFormStyle.css";
+
 const validate = values => {
   const errors = {};
 
@@ -13,6 +14,7 @@ const validate = values => {
   if (!values.github) {
     errors.github = "Required";
   }
+
   if (!values.status) {
     errors.status = "Required";
   }
@@ -23,24 +25,16 @@ const validate = values => {
 
   return errors;
 };
-const renderField = ({ input, label, type, meta: { touched, error } }) => {
-  return (
+
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+  <div>
+    {" "}
     <div>
-      {" "}
-      <div>
-        {touched && (error && <span className="error">{error}</span>)}
-        <input {...input} type={type} />{" "}
-      </div>
-      <div>
-        <input
-          type={type}
-          checked={input.value ? true : false}
-          onChange={(e, { checked }) => input.onChange(checked)}
-        />
-      </div>
+      {touched && (error && <span className="error">{error}</span>)}
+      <input {...input} type={type} />{" "}
     </div>
-  );
-};
+  </div>
+);
 
 const AddAssignmentForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props;
@@ -48,6 +42,7 @@ const AddAssignmentForm = props => {
   return (
     <form onSubmit={handleSubmit} className="AddAssignmentForm">
       <h2 className="heading">Add Assignment Form</h2>
+
       <div>
         <label>Assignment</label>
 
@@ -60,6 +55,7 @@ const AddAssignmentForm = props => {
           />
         </div>
       </div>
+
       <div>
         <label>Github</label>
 
@@ -72,6 +68,7 @@ const AddAssignmentForm = props => {
           />
         </div>
       </div>
+
       <div>
         <label htmlFor="status">Done</label>
 
@@ -84,8 +81,10 @@ const AddAssignmentForm = props => {
             style={{ opacity: 1, pointerEvents: "auto" }}
           />
         </div>
-        <br />
       </div>
+
+      <br />
+
       <div>
         <label>Teacher</label>
 
@@ -107,6 +106,7 @@ const AddAssignmentForm = props => {
         >
           Submit
         </button>
+
         <button
           type="button"
           disabled={pristine || submitting}
@@ -119,8 +119,9 @@ const AddAssignmentForm = props => {
     </form>
   );
 };
+
 export default reduxForm({
   form: "assignment", // a unique identifier for this form
 
-  validate //validation function
+  validate // validation function
 })(AddAssignmentForm);
