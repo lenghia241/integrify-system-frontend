@@ -10,16 +10,14 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case GET_ATTENDANCE:
       return {
-        ...state,
         students: action.payload,
         loading: false,
       };
     case UPDATE_ATTENDANCE: {
-      const newState = {
+      return {
         students: action.payload,
         loading: false,
       };
-      return newState;
     }
     case ATTENDANCE_LOADING:
       return {

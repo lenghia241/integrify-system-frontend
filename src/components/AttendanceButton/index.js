@@ -24,11 +24,16 @@ class AttendanceButton extends Component {
           <input
             id="switch"
             type="checkbox"
-            checked={attendance.students.presence === true}
+            checked={attendance.students.presence}
+            disabled={attendance.loading}
             onChange={this.handleClick}
           />
           <span className="lever" />
-          {attendance.students.presence === true ? 'Checked-in' : 'Checked-out'}
+          {attendance.loading
+            ? 'Loading'
+            : attendance.students.presence
+              ? 'Checked-in'
+              : 'Checked-out'}
         </label>
       </div>
     );
