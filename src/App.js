@@ -10,7 +10,6 @@ import Profile from './containers/Profile';
 import Login from './containers/Login';
 import Dashboard from './containers/Dashboard';
 
-import { getAuth } from './store/reducers';
 
 const App = ({ auth }) => {
   const routes = auth ? (
@@ -27,8 +26,10 @@ const App = ({ auth }) => {
 
   return (
     <div className="App">
-      <Aside />
-      {routes}
+      <ul className="App-aside sidenav sidenav-fixed center">
+        <Aside />
+      </ul>
+      <div className="App-body">{routes}</div>
     </div>
   );
 };

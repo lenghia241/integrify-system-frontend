@@ -14,15 +14,13 @@ class StudySync extends Component {
   render() {
     const { dash } = this.props;
     return (
-      <div className="card col s6">
+      <div className="col s6">
         {dash.length !== undefined
           && dash.map(item => (
-            <div className="card-panel hoverable list">
+            <div className="card-panel hoverable list" key={Math.random()}>
               <div className="row">
                 <p className="col s9 bold blue-text capitalize">studysync</p>
-                <p className="col s3 bold capitalize">
-                  {item.date}
-                </p>
+                <p className="col s3 bold capitalize">{item.date}</p>
               </div>
               <hr />
               <div className="title">
@@ -30,7 +28,7 @@ class StudySync extends Component {
               </div>
               <div className="row">
                 <p className="col s9 capitalize">{item.description}</p>
-                <p className="col s3">{`${item.firstname} ${item.lastname}`}</p>
+                <p className="col s3">{`${item.firstName} ${item.lastName}`}</p>
               </div>
             </div>
           ))}
@@ -48,10 +46,12 @@ const mapStateToProps = state => ({
   dash: getDash(state),
 });
 
-export default connect(mapStateToProps, actions)(StudySync);
+export default connect(
+  mapStateToProps,
+  actions,
+)(StudySync);
 
 StudySync.propTypes = {
   fetchStudySync: PropTypes.func.isRequired,
-  dash: PropTypes.shape({
-  }).isRequired,
+  dash: PropTypes.shape({}).isRequired,
 };

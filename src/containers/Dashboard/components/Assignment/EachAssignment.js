@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const EachAssignment = (props) => {
-  const { assignment } = props;
-  return (
-    <div className="card-panel">
-      <div>{assignment.titleOfAssignment}</div>
-      <div>{assignment.description}</div>
-      <div>{assignment.date}</div>
-    </div>
-  );
-};
+const EachAssignment = ({ assignment }) => (
+  <div className="card-panel hoverable">
+    <div>{assignment.titleOfAssignment}</div>
+    <div>{assignment.description}</div>
+    <div>{assignment.date}</div>
+  </div>
+);
 
 EachAssignment.propTypes = {
-  assignment: PropTypes.shape({ titleOfAssignment: PropTypes.string }).isRequired,
+  assignment: PropTypes.shape({
+    titleOfAssignment: PropTypes.string,
+    description: PropTypes.string,
+    date: PropTypes.string,
+  }).isRequired,
 };
 
 export default EachAssignment;

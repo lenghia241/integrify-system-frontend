@@ -1,9 +1,10 @@
 .Dashboard {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  /* grid-template-rows: 1fr 1fr; */
+  grid-auto-rows: 25vw;
   grid-gap: 20px;
   padding: 20px;
   background-color: white;
-  height:100%;
+  height: 100%;
 }

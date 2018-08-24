@@ -14,12 +14,11 @@ class EventPanel extends Component {
     const { events } = this.props;
     return (
       <div className="card col s6">
-        <p className="bold blue-text capitalize">Events</p>
         <ul className="collapsible">
           {events.map(({
             _id, title, description, venue, time,
           }) => (
-            <li key={_id}>
+            <li key={_id} className="hoverable">
               <div className="collapsible-header">
                 <h5>Event title: {title}</h5>
               </div>
