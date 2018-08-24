@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import './App.css';
-import Aside from './components/Aside';
 import Attendance from './containers/Attendance';
 import Profile from './containers/Profile';
 import Login from './containers/Login';
@@ -27,7 +26,6 @@ const App = ({ auth }) => {
 
   return (
     <div className="App">
-      <Aside className="App-aside" />
       <div className="App-body">{routes}</div>
     </div>
   );
