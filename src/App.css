@@ -52,7 +52,7 @@
 .App-aside {
   grid-area: App-Aside;
 }
-@media only screen and (min-device-width: 892px) {
+@media only screen and (min-width: 992px) {
   .App {
     grid-template-columns: 1fr;
     grid-template-areas: 'App-Body';

@@ -1,0 +1,64 @@
+.background {
+  height: auto;
+}
+.background img {
+  width: 50%;
+  padding: 20px 20px 10px;
+}
+.sidenav div {
+  line-height: 30px;
+  color: var(--on-dark);
+  font-size: 1.3em;
+}
+.sidenav .circle {
+  height: 150px;
+  width: 150px;
+}
+.sidenav .user-info {
+  padding: 30px;
+  background-color: var(--primary);
+}
+.sidenav, .background {
+  background-color: var(--secondary-dark);
+}
+.sidenav .user-info i {
+  position: absolute;
+  right: 20px;
+}
+.sidenav .user-name,
+.sidenav .user-check-status,
+.sidenav li>a>span {
+  font-variant: small-caps;
+  text-transform: capitalize;
+}
+.switch {
+  padding: 20px 0;
+}
+.switch label input[type='checkbox']:checked + .lever:after {
+  background-color: var(--active);
+}
+.switch label input[type='checkbox']:checked + .lever {
+  background-color: var(--active-light);
+}
+.switch label {
+  display: flex;
+  padding: 0 20px;
+}
+.sidenav li>a>span {
+  color: var(--on-dark);
+  font-size: 1.3em;
+  font-weight: 200;
+}
+.sidenav li>a>i {
+  color: var(--on-dark)!important;
+  font-size: 2.2em;
+}
+.sidenav li>.nav-link:hover a {
+  color: var(--primary) !important;
+  cursor: pointer;
+}
+.logout {
+  position: fixed;
+  bottom: 70px;
+  width: 100%;
+}
