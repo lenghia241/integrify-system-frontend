@@ -15,19 +15,14 @@
 
   --active: #1B5E20;
   --active-light: #66BB6A;
-  
+
+  --disabled: #949494;
+  --disabled-light: #E0E0E0;
+
   --on-dark: #F8F6F2;
   --on-light: #131210;
 }
 
-*,
-*:before,
-*:after {
-  margin: 0;
-  padding: 0;
-  box-sizing:border-box;
-  -moz-box-sizing:border-box;
-}
 *,
 *:before,
 *:after {
@@ -57,8 +52,9 @@
 .App-aside {
   grid-area: App-Aside;
 }
-@media only screen and (max-device-width: 892px) {
+@media only screen and (min-device-width: 892px) {
   .App {
     grid-template-columns: 1fr;
+    grid-template-areas: 'App-Body';
   }
 }
