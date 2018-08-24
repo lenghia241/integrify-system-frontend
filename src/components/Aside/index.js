@@ -1,47 +1,69 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import {
-  fetchUser as fetchUserAction,
-  checkIn as checkInAction,
-  checkOut as checkOutAction,
-} from '../../store/actions/index';
-import { getAuth } from '../../store/reducers';
-
 import './Aside.css';
-import AsideComponent from './Aside';
+import AsideSwitch from './AsideSwitch';
 
-class Aside extends Component {
-  componentDidMount() {
-    const { fetchUser } = this.props;
-    fetchUser();
-  }
+const Aside = ({
+  auth, onChange, logOut, className,
+}) => {
+  const links = [
+    { to: '/', linkName: 'Dashboard', iconsClassName: 'dashboard' },
+    { to: '/profile', linkName: 'Profile', iconsClassName: 'account_box' },
+    { to: '/attendance', linkName: 'Attendance', iconsClassName: 'today' },
+  ];
+  const renderLinks = links.map(link => (
+    <li key={links.indexOf(link)}>
+      <NavLink to={link.to} activeClassName="active" className="waves-effect waves-orange">
+        {link.linkName}
+        <i className="material-icons">{link.iconsClassName}</i>
+      </NavLink>
+    </li>
+  ));
+  return (
+    <ul className={className}>
+      <li>
+        <div className="user-view">
+          <div className="background">
+            <img
+              src="https://s3.eu-west-2.amazonaws.com/integrify-system-assets/logo-black.png"
+              alt="integrify-logo"
+            />
+          </div>
+          <div className="user-info" href="#user">
+            <Link to="/profile" className="user-photo">
+              <img
+                className="circle"
+                alt="user"
+                src="https://i1.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?resize=256%2C256&quality=100&ssl=1"
+              />
+            </Link>
 
-  render() {
-    const { auth, checkIn, checkOut } = this.props;
-    const onChange = (event) => {
-      if (event.target.checked) {
-        checkIn();
-      } else {
-        checkOut();
-      }
-    };
-    return <AsideComponent auth={auth} onChange={onChange} />;
-  }
-}
-Aside.propTypes = {
-  checkIn: PropTypes.func.isRequired,
-  checkOut: PropTypes.func.isRequired,
-  auth: PropTypes.shape({}).isRequired,
-  fetchUser: PropTypes.func.isRequired,
+            <div className="user-name">Hello, {auth.firstName}! </div>
+            <div className="user-status">
+              <AsideSwitch present={auth.present} onChange={onChange} />
+            </div>
+          </div>
+        </div>
+      </li>
+      {renderLinks}
+      <li className="logout">
+        <div className="divider" />
+        <Link to="/" className="waves-effect waves-orange" onClick={logOut}>
+          Logout
+          <i className="material-icons">power_settings_new</i>
+        </Link>
+      </li>
+    </ul>
+  );
 };
 
-const mapStateToProps = state => ({
-  auth: getAuth(state),
-});
+Aside.propTypes = {
+  auth: PropTypes.shape({}).isRequired,
+  logOut: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  className: PropTypes.string.isRequired,
+};
 
-export default connect(
-  mapStateToProps,
-  { fetchUser: fetchUserAction, checkIn: checkInAction, checkOut: checkOutAction },
-)(Aside);
+export default Aside;

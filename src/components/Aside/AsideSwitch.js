@@ -20,8 +20,11 @@ const AsideSwitch = ({ present, onChange }) => (
 );
 
 AsideSwitch.propTypes = {
-  present: PropTypes.bool.isRequired,
+  present: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
+};
+AsideSwitch.defaultProps = {
+  present: false,
 };
 
 export default AsideSwitch;

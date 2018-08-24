@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './App.css';
 
-import './App.css';
-
-import Aside from './components/Aside';
+import Aside from './containers/Aside';
 import Attendance from './containers/Attendance';
 import Profile from './containers/Profile';
 import Login from './containers/Login';
@@ -29,9 +27,7 @@ const App = ({ auth }) => {
 
   return (
     <div className="App">
-      <ul className="App-aside sidenav sidenav-fixed center">
-        <Aside />
-      </ul>
+      <Aside className="App-aside sidenav sidenav-fixed center" />
       <div className="App-body">{routes}</div>
     </div>
   );
