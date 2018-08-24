@@ -8,12 +8,12 @@ import './index.css';
 class AttendanceButton extends Component {
   componentDidMount() {
     const { getAttendance } = this.props;
-    getAttendance('5b7ab1957c9b3c63007d5c8c');
+    getAttendance('5b7ab1952cc5b5a552cfda72');
   }
 
   handleClick = () => {
     const { updateAttendance } = this.props;
-    updateAttendance('5b7ab1957c9b3c63007d5c8c');
+    updateAttendance('5b7ab1952cc5b5a552cfda72');
   };
 
   render() {
@@ -30,7 +30,7 @@ class AttendanceButton extends Component {
           />
           <span className="lever" />
           {attendance.loading
-            ? 'Loading'
+            ? 'Checking'
             : attendance.students.presence
               ? 'Checked-in'
               : 'Checked-out'}
