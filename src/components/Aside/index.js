@@ -47,7 +47,7 @@ const Aside = ({ auth, onChange, logOut }) => {
       {renderLinks}
       <li className="logout">
         <div className="divider"/>
-        <Link to="/" className="waves-effect waves-orange" onClick={logOut}>
+        <Link to="/" className="waves-effect waves-blue" onClick={logOut}>
           <span>Logout</span>
           <i className="material-icons">directions_run</i>
         </Link>

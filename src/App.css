@@ -41,20 +41,15 @@
 }
 
 .App {
-  display: grid;
   height: 100vh;
-  grid-template-columns: 300px 1fr;
-  grid-template-areas: 'App-Aside App-Body';
 }
 .App-body {
-  grid-area: App-Body;
+  background-color: gray;
+  padding-left: 300px;
+  height: 100vh;
 }
-.App-aside {
-  grid-area: App-Aside;
-}
-@media only screen and (min-width: 992px) {
-  .App {
-    grid-template-columns: 1fr;
-    grid-template-areas: 'App-Body';
+@media only screen and (max-width: 992px) {
+  .App-body {
+    padding-left: 0;
   }
-}
+} 
