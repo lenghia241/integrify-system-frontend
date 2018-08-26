@@ -1,38 +1,40 @@
-.background {
-  height: auto;
-}
 .background img {
-  width: 50%;
-  padding: 20px 20px 10px;
+  width: 55%;
+  padding: 20px 32px 10px;
 }
-.sidenav div {
-  line-height: 30px;
+.sidenav div,
+.sidenav li span {
   color: var(--on-dark);
+  line-height: 25px;
   font-size: 1.3em;
+  font-weight: 200;
 }
 .sidenav .circle {
-  height: 150px;
-  width: 150px;
+  height: 130px;
+  width: 130px;
 }
 .sidenav .user-info {
-  padding: 30px;
   background-color: var(--primary);
+  padding: 30px;
 }
 .sidenav, .background {
   background-color: var(--secondary-dark);
 }
+/* Notification bell in right upper corner */
 .sidenav .user-info i {
   position: absolute;
   right: 20px;
 }
 .sidenav .user-name,
 .sidenav .user-check-status,
-.sidenav li>a>span {
+.sidenav li a span,
+.sidenav .logout span {
   font-variant: small-caps;
   text-transform: capitalize;
 }
+/* Switch for check in/out */
 .switch {
-  padding: 20px 0;
+  padding: 20px 0 10px 0;
 }
 .switch label input[type='checkbox']:checked + .lever:after {
   background-color: var(--active);
@@ -40,25 +42,40 @@
 .switch label input[type='checkbox']:checked + .lever {
   background-color: var(--active-light);
 }
+.switch label input[type='checkbox'] + .lever:after {
+  background-color: var(--error);
+}
+.switch label input[type='checkbox'] + .lever {
+  background-color: var(--error-light);
+}
 .switch label {
   display: flex;
   padding: 0 20px;
 }
-.sidenav li>a>span {
+/* Icons for nav-links */
+.sidenav li>a>#icons {
   color: var(--on-dark);
-  font-size: 1.3em;
-  font-weight: 200;
-}
-.sidenav li>a>i {
-  color: var(--on-dark)!important;
   font-size: 2.2em;
 }
-.sidenav li>.nav-link:hover a {
-  color: var(--primary) !important;
-  cursor: pointer;
+.sidenav li>a:hover #icons,
+.sidenav .logout:hover .material-icons {
+  color: var(--primary);
 }
-.logout {
+/* Logout section */
+.sidenav .logout {
+  bottom: 55px;
   position: fixed;
-  bottom: 70px;
   width: 100%;
+}
+.sidenav .logout a {
+  color: var(--on-dark);
+  padding: 15px 32px;
+  width: 100%;
+}
+.sidenav .logout .material-icons {
+  color: var(--on-dark);
+  margin: 0 32px 0 0;
+  font-size: 1.5em;
+  vertical-align: middle;
+  width: 22px;
 }

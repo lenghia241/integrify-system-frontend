@@ -10,9 +10,9 @@ const AsideSwitch = ({ present, onChange }) => (
       </div>
       <div className="user-check-status">
         {present ? (
-          <div className="teal-text">Logging In</div>
+          <div className="teal-text">Check In</div>
         ) : (
-          <div className="red-text">Logging Out</div>
+          <div className="red-text">Check Out</div>
         )}
       </div>
     </label>
