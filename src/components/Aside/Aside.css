@@ -67,3 +67,11 @@
   vertical-align: middle;
   width: 22px;
 }
+/* Navigation bar for hamburger menu */
+.sidenav-trigger i {
+  color: var(--primary);
+  cursor: pointer;
+  left: 20px;
+  top: 20px;
+  position: absolute;
+}
