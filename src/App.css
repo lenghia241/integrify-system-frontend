@@ -31,22 +31,25 @@
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
+
+.bold {
+  font-weight: 600;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
 .App {
-  display: grid;
   height: 100vh;
-  grid-template-columns: 300px 1fr;
-  grid-template-areas: "App-Aside App-Body";
 }
 .App-body {
-  grid-area: App-Body;
-  background-color: gray;
+  background-color: var(--background);
+  padding-left: 300px;
+  height: 100vh;
 }
-.App-aside {
-  grid-area: App-Aside;
-}
-@media only screen and (min-device-width: 892px) {
-  .App {
-    grid-template-columns: 1fr;
-    grid-template-areas: "App-Body";
+@media only screen and (max-width: 992px) {
+  .App-body {
+    padding-left: 0;
   }
 }

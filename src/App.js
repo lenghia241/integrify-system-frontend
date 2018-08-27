@@ -2,13 +2,13 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import './App.css';
 
-import Aside from './containers/Aside';
+import './App.css';
 import Attendance from './containers/Attendance';
 import Profile from './containers/Profile';
 import Login from './containers/Login';
 import Dashboard from './containers/Dashboard';
+import Aside from './containers/Aside';
 
 import { getAuth } from './store/reducers';
 
