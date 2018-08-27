@@ -19,7 +19,7 @@ const Dashboard = () => {
     </DashboardComponent>
   ));
   return (
-    <div className="Dash">
+    <div className="Dashboard-header">
       <PageTemplate heading="Dashboard">
         <div className="Dashboard">{renderComponents}</div>
       </PageTemplate>
