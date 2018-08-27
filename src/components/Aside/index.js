@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import AttendanceButton from '../AttendanceButton';
+import M from 'materialize-css';
 
 import './Aside.css';
-import M from 'materialize-css';
+
+import AttendanceButton from '../AttendanceButton';
 
 class Aside extends Component {
   componentDidMount = () => {
@@ -12,15 +13,16 @@ class Aside extends Component {
     this.instance = M.Sidenav.init(elem, {
       inDuration: 350,
       outDuration: 350,
-      edge: 'left'
+      edge: 'left',
     });
-  }
+  };
+
   render() {
     const { auth, logOut } = this.props;
     const links = [
       { to: '/', linkName: 'Dashboard', iconsClassName: 'dashboard' },
       { to: '/profile', linkName: 'Profile', iconsClassName: 'account_box' },
-      { to: '/attendance', linkName: 'Attendance', iconsClassName: 'today' }
+      { to: '/attendance', linkName: 'Attendance', iconsClassName: 'today' },
     ];
     const renderLinks = links.map(link => (
       <li key={links.indexOf(link)}>
@@ -34,7 +36,9 @@ class Aside extends Component {
     ));
     return (
       <div className="nav-wrapper">
-        <a data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <div data-target="slide-out" className="sidenav-trigger" href="#">
+          <i className="material-icons">menu</i>
+        </div>
         <div id="slide-out" className="sidenav sidenav-fixed">
           <div className="background">
             <img
@@ -68,7 +72,7 @@ class Aside extends Component {
         </div>
       </div>
     );
-  };
+  }
 }
 
 Aside.propTypes = {
