@@ -2,59 +2,113 @@ import React from 'react';
 import { getFormValues } from 'redux-form';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import RenderSummary from './render/RenderSummary';
 
 const ProfileFormSummary = (props) => {
   const { values } = props;
+  console.log(props);
+  const content = [
+    {
+      className: 'personal',
+      title: 'Personal Information',
+      fields: [
+        { title: 'First Name', value: values && values.firstName ? values.firstName : null },
+        { title: 'Last Name', value: values && values.lastName ? values.lastName : null },
+        { title: 'Bio', value: values && values.bio ? values.bio : null },
+      ],
+    },
+    {
+      className: 'competences',
+      title: 'Competences',
+      fields:
+        values && values.competencies
+          ? values.competencies.map((item, i) => ({ title: `competence${i}`, value: item }))
+          : null,
+    },
+    {
+      className: 'skills',
+      title: 'Skills',
+      fields:
+        values && values.skills
+          ? values.skills.map((item, i) => ({ title: `skill${i}`, value: item }))
+          : null,
+    },
+    {
+      className: 'methods',
+      title: 'Methods and Tools',
+      fields:
+        values && values.methodsandtools
+          ? values.methodsandtools.map((item, i) => ({ title: `methods${i}`, value: item }))
+          : null,
+    },
+    {
+      className: 'education',
+      title: 'Education',
+      fields: [
+        {
+          title: 'School',
+          value:
+            values && values.education && values.education[0] !== undefined
+              ? values.values.education[0].school
+              : null,
+        },
+        {
+          title: 'Degree',
+          value:
+            values && values.education && values.education[0] !== undefined
+              ? values.lastName
+              : null,
+        },
+        { title: 'Bio', value: values && values.bio ? values.bio : null },
+      ],
+    },
+    {
+      className: 'education',
+      title: 'Education',
+      fields:
+        values && values.education && values.education[0] !== undefined
+          ? values.education.map((item, i) => ({
+            school: {
+              title: `School #${i + 1}`,
+              value: item.school,
+            },
+            degree: { title: `Degree #${i + 1}`, value: item.degree },
+            fieldofstudy: {
+              title: `Field of study #${i + 1}`,
+              value: item.fieldofstudy,
+            },
+            from: {
+              title: `From #${i + 1}`,
+              value: item.from,
+            },
+            to: {
+              title: `To #${i + 1}`,
+              value: item.to,
+            },
+            description: { title: `Description #${i + 1}`, value: item.descriptopn },
+          }))
+          : null,
+    },
+    {
+      className: 'languages',
+      title: 'Languages',
+      fields:
+        values && values.languages
+          ? values.languages.map((item, i) => ({ title: `language${i}`, value: item }))
+          : null,
+    },
+  ];
+  console.log(content);
   return (
     <div className="summary">
-      <div className="personal">
-        <h5>Personal Information</h5>
-        <p>First Name</p>
-        {values && values.firstName ? <p>{values.firstName}</p> : null}
-        <p>Last Name</p>
-        {values && values.lastName ? <p>{values.lastName}</p> : null}
-        <p>Bio</p>
-        {values && values.bio ? <p>{values.bio}</p> : null}
-      </div>
-      <div className="competences">
-        <h5>Competences</h5>
-        {values && values.competencies
-          ? values.competencies.map((item, i) => <p key={`${i + 1}`}>{item}</p>)
-          : null}
-      </div>
-      <div className="skills">
-        <h5>Skills</h5>
-        {values && values.skills
-          ? values.skills.map((item, i) => <p key={`${i + 1}`}>{item}</p>)
-          : null}
-      </div>
-      <div className="methods">
-        <h5>Methods and Tools</h5>
-        {values && values.methodsandtools
-          ? values.methodsandtools.map((item, i) => <p key={`${i + 1}`}>{item}</p>)
-          : null}
-      </div>
-      <div className="education">
-        <h5>Education</h5>
-        {values && values.education && values.education[0] !== undefined
-          ? values.education.map((item, i) => (
-              <div key={`${i + 1}`}>
-                <p key={`${i + 1}`}>School</p>
-                {item.school ? <p key={`${i + 1}`}>{item.school}</p> : null}
-                <p key={`${i + 1}`}>Degree</p>
-                {item.degree ? <p key={`${i + 1}`}>{item.degree}</p> : null}
-                <p key={`${i + 1}`}>Field of study</p>
-                {item.fieldofstudy ? <p key={`${i + 1}`}>{item.fieldofstudy}</p> : null}
-                <p key={`${i + 1}`}>From</p>
-                {item.from ? <p key={`${i + 1}`}>{item.from}</p> : null}
-                <p key={`${i + 1}`}>To</p>
-                {item.to ? <p key={`${i + 1}`}>{item.to}</p> : null}
-                <p key={`${i + 1}`}>Description</p>
-                {item.descriptopn ? <p key={`${i + 1}`}>{item.descriptopn}</p> : null}
-              </div>
-          ))
-          : null}
-      </div>
+      {content.map((item, i) => (
+        <RenderSummary
+          key={`${i + 1}`}
+          className={item.className}
+          title={item.title}
+          fields={item.fields}
+        />
+      ))}
       <div className="examplesofwork">
         <h5>Examples of Work</h5>
         {values && values.examplesofwork && values.examplesofwork[0] !== undefined
@@ -82,7 +136,7 @@ const ProfileFormSummary = (props) => {
                 <p key={`${i + 1}`}>Company</p>
                 {values.workexperience[i].company ? (
                   <p key={`${i + 1}`}>{values.workexperience[i].company}</p>
-                ) : null}{' '}
+                ) : null}
                 <p key={`${i + 1}`}>Location</p>
                 {values.workexperience[i].location ? (
                   <p key={`${i + 1}`}>{values.workexperience[i].location}</p>
@@ -101,12 +155,6 @@ const ProfileFormSummary = (props) => {
                 ) : null}
               </div>
           ))
-          : null}
-      </div>
-      <div className="languages">
-        <h5>Languages</h5>
-        {values && values.languages
-          ? values.languages.map((item, i) => <p key={`${i + 1}`}>{item}</p>)
           : null}
       </div>
     </div>
