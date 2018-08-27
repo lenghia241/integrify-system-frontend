@@ -53,16 +53,19 @@ const AddAssignmentForm = (props) => {
   return (
     <form onSubmit={handleSubmit} className="AddAssignmentForm">
       <h2 className="heading">Add Assignment Form</h2>
+
       <div>
         <div>
           <Field name="assignment" component={renderField} type="text" label="Assignment" />
         </div>
       </div>
+
       <div>
         <div>
           <Field name="github" component={renderField} type="text" label="Github" />
         </div>
       </div>
+
       <div>
         <div>
           <Field
@@ -74,8 +77,10 @@ const AddAssignmentForm = (props) => {
             style={{ opacity: 1, pointerEvents: 'auto' }}
           />
         </div>
-        <br />
       </div>
+
+      <br />
+
       <div>
         <div>
           <Field name="teacher" component={renderField} type="text" label="Teacher" />
