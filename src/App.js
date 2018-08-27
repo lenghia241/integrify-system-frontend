@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import './App.css';
-
-import Aside from './components/Aside';
 import Attendance from './containers/Attendance';
 import Profile from './containers/Profile';
 import Login from './containers/Login';
 import Dashboard from './containers/Dashboard';
+import Aside from './containers/Aside';
 
 import * as actions from './store/actions/index';
 import { getAuth } from './store/reducers';

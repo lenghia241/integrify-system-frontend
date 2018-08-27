@@ -5,6 +5,7 @@ import {
   SIGN_UP_USER_FAIL,
   AUTH_USER_SUCCESS,
   SIGN_UP_USER_SUCCESS,
+  CHECK_IN, CHECK_OUT, LOG_OUT,
 } from '../actions/types';
 
 const initState = {
@@ -52,6 +53,15 @@ export default function (state = initState, action) {
         loading: false,
         signUpErrors: action.payload,
       };
+    case CHECK_IN:
+      return { ...state, present: true };
+
+    case CHECK_OUT:
+      return { ...state, present: false };
+
+    case LOG_OUT:
+      return state;
+
     default:
       return state;
   }
