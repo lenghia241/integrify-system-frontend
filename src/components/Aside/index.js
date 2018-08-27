@@ -9,7 +9,7 @@ const Aside = ({ auth, onChange, logOut }) => {
   const links = [
     { to: '/', linkName: 'Dashboard', iconsClassName: 'dashboard' },
     { to: '/profile', linkName: 'Profile', iconsClassName: 'account_box' },
-    { to: '/attendance', linkName: 'Attendance', iconsClassName: 'today' }
+    { to: '/attendance', linkName: 'Attendance', iconsClassName: 'today' },
   ];
   const renderLinks = links.map(link => (
     <li key={links.indexOf(link)}>

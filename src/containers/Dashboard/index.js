@@ -19,9 +19,11 @@ const Dashboard = () => {
     </DashboardComponent>
   ));
   return (
-    <PageTemplate heading="Dashboard">
-      <div className="Dashboard">{renderComponents}</div>
-    </PageTemplate>
+    <div className="Dash">
+      <PageTemplate heading="Dashboard">
+        <div className="Dashboard">{renderComponents}</div>
+      </PageTemplate>
+    </div>
   );
 };
 
