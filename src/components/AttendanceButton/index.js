@@ -20,9 +20,9 @@ class AttendanceButton extends Component {
     const { attendance } = this.props;
     let status;
     if (attendance.students.presence) {
-      status = 'Checked-in';
+      status = 'Checked In';
     } else {
-      status = 'Checked-out';
+      status = 'Checked Out';
     }
     return (
       <div className="switch">
@@ -35,7 +35,11 @@ class AttendanceButton extends Component {
             onChange={this.handleClick}
           />
           <span className="lever" />
-          {attendance.loading ? 'Checking' : status}
+          {attendance.loading ? (
+            <div>Checking</div>
+          ) : (
+            <div className={attendance.students.presence ? 'teal-text' : 'red-text'}>{status}</div>
+          )}
         </label>
       </div>
     );

@@ -1,21 +1,23 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import AttendanceButton from '../AttendanceButton';
 
 import './Aside.css';
-import AsideSwitch from './AsideSwitch';
 
-const Aside = ({ auth, onChange, logOut }) => {
+const Aside = ({ auth, logOut }) => {
   const links = [
     { to: '/', linkName: 'Dashboard', iconsClassName: 'dashboard' },
     { to: '/profile', linkName: 'Profile', iconsClassName: 'account_box' },
-    { to: '/attendance', linkName: 'Attendance', iconsClassName: 'today' }
+    { to: '/attendance', linkName: 'Attendance', iconsClassName: 'today' },
   ];
   const renderLinks = links.map(link => (
     <li key={links.indexOf(link)}>
       <NavLink to={link.to} activeClassName="active" className="waves-effect waves-orange">
         <span>{link.linkName}</span>
-        <i id="icons" className="material-icons">{link.iconsClassName}</i>
+        <i id="icons" className="material-icons">
+          {link.iconsClassName}
+        </i>
       </NavLink>
     </li>
   ));
@@ -40,11 +42,9 @@ const Aside = ({ auth, onChange, logOut }) => {
         <div className="user-name">Hello, {auth.firstName}! </div>
       </div>
       <div className="user-status">
-        <AsideSwitch present={auth.present} onChange={onChange} />
+        <AttendanceButton />
       </div>
-      <ul>
-        {renderLinks}
-      </ul>
+      <ul>{renderLinks}</ul>
       <div className="logout">
         <div className="divider" />
         <Link to="/" className="waves-effect waves-orange" onClick={logOut}>
@@ -59,7 +59,6 @@ const Aside = ({ auth, onChange, logOut }) => {
 Aside.propTypes = {
   auth: PropTypes.shape({}).isRequired,
   logOut: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
 
 export default Aside;
