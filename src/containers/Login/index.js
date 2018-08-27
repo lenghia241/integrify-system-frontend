@@ -42,7 +42,7 @@ class Login extends Component {
     } else form = <LoginForm onSubmit={values => authUser(values)} submitErrors={authErrors} />;
 
     return (
-      <div className="background valign-wrapper">
+      <div className="background login valign-wrapper">
         <div className="section container">
           <div className="row">
             <div className="col s12 m6 offset-m3">
