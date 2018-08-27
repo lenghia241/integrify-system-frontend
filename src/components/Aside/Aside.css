@@ -37,18 +37,6 @@
 .switch {
   padding: 20px 0 10px 0;
 }
-.switch label input[type="checkbox"]:checked + .lever:after {
-  background-color: var(--active);
-}
-.switch label input[type="checkbox"]:checked + .lever {
-  background-color: var(--active-light);
-}
-.switch label input[type="checkbox"] + .lever:after {
-  background-color: var(--error);
-}
-.switch label input[type="checkbox"] + .lever {
-  background-color: var(--error-light);
-}
 .switch label {
   display: flex;
   padding: 0 20px;
