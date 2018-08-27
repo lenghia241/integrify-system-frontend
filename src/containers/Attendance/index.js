@@ -1,5 +1,10 @@
 import React from 'react';
+import PageTemplate from '../../components/PageTemplate';
 
-const Attendance = () => <div>Attendance</div>;
+const Attendance = () => (
+  <PageTemplate heading="Attendance">
+    <div className="Attendance" />
+  </PageTemplate>
+);
 
 export default Attendance;

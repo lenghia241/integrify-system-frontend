@@ -1,5 +1,8 @@
 /*eslint-disable */
 export const FETCH_USER = 'FETCH_USER';
+export const GET_ATTENDANCE = 'GET_ATTENDANCE';
+export const UPDATE_ATTENDANCE = 'UPDATE_ATTENDANCE';
+export const ATTENDANCE_LOADING = 'ATTENDANCE_LOADING';
 
 //action types for event panel
 export const FETCH_STUDYSYNC = 'FETCH_STUDYSYNC';  
