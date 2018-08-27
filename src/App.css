@@ -44,7 +44,7 @@
   height: 100vh;
 }
 .App-body {
-  background-color: gray;
+  background-color: var(--background);
   padding-left: 300px;
   height: 100vh;
 }

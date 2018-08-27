@@ -1,22 +1,21 @@
 .Dashboard {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-auto-rows:20vw;
+  grid-auto-rows: 20vw;
   grid-gap: 20px;
   padding: 20px;
-  background-color: white;
   height: 100%;
 }
 
 
-@media screen and (max-width:1592px){
+@media screen and (max-width:1592px) {
   .Dashboard{
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: 30vw;
   }
 }
 
-@media screen and (max-width:992px){
+@media screen and (max-width:992px) {
   .Dashboard{
     grid-template-columns: 1fr;
     grid-auto-rows: 50%;

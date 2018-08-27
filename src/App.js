@@ -8,6 +8,7 @@ import Attendance from './containers/Attendance';
 import Profile from './containers/Profile';
 import Login from './containers/Login';
 import Dashboard from './containers/Dashboard';
+import Aside from './containers/Aside';
 
 import { getAuth } from './store/reducers';
 
@@ -26,6 +27,7 @@ const App = ({ auth }) => {
 
   return (
     <div className="App">
+      <Aside className="App-aside" />
       <div className="App-body">{routes}</div>
     </div>
   );
