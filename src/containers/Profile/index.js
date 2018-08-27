@@ -1,10 +1,10 @@
 import React from 'react';
-import ProfileFormMain from './ProfileForm/ProfileFormMain';
+// import ProfileFormMain from './ProfileForm/ProfileFormMain';
 import AssignmentMain from './AssignmentForm/AssignmentMain';
 
 const Profile = () => (
       <div>
-        <ProfileFormMain />
+        {/* <ProfileFormMain /> */}
         <AssignmentMain />
       </div>
 );

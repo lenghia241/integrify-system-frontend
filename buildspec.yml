@@ -3,17 +3,11 @@ version: 0.2
 phases:
   install:
     commands:
+      - git checkout test
       - npm install
   build:
     commands:
       - echo Build started on `date`
-      - echo Compiling the Node.js code
-      - npm run build
-  post_build:
-    commands:
-      - echo Build completed on `date`
-      - echo Syncing to s3 bucket for static hosting
-      - aws s3 sync build/ s3://integrify-system-build
-artifacts:
-  files:
-    - build/**
+      - echo Building static files for s3 hosting. Syncing if successful.
+      - npm run build && aws s3 sync build/ s3://integrify-system-build
+
