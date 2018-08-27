@@ -34,11 +34,13 @@ class App extends Component {
       </Switch>
     );
 
+    const aside = user ? <Aside className="App-aside" /> : null;
+
     return (
-      <React.Fragment>
-        <Aside />
-        {routes}
-      </React.Fragment>
+      <div className="App">
+        {aside}
+        <div className="App-body">{routes}</div>
+      </div>
     );
   }
 }
