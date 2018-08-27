@@ -1,138 +1,107 @@
-import React from "react";
+import React from 'react';
+import { reduxForm, Field } from 'redux-form';
+import PropTypes from 'prop-types';
+import AssignmentFormStyle from './AssignmentFormStyle.css';
 
-import { reduxForm, Field } from "redux-form";
-
-import AssignmentFormStyle from "./AssignmentFormStyle.css";
-const validate = values => {
+const validate = (values) => {
   const errors = {};
 
   if (!values.assignment) {
-    errors.assignment = "Required";
+    errors.assignment = 'Required';
   } else if (!/^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/i.test(values.assignment)) {
-    errors.assignment = 'Invalid assignment name'
+    errors.assignment = 'Invalid assignment name';
   }
 
   if (!values.github) {
-    errors.github = "Required";
-  } else if (!/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()\\+,;=.]+$/i.test(values.github)) {
-    errors.github = 'Invalid github Link'
+    errors.github = 'Required';
+  } else if (
+    !/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()\\+,;=.]+$/i.test(values.github)
+  ) {
+    errors.github = 'Invalid github Link';
   }
-  
+
   if (!values.status) {
-    errors.status = "Required";
+    errors.status = 'Required';
   }
 
   if (!values.teacher) {
-    errors.teacher = "Required";
+    errors.teacher = 'Required';
   } else if (!/^[a-zA-Z\s]+$/i.test(values.teacher)) {
-    errors.teacher = 'Invalid name'
+    errors.teacher = 'Invalid name';
   }
 
   return errors;
 };
 
-const renderField = ({
+const AddAssignmentForm = (props) => {
+  const {
+    handleSubmit, pristine, reset, submitting,
+  } = props;
 
-  input, label, type, meta: { touched, error },
-
-}) => (
-
+  const renderField = ({
+    input, label, htmlFor, type, meta: { touched, error },
+  }) => (
     <div>
-
-      {' '}
-
-      <div>
-
-        {touched && (error && <span className="error">{error}</span>)}
-
-        <input {...input} type={type} />{' '}
-
-      </div>
-
+      <label htmlFor={htmlFor}>
+        {label}
+        <input id={htmlFor} {...input} placeholder={label} type={type} />
+        {touched && error && <span>{error}</span>}
+      </label>
     </div>
-
-);
-
-
-const AddAssignmentForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props;
+  );
 
   return (
     <form onSubmit={handleSubmit} className="AddAssignmentForm">
       <h2 className="heading">Add Assignment Form</h2>
       <div>
-        <label>Assignment</label>
-
         <div>
-          <Field
-            name="assignment"
-            component={renderField}
-            type="text"
-            label="assignment"
-          />
+          <Field name="assignment" component={renderField} type="text" label="Assignment" />
         </div>
       </div>
       <div>
-        <label>Github</label>
-
         <div>
-          <Field
-            name="github"
-            component={renderField}
-            type="text"
-            label="github"
-          />
+          <Field name="github" component={renderField} type="text" label="Github" />
         </div>
       </div>
       <div>
-        <label htmlFor="status">Done</label>
-
         <div>
           <Field
             name="status"
             id="status"
-            component="input"
+            component={renderField}
             type="checkbox"
-            style={{ opacity: 1, pointerEvents: "auto" }}
+            label="Status"
+            style={{ opacity: 1, pointerEvents: 'auto' }}
           />
         </div>
         <br />
       </div>
       <div>
-        <label>Teacher</label>
-
         <div>
-          <Field
-            name="teacher"
-            component={renderField}
-            type="text"
-            label="teacher"
-          />
+          <Field name="teacher" component={renderField} type="text" label="Teacher" />
         </div>
       </div>
 
       <div className="button-class">
-        <button
-          type="submit"
-          disabled={pristine || submitting}
-          className="button"
-        >
+        <button type="submit" disabled={pristine || submitting} className="button">
           Submit
         </button>
-        <button
-          type="button"
-          disabled={pristine || submitting}
-          onClick={reset}
-          className="button"
-        >
+        <button type="button" disabled={pristine || submitting} onClick={reset} className="button">
           Clear Values
         </button>
       </div>
     </form>
   );
 };
-export default reduxForm({
-  form: "assignment", // a unique identifier for this form
 
-  validate //validation function
+AddAssignmentForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  pristine: PropTypes.bool.isRequired,
+  submitting: PropTypes.bool.isRequired,
+  reset: PropTypes.func.isRequired,
+};
+export default reduxForm({
+  form: 'assignment', // a unique identifier for this form
+  AssignmentFormStyle, // css for the form
+  validate, // validation function
 })(AddAssignmentForm);

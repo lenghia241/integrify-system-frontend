@@ -1,34 +1,38 @@
-import React, { Component } from "react";
-import AddAssignmentForm from "./AddAssignmentForm";
-import AssignmentMainStyle from "./AssignmentMainStyle.css";
-import { connect } from "react-redux";
-import { getInfo } from "../../../store/actions/assignmentFormAction";
-import { addInfo } from "../../../store/actions/assignmentFormAction";
-import {NavLink} from "react-router-dom";
-import { reduxForm, Field } from "redux-form";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { reduxForm, Field } from 'redux-form';
+import AssignmentMainStyle from './AssignmentMainStyle.css';
+import AddAssignmentForm from './AddAssignmentForm';
+import { getInfo, addInfo } from '../../../store/actions/assignmentFormAction';
+
 
 class AssignmentMain extends Component {
-  submit = values => {
-    this.props.addInfo(values);
-    console.log(values);
+  submit = (values) => {
+    const { addInfo: addInfoProp } = this.props;
+    addInfoProp(values);
   };
 
   render() {
-    var today = new Date();
-    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = date+' '+time;
+    const { assignmentItems: items } = this.props;
 
-    const items = this.props.assignmentItems.items.map((item, i) => (
-      <tr className="table-row">
+    const today = new Date();
+    const date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+    const time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
+    const dateTime = `${date} ${time}`;
+
+    const itemsform = items.items.map(item => (
+      <tr key={item.assignment} className="table-row">
         <td>{dateTime}</td>
         <td>{item.assignment}</td>
         <td>{item.github}</td>
-        <td>
-        </td>
+        <td />
         <td>{item.teacher}</td>
         <td>
-          <button className="edit-btn">Edit</button>
+          <button className="edit-btn" type="submit">
+            Edit
+          </button>
         </td>
       </tr>
     ));
@@ -39,9 +43,11 @@ class AssignmentMain extends Component {
           <div className="assignment-header">
             <h1 className="h1">Assignments</h1>
 
-            <button className="add-btn">
-            <NavLink to="/AddAssignmentForm" activeClassName="active">Add</NavLink>
-            </button>
+            <div className="add-btn">
+              <NavLink to="/AddAssignmentForm" activeClassName="active">
+                Add
+              </NavLink>
+            </div>
           </div>
 
           <table className="responsive-table mainTable">
@@ -56,7 +62,7 @@ class AssignmentMain extends Component {
               </tr>
             </thead>
 
-            <tbody>{items}</tbody>
+            <tbody>{itemsform}</tbody>
           </table>
         </div>
         <AddAssignmentForm onSubmit={this.submit} />
@@ -65,10 +71,17 @@ class AssignmentMain extends Component {
   }
 }
 
+AssignmentMain.propTypes = {
+  addInfo: PropTypes.func.isRequired,
+  assignmentItems: PropTypes.shape({}).isRequired,
+};
+
 const mapStateToProps = state => ({
-  assignmentItems: state.assignmentFormReducer
+  assignmentItems: state.assignment,
 });
 export default connect(
   mapStateToProps,
-  { getInfo, addInfo }
+  {
+    AssignmentMainStyle, reduxForm, Field, getInfo, addInfo,
+  },
 )(AssignmentMain);

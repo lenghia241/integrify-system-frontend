@@ -1,15 +1,7 @@
-
-export const getInfo = () => dispatch =>{
-    return{
-        type:"GET_INFO"
-    }
-      
-};
-export const addInfo = item => {
-    return{
-        type:"ADD_INFO",
-        payload:item
-    }
-      
-};
-  
+export const getInfo = () => ({
+  type: 'GET_INFO',
+});
+export const addInfo = item => ({
+  type: 'ADD_INFO',
+  payload: item,
+});

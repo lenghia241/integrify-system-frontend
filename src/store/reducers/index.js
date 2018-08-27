@@ -7,6 +7,6 @@ import assignmentFormReducer from './assignmentFormReducer';
 export default combineReducers({
   form: reduxForm,
   auth: authReducer,
-  reduxFormReducer: reduxFormReducer,
-  assignmentFormReducer: assignmentFormReducer,
+  reduxFormReducer,
+  assignment: assignmentFormReducer,
 });
