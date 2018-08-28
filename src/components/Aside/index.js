@@ -36,7 +36,7 @@ class Aside extends Component {
     ));
     return (
       <div className="nav-wrapper">
-        <div data-target="slide-out" className="sidenav-trigger" href="#">
+        <div data-target="slide-out" className="sidenav-trigger">
           <i className="material-icons z-depth-1-half">menu</i>
         </div>
         <div id="slide-out" className="sidenav sidenav-fixed">
