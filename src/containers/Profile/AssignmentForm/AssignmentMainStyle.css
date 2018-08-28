@@ -1,8 +1,9 @@
 .assignment-main{
     display: grid;
     border:2px solid grey;
-    margin:5%;
+    margin: 0 auto;
     color:#515151;
+    width: 80%;
  }
  .assignment-main-header{
     background-color:#F0F0F0

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { reduxForm, Field } from 'redux-form';
 import AssignmentMainStyle from './AssignmentMainStyle.css';
 import AddAssignmentForm from './AddAssignmentForm';
 import { getInfo, addInfo } from '../../../store/actions/assignmentFormAction';
-
 
 class AssignmentMain extends Component {
   submit = (values) => {
@@ -30,7 +28,7 @@ class AssignmentMain extends Component {
         <td />
         <td>{item.teacher}</td>
         <td>
-          <button className="edit-btn" type="submit">
+          <button className="waves-effect waves-light btn orange" type="submit">
             Edit
           </button>
         </td>
@@ -42,11 +40,7 @@ class AssignmentMain extends Component {
         <div className="assignment-main">
           <div className="assignment-header">
             <h1 className="h1">Assignments</h1>
-            <div className="add-btn">
-              <NavLink to="/AddAssignmentForm" activeClassName="active">
-                Add
-              </NavLink>
-            </div>
+            <button type="button" className="waves-effect waves-light btn orange">Add:</button>
           </div>
           <table className="responsive-table mainTable">
             <thead className="assignment-main-header table-header">
@@ -78,6 +72,10 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    AssignmentMainStyle, reduxForm, Field, getInfo, addInfo,
+    AssignmentMainStyle,
+    reduxForm,
+    Field,
+    getInfo,
+    addInfo,
   },
 )(AssignmentMain);

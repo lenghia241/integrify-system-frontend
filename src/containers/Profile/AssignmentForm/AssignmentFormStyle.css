@@ -5,6 +5,7 @@
     margin: 0 auto;
     padding: 4%;
     margin-bottom: 2%;
+    margin-top: 5%;
 }
 .heading {
   color: #ff8c00;
@@ -12,10 +13,9 @@
   margin-top: 2%;
   font-size: 2.5vw;
 }
-.error {
+span {
   color: #f90000;
 }
-
 label {
   color: #1a2e53;
 }

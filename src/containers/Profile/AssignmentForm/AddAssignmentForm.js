@@ -13,7 +13,7 @@ const validate = (values) => {
   if (!values.github) {
     errors.github = 'Required';
   } else if (
-    !/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()\\+,;=.]+$/i.test(values.github)
+    !/^(https:\/\/)?(github\.com\/)([a-zA-Z0-9_-]){0,}$/i.test(values.github)
   ) {
     errors.github = 'Invalid github Link';
   }
@@ -34,12 +34,12 @@ const AddAssignmentForm = (props) => {
   } = props;
 
   const renderField = ({
-    input, label, htmlFor, type, meta: { touched, error },
+    input, label, placeholder, htmlFor, type, meta: { touched, error },
   }) => (
     <div>
       <label htmlFor={htmlFor}>
         {label}
-        <input id={htmlFor} {...input} placeholder={label} type={type} />
+        <input id={htmlFor} {...input} placeholder={placeholder} type={type} />
         {touched && error && <span>{error}</span>}
       </label>
     </div>
@@ -50,37 +50,25 @@ const AddAssignmentForm = (props) => {
       <h2 className="heading">Add Assignment Form</h2>
       <div>
         <div>
-          <Field name="assignment" component={renderField} type="text" label="Assignment" />
+          <Field name="assignment" component={renderField} type="text" placeholder="Assignment" />
         </div>
       </div>
       <div>
         <div>
-          <Field name="github" component={renderField} type="text" label="Github" />
-        </div>
-      </div>
-      <div>
-      <p className="checkbox-label">Done:</p>
-        <div>
-          <Field
-            name="status"
-            id="status"
-            component="input"
-            type="checkbox"
-            style={{ opacity: 1, pointerEvents: 'auto' }}
-          />
+          <Field name="github" component={renderField} type="text" placeholder="Github" />
         </div>
       </div>
       <br />
       <div>
         <div>
-          <Field name="teacher" component={renderField} type="text" label="Teacher" />
+          <Field name="teacher" component={renderField} type="text" placeholder="Teacher" />
         </div>
       </div>
       <div className="button-class">
-        <button type="submit" disabled={pristine || submitting} className="button">
+        <button type="submit" disabled={pristine || submitting} className="waves-effect waves-light btn orange">
           Submit
         </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset} className="button">
+        <button type="button" disabled={pristine || submitting} onClick={reset} className="waves-effect waves-light btn orange">
           Clear Values
         </button>
       </div>
