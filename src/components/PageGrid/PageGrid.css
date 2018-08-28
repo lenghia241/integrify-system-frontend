@@ -1,9 +1,15 @@
 .PageGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 40% 40%;
+  grid-auto-rows: 40%;
   grid-gap: 2vw;
   padding: 20px;
+  height: 100%;
+}
+
+.Attendance-header {
+  overflow-x: hidden;
+  overflow-y: scroll;
   height: 100%;
 }
 

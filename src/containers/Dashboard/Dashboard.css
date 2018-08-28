@@ -7,8 +7,8 @@
   height: 100%;
 }
 
-.Dashboard-header{
-  overflow:hidden;
+.Dashboard-header {
+  overflow: scroll;
   height: 100%;
 }
 

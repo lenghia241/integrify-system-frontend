@@ -8,8 +8,6 @@ const Attendance = () => {
     { heading: 'Graph2', componentBody: 'Second Graph' },
     { heading: 'Graph3', componentBody: 'Third Graph' },
     { heading: 'Graph4', componentBody: 'Fourth Graph' },
-    { heading: 'Graph5', componentBody: 'Fifth Graph' },
-    { heading: 'Graph6', componentBody: 'Sixth Graph' },
   ];
 
   const renderComponents = components.map(component => (
@@ -17,9 +15,11 @@ const Attendance = () => {
   ));
 
   return (
-    <PageTemplate heading="Attendance">
-      <PageGrid content={renderComponents} />
-    </PageTemplate>
+    <div className="Attendance-header">
+      <PageTemplate heading="Attendance">
+        <PageGrid content={renderComponents} />
+      </PageTemplate>
+    </div>
   );
 };
 
