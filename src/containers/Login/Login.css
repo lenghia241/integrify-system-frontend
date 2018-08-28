@@ -1,0 +1,56 @@
+.logo-container {
+  text-align: center;
+}
+
+.logo {
+  height: 60%;
+  width: 60%;
+}
+
+.forgot-pw {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.background.login {
+  background: url('https://s3.eu-west-2.amazonaws.com/integrify-system-assets/background-img.jpg')
+    no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+}
+
+.btn-tab {
+  color: var(--primary);
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0 24px;
+  font-size: 14px;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-transition: color 0.28s ease, background-color 0.28s ease;
+  -o-transition: color 0.28s ease, background-color 0.28s ease;
+  transition: color 0.28s ease, background-color 0.28s ease;
+  border: none;
+  background: none;
+}
+
+.btn-tab:hover {
+  background: transparent;
+  color: var(--primary-dark);
+}
+
+.btn-tab.active {
+  border-bottom: 2px solid var(--primary-dark);
+  color: var(--primary-dark);
+  background: none;
+}
+
+.btn, .btn:focus {
+  background: var(--primary-dark);
+}
+
+.btn:hover {
+  background: var(--primary);
+}
