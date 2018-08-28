@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
 import FormField from '../FormField';
+import { formValidate as validate } from '../../../utils';
+
 
 const SignUpForm = ({
   handleSubmit, invalid, submitErrors, signUpMsg,
@@ -28,40 +30,12 @@ const SignUpForm = ({
   </React.Fragment>
 );
 
-const validate = (values) => {
-  const errors = {};
-
-  if (!values.email) {
-    errors.email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
-  }
-
-  if (!values.firstName) {
-    errors.firstName = 'Required';
-  } else if (values.firstName.length < 2 || values.firstName.length > 20) {
-    errors.firstName = 'First name must be between 2 and 20 characters';
-  } else if (!/^[a-zA-Z ]*$/.test(values.firstName)) {
-    errors.firstName = 'First name must not contain numbers.';
-  }
-
-  if (!values.lastName) {
-    errors.lastName = 'Required';
-  } else if (values.lastName.length < 2 || values.lastName.length > 20) {
-    errors.lastName = 'Last name must be between 2 and 20 characters';
-  } else if (!/^[a-zA-Z ]*$/.test(values.lastName)) {
-    errors.lastName = 'Last name must not contain numbers.';
-  }
-  return errors;
-};
-
 SignUpForm.defaultProps = {
   submitErrors: null,
 };
 
 SignUpForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  invalid: PropTypes.bool.isRequired,
+  ...reduxFormPropTypes,
   submitErrors: PropTypes.shape({}),
   signUpMsg: PropTypes.string.isRequired,
 };
