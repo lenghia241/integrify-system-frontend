@@ -26,17 +26,26 @@ const renderWorkExperience = ({ fields, meta: { error } }) => {
   return (
     <ul>
       <div>
-        <button className="btn-add" type="button" onClick={() => fields.push()}>
+        <button
+          className="btn-add waves-effect waves-light btn"
+          type="button"
+          onClick={() => fields.push()}
+        >
           Add Work Experience
         </button>
         {fields.map((work, fieldIndex) => (
           <div key={`${fieldIndex + 1}`}>
-            <button type="button" onClick={() => fields.remove(fieldIndex)}>
+            <button
+              type="button"
+              className="btn-add waves-effect waves-light red btn"
+              onClick={() => fields.remove(fieldIndex)}
+            >
               Remove
             </button>
             {renderworkExperienceFields(fieldIndex)}
           </div>
         ))}
+        {error && <li className="error">{error}</li>}
       </div>
     </ul>
   );

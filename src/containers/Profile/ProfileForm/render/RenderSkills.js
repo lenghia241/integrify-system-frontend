@@ -6,13 +6,17 @@ import renderField from './RenderField';
 const renderSkills = ({ fields, meta: { error } }) => (
   <ul>
     <li className="btn-add">
-      <button type="button" onClick={() => fields.push()}>
+      <button type="button" className="waves-effect waves-light btn" onClick={() => fields.push()}>
         Add Skill
       </button>
     </li>
     {fields.map((skill, index) => (
       <li key={`${index + 1}`}>
-        <button type="button" onClick={() => fields.remove(index)}>
+        <button
+          type="button"
+          className="waves-effect waves-light red btn"
+          onClick={() => fields.remove(index)}
+        >
           Remove
         </button>
         <Field name={skill} type="text" component={renderField} label={`Skill #${index + 1}`} />

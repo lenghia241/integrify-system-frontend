@@ -5,14 +5,22 @@ import renderField from './RenderField';
 
 const renderMethodsAndTools = ({ fields, meta: { error } }) => (
   <ul>
-    <li className="btn-add">
-      <button type="button" onClick={() => fields.push()}>
+    <li>
+      <button
+        type="button"
+        className="btn-add waves-effect waves-light btn"
+        onClick={() => fields.push()}
+      >
         Add Methods and Tools
       </button>
     </li>
     {fields.map((tool, index) => (
       <li key={`${index + 1}`}>
-        <button type="button" onClick={() => fields.remove(index)}>
+        <button
+          type="button"
+          className="btn-add waves-effect waves-light red btn"
+          onClick={() => fields.remove(index)}
+        >
           Remove
         </button>
         <Field name={tool} type="text" component={renderField} label={`Tool #${index + 1}`} />

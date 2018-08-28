@@ -48,10 +48,10 @@ class ProfileFormMain extends Component {
     const SubForm = this.forms[page].Component;
     return (
       <div>
-        <div className="tabs">
+        <div className="profile-tabs tabs tabs-fixed-width z-depth-1">
           {this.forms.map((form, i) => (
             <button
-              className="tab"
+              className="profile-tab"
               type="button"
               key={`${i + 1}`}
               onClick={() => this.setState({ page: i })}

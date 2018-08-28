@@ -9,15 +9,20 @@ const ProfileFormExamplesOfWork = (props) => {
   return (
     <form onSubmit={handleSubmit} className="form-body">
       <FieldArray name="examplesofwork" component={renderExamplesOfWork} />
-      <div>
-        <button type="button" className="btn-previous" onClick={previousPage}>
+      <div className="buttons">
+        <button
+          type="button"
+          className="btn-previous waves-effect waves-light btn"
+          onClick={previousPage}
+        >
           Previous
         </button>
-        <button type="submit" className="btn-next" onClick={nextPage}>
+        <button type="submit" className="btn-next waves-effect waves-light btn" onClick={nextPage}>
           Next
         </button>
-        <button type="submit" className="btn-submit">
+        <button type="submit" className="btn-submit waves-effect waves-light btn">
           Save
+          <i className="material-icons right">send</i>
         </button>
       </div>
     </form>

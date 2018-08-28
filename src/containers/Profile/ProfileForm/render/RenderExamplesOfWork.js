@@ -5,14 +5,22 @@ import renderField from './RenderField';
 
 const renderExamplesOfWork = ({ fields, meta: { error } }) => (
   <ul>
-    <li className="btn-add">
-      <button type="button" onClick={() => fields.push()}>
+    <li>
+      <button
+        type="button"
+        className="btn-add waves-effect waves-light btn"
+        onClick={() => fields.push()}
+      >
         Add Examples of Work
       </button>
     </li>
     {fields.map((work, index) => (
       <li key={`${index + 1}`}>
-        <button type="button" onClick={() => fields.remove(index)}>
+        <button
+          type="button"
+          className="btn-add waves-effect waves-light red btn"
+          onClick={() => fields.remove(index)}
+        >
           Remove or not
         </button>
         <Field

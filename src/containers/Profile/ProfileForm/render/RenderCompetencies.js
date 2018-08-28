@@ -16,7 +16,11 @@ const renderCompetencies = ({ fields, meta: { error } }) => (
     </li>
     {fields.map((competence, index) => (
       <li key={`${index + 1}`}>
-        <button type="button" onClick={() => fields.remove(index)}>
+        <button
+          type="button"
+          className="btn-add waves-effect waves-light red btn"
+          onClick={() => fields.remove(index)}
+        >
           Remove
         </button>
         <Field

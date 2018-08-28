@@ -28,15 +28,24 @@ const renderEducation = ({ fields, meta: { error } }) => {
       <div>
         {fields.map((education, fieldIndex) => (
           <div key={`${fieldIndex + 1}`} className="education">
-            <button type="button" onClick={() => fields.remove(fieldIndex)}>
+            <button
+              type="button"
+              className="btn-add waves-effect waves-light red btn"
+              onClick={() => fields.remove(fieldIndex)}
+            >
               Remove
             </button>
             {renderEducationFields(fieldIndex)}
           </div>
         ))}
-        <button className="btn-add" type="button" onClick={() => fields.push()}>
+        <button
+          className="btn-add waves-effect waves-light btn"
+          type="button"
+          onClick={() => fields.push()}
+        >
           Add Education
         </button>
+        {error && <li className="error">{error}</li>}
       </div>
     </ul>
   );

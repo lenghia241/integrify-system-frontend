@@ -22,7 +22,7 @@ const validate = (values) => {
       errors.competencies = competenceArrayErrors;
     }
   }
-  if (!values.skills) {
+  if (!values.skills || values.skills.length === 0) {
     errors.skills = { _error: 'You have to add at least one skill.' };
   } else {
     const skillsArrayErrors = [];
@@ -35,7 +35,7 @@ const validate = (values) => {
       errors.skills = skillsArrayErrors;
     }
   }
-  if (!values.tools) {
+  if (!values.tools || values.tools.length === 0) {
     errors.tools = { _error: 'You have to add at least one tool.' };
   } else {
     const toolsArrayErrors = [];
@@ -48,7 +48,7 @@ const validate = (values) => {
       errors.tools = toolsArrayErrors;
     }
   }
-  if (!values.education || !values.education.length) {
+  if (!values.education || values.education.length === 0) {
     errors.education = { _error: 'Please add your education.' };
   } else {
     const educationArrayErrors = [];
