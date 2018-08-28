@@ -6,14 +6,12 @@
     padding: 4%;
     margin-bottom: 2%;
 }
-
 .heading {
   color: #ff8c00;
   margin: 0 auto;
   margin-top: 2%;
   font-size: 2.5vw;
 }
-
 .error {
   color: #f90000;
 }
@@ -21,7 +19,6 @@
 label {
   color: #1a2e53;
 }
-
 .button-class {
   display: flex;
   justify-content: space-between;

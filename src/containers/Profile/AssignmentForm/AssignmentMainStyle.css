@@ -4,27 +4,22 @@
     margin:5%;
     color:#515151;
  }
-
  .assignment-main-header{
     background-color:#F0F0F0
 }
- 
 .assignment-main tr{
     background-color:rgb(250, 235, 215)(5, 215, 0.993);
-    margin:5px;
+    margin: 5px;
  }
- 
 .mainTable{
     width:80%;
     margin:0 auto;
     margin-bottom:10%;
  }
- 
 .h1{
     font-size:2vw;
      margin:4%
  }
- 
 .edit-btn{
      background-color:#FF8C00;
      color:white;
@@ -34,7 +29,6 @@
     display:flex;
     justify-content: space-between
 }
-
 .add-btn{
     background-color:#FF8C00;
     color:white;
@@ -46,7 +40,6 @@
      padding: 10px;
      box-shadow: 1px 3px #DFDFDF;
  }
- 
 .table-row{
     padding: 10px;
     box-shadow: 1px 3px #DFDFDF;

@@ -38,18 +38,16 @@ class AssignmentMain extends Component {
     ));
 
     return (
-      <div>
+      <div className="main-form">
         <div className="assignment-main">
           <div className="assignment-header">
             <h1 className="h1">Assignments</h1>
-
             <div className="add-btn">
               <NavLink to="/AddAssignmentForm" activeClassName="active">
                 Add
               </NavLink>
             </div>
           </div>
-
           <table className="responsive-table mainTable">
             <thead className="assignment-main-header table-header">
               <tr>
@@ -61,7 +59,6 @@ class AssignmentMain extends Component {
                 <th>Action</th>
               </tr>
             </thead>
-
             <tbody>{itemsform}</tbody>
           </table>
         </div>
@@ -75,7 +72,6 @@ AssignmentMain.propTypes = {
   addInfo: PropTypes.func.isRequired,
   assignmentItems: PropTypes.shape({}).isRequired,
 };
-
 const mapStateToProps = state => ({
   assignmentItems: state.assignment,
 });

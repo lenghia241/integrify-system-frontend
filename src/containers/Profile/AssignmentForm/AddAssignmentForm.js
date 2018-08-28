@@ -5,13 +5,11 @@ import AssignmentFormStyle from './AssignmentFormStyle.css';
 
 const validate = (values) => {
   const errors = {};
-
   if (!values.assignment) {
     errors.assignment = 'Required';
   } else if (!/^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/i.test(values.assignment)) {
     errors.assignment = 'Invalid assignment name';
   }
-
   if (!values.github) {
     errors.github = 'Required';
   } else if (
@@ -19,17 +17,14 @@ const validate = (values) => {
   ) {
     errors.github = 'Invalid github Link';
   }
-
   if (!values.status) {
     errors.status = 'Required';
   }
-
   if (!values.teacher) {
     errors.teacher = 'Required';
   } else if (!/^[a-zA-Z\s]+$/i.test(values.teacher)) {
     errors.teacher = 'Invalid name';
   }
-
   return errors;
 };
 
@@ -53,19 +48,16 @@ const AddAssignmentForm = (props) => {
   return (
     <form onSubmit={handleSubmit} className="AddAssignmentForm">
       <h2 className="heading">Add Assignment Form</h2>
-
       <div>
         <div>
           <Field name="assignment" component={renderField} type="text" label="Assignment" />
         </div>
       </div>
-
       <div>
         <div>
           <Field name="github" component={renderField} type="text" label="Github" />
         </div>
       </div>
-
       <div>
         <div>
           <Field
@@ -78,15 +70,12 @@ const AddAssignmentForm = (props) => {
           />
         </div>
       </div>
-
       <br />
-
       <div>
         <div>
           <Field name="teacher" component={renderField} type="text" label="Teacher" />
         </div>
       </div>
-
       <div className="button-class">
         <button type="submit" disabled={pristine || submitting} className="button">
           Submit
@@ -105,6 +94,7 @@ AddAssignmentForm.propTypes = {
   submitting: PropTypes.bool.isRequired,
   reset: PropTypes.func.isRequired,
 };
+
 export default reduxForm({
   form: 'assignment', // a unique identifier for this form
   AssignmentFormStyle, // css for the form
