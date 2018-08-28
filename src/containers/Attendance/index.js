@@ -12,7 +12,9 @@ const Attendance = () => {
     { heading: 'Graph6', componentBody: 'Sixth Graph' },
   ];
 
-  const renderComponents = components.map(component => <div>{component.componentBody}</div>);
+  const renderComponents = components.map(component => (
+    <div key={`${component.heading}`}>{component.componentBody}</div>
+  ));
 
   return (
     <PageTemplate heading="Attendance">
