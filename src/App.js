@@ -15,14 +15,14 @@ import { getAuth } from './store/reducers';
 
 class App extends Component {
   componentDidMount() {
-    const { fetchUser } = this.props;
-    fetchUser();
+    const { checkUser } = this.props;
+    checkUser();
   }
 
   render() {
-    const { user } = this.props;
+    const { token } = this.props;
 
-    const routes = user ? (
+    const routes = token ? (
       <Switch>
         <Route exact path="/attendance" component={Attendance} />
         <Route exact path="/profile" component={Profile} />
@@ -34,28 +34,28 @@ class App extends Component {
       </Switch>
     );
 
-    const aside = user ? <Aside className="App-aside" /> : null;
+    const aside = token ? <Aside className="App-aside" /> : null;
 
     return (
       <div className="App">
         {aside}
-        <div className="App-body">{routes}</div>
+        <div className={token ? 'App-body' : 'App-body login'}>{routes}</div>
       </div>
     );
   }
 }
 
 App.defaultProps = {
-  user: null,
+  token: null,
 };
 
 App.propTypes = {
-  user: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.bool]),
-  fetchUser: PropTypes.func.isRequired,
+  token: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.bool]),
+  checkUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  user: getAuth(state).user,
+  token: getAuth(state).token,
 });
 
 export default connect(
