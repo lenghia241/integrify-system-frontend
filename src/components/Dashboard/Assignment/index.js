@@ -12,9 +12,9 @@ class Assignments extends React.Component {
 
   render() {
     const { assignments } = this.props;
-    const displayAssignments = assignments.map(assignment => (
+    const displayAssignments = assignments.map((assignment, i) => (
       <EachAssignment
-        key={`${assignment.description} ${assignment.date}  `}
+        key={`${assignment.description} ${assignment.date}${i + 1}  `}
         assignment={assignment}
       />
     ));
