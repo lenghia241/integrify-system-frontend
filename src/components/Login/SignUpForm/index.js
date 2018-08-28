@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import FormField from '../FormField';
 
-const SignUpForm = ({ handleSubmit, invalid, submitErrors }) => (
+const SignUpForm = ({
+  handleSubmit, invalid, submitErrors, signUpMsg,
+}) => (
   <React.Fragment>
     {submitErrors
       ? Object.keys(submitErrors).map(key => (
@@ -12,6 +14,7 @@ const SignUpForm = ({ handleSubmit, invalid, submitErrors }) => (
           </div>
       ))
       : null}
+    {signUpMsg ? <div className="green-text">{signUpMsg}</div> : null}
     <form onSubmit={handleSubmit}>
       <Field name="firstName" component={FormField} type="text" label="First Name" />
       <Field name="lastName" component={FormField} type="text" label="Last Name" />
@@ -60,6 +63,7 @@ SignUpForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   invalid: PropTypes.bool.isRequired,
   submitErrors: PropTypes.shape({}),
+  signUpMsg: PropTypes.string.isRequired,
 };
 
 export default reduxForm({

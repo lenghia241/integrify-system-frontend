@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import LoginForm from './LoginForm';
-import SignUpForm from './SignUpForm';
+import LoginForm from '../../components/Login/LoginForm';
+import SignUpForm from '../../components/Login/SignUpForm';
+
+import Loader from '../../components/Loader';
 
 import * as actions from '../../store/actions';
 import { getAuth } from '../../store/reducers';
@@ -31,14 +33,20 @@ class Login extends Component {
     const { signUp } = this.state;
 
     const {
-      authUser, signUpUser, loading, authErrors, signUpErrors,
+      authUser, signUpUser, loading, authErrors, signUpErrors, signUpMsg,
     } = this.props;
 
     let form = null;
     if (loading) {
-      form = <p>loading...</p>;
+      form = <Loader />;
     } else if (signUp) {
-      form = <SignUpForm onSubmit={values => signUpUser(values)} submitErrors={signUpErrors} />;
+      form = (
+        <SignUpForm
+          onSubmit={values => signUpUser(values)}
+          submitErrors={signUpErrors}
+          signUpMsg={signUpMsg}
+        />
+      );
     } else form = <LoginForm onSubmit={values => authUser(values)} submitErrors={authErrors} />;
 
     return (
@@ -92,6 +100,7 @@ const mapStateToProps = state => ({
   loading: getAuth(state).loading,
   authErrors: getAuth(state).authErrors,
   signUpErrors: getAuth(state).signUpErrors,
+  signUpMsg: getAuth(state).signUpMsg,
 });
 
 Login.defaultProps = {
@@ -105,6 +114,7 @@ Login.propTypes = {
   loading: PropTypes.bool.isRequired,
   authErrors: PropTypes.shape({}),
   signUpErrors: PropTypes.shape({}),
+  signUpMsg: PropTypes.string.isRequired,
 };
 
 export default connect(
