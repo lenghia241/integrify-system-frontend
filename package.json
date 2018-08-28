@@ -36,5 +36,6 @@
     "eslint-plugin-react": "^7.10.0",
     "prettier": "^1.13.7",
     "csslint": "1.0.5"
-  }
+  },
+  "proxy": "https://integrify.network"
 }
