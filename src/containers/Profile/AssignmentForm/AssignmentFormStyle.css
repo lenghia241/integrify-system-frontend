@@ -23,3 +23,6 @@ label {
   display: flex;
   justify-content: space-between;
 }
+.checkbox-label {
+  font-size: 12px;
+}

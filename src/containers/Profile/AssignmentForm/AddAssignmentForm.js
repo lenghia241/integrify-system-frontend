@@ -59,13 +59,13 @@ const AddAssignmentForm = (props) => {
         </div>
       </div>
       <div>
+      <p className="checkbox-label">Done:</p>
         <div>
           <Field
             name="status"
             id="status"
-            component={renderField}
+            component="input"
             type="checkbox"
-            label="Status"
             style={{ opacity: 1, pointerEvents: 'auto' }}
           />
         </div>
