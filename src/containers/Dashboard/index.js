@@ -1,7 +1,7 @@
 import React from 'react';
-import StudySync from './components/StudySync';
-import EventPanel from './components/EventPanel';
-import Assignments from './components/Assignment';
+import StudySync from '../../components/Dashboard/StudySync';
+import EventPanel from '../../components/Dashboard/EventPanel';
+import Assignments from '../../components/Dashboard/Assignment';
 import DashboardComponent from '../../components/Dashboard/DashboardComponent';
 import PageTemplate from '../../components/PageTemplate';
 import './Dashboard.css';
@@ -19,9 +19,11 @@ const Dashboard = () => {
     </DashboardComponent>
   ));
   return (
-    <PageTemplate heading="Dashboard">
-      <div className="Dashboard">{renderComponents}</div>
-    </PageTemplate>
+    <div className="Dashboard-header">
+      <PageTemplate heading="Dashboard">
+        <div className="Dashboard">{renderComponents}</div>
+      </PageTemplate>
+    </div>
   );
 };
 
