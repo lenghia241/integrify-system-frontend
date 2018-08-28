@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchUserProfile as fetchUserProfileAction } from '../../../store/actions';
 import ProfileFormPhotoBio from './ProfileFormPhotoBio';
 import ProfileFormCompetencies from './ProfileFormCompetencies';
 import ProfileFormMethodsAndTools from './ProfileFormMethodsAndTools';
@@ -31,6 +34,11 @@ class ProfileFormMain extends Component {
     this.previousPage = this.previousPage.bind(this);
   }
 
+  componentDidMount() {
+    const { fetchUserProfile } = this.props;
+    fetchUserProfile();
+  }
+
   nextPage() {
     this.setState(prevState => ({
       page: prevState.page === this.forms.length ? prevState.page : prevState.page + 1,
@@ -46,6 +54,8 @@ class ProfileFormMain extends Component {
   render() {
     const { page } = this.state;
     const SubForm = this.forms[page].Component;
+    const { profile } = this.props;
+    console.log(this.props);
     return (
       <div>
         <div className="profile-tabs tabs tabs-fixed-width z-depth-1">
@@ -61,6 +71,7 @@ class ProfileFormMain extends Component {
           ))}
         </div>
         <SubForm
+          initialValues={profile}
           previousPage={this.previousPage}
           nextPage={this.nextPage}
           onSubmit={values => console.log('submitting', values)}
@@ -70,4 +81,20 @@ class ProfileFormMain extends Component {
   }
 }
 
-export default ProfileFormMain;
+ProfileFormMain.propTypes = {
+  fetchUserProfile: PropTypes.func.isRequired,
+  profile: PropTypes.shape({}),
+};
+
+ProfileFormMain.defaultProps = {
+  profile: {},
+};
+
+const mapStateToProps = state => ({
+  profile: state.profile,
+});
+
+export default connect(
+  mapStateToProps,
+  { fetchUserProfile: fetchUserProfileAction },
+)(ProfileFormMain);

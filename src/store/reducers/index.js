@@ -5,9 +5,11 @@ import attendanceReducer from './attendanceReducer';
 import dashboardReducer from './dashboardReducer';
 import eventsReducer from './eventsReducer';
 import assignmentReducer from './assignmentReducer';
+import profileReducer from './profileReducer';
 
 export default combineReducers({
   form: reduxForm,
+  profile: profileReducer,
   auth: authReducer,
   attendance: attendanceReducer,
   dash: dashboardReducer,

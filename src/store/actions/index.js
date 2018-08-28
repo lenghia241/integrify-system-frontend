@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
   FETCH_USER,
+  FETCH_USER_PROFILE,
   FETCH_STUDYSYNC,
   GET_EVENT_LIST,
   FETCH_ASSIGNMENT,
@@ -12,6 +13,13 @@ import {
 export const fetchUser = () => dispatch => axios.get('https://integrify.network/users/5b7c5ade5f49453eecccf351').then((res) => {
   dispatch({
     type: FETCH_USER,
+    payload: res.data,
+  });
+});
+
+export const fetchUserProfile = () => dispatch => axios.get('https://integrify.network/api/profiles/5b7ab1957c9b3c63007d5c8c').then((res) => {
+  dispatch({
+    type: FETCH_USER_PROFILE,
     payload: res.data,
   });
 });
