@@ -43,6 +43,9 @@
 .App {
   height: 100vh;
 }
+.App-body.login {
+  padding-left: 0;
+}
 .App-body {
   background-color: var(--background);
   padding-left: 300px;
