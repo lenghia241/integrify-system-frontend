@@ -1,15 +1,12 @@
 import axios from 'axios';
 
 import {
-  FETCH_STUDYSYNC,
-  FETCH_ASSIGNMENT,
-  GET_EVENT_LIST,
-  CHECK_IN,
-  CHECK_OUT,
-  LOG_OUT,
+  FETCH_STUDYSYNC, FETCH_ASSIGNMENT, GET_EVENT_LIST, CHECK_IN, CHECK_OUT,
 } from './types';
 
-export { fetchUser, authUser, signUpUser } from './auth';
+export {
+  checkUser, authUser, signUpUser, logOut, fetchUser,
+} from './auth';
 
 export const fetchStudySync = () => (dispatch) => {
   axios.get('https://integrify.network/api/dashboard/studysync').then((res) => {
@@ -44,8 +41,4 @@ export const checkIn = () => ({
 
 export const checkOut = () => ({
   type: CHECK_OUT,
-});
-
-export const logOut = () => ({
-  type: LOG_OUT,
 });
