@@ -21,7 +21,7 @@ const renderExamplesOfWork = ({ fields, meta: { error } }) => (
           className="btn-add waves-effect waves-light red btn"
           onClick={() => fields.remove(index)}
         >
-          Remove or not
+          Remove
         </button>
         <Field
           name={`${work}.title`}
