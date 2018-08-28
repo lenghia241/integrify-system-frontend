@@ -6,6 +6,7 @@ import {
 import './index.css';
 import dayjs from 'dayjs';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
+import axios from 'axios';
 import LocalDataChart from './LocalDataChart';
 
 dayjs.extend(weekOfYear);
@@ -47,9 +48,8 @@ export default class StudentAttendance extends Component {
   }
 
   async componentDidMount() {
-    const res = await fetch('https://integrify.network/api/attendance/history');
-    const json = await res.json();
-    const filteredData = dataFilter(json, '5b7ab1952cc5b5a552cfda72');
+    const res = await axios.get('https://integrify.network/api/attendance/history');
+    const filteredData = dataFilter(res.data, '5b7ab1952cc5b5a552cfda72');
     this.setState({
       data: filteredData,
       loading: false,
