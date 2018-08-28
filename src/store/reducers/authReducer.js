@@ -5,14 +5,17 @@ import {
   SIGN_UP_USER_FAIL,
   AUTH_USER_SUCCESS,
   SIGN_UP_USER_SUCCESS,
-  CHECK_IN, CHECK_OUT, LOG_OUT,
+  CHECK_IN,
+  CHECK_OUT,
+  LOG_OUT,
 } from '../actions/types';
 
 const initState = {
-  user: null,
   loading: false,
-  authErrors: {},
-  signUpErrors: {},
+  authErrors: null,
+  signUpErrors: null,
+  token: null,
+  signUpMsg: '',
 };
 
 export default function (state = initState, action) {
@@ -31,9 +34,10 @@ export default function (state = initState, action) {
     case AUTH_USER_SUCCESS:
       return {
         ...state,
-        cookie: action.payload,
+        token: action.payload,
         loading: false,
         authErrors: null,
+        signUpErrors: null,
       };
     case AUTH_USER_FAIL:
       return {
@@ -46,6 +50,7 @@ export default function (state = initState, action) {
         ...state,
         loading: false,
         signUpErrors: null,
+        signUpMsg: action.payload,
       };
     case SIGN_UP_USER_FAIL:
       return {
@@ -60,7 +65,10 @@ export default function (state = initState, action) {
       return { ...state, present: false };
 
     case LOG_OUT:
-      return state;
+      return {
+        ...state,
+        token: null,
+      };
 
     default:
       return state;

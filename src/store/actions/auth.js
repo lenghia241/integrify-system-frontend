@@ -6,35 +6,39 @@ import {
   AUTH_USER_FAIL,
   SIGN_UP_USER_FAIL,
   START_FETCHING,
+  LOG_OUT,
 } from './types';
+
+import { getCookie, parseJwt } from '../../utils';
 
 export const startFetching = () => ({
   type: START_FETCHING,
 });
 
-export const fetchUser = () => async (dispatch) => {
-  dispatch(startFetching());
-  const res = await axios.get('https://integrify.network/api/profiles/5b7ab1957c9b3c63007d5c8cx');
+export const authUserSuccess = token => ({
+  type: AUTH_USER_SUCCESS,
+  payload: token,
+});
 
-  const user = res.data.length > 0 ? res.data[0] : null;
+export const fetchUser = userId => async (dispatch) => {
+  const res = await axios.get(`/users/${userId}`);
 
   dispatch({
     type: FETCH_USER,
-    payload: user,
-    loading: false,
+    payload: res.data,
   });
 };
 
 export const authUser = values => async (dispatch) => {
   dispatch(startFetching());
   try {
-    const res = await axios.post('https://integrify.network/users/login', values);
+    await axios.post('/users/login', values);
 
-    console.log(res.data);
-    dispatch({
-      type: AUTH_USER_SUCCESS,
-      payload: 'login',
-    });
+    // Login succeed and cookie is set => Get token from cookie
+    const token = getCookie('jwt_token');
+    const decodedToken = parseJwt(token);
+
+    dispatch(authUserSuccess(decodedToken));
   } catch (err) {
     dispatch({
       type: AUTH_USER_FAIL,
@@ -46,19 +50,32 @@ export const authUser = values => async (dispatch) => {
 export const signUpUser = values => async (dispatch) => {
   dispatch(startFetching());
   try {
-    const res = await axios.post('https://integrify.network/users/signup/temp', values);
-
-    console.log(res.data);
+    await axios.post('https://integrify.network/users/signup/temp', values);
 
     dispatch({
       type: SIGN_UP_USER_SUCCESS,
-      payload: 'signup',
+      payload: 'You have succesfully signed up! Please wait for the approval from admin.',
     });
   } catch (err) {
-    console.log(err.response.data);
     dispatch({
       type: SIGN_UP_USER_FAIL,
       payload: err.response.data,
     });
+  }
+};
+
+export const logOut = () => async (dispatch) => {
+  await axios.get('/users/logout');
+
+  dispatch({
+    type: LOG_OUT,
+  });
+};
+
+export const checkUser = () => async (dispatch) => {
+  const token = getCookie('jwt_token');
+  if (token) {
+    const decodeToken = parseJwt(token);
+    dispatch(authUserSuccess(decodeToken));
   }
 };
