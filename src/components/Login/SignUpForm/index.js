@@ -36,10 +36,18 @@ const validate = (values) => {
 
   if (!values.firstName) {
     errors.firstName = 'Required';
+  } else if (values.firstName.length < 2 || values.firstName.length > 20) {
+    errors.firstName = 'First name must be between 2 and 20 characters';
+  } else if (!/^[a-zA-Z ]*$/.test(values.firstName)) {
+    errors.firstName = 'First name must not contain numbers.';
   }
 
   if (!values.lastName) {
     errors.lastName = 'Required';
+  } else if (values.lastName.length < 2 || values.lastName.length > 20) {
+    errors.lastName = 'Last name must be between 2 and 20 characters';
+  } else if (!/^[a-zA-Z ]*$/.test(values.lastName)) {
+    errors.lastName = 'Last name must not contain numbers.';
   }
   return errors;
 };
