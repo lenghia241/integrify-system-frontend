@@ -1,0 +1,31 @@
+.btn-previous {
+  margin-right: 20px;
+  padding: 3px 5px;
+}
+.btn-next {
+  margin-right: 20px;
+  padding: 3px 5px;
+}
+.btn-submit {
+  padding: 3px 5px;
+}
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.tab {
+  padding: 30px;
+}
+.error {
+  color: red;
+}
+.form-body {
+  padding: 1% 10%;
+}
+.btn-add {
+  margin-bottom: 2%;
+}
+.education {
+  margin-top: 5%;
+}
