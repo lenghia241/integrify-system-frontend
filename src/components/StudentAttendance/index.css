@@ -1,0 +1,22 @@
+.studentAttendance-grid{
+    display: grid;
+    grid-auto-flow: column;
+    max-width: 500px;
+    text-align: center;
+    border: 1px solid black;
+    /* justify-content: center; */
+}
+
+.attendance-bullet{
+    height: 2em;
+    width: 2em;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.studentAttendance-chart-toolTip{
+    background-color: #fff;
+    border: 1px solid #999;
+    margin: 0;
+    padding: 2;
+}
