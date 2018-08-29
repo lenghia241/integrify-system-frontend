@@ -3,5 +3,5 @@ export {
 } from './authActions';
 
 export {
-  getAssignments, checkIn, checkOut, fetchStudySync, getEventList,
+  getAssignmentsList, checkIn, checkOut, fetchStudySync, getEventList,
 } from './dashboardActions';

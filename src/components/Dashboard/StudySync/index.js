@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './index.css';
 import { connect } from 'react-redux';
 import dayjs from 'dayjs';
-import { getDash } from '../../../store/reducers';
+import { getStudySyncs } from '../../../store/reducers';
 import * as actions from '../../../store/actions';
 
 class StudySync extends Component {
@@ -13,11 +13,11 @@ class StudySync extends Component {
   };
 
   render() {
-    const { dash } = this.props;
+    const { studysyncs } = this.props;
     return (
       <div className="col s6">
-        {dash.length !== undefined
-          && dash.map((item, i) => (
+        {studysyncs.length !== undefined
+          && studysyncs.map((item, i) => (
             <div className="card-panel hoverable list" key={`${i + 1}+${item.date}`}>
               <div className="row">
                 <p className="col s8 bold capitalize">studysync</p>
@@ -40,7 +40,7 @@ class StudySync extends Component {
 }
 
 const mapStateToProps = state => ({
-  dash: getDash(state),
+  studysyncs: getStudySyncs(state),
 });
 
 export default connect(
@@ -50,5 +50,5 @@ export default connect(
 
 StudySync.propTypes = {
   fetchStudySync: PropTypes.func.isRequired,
-  dash: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  studysyncs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
