@@ -1,6 +1,5 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form';
-import PropTypes from 'prop-types';
+import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
 import AssignmentFormStyle from './AssignmentFormStyle.css';
 
 const validate = (values) => {
@@ -13,7 +12,7 @@ const validate = (values) => {
   if (!values.github) {
     errors.github = 'Required';
   } else if (
-    !/^(https:\/\/)?(github\.com\/)([a-zA-Z0-9_-]){0,}$/i.test(values.github)
+    !/^(https:\/\/)?(github\.com\/)([a-zA-Z0-9_-]){1,}$/i.test(values.github)
   ) {
     errors.github = 'Invalid github Link';
   }
@@ -30,7 +29,7 @@ const validate = (values) => {
 
 const AddAssignmentForm = (props) => {
   const {
-    handleSubmit, pristine, reset, submitting,
+    handleSubmit, pristine, reset, submitting, invalid,
   } = props;
 
   const renderField = ({
@@ -65,7 +64,7 @@ const AddAssignmentForm = (props) => {
         </div>
       </div>
       <div className="button-class">
-        <button type="submit" disabled={pristine || submitting} className="waves-effect waves-light btn orange">
+        <button type="submit" name="action" disabled={pristine || submitting || invalid} className="waves-effect waves-light btn orange">
           Submit
         </button>
         <button type="button" disabled={pristine || submitting} onClick={reset} className="waves-effect waves-light btn orange">
@@ -77,10 +76,7 @@ const AddAssignmentForm = (props) => {
 };
 
 AddAssignmentForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  pristine: PropTypes.bool.isRequired,
-  submitting: PropTypes.bool.isRequired,
-  reset: PropTypes.func.isRequired,
+  ...reduxFormPropTypes,
 };
 
 export default reduxForm({
