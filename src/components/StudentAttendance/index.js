@@ -44,7 +44,8 @@ export default class StudentAttendance extends Component {
     const {
       data, week, loading, attendanceColorStyle,
     } = this.props;
-    const content = loading ? null : (
+    if (!loading) {
+      return (
       <div className="studentAttendance-container">
         <div>
           <ScatterChart
@@ -89,9 +90,10 @@ export default class StudentAttendance extends Component {
           </ScatterChart>
         </div>
       </div>
-    );
+      );
+    }
 
-    return content;
+    return null;
   }
 }
 

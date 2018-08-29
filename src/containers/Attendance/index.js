@@ -5,7 +5,8 @@ import dayjs from 'dayjs';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
-import LocalDataChart from '../../components/StudentAttendance/LocalDataChart';
+
+import fiveDayData from './mock-data/fiveDayData.json';
 
 dayjs.extend(weekOfYear);
 
@@ -15,11 +16,12 @@ export default class Attendance extends Component {
     this.state = {
       classHistoryData: {},
       loading: true,
+      classHistoryDataMock: this.dataFilter(fiveDayData, '5b7ab1952cc5b5a552cfda72'),
     };
   }
 
   async componentDidMount() {
-    const res = await axios.get('https://integrify.network/api/attendance/history');
+    const res = await axios.get('/api/attendance/history');
     const filteredData = this.dataFilter(res.data, '5b7ab1952cc5b5a552cfda72');
     this.setState({
       classHistoryData: filteredData,
@@ -66,17 +68,26 @@ export default class Attendance extends Component {
   };
 
   render() {
-    const { classHistoryData, loading } = this.state;
+    const { classHistoryData, loading, classHistoryDataMock } = this.state;
     const content = (
       <PageTemplate heading="Attendance">
         <div className="Attendance">
-          <LocalDataChart />
-          <StudentAttendance
-            data={classHistoryData}
-            week={33}
-            loading={loading}
-            attendanceColorStyle={this.attendanceColorStyle}
-          />
+          {loading
+            || <StudentAttendance
+              data={classHistoryDataMock}
+              week={this.getWeek(classHistoryDataMock[0].date)}
+              loading={loading}
+              attendanceColorStyle={this.attendanceColorStyle}
+            />
+          }
+          {loading
+            || <StudentAttendance
+              data={classHistoryData}
+              week={this.getWeek(classHistoryData[0].date)}
+              loading={loading}
+              attendanceColorStyle={this.attendanceColorStyle}
+            />
+          }
         </div>
       </PageTemplate>
     );
