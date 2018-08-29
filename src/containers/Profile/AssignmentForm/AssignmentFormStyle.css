@@ -3,9 +3,9 @@
     display: grid;
     width: 80%;
     margin: 0 auto;
-    padding: 4%;
-    margin-bottom: 2%;
-    margin-top: 5%;
+    padding: 2%;
+    margin-top: 2%;
+    height: 80%;
 }
 .heading {
   color: #ff8c00;

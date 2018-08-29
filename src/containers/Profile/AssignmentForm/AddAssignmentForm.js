@@ -57,7 +57,6 @@ const AddAssignmentForm = (props) => {
           <Field name="github" component={renderField} type="text" placeholder="Github" />
         </div>
       </div>
-      <br />
       <div>
         <div>
           <Field name="teacher" component={renderField} type="text" placeholder="Teacher" />
