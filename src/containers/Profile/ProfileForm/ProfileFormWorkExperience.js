@@ -2,7 +2,7 @@ import React from 'react';
 import { FieldArray, reduxForm } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import renderWorkExperience from './render/RenderWorkExperience';
-import validate from './validate/validate';
+import validate from '../../../utils/validate';
 
 const ProfileFormWorkExperience = (props) => {
   const { handleSubmit, previousPage, nextPage } = props;

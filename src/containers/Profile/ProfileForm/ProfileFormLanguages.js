@@ -2,7 +2,7 @@ import React from 'react';
 import { FieldArray, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import renderLanguages from './render/RenderLanguages';
-import validate from './validate/validate';
+import validate from '../../../utils/validate';
 
 const ProfileFormLanguages = (props) => {
   const { handleSubmit, previousPage } = props;
