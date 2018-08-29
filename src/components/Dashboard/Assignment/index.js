@@ -14,7 +14,7 @@ class Assignments extends React.Component {
   render() {
     const { assignments } = this.props;
     const displayAssignments = assignments.map(assignment => (
-      <EachAssignment key={`${assignments._id}`} assignment={assignment} />
+      <EachAssignment key={`${assignment._id}`} assignment={assignment} />
     ));
     return <div className="card col s6">{displayAssignments}</div>;
   }
