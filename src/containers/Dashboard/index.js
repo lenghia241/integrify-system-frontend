@@ -8,13 +8,17 @@ import './Dashboard.css';
 
 const Dashboard = () => {
   const DashboardComponents = [
-    { heading: 'Study-Sync/Lectures', componentBody: <StudySync /> },
+    { heading: 'Study-Sync/Lectures', componentBody: <StudySync />, link: '/studySync' },
     { heading: 'Event Panel', componentBody: <EventPanel /> },
     { heading: 'Assignments', componentBody: <Assignments /> },
     { heading: 'Notification ', componentBody: <div>Notification</div> },
   ];
   const renderComponents = DashboardComponents.map(component => (
-    <DashboardComponent heading={component.heading} key={DashboardComponents.indexOf(component)}>
+    <DashboardComponent
+      heading={component.heading}
+      key={DashboardComponents.indexOf(component)}
+      link={component.link}
+    >
       {component.componentBody}
     </DashboardComponent>
   ));

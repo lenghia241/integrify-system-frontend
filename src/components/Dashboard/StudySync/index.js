@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './index.css';
 import { connect } from 'react-redux';
 import dayjs from 'dayjs';
+import { withRouter } from 'react-router-dom';
 import { getStudySyncs } from '../../../store/reducers';
 import * as actions from '../../../store/actions';
 
@@ -43,10 +44,12 @@ const mapStateToProps = state => ({
   studysyncs: getStudySyncs(state),
 });
 
-export default connect(
-  mapStateToProps,
-  actions,
-)(StudySync);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    actions,
+  )(StudySync),
+);
 
 StudySync.propTypes = {
   fetchStudySync: PropTypes.func.isRequired,
