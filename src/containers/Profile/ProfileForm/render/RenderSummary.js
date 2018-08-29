@@ -6,21 +6,24 @@ const renderSummary = (props) => {
   return (
     <div className={className}>
       <h5>{title}</h5>
+
       {(className === 'personal'
         || className === 'education'
         || className === 'examplesofwork'
         || className === 'experience')
-      && fields
-        ? fields.map((item, i) => (
-            <div key={`${item.title}${i}`}>
-              {item.map(object => (
-                <div key={`${object.title}${i}`}>
-                  <p key={`title${object.title}${i}`}>{object.title}</p>
-                  <p key={`value${object.title}${i}`}>{object.value}</p>
+      && fields !== null
+        ? fields.map(
+          item => (item !== null ? (
+                <div key={`${fields.indexOf(item)}`}>
+                  {item.map(object => (
+                    <div key={`${object.title}`}>
+                      <p key={`title${object.title}`}>{object.title}</p>
+                      <p key={`value${object.title}`}>{object.value}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-        ))
+          ) : null),
+        )
         : null}
       {(className === 'competences'
         || className === 'skills'
@@ -41,6 +44,10 @@ renderSummary.propTypes = {
   className: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   fields: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
+};
+
+renderSummary.defaultProps = {
+  fields: null,
 };
 
 export default renderSummary;

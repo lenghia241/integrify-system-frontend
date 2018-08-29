@@ -49,70 +49,81 @@ const ProfileFormSummary = (props) => {
       className: 'education',
       title: 'Education',
       fields:
-        values && values.education && values.education[0] !== undefined
-          ? values.education.map((item, i) => [
-            {
-              title: `School #${i + 1}`,
-              value: item.school,
-            },
-            { title: `Degree #${i + 1}`, value: item.degree },
-            {
-              title: `Field of study #${i + 1}`,
-              value: item.fieldofstudy,
-            },
-            {
-              title: `From #${i + 1}`,
-              value: item.from,
-            },
-            {
-              title: `To #${i + 1}`,
-              value: item.to,
-            },
-            { title: `Description #${i + 1}`, value: item.descriptopn },
-          ])
+        values && values.education
+          ? values.education.map(
+            (item, i) => (item !== undefined
+              ? [
+                {
+                  title: `School #${i + 1}`,
+                  value: item.school,
+                },
+                { title: `Degree #${i + 1}`, value: item.degree },
+                {
+                  title: `Field of study #${i + 1}`,
+                  value: item.fieldofstudy,
+                },
+                {
+                  title: `From #${i + 1}`,
+                  value: item.from,
+                },
+                {
+                  title: `To #${i + 1}`,
+                  value: item.to,
+                },
+                { title: `Description #${i + 1}`, value: item.descriptopn },
+              ]
+              : null),
+          )
           : null,
     },
     {
       className: 'examplesofwork',
       title: 'Examples of Work',
       fields:
-        values && values.examplesofwork && values.examplesofwork[0] !== undefined
-          ? values.examplesofwork.map((item, i) => [
-            {
-              title: `Title #${i + 1}`,
-              value: item.title,
-            },
-            { title: `Github link #${i + 1}`, value: item.github },
-          ])
+        values && values.examplesofwork
+          ? values.examplesofwork.map(
+            (item, i) => (item !== undefined
+              ? [
+                {
+                  title: `Title #${i + 1}`,
+                  value: item.title,
+                },
+                { title: `Github link #${i + 1}`, value: item.github },
+              ]
+              : null),
+          )
           : null,
     },
     {
       className: 'experience',
       title: 'Experience',
       fields:
-        values && values.workexperience && values.workexperience[0] !== undefined
-          ? values.workexperience.map((item, i) => [
-            {
-              title: `Title #${i + 1}`,
-              value: item.title,
-            },
-            { title: `Company #${i + 1}`, value: item.company },
-            {
-              title: `Location #${i + 1}`,
-              value: item.location,
-            },
-            {
-              title: `From #${i + 1}`,
-              value: item.from,
-            },
-            {
-              title: `To #${i + 1}`,
-              value: item.to,
-            },
-            { title: `Description #${i + 1}`, value: item.descriptopn },
-          ])
+        values && values.workexperience
+          ? values.workexperience.map((item, i) => (item !== undefined
+            ? [
+              {
+                title: `Title #${i + 1}`,
+                value: item.title,
+              },
+              { title: `Company #${i + 1}`, value: item.company },
+              {
+                title: `Location #${i + 1}`,
+                value: item.location,
+              },
+              {
+                title: `From #${i + 1}`,
+                value: item.from,
+              },
+              {
+                title: `To #${i + 1}`,
+                value: item.to,
+              },
+              { title: `Description #${i + 1}`, value: item.descriptopn },
+            ]
+            : null))
           : null,
     },
+
     {
       className: 'languages',
       title: 'Languages',
