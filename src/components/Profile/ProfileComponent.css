@@ -1,0 +1,17 @@
+.profile-component {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+  overflow-y: scroll;
+}
+.profile-component-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 7.5px;
+  border-bottom: 1px dashed lightgray;
+}
+.profile-component-body {
+  padding-top: 7.5px;
+}

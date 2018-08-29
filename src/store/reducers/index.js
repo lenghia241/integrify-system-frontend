@@ -5,9 +5,11 @@ import attendanceReducer from './attendanceReducer';
 import dashboardReducer from './dashboardReducer';
 import eventsReducer from './eventsReducer';
 import assignmentReducer from './assignmentReducer';
+import profileReducer from './profileReducer';
 
 export default combineReducers({
   form: reduxForm,
+  profile: profileReducer,
   auth: authReducer,
   attendance: attendanceReducer,
   dash: dashboardReducer,
@@ -18,3 +20,4 @@ export const getAuth = state => state.auth;
 export const getAttendance = state => state.attendance;
 export const getDash = state => state.dash;
 export const getEvent = state => state.event;
+export const fetchAssignments = state => state.assignments;
