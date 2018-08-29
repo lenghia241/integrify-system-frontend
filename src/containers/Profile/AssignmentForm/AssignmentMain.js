@@ -40,7 +40,7 @@ class AssignmentMain extends Component {
         <div className="assignment-main">
           <div className="assignment-header">
             <h1 className="h1">Assignments</h1>
-            <button type="button" className="waves-effect waves-light btn orange">Add:</button>
+            <button type="button" className="waves-effect waves-light btn orange">Add</button>
           </div>
           <table className="responsive-table mainTable">
             <thead className="assignment-main-header table-header">
