@@ -20,7 +20,7 @@ export const fetchUser = () => dispatch => axios.get('https://integrify.network/
 export const fetchUserProfile = () => dispatch => axios.get('https://integrify.network/api/profiles/5b7ab1957c9b3c63007d5c8c').then((res) => {
   dispatch({
     type: FETCH_USER_PROFILE,
-    payload: res.data,
+    payload: res.data[0],
   });
 });
 

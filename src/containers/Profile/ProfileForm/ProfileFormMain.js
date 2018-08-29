@@ -21,7 +21,7 @@ class ProfileFormMain extends Component {
     };
     this.forms = [
       { label: 'Personal Information', Component: ProfileFormPhotoBio },
-      { label: 'Competences', Component: ProfileFormCompetencies },
+      { label: 'Competencies', Component: ProfileFormCompetencies },
       { label: 'Skills', Component: ProfileFormSkills },
       { label: 'Methods and Tools', Component: ProfileFormMethodsAndTools },
       { label: 'Education', Component: ProfileFormEducation },
@@ -55,7 +55,7 @@ class ProfileFormMain extends Component {
     const { page } = this.state;
     const SubForm = this.forms[page].Component;
     const { profile } = this.props;
-    console.log(this.props);
+
     return (
       <div>
         <div className="profile-tabs tabs tabs-fixed-width z-depth-1">
@@ -71,7 +71,7 @@ class ProfileFormMain extends Component {
           ))}
         </div>
         <SubForm
-          initialValues={profile}
+          initialValues={profile.profiledata}
           previousPage={this.previousPage}
           nextPage={this.nextPage}
           onSubmit={values => console.log('submitting', values)}

@@ -33,4 +33,5 @@ export default reduxForm({
   destroyOnUnmount: false, // <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   validate,
+  enableReinitialize: true,
 })(ProfileFormPhotoBio);
