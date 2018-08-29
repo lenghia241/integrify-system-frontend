@@ -17,7 +17,8 @@
   background-color: var(--primary);
   padding: 30px;
 }
-.sidenav, .background {
+.sidenav,
+.background {
   background-color: var(--secondary-dark);
 }
 /* Notification bell in right upper corner */
@@ -36,28 +37,16 @@
 .switch {
   padding: 20px 0 10px 0;
 }
-.switch label input[type='checkbox']:checked + .lever:after {
-  background-color: var(--active);
-}
-.switch label input[type='checkbox']:checked + .lever {
-  background-color: var(--active-light);
-}
-.switch label input[type='checkbox'] + .lever:after {
-  background-color: var(--error);
-}
-.switch label input[type='checkbox'] + .lever {
-  background-color: var(--error-light);
-}
 .switch label {
   display: flex;
   padding: 0 20px;
 }
 /* Icons for nav-links */
-.sidenav li>a>#icons {
+.sidenav li > a > #icons {
   color: var(--on-dark);
   font-size: 2.2em;
 }
-.sidenav li>a:hover #icons,
+.sidenav li > a:hover #icons,
 .sidenav .logout:hover .material-icons {
   color: var(--primary);
 }
@@ -78,4 +67,22 @@
   font-size: 1.5em;
   vertical-align: middle;
   width: 22px;
+}
+/* Navigation bar for hamburger menu */
+.sidenav-trigger i {
+  padding: 10px;
+  color: var(--background);
+  cursor: pointer;
+  right: 20px;
+  bottom: 20px;
+  position: fixed;
+  border-radius: 50%;
+  background: var(--primary);
+  z-index: 2;
+  display:block;
+}
+@media only screen and (min-width: 993px) {
+  .sidenav-trigger i {
+    display: none;
+  }
 }
