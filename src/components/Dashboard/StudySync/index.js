@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import './index.css';
 import { connect } from 'react-redux';
 import dayjs from 'dayjs';
-import { getDash } from '../../../../store/reducers';
-import * as actions from '../../../../store/actions';
+import { getDash } from '../../../store/reducers';
+import * as actions from '../../../store/actions';
 
 class StudySync extends Component {
   componentDidMount = () => {
