@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getAssignments as getAssignmentsAction } from '../../../store/actions/index';
 import EachAssignment from './EachAssignment';
+import { fetchAssignments } from '../../../store/reducers/index';
 
 class Assignments extends React.Component {
   componentDidMount() {
@@ -13,10 +14,7 @@ class Assignments extends React.Component {
   render() {
     const { assignments } = this.props;
     const displayAssignments = assignments.map((assignment, i) => (
-      <EachAssignment
-        key={`${assignment.description} ${assignment.date}${i + 1}  `}
-        assignment={assignment}
-      />
+      <EachAssignment key={`${i + 1}  `} assignment={assignment} />
     ));
     return <div className="card col s6">{displayAssignments}</div>;
   }
@@ -27,7 +25,7 @@ Assignments.propTypes = {
   assignments: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 const mapStateToProps = state => ({
-  assignments: state.assignments,
+  assignments: fetchAssignments(state),
 });
 export default connect(
   mapStateToProps,

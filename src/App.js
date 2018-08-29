@@ -55,7 +55,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  token: getAuth(state).token,
+  git,
 });
 
 export default connect(
