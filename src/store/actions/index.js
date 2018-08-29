@@ -3,3 +3,5 @@ export {
 } from './authActions';
 
 export { getAssignments, fetchStudySync, getEventList } from './dashboardActions';
+
+export { default as fetchUserProfileAction } from './profileActions';
