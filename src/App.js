@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import './App.css';
 import Attendance from './containers/Attendance';
 import Profile from './containers/Profile';
-// import Login from './containers/Login';
+import Login from './containers/Login';
 import Dashboard from './containers/Dashboard';
 import Aside from './containers/Aside';
 
@@ -26,7 +26,7 @@ class App extends Component {
       <Switch>
         <Route exact path="/attendance" component={Attendance} />
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/" component={Login} />
       </Switch>
     ) : (
       <Switch>
