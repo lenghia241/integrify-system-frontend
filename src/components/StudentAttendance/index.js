@@ -1,51 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   ScatterChart, Scatter, XAxis, YAxis, ZAxis, Tooltip, Cell,
 } from 'recharts';
 import PropTypes from 'prop-types';
+import ChartToolTip from '../ChartToolTip';
 import './index.css';
 
-export default class StudentAttendance extends Component {
-  // Tool tip for hover effect on graph
-  renderTooltip(props) {
-    const { active, payload } = props;
-    if (active && payload && payload.length) {
-      const data = payload[0].payload;
-
-      return (
-        <div className="studentAttendance-chart-toolTip">
-          {data.attendance !== 'absent' ? (
-            <React.Fragment>
-              <p>
-                {data.attendance}
-                <span> attendance</span>
-              </p>
-              <p>
-                <span>In: </span>
-                {data.timesStamp.timeIn}
-              </p>
-              <p>
-                <span>Out: </span>
-                {data.timesStamp.timeOut}
-              </p>
-            </React.Fragment>
-          ) : (
-            <p>{data.attendance}</p>
-          )}
-        </div>
-      );
-    }
-    return null;
-  }
-
-  // returns a list of attendance objects if id matches. Temp use for filtering history data.
-
-  render() {
-    const {
-      data, week, loading, attendanceColorStyle,
-    } = this.props;
-    if (!loading) {
-      return (
+const StudentAttendance = (props) => {
+  const {
+    data, week, loading, attendanceColorStyle,
+  } = props;
+  if (!loading) {
+    return (
       <div className="studentAttendance-container">
         <div>
           <ScatterChart
@@ -85,17 +51,17 @@ export default class StudentAttendance extends Component {
             <Tooltip
               cursor={{ display: 'none' }}
               wrapperStyle={{ zIndex: 100 }}
-              content={this.renderTooltip}
+              content={ChartToolTip}
             />
           </ScatterChart>
         </div>
       </div>
-      );
-    }
-
-    return null;
+    );
   }
-}
+
+  return null;
+};
+
 
 StudentAttendance.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -103,3 +69,5 @@ StudentAttendance.propTypes = {
   loading: PropTypes.bool.isRequired,
   attendanceColorStyle: PropTypes.func.isRequired,
 };
+
+export default StudentAttendance;
