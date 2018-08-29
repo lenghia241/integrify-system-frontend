@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { withRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -12,6 +12,8 @@ import Aside from './containers/Aside';
 
 import * as actions from './store/actions/index';
 import { getAuth } from './store/reducers';
+import StudySyncDetail from './components/Dashboard/StudySync/StudySyncDetail';
+import AddStudySync from './components/Dashboard/StudySync/AddStudySync';
 
 class App extends Component {
   componentDidMount() {
@@ -26,6 +28,8 @@ class App extends Component {
       <Switch>
         <Route exact path="/attendance" component={Attendance} />
         <Route exact path="/profile" component={Profile} />
+        <Route exact path="/studySync" render={() => <StudySyncDetail />} />
+        <Route exact path="/addStudySync" render={() => <AddStudySync />} />
         <Route exact path="/" component={Dashboard} />
       </Switch>
     ) : (
@@ -58,7 +62,9 @@ const mapStateToProps = state => ({
   token: getAuth(state).token,
 });
 
-export default connect(
-  mapStateToProps,
-  actions,
-)(App);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    actions,
+  )(App),
+);
