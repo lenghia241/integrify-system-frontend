@@ -26,11 +26,11 @@ class App extends Component {
       <Switch>
         <Route exact path="/attendance" component={Attendance} />
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={Dashboard} />
       </Switch>
     ) : (
       <Switch>
-        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/" component={Login} />
       </Switch>
     );
 
