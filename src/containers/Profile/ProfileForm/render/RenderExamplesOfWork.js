@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Field } from 'redux-form';
-import renderField from './RenderField';
+import renderField from '../../../../utils/RenderField';
 
 const renderExamplesOfWork = ({ fields, meta: { error } }) => (
   <ul>

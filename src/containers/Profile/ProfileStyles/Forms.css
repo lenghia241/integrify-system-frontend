@@ -13,9 +13,13 @@
   padding: 3px 5px;
 }
 .profile-tabs {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
   margin-bottom: 30px;
+}
+.profile-tabs > * {
+  flex: 1 1 160px;
 }
 .profile-tab {
   padding: 5px 15px;
