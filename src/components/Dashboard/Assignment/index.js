@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import * as actions from '../../../store/actions/index';
+import { getAssignmentsList as getAssignmentsAction } from '../../../store/actions/index';
 import EachAssignment from './EachAssignment';
 import { getAssignments } from '../../../store/reducers/index';
 
@@ -29,5 +29,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  actions,
+  { getAssignmentsList: getAssignmentsAction },
 )(Assignments);

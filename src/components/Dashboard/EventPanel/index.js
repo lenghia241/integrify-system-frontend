@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as actions from '../../../store/actions/index';
+import { getEventList as getEventsListAction } from '../../../store/actions/index';
 import { getEvents } from '../../../store/reducers/index';
 
 class EventPanel extends Component {
   componentDidMount() {
-    const { getEventList } = this.props;
-    getEventList();
+    const { getEventsList } = this.props;
+    getEventsList();
   }
 
   render() {
@@ -46,7 +46,7 @@ class EventPanel extends Component {
 }
 
 EventPanel.propTypes = {
-  getEventList: PropTypes.func.isRequired,
+  getEventsList: PropTypes.func.isRequired,
   events: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
@@ -56,5 +56,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  actions,
+  { getEventsList: getEventsListAction },
 )(EventPanel);

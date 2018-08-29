@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import dayjs from 'dayjs';
 import { withRouter } from 'react-router-dom';
 import { getStudySyncs } from '../../../store/reducers';
-import * as actions from '../../../store/actions';
+import { fetchStudySync as fetchStudySyncAction } from '../../../store/actions';
 
 class StudySync extends Component {
   componentDidMount = () => {
@@ -47,7 +47,7 @@ const mapStateToProps = state => ({
 export default withRouter(
   connect(
     mapStateToProps,
-    actions,
+    { fetchStudySync: fetchStudySyncAction },
   )(StudySync),
 );
 
