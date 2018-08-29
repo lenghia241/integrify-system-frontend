@@ -12,7 +12,7 @@ const validate = (values) => {
   if (!values.github) {
     errors.github = 'Required';
   } else if (
-    !/^(https:\/\/)?(github\.com\/)([a-zA-Z0-9_-]){1,}$/i.test(values.github)
+    !/^(https:\/\/)?(github\.com)(\/[a-zA-Z0-9_-]{1,}){1,}$/i.test(values.github)
   ) {
     errors.github = 'Invalid github Link';
   }
