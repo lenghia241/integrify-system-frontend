@@ -1,6 +1,4 @@
 import React from 'react';
-import '../../ProfileStyles/renderField.css';
-import '../../ProfileStyles/Forms.css';
 
 const renderField = ({
   input, label, htmlFor, type, meta: { touched, error },
