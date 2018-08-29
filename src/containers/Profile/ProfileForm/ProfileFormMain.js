@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchUserProfile as fetchUserProfileAction } from '../../../store/actions';
+import { fetchUserProfileAction } from '../../../store/actions/index';
 import ProfileFormPhotoBio from './ProfileFormPhotoBio';
 import ProfileFormCompetencies from './ProfileFormCompetencies';
 import ProfileFormMethodsAndTools from './ProfileFormMethodsAndTools';
