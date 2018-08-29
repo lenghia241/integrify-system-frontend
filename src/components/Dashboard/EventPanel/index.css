@@ -4,7 +4,7 @@ time.icon {
     position: relative;
     width: 7em;
     height: 7em;
-    background-color: var(--primary-light);
+    background-color: #cdcdcd;
     margin: 1em;
     border-radius: 0.6em;
     overflow: hidden;
@@ -23,26 +23,20 @@ time.icon {
   time.icon strong {
     position: absolute;
     top: 0;
-    padding: 0.4em;
+    padding: 0.2vh;
     color: var(--surface);
     background-color: var(--secondary-light);
     border-bottom: 1px dashed var(--secondary);
     margin: 0;
-    font-size: 1vh;
+    font-size: 1.2vh;
   }
-  
-  time.icon em {
-    position: absolute;
-    bottom: 0.3em;
-    color: var(--surface);
-  }
-  
+    
   time.icon span {
     width: 100%;
-    font-size: 2.8em;
+    font-size: 3vh;
     letter-spacing: -0.05em;
-    padding-top: 0.8em;
-    color: var(--secondary);
+    padding-top: 2vh;
+    color: var(--secondary-dark);
   }
   
   time.icon:hover, time.icon:focus
@@ -86,4 +80,3 @@ time.icon {
   .row-location {
     color: blueviolet;
   }
-  

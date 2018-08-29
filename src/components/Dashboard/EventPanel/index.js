@@ -21,7 +21,6 @@ class EventPanel extends Component {
           }) => (
               <div className="row-event hoverable" key={_id}>
                   <time className="col-time icon uppercase" dateTime={dayjs(time.slice(0, time.length - 7)).format('DD-MMM')}>
-                    <em>{dayjs(time.slice(0, time.length - 7)).format('ddd')}</em>
                     <strong>{dayjs(time.slice(0, time.length - 7)).format('MMM')}</strong>
                     <span>{dayjs(time.slice(0, time.length - 7)).format('DD')}</span>
                   </time>
