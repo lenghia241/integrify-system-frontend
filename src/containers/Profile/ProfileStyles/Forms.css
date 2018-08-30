@@ -1,0 +1,43 @@
+.buttons {
+  padding-top: 20px;
+}
+.btn-previous {
+  margin-right: 20px;
+  padding: 3px 5px;
+}
+.btn-next {
+  margin-right: 20px;
+  padding: 3px 5px;
+}
+.btn-submit {
+  padding: 3px 5px;
+}
+.profile-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.profile-tabs > * {
+  flex: 1 1 160px;
+}
+.profile-tab {
+  padding: 5px 15px;
+  cursor: pointer;
+  border: none;
+}
+.profile-tab:hover {
+  background-color: rgb(38, 166, 154);
+}
+.error {
+  color: red;
+}
+.form-body {
+  padding: 1% 10%;
+}
+.btn-add {
+  margin-bottom: 2%;
+}
+.education {
+  margin-top: 5%;
+}

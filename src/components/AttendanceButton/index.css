@@ -1,0 +1,29 @@
+.switch label .lever {
+  background-color: var(--error-light);
+}
+.switch label .lever:after {
+  background-color: var(--error);
+}
+.switch label input[type="checkbox"]:checked + .lever {
+  background-color: var(--active-light);
+}
+.switch label input[type="checkbox"]:checked + .lever:after {
+  background-color: var(--active);
+}
+.switch label input[type="checkbox"]:checked:disabled + .lever {
+  background-color: var(--disabled-light);
+}
+.switch label input[type="checkbox"]:checked:disabled + .lever:after {
+  background-color: var(--disabled);
+}
+.switch label input[type="checkbox"]:checked {
+  color: var(--active);
+}
+.switch label {
+  font-variant: small-caps;
+  text-transform: capitalize;
+  font-weight: 200;
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
+}
