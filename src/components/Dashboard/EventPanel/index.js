@@ -1,60 +1,54 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as actions from '../../../store/actions/index';
-import { getEvent } from '../../../store/reducers/index';
+import './index.css';
+import dayjs from 'dayjs';
+import { getEventList as getEventsListAction } from '../../../store/actions';
+import { getEvents } from '../../../store/reducers';
 
 class EventPanel extends Component {
   componentDidMount() {
-    const { getEventList } = this.props;
-    getEventList();
+    const { getEventsList } = this.props;
+    getEventsList();
   }
 
   render() {
     const { events } = this.props;
     return (
-      <div className="card col s6 ">
-        <ul className="collapsible ">
-          {events.map(({
-            _id, title, description, venue, time,
+      <div className="event-list">
+          { events.map(({
+            _id, title, time, venue,
           }) => (
-            <li key={_id} className="hoverable">
-              <div className="collapsible-header">
-                <h5>Event title: {title}</h5>
+              <div className="row-event" key={_id}>
+                  <time className="col-time icon uppercase" dateTime={dayjs(time.slice(0, time.length - 7)).format('DD-MMM')}>
+                    <strong>{dayjs(time.slice(0, time.length - 7)).format('MMM')}</strong>
+                    <span>{dayjs(time.slice(0, time.length - 7)).format('DD')}</span>
+                  </time>
+                  <div className="col-details">
+                    <p className="row-title bold-title uppercase">
+                      {title}
+                    </p>
+                    <p className="row-location">
+                      <i className="tiny material-icons">location_on</i>{venue.address}, {venue.city}
+                   </p>
+                  </div>
               </div>
-              <div className="collapsible-body">
-                <p>Event description: {description}</p>
-                <p className="black-text">
-                  <i className="material-icons">event_available</i>
-                  {time}
-                </p>
-                <p className="black-text">
-                  <i className="material-icons">location_on</i>
-                  <a href={`http://maps.google.com/?q=${venue.city}`}>{venue.city}</a>
-                </p>
-                <p className="blue-text">
-                  <i className="material-icons">web</i>
-                  <a href="/">Link to the actual event goes here.</a>
-                </p>
-              </div>
-            </li>
           ))}
-        </ul>
       </div>
     );
   }
 }
 
 EventPanel.propTypes = {
-  getEventList: PropTypes.func.isRequired,
+  getEventsList: PropTypes.func.isRequired,
   events: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 const mapStateToProps = state => ({
-  events: getEvent(state).events,
+  events: getEvents(state),
 });
 
 export default connect(
   mapStateToProps,
-  actions,
+  { getEventsList: getEventsListAction },
 )(EventPanel);

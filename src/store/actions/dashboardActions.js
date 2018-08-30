@@ -13,7 +13,7 @@ export const fetchStudySync = () => (dispatch) => {
   });
 };
 
-export const getAssignments = () => (dispatch) => {
+export const getAssignmentsList = () => (dispatch) => {
   axios.get('/api/dashboard/assignments').then((res) => {
     dispatch({
       type: FETCH_ASSIGNMENT,

@@ -1,33 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getAssignments as getAssignmentsAction } from '../../../store/actions/index';
+import { getAssignmentsList as getAssignmentsAction } from '../../../store/actions/index';
 import EachAssignment from './EachAssignment';
-import { fetchAssignments } from '../../../store/reducers/index';
+import { getAssignments } from '../../../store/reducers/index';
 
 class Assignments extends React.Component {
   componentDidMount() {
-    const { getAssignments } = this.props;
-    getAssignments();
+    const { getAssignmentsList } = this.props;
+    getAssignmentsList();
   }
 
   render() {
     const { assignments } = this.props;
-    const displayAssignments = assignments.map((assignment, i) => (
-      <EachAssignment key={`${assignment._id}  `} assignment={assignment} />
+    const displayAssignments = assignments.map(assignment => (
+      <EachAssignment key={`${assignment._id}`} assignment={assignment} />
     ));
     return <div className="card col s6">{displayAssignments}</div>;
   }
 }
 
 Assignments.propTypes = {
-  getAssignments: PropTypes.func.isRequired,
+  getAssignmentsList: PropTypes.func.isRequired,
   assignments: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 const mapStateToProps = state => ({
-  assignments: fetchAssignments(state),
+  assignments: getAssignments(state),
 });
 export default connect(
   mapStateToProps,
-  { getAssignments: getAssignmentsAction },
+  { getAssignmentsList: getAssignmentsAction },
 )(Assignments);
