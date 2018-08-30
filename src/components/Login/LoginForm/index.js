@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
 import FormField from '../FormField';
-import { formValidate as validate } from '../../../utils';
+import validate from '../../../utils/validate';
 
 const LoginForm = ({ handleSubmit, submitErrors }) => (
   <React.Fragment>

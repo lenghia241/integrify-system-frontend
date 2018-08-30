@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import './index.css';
 import { connect } from 'react-redux';
 import dayjs from 'dayjs';
-import { withRouter, Route, Switch } from 'react-router-dom';
-import { getDash } from '../../../store/reducers';
-import * as actions from '../../../store/actions';
+import { withRouter } from 'react-router-dom';
+import { getStudySyncs } from '../../../store/reducers';
+import { fetchStudySync as fetchStudySyncAction } from '../../../store/actions';
 
 class StudySync extends Component {
   componentDidMount = () => {
@@ -14,12 +14,11 @@ class StudySync extends Component {
   };
 
   render() {
-    const { dash } = this.props;
+    const { studysyncs } = this.props;
     return (
       <div className="col s6">
-        <Switch />
-        {dash.length !== undefined
-          && dash.map((item, i) => (
+        {studysyncs.length !== undefined
+          && studysyncs.map((item, i) => (
             <div className="card-panel hoverable list" key={`${i + 1}+${item.date}`}>
               <div className="row">
                 <p className="col s8 bold capitalize">studysync</p>
@@ -42,17 +41,17 @@ class StudySync extends Component {
 }
 
 const mapStateToProps = state => ({
-  dash: getDash(state),
+  studysyncs: getStudySyncs(state),
 });
 
 export default withRouter(
   connect(
     mapStateToProps,
-    actions,
+    { fetchStudySync: fetchStudySyncAction },
   )(StudySync),
 );
 
 StudySync.propTypes = {
   fetchStudySync: PropTypes.func.isRequired,
-  dash: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  studysyncs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };

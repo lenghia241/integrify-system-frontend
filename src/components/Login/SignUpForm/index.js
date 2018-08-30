@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
 import FormField from '../FormField';
-import { formValidate as validate } from '../../../utils';
-
+import validate from '../../../utils/validate';
 
 const SignUpForm = ({
   handleSubmit, invalid, submitErrors, signUpMsg,

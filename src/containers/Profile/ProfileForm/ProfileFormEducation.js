@@ -2,7 +2,7 @@ import React from 'react';
 import { FieldArray, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import renderEducation from './render/RenderEducation';
-import validate from './validate/validate';
+import validate from '../../../utils/validate';
 
 const ProfileFormEducation = (props) => {
   const { handleSubmit, previousPage, nextPage } = props;

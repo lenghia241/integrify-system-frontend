@@ -2,7 +2,7 @@ import React from 'react';
 import { FieldArray, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import renderMethodsAndTools from './render/RenderMethodsAndTools';
-import validate from './validate/validate';
+import validate from '../../../utils/validate';
 
 const MethodsAndTools = (props) => {
   const { handleSubmit, previousPage, nextPage } = props;
