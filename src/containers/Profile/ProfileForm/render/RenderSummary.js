@@ -13,10 +13,10 @@ const renderSummary = (props) => {
         <div className={`${className}-inner`}>
           <h5>{title}</h5>
           {fields.map(
-            (item, i) => (item !== null ? (
-                <div key={`${item + i}`} className="fields-wrapper">
-                  {item.map((object, index) => (
-                    <div key={`${object + index}`} className="fields">
+            item => (item !== null ? (
+                <div key={`${className}${item[0].value}`} className="fields-wrapper">
+                  {item.map(object => (
+                    <div key={object.title} className="fields">
                       <p className="title">{object.title}</p>
                       <p className="value">{object.value}</p>
                     </div>
@@ -34,7 +34,7 @@ const renderSummary = (props) => {
         <div>
           <h5>{title}</h5>
           <ul>
-            {fields.map(item => item.map((object, index) => <li key={`value${object + index}`}>{object.value}</li>))}
+            {fields.map(item => item.map((object, index) => <li key={`value${object.title}`}>{object.value}</li>))}
           </ul>
         </div>
         ) : null}

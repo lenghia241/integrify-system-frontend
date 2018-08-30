@@ -135,9 +135,9 @@ const ProfileFormSummary = (props) => {
   ];
   return (
     <div className="summary">
-      {content.map((item, i) => (
+      {content.map(item => (
         <RenderSummary
-          key={`${item + i}`}
+          key={`${item.className}`}
           className={item.className}
           title={item.title}
           fields={item.fields}
