@@ -4,17 +4,18 @@ time.icon {
     position: relative;
     width: 7em;
     height: 7em;
-    background-color: #cdcdcd;
+    background-color: var(--primary-light);
     margin: 1em;
     border-radius: 0.6em;
     overflow: hidden;
     transform-origin: 50% 10%;
+
   }
   
   time.icon * {
     display: block;
     width: 100%;
-    font-size: 1em;
+    font-size: 0.5em;
     font-weight: bold;
     font-style: normal;
     text-align: center;
@@ -23,7 +24,7 @@ time.icon {
   time.icon strong {
     position: absolute;
     top: 0;
-    padding: 0.2vh;
+    padding: 0.1vh;
     color: var(--surface);
     background-color: var(--secondary-light);
     border-bottom: 1px dashed var(--secondary);
@@ -33,7 +34,7 @@ time.icon {
     
   time.icon span {
     width: 100%;
-    font-size: 3vh;
+    font-size: 2.5em;
     letter-spacing: -0.05em;
     padding-top: 2vh;
     color: var(--secondary-dark);
@@ -61,18 +62,18 @@ time.icon {
   
   .row-event {
     display: flex;
-    padding-left: 2vh;
-    padding-bottom: 0.8vh;
+    padding-left: 6vw;
+    padding-bottom: 0.8vw;
   }
-  
+
   .col-details {
-    padding: 1vh 0 0 3vh;
+    padding: 1vh 0 0 2vw;
   }
   
   .bold-title {
     font-weight: 700;
   }
-    
+
   .uppercase {
     text-transform: uppercase;
   }

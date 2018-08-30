@@ -17,4 +17,4 @@ export default combineReducers({
 export const getAuth = state => state.auth;
 export const getAttendance = state => state.attendance;
 export const getDash = state => state.dash;
-export const getEvent = state => state.event;
+export const getEvents = state => state.event;
