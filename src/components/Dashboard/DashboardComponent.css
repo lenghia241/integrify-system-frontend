@@ -1,41 +1,38 @@
 .dashboard-component {
-  background-color: white;
+  background-color: var(--surface);
   height: 100%;
   width: 100%;
-  padding: 15px;
+  display:grid;
+  grid-template-rows: 90% 10%;
 }
 
 /* width */
 ::-webkit-scrollbar {
-  width: 0.5vw;
+  width: 0.25vw;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px;
+  box-shadow: inset 0 0 5px var(--secondary-dark); 
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: grey; 
-  border-radius: 0.5vw;
-}
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px;
+  background: var(--primary); 
 }
 
-.dashboard-component-header {
+.dashboard-component-footer {
+  min-height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 7.5px;
-  border-bottom: 1px dashed lightgray;
+  padding: 0 10px;
+  background-color:var(--secondary-dark);
 }
+
 .dashboard-component-body{
   padding-top:7.5px;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 80%;
+  height: 100%;
 }
