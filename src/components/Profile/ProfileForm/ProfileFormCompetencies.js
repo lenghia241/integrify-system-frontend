@@ -9,7 +9,7 @@ const ProfileFormCompetencies = (props) => {
   const { handleSubmit, previousPage, nextPage } = props;
   return (
     <form onSubmit={handleSubmit} className="form-body">
-      <FieldArray name="competencies" component={renderCompetencies} />
+      <FieldArray name="competences" component={renderCompetencies} />
       <div className="buttons">
         <button
           type="button"

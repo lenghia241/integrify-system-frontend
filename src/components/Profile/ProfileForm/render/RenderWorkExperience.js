@@ -13,7 +13,7 @@ const renderWorkExperience = ({ fields, meta: { error } }) => {
     { field: 'description', label: 'description', type: 'text' },
   ];
   const renderworkExperienceFields = fieldIndex => workExperienceFields.map((work, index) => (
-      <li key={`${index + 1 - 1}`}>
+      <li key={`${work}`}>
         <Field
           name={`workexperience[${fieldIndex}].${work.field}`}
           type={work.type}
@@ -34,7 +34,7 @@ const renderWorkExperience = ({ fields, meta: { error } }) => {
           Add Work Experience
         </button>
         {fields.map((work, fieldIndex) => (
-          <div key={`${fieldIndex + 1}`}>
+          <div key={`${work}`}>
             <button
               type="button"
               className="btn-add waves-effect waves-light red btn"

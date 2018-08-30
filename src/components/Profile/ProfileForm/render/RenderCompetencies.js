@@ -15,7 +15,7 @@ const renderCompetencies = ({ fields, meta: { error } }) => (
       </button>
     </li>
     {fields.map((competence, index) => (
-      <li key={`${competence + index}`}>
+      <li key={`${competence}`}>
         <button
           type="button"
           className="btn-add waves-effect waves-light red btn"

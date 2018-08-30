@@ -15,7 +15,7 @@ const renderExamplesOfWork = ({ fields, meta: { error } }) => (
       </button>
     </li>
     {fields.map((work, index) => (
-      <li key={`${index + 1}`}>
+      <li key={`${work}`}>
         <button
           type="button"
           className="btn-add waves-effect waves-light red btn"

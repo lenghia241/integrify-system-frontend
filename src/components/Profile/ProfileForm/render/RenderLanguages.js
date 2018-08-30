@@ -15,7 +15,7 @@ const renderLanguages = ({ fields, meta: { error } }) => (
       </button>
     </li>
     {fields.map((language, index) => (
-      <li key={`${index + 1}`}>
+      <li key={language}>
         <button
           type="button"
           className="btn-add waves-effect waves-light red btn"
