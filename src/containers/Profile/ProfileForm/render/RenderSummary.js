@@ -13,12 +13,12 @@ const renderSummary = (props) => {
         ? <div>
         <h5>{title}</h5>
         {fields.map(
-          item => (item !== null ? (
-                <div key={`${fields.indexOf(item)}`}>
-                  {item.map(object => (
-                    <div key={`${object.title}`}>
-                      <p key={`title${object.title}`}>{object.title}</p>
-                      <p key={`value${object.title}`}>{object.value}</p>
+          (item, i) => (item !== null ? (
+                <div key={`${item + i}`}>
+                  {item.map((object, index) => (
+                    <div key={`${object + index}`}>
+                      <p key={`title${object + index}`}>{object.title}</p>
+                      <p key={`value${object + index}`}>{object.value}</p>
                     </div>
                   ))}
                 </div>
@@ -34,7 +34,7 @@ const renderSummary = (props) => {
         ? <div>
             <h5>{title}</h5>
             <ul>
-              {fields.map(item => item.map(object => <li key={`value${object.title}`}>{object.value}</li>))}
+              {fields.map(item => item.map((object, index) => <li key={`value${object + index}`}>{object.value}</li>))}
             </ul>
           </div>
         : null}
