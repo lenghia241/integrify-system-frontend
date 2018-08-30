@@ -26,7 +26,7 @@ const ProfileFormSummary = (props) => {
       title: 'Competences',
       fields:
         values && values.competences
-          ? values.competences.map((item, i) => ({ title: `competence${i}`, value: item }))
+          ? values.competences.map((item, i) => ([{ title: `competence${i}`, value: item }]))
           : null,
     },
     {
@@ -34,7 +34,7 @@ const ProfileFormSummary = (props) => {
       title: 'Skills',
       fields:
         values && values.skills
-          ? values.skills.map((item, i) => ({ title: `skill${i}`, value: item }))
+          ? values.skills.map((item, i) => ([{ title: `skill${i}`, value: item }]))
           : null,
     },
     {
@@ -42,7 +42,7 @@ const ProfileFormSummary = (props) => {
       title: 'Methods and Tools',
       fields:
         values && values.tools
-          ? values.tools.map((item, i) => ({ title: `tools${i}`, value: item }))
+          ? values.tools.map((item, i) => ([{ title: `tools${i}`, value: item }]))
           : null,
     },
     {
@@ -129,7 +129,7 @@ const ProfileFormSummary = (props) => {
       title: 'Languages',
       fields:
         values && values.languages
-          ? values.languages.map((item, i) => ({ title: `language${i}`, value: item }))
+          ? values.languages.map((item, i) => ([{ title: `language${i}`, value: item }]))
           : null,
     },
   ];

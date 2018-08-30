@@ -31,13 +31,12 @@ const renderSummary = (props) => {
         || className === 'tools'
         || className === 'languages')
       && fields
-        ? <div><h5>{title}</h5>
-        <ul>
-          {fields.map(item => (
-            <li key={`value${item.title}`}>{item.value}</li>
-          ))}
-        </ul>
-        </div>
+        ? <div>
+            <h5>{title}</h5>
+            <ul>
+              {fields.map(item => item.map(object => <li key={`value${object.title}`}>{object.value}</li>))}
+            </ul>
+          </div>
         : null}
     </div>
   );
