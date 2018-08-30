@@ -12,17 +12,18 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
+  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: grey; 
+  background: grey;
   border-radius: 0.5vw;
 }
+
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
+  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
 
@@ -33,8 +34,9 @@
   padding-bottom: 7.5px;
   border-bottom: 1px dashed lightgray;
 }
-.dashboard-component-body{
-  padding-top:7.5px;
+
+.dashboard-component-body {
+  padding-top: 7.5px;
   overflow-y: scroll;
   overflow-x: hidden;
   height: 80%;

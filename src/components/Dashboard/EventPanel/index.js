@@ -19,7 +19,7 @@ class EventPanel extends Component {
           { events.map(({
             _id, title, time, venue,
           }) => (
-              <div className="row-event hoverable" key={_id}>
+              <div className="row-event" key={_id}>
                   <time className="col-time icon uppercase" dateTime={dayjs(time.slice(0, time.length - 7)).format('DD-MMM')}>
                     <strong>{dayjs(time.slice(0, time.length - 7)).format('MMM')}</strong>
                     <span>{dayjs(time.slice(0, time.length - 7)).format('DD')}</span>
