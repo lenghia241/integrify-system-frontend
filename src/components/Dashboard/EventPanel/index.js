@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './index.css';
 import dayjs from 'dayjs';
-import { getEventList as getEventsListAction } from '../../../store/actions/index';
-import { getEvents } from '../../../store/reducers/index';
+import { getEventList as getEventsListAction } from '../../../store/actions';
+import { getEvents } from '../../../store/reducers';
 
 class EventPanel extends Component {
   componentDidMount() {
@@ -45,7 +45,7 @@ EventPanel.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  events: getEvents(state).events,
+  events: getEvents(state),
 });
 
 export default connect(
