@@ -32,20 +32,22 @@
   -moz-box-sizing: border-box;
 }
 
-.bold{
+.bold {
   font-weight: 600;
 }
 
-.capitalize{
+.capitalize {
   text-transform: capitalize;
 }
 
 .App {
   height: 100vh;
 }
+
 .App-body.login {
   padding-left: 0;
 }
+
 .App-body {
   background-color: var(--background);
   padding-left: 300px;
@@ -56,4 +58,4 @@
   .App-body {
     padding-left: 0;
   }
-} 
+}
