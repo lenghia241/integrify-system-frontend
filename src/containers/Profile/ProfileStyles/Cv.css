@@ -1,0 +1,35 @@
+.cvContainer {
+  width: 90vw;
+  margin: 5vw auto;
+  display: grid;
+  grid-template-columns: 25% 75%;
+}
+.leftPanel {
+  border-right: solid 1px black;
+  margin-right: 1vw;
+}
+.rightPanel {
+  margin-left: 1vw;
+  width: 80%;
+}
+
+.personalInfo .fullName {
+  text-transform: uppercase;
+  font-size: 1.5vw;
+  font-weight: bolder;
+}
+.personalInfo .fullName .firstName {
+  margin-right: 0.7vw;
+}
+.header{
+    border-bottom: solid 1px black;
+    display:grid;
+    grid-template-columns: 5% 15%;
+}
+.header .logo{
+    width:2vw;
+    height:2vw;
+    justify-self: center;
+    align-self: center;
+    
+}

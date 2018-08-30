@@ -11,6 +11,7 @@ import ProfileFormWorkExperience from './ProfileFormWorkExperience';
 import ProfileFormLanguages from './ProfileFormLanguages';
 import ProfileFormSkills from './ProfileFormSkills';
 import Summary from '../SummaryPage/SummaryPage';
+import ProfileCv from './ProfileCv';
 import '../ProfileStyles/Forms.css';
 
 class ProfileFormMain extends Component {
@@ -29,6 +30,7 @@ class ProfileFormMain extends Component {
       { label: 'Experience', Component: ProfileFormWorkExperience },
       { label: 'Languages', Component: ProfileFormLanguages },
       { label: 'Summary', Component: Summary },
+      { label: 'CV', Component: ProfileCv },
     ];
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
