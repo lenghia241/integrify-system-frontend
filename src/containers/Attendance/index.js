@@ -39,12 +39,15 @@ export default class Attendance extends Component {
     json.forEach((day) => {
       day.attendanceData.forEach((entry) => {
         if (entry.studentId === id) {
+          const weekNum = this.getWeek(day.date);
+          const { timesStamp, attendance } = entry;
+
           list.push({
             date: day.date,
             dateDisplay: dayjs(day.date).format('ddd D MMM'),
-            timesStamp: entry.timesStamp,
-            attendance: entry.attendance,
-            index: 1,
+            timesStamp,
+            attendance,
+            index: weekNum,
             id: numId,
           });
         }

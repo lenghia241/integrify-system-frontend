@@ -1,9 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './index.css';
 
+
 // Tool tip for hover effect on graph
-const renderTooltip = (properties) => {
-  const { active, payload } = properties;
+const ChartTooltip = (props) => {
+  const { active, payload } = props;
   if (active && payload && payload.length) {
     const data = payload[0].payload;
 
@@ -33,4 +36,9 @@ const renderTooltip = (properties) => {
   return null;
 };
 
-export default renderTooltip;
+ChartTooltip.propTypes = {
+  active: PropTypes.bool.isRequired,
+  payload: PropTypes.objectOf(PropTypes.node).isRequired,
+};
+
+export default ChartTooltip;
