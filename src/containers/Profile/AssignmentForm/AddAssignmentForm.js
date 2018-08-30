@@ -27,22 +27,22 @@ const validate = (values) => {
   return errors;
 };
 
+const renderField = ({
+  input, label, placeholder, htmlFor, type, meta: { touched, error },
+}) => (
+  <div>
+    <label htmlFor={htmlFor}>
+      {label}
+      <input id={htmlFor} {...input} placeholder={placeholder} type={type} />
+      {touched && error && <span>{error}</span>}
+    </label>
+  </div>
+);
+
 const AddAssignmentForm = (props) => {
   const {
     handleSubmit, pristine, reset, submitting, invalid,
   } = props;
-
-  const renderField = ({
-    input, label, placeholder, htmlFor, type, meta: { touched, error },
-  }) => (
-    <div>
-      <label htmlFor={htmlFor}>
-        {label}
-        <input id={htmlFor} {...input} placeholder={placeholder} type={type} />
-        {touched && error && <span>{error}</span>}
-      </label>
-    </div>
-  );
 
   return (
     <form onSubmit={handleSubmit} className="AddAssignmentForm">
