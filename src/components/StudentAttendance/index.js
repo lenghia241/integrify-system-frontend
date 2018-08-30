@@ -10,7 +10,6 @@ const StudentAttendance = (props) => {
   const {
     data, week, loading, attendanceColorStyle,
   } = props;
-  console.log('data: ', data);
   if (!loading) {
     return (
       <div className="studentAttendance-container">
@@ -44,9 +43,9 @@ const StudentAttendance = (props) => {
               type="number"
               dataKey="index"
               name="yAxis"
-              // tick={false}
-              // tickLine={false}
-              // axisLine={false}
+              tick={false}
+              tickLine={false}
+              axisLine={false}
               label={{ value: `Week ${week}`, position: 'insideRight' }}
             />
             <ZAxis range={[700, 700]} />
