@@ -34,7 +34,7 @@ const renderSummary = (props) => {
         <div>
           <h5>{title}</h5>
           <ul>
-            {fields.map(item => item.map((object, index) => <li key={`value${object.title}`}>{object.value}</li>))}
+            {fields.map(item => item.map(object => <li key={`value${object.title}`}>{object.value}</li>))}
           </ul>
         </div>
         ) : null}
