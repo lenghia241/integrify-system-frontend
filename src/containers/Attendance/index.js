@@ -22,7 +22,7 @@ export default class Attendance extends Component {
   }
 
   async componentDidMount() {
-    const res = await axios.get('/api/attendance/history');
+    const res = await axios.get('/api/v1/attendance/history');
     const filteredData = this.dataFilter(res.data, '5b7ab1952cc5b5a552cfda72');
     this.setState({
       classHistoryData: filteredData,
