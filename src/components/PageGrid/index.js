@@ -8,7 +8,11 @@ const PageGrid = (props) => {
 };
 
 PageGrid.propTypes = {
-  content: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  content: PropTypes.arrayOf(PropTypes.element),
+};
+
+PageGrid.defaultProps = {
+  content: null,
 };
 
 export default PageGrid;

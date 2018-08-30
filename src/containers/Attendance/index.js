@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
+import PageGrid from '../../components/PageGrid';
 
 import fiveDayData from './mock-data/fiveDayData.json';
 
@@ -69,28 +70,39 @@ export default class Attendance extends Component {
 
   render() {
     const { classHistoryData, loading, classHistoryDataMock } = this.state;
-    const content = (
+    const content = loading || [<StudentAttendance
+          key="attendance0"
+          data={classHistoryDataMock}
+          week={this.getWeek(classHistoryDataMock[0].date)}
+          loading={loading}
+          attendanceColorStyle={this.attendanceColorStyle}
+        />,
+      <StudentAttendance
+        key="attendance1"
+        data={classHistoryData}
+        week={this.getWeek(classHistoryData[0].date)}
+        loading={loading}
+        attendanceColorStyle={this.attendanceColorStyle}
+      />,
+      <StudentAttendance
+          key="attendance2"
+          data={classHistoryDataMock}
+          week={this.getWeek(classHistoryDataMock[0].date)}
+          loading={loading}
+          attendanceColorStyle={this.attendanceColorStyle}
+        />,
+      <StudentAttendance
+        key="attendance3"
+        data={classHistoryData}
+        week={this.getWeek(classHistoryData[0].date)}
+        loading={loading}
+        attendanceColorStyle={this.attendanceColorStyle}
+      />,
+    ];
+    return (
       <PageTemplate heading="Attendance">
-        <div className="Attendance">
-          {loading
-            || <StudentAttendance
-              data={classHistoryDataMock}
-              week={this.getWeek(classHistoryDataMock[0].date)}
-              loading={loading}
-              attendanceColorStyle={this.attendanceColorStyle}
-            />
-          }
-          {loading
-            || <StudentAttendance
-              data={classHistoryData}
-              week={this.getWeek(classHistoryData[0].date)}
-              loading={loading}
-              attendanceColorStyle={this.attendanceColorStyle}
-            />
-          }
-        </div>
+        <PageGrid content={loading ? null : content}/>
       </PageTemplate>
     );
-    return content;
   }
 }

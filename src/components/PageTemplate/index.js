@@ -6,11 +6,13 @@ import './PageTemplate.css';
 
 const pageTemplate = ({ children, heading }) => (
   <React.Fragment>
-    <div className="page-heading">
-      <h1>{heading}</h1>
-      <SearchBar />
+    <div className="header">
+      <div className="page-heading">
+        <h1>{heading}</h1>
+        <SearchBar />
+      </div>
+      {children}
     </div>
-    {children}
   </React.Fragment>
 );
 
