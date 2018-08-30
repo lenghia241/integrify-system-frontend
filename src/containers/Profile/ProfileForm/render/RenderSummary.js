@@ -17,8 +17,8 @@ const renderSummary = (props) => {
                 <div key={`${item + i}`} className="fields-wrapper">
                   {item.map((object, index) => (
                     <div key={`${object + index}`} className="fields">
-                      <p>{object.title}</p>
-                      <p>{object.value}</p>
+                      <p className="title">{object.title}</p>
+                      <p className="value">{object.value}</p>
                     </div>
                   ))}
                 </div>
