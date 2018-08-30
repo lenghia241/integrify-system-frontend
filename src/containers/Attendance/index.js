@@ -7,6 +7,7 @@ import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
 
 import fiveDayData from './mock-data/fiveDayData.json';
+import ChartClassPresence from '../../components/ChartClassPresence';
 
 dayjs.extend(weekOfYear);
 
@@ -72,21 +73,25 @@ export default class Attendance extends Component {
     const content = (
       <PageTemplate heading="Attendance">
         <div className="Attendance">
+          {/* Render graphs only when loading of data is complete. */}
           {loading
-            || <StudentAttendance
-              data={classHistoryDataMock}
-              week={this.getWeek(classHistoryDataMock[0].date)}
-              loading={loading}
-              attendanceColorStyle={this.attendanceColorStyle}
-            />
-          }
-          {loading
-            || <StudentAttendance
-              data={classHistoryData}
-              week={this.getWeek(classHistoryData[0].date)}
-              loading={loading}
-              attendanceColorStyle={this.attendanceColorStyle}
-            />
+            || <React.Fragment>
+              <StudentAttendance
+                data={classHistoryDataMock}
+                week={this.getWeek(classHistoryDataMock[0].date)}
+                loading={loading}
+                attendanceColorStyle={this.attendanceColorStyle}
+              />
+              <StudentAttendance
+                data={classHistoryData}
+                week={this.getWeek(classHistoryData[0].date)}
+                loading={loading}
+                attendanceColorStyle={this.attendanceColorStyle}
+              />
+              <ChartClassPresence
+                text="Chart Class Presence"
+              />
+            </React.Fragment>
           }
         </div>
       </PageTemplate>
