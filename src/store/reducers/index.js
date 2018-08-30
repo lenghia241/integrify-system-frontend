@@ -12,6 +12,7 @@ export default combineReducers({
   attendance: attendanceReducer,
   dashboard: dashboardReducer,
 });
+
 export const getAuth = state => state.auth;
 export const getAttendance = state => state.attendance;
 export const getStudySyncs = state => state.dashboard.studysyncs;
