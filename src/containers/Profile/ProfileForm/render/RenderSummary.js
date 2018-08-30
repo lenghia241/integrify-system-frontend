@@ -9,35 +9,35 @@ const renderSummary = (props) => {
         || className === 'education'
         || className === 'examplesOfWork'
         || className === 'experience')
-      && fields !== null
-        ? <div>
-        <h5>{title}</h5>
-        {fields.map(
-          (item, i) => (item !== null ? (
-                <div key={`${item + i}`}>
+      && fields !== null ? (
+        <div className={`${className}-inner`}>
+          <h5>{title}</h5>
+          {fields.map(
+            (item, i) => (item !== null ? (
+                <div key={`${item + i}`} className="fields-wrapper">
                   {item.map((object, index) => (
-                    <div key={`${object + index}`}>
-                      <p key={`title${object + index}`}>{object.title}</p>
-                      <p key={`value${object + index}`}>{object.value}</p>
+                    <div key={`${object + index}`} className="fields">
+                      <p>{object.title}</p>
+                      <p>{object.value}</p>
                     </div>
                   ))}
                 </div>
-          ) : null),
-        )}
+            ) : null),
+          )}
         </div>
-        : null}
+        ) : null}
       {(className === 'competences'
         || className === 'skills'
         || className === 'tools'
         || className === 'languages')
-      && fields
-        ? <div>
-            <h5>{title}</h5>
-            <ul>
-              {fields.map(item => item.map((object, index) => <li key={`value${object + index}`}>{object.value}</li>))}
-            </ul>
-          </div>
-        : null}
+      && fields ? (
+        <div>
+          <h5>{title}</h5>
+          <ul>
+            {fields.map(item => item.map((object, index) => <li key={`value${object + index}`}>{object.value}</li>))}
+          </ul>
+        </div>
+        ) : null}
     </div>
   );
 };
