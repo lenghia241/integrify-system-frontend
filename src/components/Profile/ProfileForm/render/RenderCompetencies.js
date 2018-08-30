@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Field } from 'redux-form';
-import renderField from '../../../../utils/RenderField';
+import renderField from '../../../renderField';
 
 const renderCompetencies = ({ fields, meta: { error } }) => (
   <ul>
@@ -15,7 +15,7 @@ const renderCompetencies = ({ fields, meta: { error } }) => (
       </button>
     </li>
     {fields.map((competence, index) => (
-      <li key={`${index + 1}`}>
+      <li key={`${competence + index}`}>
         <button
           type="button"
           className="btn-add waves-effect waves-light red btn"

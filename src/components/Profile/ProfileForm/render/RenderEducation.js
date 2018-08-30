@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Field } from 'redux-form';
-import renderField from '../../../../utils/RenderField';
+import renderField from '../../../renderField';
 
 const renderEducation = ({ fields, meta: { error } }) => {
   const workExperienceFields = [
@@ -13,7 +13,7 @@ const renderEducation = ({ fields, meta: { error } }) => {
     { field: 'description', label: 'description', type: 'text' },
   ];
   const renderEducationFields = fieldIndex => workExperienceFields.map((education, index) => (
-      <li key={`${index + 1 - 1}`}>
+      <li key={`${education.field + index}`}>
         <Field
           name={`education[${fieldIndex}].${education.field}`}
           type={education.type}
