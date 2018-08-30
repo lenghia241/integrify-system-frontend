@@ -60,7 +60,7 @@ class ProfileFormMain extends Component {
 
     return (
       <div>
-        <div className="profile-tabs tabs tabs-fixed-width z-depth-1">
+        <div className="profile-tabs tabs z-depth-1">
           {this.forms.map((form, i) => (
             <button
               className="profile-tab active"
