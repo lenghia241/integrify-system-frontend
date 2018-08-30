@@ -8,7 +8,7 @@ const ProfileFormExamplesOfWork = (props) => {
   const { handleSubmit, previousPage, nextPage } = props;
   return (
     <form onSubmit={handleSubmit} className="form-body">
-      <FieldArray name="examplesofwork" component={renderExamplesOfWork} />
+      <FieldArray name="examplesOfWork" component={renderExamplesOfWork} />
       <div className="buttons">
         <button
           type="button"

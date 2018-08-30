@@ -25,8 +25,8 @@ const ProfileFormSummary = (props) => {
       className: 'competences',
       title: 'Competences',
       fields:
-        values && values.competencies
-          ? values.competencies.map((item, i) => ({ title: `competence${i}`, value: item }))
+        values && values.competences
+          ? values.competences.map((item, i) => ({ title: `competence${i}`, value: item }))
           : null,
     },
     {
@@ -38,11 +38,11 @@ const ProfileFormSummary = (props) => {
           : null,
     },
     {
-      className: 'methods',
+      className: 'tools',
       title: 'Methods and Tools',
       fields:
-        values && values.methodsandtools
-          ? values.methodsandtools.map((item, i) => ({ title: `methods${i}`, value: item }))
+        values && values.tools
+          ? values.tools.map((item, i) => ({ title: `tools${i}`, value: item }))
           : null,
     },
     {
@@ -77,11 +77,11 @@ const ProfileFormSummary = (props) => {
           : null,
     },
     {
-      className: 'examplesofwork',
+      className: 'examplesOfWork',
       title: 'Examples of Work',
       fields:
-        values && values.examplesofwork
-          ? values.examplesofwork.map(
+        values && values.examplesOfWork
+          ? values.examplesOfWork.map(
             (item, i) => (item !== undefined
               ? [
                 {
@@ -133,7 +133,6 @@ const ProfileFormSummary = (props) => {
           : null,
     },
   ];
-
   return (
     <div className="summary">
       {content.map(item => (

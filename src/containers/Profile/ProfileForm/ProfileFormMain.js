@@ -10,6 +10,7 @@ import ProfileFormExamplesOfWork from './ProfileFormExamplesOfWork';
 import ProfileFormWorkExperience from './ProfileFormWorkExperience';
 import ProfileFormLanguages from './ProfileFormLanguages';
 import ProfileFormSkills from './ProfileFormSkills';
+import ProfileFormSummary from './ProfileFormSummary';
 import Summary from '../SummaryPage/SummaryPage';
 import '../ProfileStyles/Forms.css';
 
@@ -28,7 +29,7 @@ class ProfileFormMain extends Component {
       { label: 'Examples of Work', Component: ProfileFormExamplesOfWork },
       { label: 'Experience', Component: ProfileFormWorkExperience },
       { label: 'Languages', Component: ProfileFormLanguages },
-      { label: 'Summary', Component: Summary },
+      { label: 'Summary', Component: ProfileFormSummary },
     ];
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);

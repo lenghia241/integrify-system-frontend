@@ -5,14 +5,14 @@ const renderSummary = (props) => {
   const { className, title, fields } = props;
   return (
     <div className={className}>
-      <h5>{title}</h5>
-
       {(className === 'personal'
         || className === 'education'
-        || className === 'examplesofwork'
+        || className === 'examplesOfWork'
         || className === 'experience')
       && fields !== null
-        ? fields.map(
+        ? <div>
+        <h5>{title}</h5>
+        {fields.map(
           item => (item !== null ? (
                 <div key={`${fields.indexOf(item)}`}>
                   {item.map(object => (
@@ -23,19 +23,22 @@ const renderSummary = (props) => {
                   ))}
                 </div>
           ) : null),
-        )
+        )}
+        </div>
         : null}
       {(className === 'competences'
         || className === 'skills'
-        || className === 'methods'
+        || className === 'tools'
         || className === 'languages')
-      && fields ? (
+      && fields
+        ? <div><h5>{title}</h5>
         <ul>
           {fields.map(item => (
             <li key={`value${item.title}`}>{item.value}</li>
           ))}
         </ul>
-        ) : null}
+        </div>
+        : null}
     </div>
   );
 };
