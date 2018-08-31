@@ -1,9 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Field } from 'redux-form';
-import renderField from '../../../../utils/RenderField';
+import renderField from '../../../renderField';
 
-const renderExamplesOfWork = ({ fields, meta: { error } }) => (
+const renderMethodsAndTools = ({ fields, meta: { error } }) => (
   <ul>
     <li>
       <button
@@ -11,11 +11,11 @@ const renderExamplesOfWork = ({ fields, meta: { error } }) => (
         className="btn-add waves-effect waves-light btn"
         onClick={() => fields.push()}
       >
-        Add Examples of Work
+        Add Methods and Tools
       </button>
     </li>
-    {fields.map((work, index) => (
-      <li key={`${index + 1}`}>
+    {fields.map((tool, index) => (
+      <li key={`${tool}`}>
         <button
           type="button"
           className="btn-add waves-effect waves-light red btn"
@@ -23,34 +23,23 @@ const renderExamplesOfWork = ({ fields, meta: { error } }) => (
         >
           Remove
         </button>
-        <Field
-          name={`${work}.title`}
-          type="text"
-          component={renderField}
-          label={`Title #${index + 1}`}
-        />
-        <Field
-          name={`${work}.github`}
-          type="text"
-          component={renderField}
-          label={`Github link #${index + 1}`}
-        />
+        <Field name={tool} type="text" component={renderField} label={`Tool #${index + 1}`} />
       </li>
     ))}
     {error && <li className="error">{error}</li>}
   </ul>
 );
 
-renderExamplesOfWork.propTypes = {
+renderMethodsAndTools.propTypes = {
   fields: PropTypes.shape({}),
   meta: PropTypes.shape({
     error: PropTypes.string,
   }),
 };
 
-renderExamplesOfWork.defaultProps = {
+renderMethodsAndTools.defaultProps = {
   fields: {},
   meta: {},
 };
 
-export default renderExamplesOfWork;
+export default renderMethodsAndTools;

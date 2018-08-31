@@ -22,9 +22,9 @@ class App extends Component {
   }
 
   render() {
-    const { token } = this.props;
+    const { user } = this.props;
 
-    const routes = token ? (
+    const routes = user ? (
       <Switch>
         <Route exact path="/attendance" component={Attendance} />
         <Route exact path="/profile" component={Profile} />
@@ -38,28 +38,28 @@ class App extends Component {
       </Switch>
     );
 
-    const aside = token ? <Aside className="App-aside" /> : null;
+    const aside = user ? <Aside className="App-aside" /> : null;
 
     return (
       <div className="App">
         {aside}
-        <div className={token ? 'App-body' : 'App-body login'}>{routes}</div>
+        <div className={user ? 'App-body' : 'App-body login'}>{routes}</div>
       </div>
     );
   }
 }
 
 App.defaultProps = {
-  token: null,
+  user: null,
 };
 
 App.propTypes = {
-  token: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.bool]),
+  user: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.bool]),
   checkUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  token: getAuth(state).token,
+  user: getAuth(state).user,
 });
 
 export default withRouter(

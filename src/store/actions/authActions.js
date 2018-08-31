@@ -21,7 +21,7 @@ export const authUserSuccess = token => ({
 });
 
 export const fetchUser = userId => async (dispatch) => {
-  const res = await axios.get(`/users/${userId}`);
+  const res = await axios.get(`/api/v2/users/${userId}`);
 
   dispatch({
     type: FETCH_USER,
@@ -32,13 +32,9 @@ export const fetchUser = userId => async (dispatch) => {
 export const authUser = values => async (dispatch) => {
   dispatch(startFetching());
   try {
-    await axios.post('/users/login', values);
+    const res = await axios.post('/api/v2/users/login', values);
 
-    // Login succeed and cookie is set => Get token from cookie
-    const token = getCookie('jwt_token');
-    const decodedToken = parseJwt(token);
-
-    dispatch(authUserSuccess(decodedToken));
+    dispatch(authUserSuccess(res.data));
   } catch (err) {
     dispatch({
       type: AUTH_USER_FAIL,
@@ -50,7 +46,7 @@ export const authUser = values => async (dispatch) => {
 export const signUpUser = values => async (dispatch) => {
   dispatch(startFetching());
   try {
-    await axios.post('https://integrify.network/users/signup/temp', values);
+    await axios.post('/api/v2/users/signup/temp', values);
 
     dispatch({
       type: SIGN_UP_USER_SUCCESS,
@@ -65,7 +61,7 @@ export const signUpUser = values => async (dispatch) => {
 };
 
 export const logOut = () => async (dispatch) => {
-  await axios.get('/users/logout');
+  await axios.get('/api/v2/users/logout');
 
   dispatch({
     type: LOG_OUT,
