@@ -1,6 +1,7 @@
 import React from 'react';
 import { FieldArray, reduxForm } from 'redux-form';
 import { PropTypes } from 'prop-types';
+
 import renderWorkExperience from './render/RenderWorkExperience';
 import validate from '../../../utils/validate';
 
@@ -10,7 +11,10 @@ const ProfileFormWorkExperience = (props) => {
     <form onSubmit={handleSubmit} className="form-body">
       <FieldArray name="workexperience" component={renderWorkExperience} />
       <div className="buttons">
-        <button type="button" className="btn-previous waves-effect waves-light btn" onClick={previousPage}>
+        <button
+          type="button"
+          className="btn-previous waves-effect waves-light btn"
+          onClick={previousPage}>
           Previous
         </button>
         <button type="submit" className="btn-next waves-effect waves-light btn" onClick={nextPage}>

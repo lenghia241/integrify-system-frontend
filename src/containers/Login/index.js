@@ -31,7 +31,6 @@ class Login extends Component {
 
   render() {
     const { signUp } = this.state;
-
     const {
       authUser, signUpUser, loading, authErrors, signUpErrors, signUpMsg,
     } = this.props;
@@ -61,8 +60,7 @@ class Login extends Component {
                       <button
                         type="button"
                         className={`btn-flat btn-tab ${signUp ? '' : 'active'}`}
-                        onClick={this.handleLogInTab}
-                      >
+                        onClick={this.handleLogInTab}>
                         Log In
                       </button>
                     </li>
@@ -70,8 +68,7 @@ class Login extends Component {
                       <button
                         type="button"
                         className={`btn-flat btn-tab ${signUp ? 'active' : ''}`}
-                        onClick={this.handleSignUpTab}
-                      >
+                        onClick={this.handleSignUpTab}>
                         Sign Up
                       </button>
                     </li>

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import { fetchUserProfileAction } from '../../../store/actions/index';
-import { getProfile, getAuth } from '../../../store/reducers';
+import { getProfile, getId } from '../../../store/reducers';
+
 import ProfileFormPhotoBio from './ProfileFormPhotoBio';
 import ProfileFormCompetencies from './ProfileFormCompetencies';
 import ProfileFormMethodsAndTools from './ProfileFormMethodsAndTools';
@@ -37,8 +39,8 @@ class ProfileFormMain extends Component {
   }
 
   componentDidMount() {
-    const { fetchUserProfile, auth } = this.props;
-    fetchUserProfile(auth.user.id);
+    const { fetchUserProfile, userId } = this.props;
+    fetchUserProfile(userId);
   }
 
   nextPage() {
@@ -85,7 +87,7 @@ class ProfileFormMain extends Component {
 ProfileFormMain.propTypes = {
   fetchUserProfile: PropTypes.func.isRequired,
   profile: PropTypes.shape({}),
-  auth: PropTypes.shape({}).isRequired,
+  userId: PropTypes.string.isRequired,
 };
 
 ProfileFormMain.defaultProps = {
@@ -94,7 +96,7 @@ ProfileFormMain.defaultProps = {
 
 const mapStateToProps = state => ({
   profile: getProfile(state),
-  auth: getAuth(state),
+  userId: getId(state),
 });
 
 export default connect(
