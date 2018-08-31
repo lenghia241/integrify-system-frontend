@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
-import getClassAttendance from '../../store/actions/classAttendanceActions';
+import { getClassAttendance as getClassAttendanceAction } from '../../store/actions';
 
 import { getId } from '../../store/reducers/index';
 
@@ -29,8 +29,8 @@ class Attendance extends Component {
   }
 
   async componentDidMount() {
-    const { userId } = this.props;
-    console.log('test');
+    const { userId, getClassAttendance } = this.props;
+    getClassAttendance();
     const res = await axios.get('/api/v1/attendance/history');
     const filteredData = this.studentAttendanceDataFilter(
       res.data,
@@ -85,7 +85,7 @@ class Attendance extends Component {
 
   render() {
     const { classHistoryData, loading, classHistoryDataMock } = this.state;
-    getClassAttendance();
+    // getClassAttendance(); // => this.props.getClassAttendance(); Cai nay no dung de test thoi
     const content = (
       <PageTemplate heading="Attendance">
         <div className="Attendance">
@@ -124,5 +124,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getClassAttendance },
+  { getClassAttendance: getClassAttendanceAction },
 )(Attendance);
