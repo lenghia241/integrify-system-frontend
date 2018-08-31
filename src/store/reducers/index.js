@@ -3,6 +3,7 @@ import { reducer as reduxForm } from 'redux-form';
 import authReducer from './authReducer';
 import attendanceReducer from './attendanceReducer';
 import dashboardReducer from './dashboardReducer';
+import assignmentFormReducer from './assignmentFormReducer';
 import profileReducer from './profileReducer';
 
 export default combineReducers({
@@ -10,6 +11,7 @@ export default combineReducers({
   profile: profileReducer,
   auth: authReducer,
   attendance: attendanceReducer,
+  assignment: assignmentFormReducer,
   dashboard: dashboardReducer,
 });
 
