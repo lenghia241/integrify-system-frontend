@@ -1,21 +1,21 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Field } from 'redux-form';
-import renderField from '../../../../utils/RenderField';
+import renderField from '../../../renderField';
 
-const renderMethodsAndTools = ({ fields, meta: { error } }) => (
+const renderCompetencies = ({ fields, meta: { error } }) => (
   <ul>
     <li>
       <button
-        type="button"
         className="btn-add waves-effect waves-light btn"
+        type="button"
         onClick={() => fields.push()}
       >
-        Add Methods and Tools
+        Add Competence
       </button>
     </li>
-    {fields.map((tool, index) => (
-      <li key={`${index + 1}`}>
+    {fields.map((competence, index) => (
+      <li key={`${competence}`}>
         <button
           type="button"
           className="btn-add waves-effect waves-light red btn"
@@ -23,23 +23,28 @@ const renderMethodsAndTools = ({ fields, meta: { error } }) => (
         >
           Remove
         </button>
-        <Field name={tool} type="text" component={renderField} label={`Tool #${index + 1}`} />
+        <Field
+          name={competence}
+          type="text"
+          component={renderField}
+          label={`Competence #${index + 1}`}
+        />
       </li>
     ))}
     {error && <li className="error">{error}</li>}
   </ul>
 );
 
-renderMethodsAndTools.propTypes = {
+renderCompetencies.propTypes = {
   fields: PropTypes.shape({}),
   meta: PropTypes.shape({
     error: PropTypes.string,
   }),
 };
 
-renderMethodsAndTools.defaultProps = {
+renderCompetencies.defaultProps = {
   fields: {},
   meta: {},
 };
 
-export default renderMethodsAndTools;
+export default renderCompetencies;

@@ -12,7 +12,7 @@ const initState = {
   loading: false,
   authErrors: null,
   signUpErrors: null,
-  token: null,
+  user: null,
   signUpMsg: '',
 };
 
@@ -32,7 +32,7 @@ export default function (state = initState, action) {
     case AUTH_USER_SUCCESS:
       return {
         ...state,
-        token: action.payload,
+        user: action.payload,
         loading: false,
         authErrors: null,
         signUpErrors: null,
