@@ -15,15 +15,15 @@ export default class Attendance extends Component {
   constructor() {
     super();
     this.state = {
-      classHistoryData: {},
+      classHistoryData: [],
       loading: true,
-      classHistoryDataMock: this.dataFilter(fiveDayData, '5b7ab1952cc5b5a552cfda72'),
+      classHistoryDataMock: this.studentAttendanceDataFilter(fiveDayData, '5b7ab1952cc5b5a552cfda72'),
     };
   }
 
   async componentDidMount() {
     const res = await axios.get('/api/v1/attendance/history');
-    const filteredData = this.dataFilter(res.data, '5b7ab1952cc5b5a552cfda72');
+    const filteredData = this.studentAttendanceDataFilter(res.data, '5b7ab1952cc5b5a552cfda72');
     this.setState({
       classHistoryData: filteredData,
       loading: false,
@@ -33,7 +33,7 @@ export default class Attendance extends Component {
   // Takes date and returns week of the year.
   getWeek = date => dayjs(date).week();
 
-  dataFilter = (json, id) => {
+  studentAttendanceDataFilter = (json, id) => {
     const list = [];
     let numId = 0;
     json.forEach((day) => {
