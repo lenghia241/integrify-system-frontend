@@ -18,7 +18,10 @@ const DashboardComponent = ({ heading, children, link }) => (
 DashboardComponent.propTypes = {
   heading: PropTypes.string.isRequired,
   children: PropTypes.element.isRequired,
-  link: PropTypes.string.isRequired,
+  link: PropTypes.string,
+};
+DashboardComponent.defaultProps = {
+  link: '',
 };
 
 export default DashboardComponent;
