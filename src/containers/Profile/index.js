@@ -1,8 +1,8 @@
 import React from 'react';
-import ProfileComponent from '../../components/Profile/ProfileComponent';
+import ProfileComponent from '../../components/Profile/ProfileComponent/ProfileComponent';
 import PageTemplate from '../../components/PageTemplate';
-import ProfileFormMain from './ProfileForm/ProfileFormMain';
-import './ProfileStyles/Profile.css';
+import ProfileFormMain from '../../components/Profile/ProfileForm/ProfileFormMain';
+import './Profile.css';
 
 const Profile = () => {
   const ProfileComponents = [{ heading: 'Profile Form', componentBody: <ProfileFormMain /> }];

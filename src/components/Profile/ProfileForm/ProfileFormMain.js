@@ -28,7 +28,7 @@ class ProfileFormMain extends Component {
       { label: 'Examples of Work', Component: ProfileFormExamplesOfWork },
       { label: 'Experience', Component: ProfileFormWorkExperience },
       { label: 'Languages', Component: ProfileFormLanguages },
-      { label: 'Summary', Component: Summary },
+      // { label: 'Summary', Component: Summary },
     ];
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
@@ -63,7 +63,7 @@ class ProfileFormMain extends Component {
             <button
               className="profile-tab active"
               type="button"
-              key={`${i + 1}`}
+              key={`${form.label}`}
               onClick={() => this.setState({ page: i })}
             >
               {form.label}
