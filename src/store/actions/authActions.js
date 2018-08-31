@@ -20,8 +20,8 @@ export const authUserSuccess = token => ({
   payload: token,
 });
 
-export const fetchUser = userId => async (dispatch) => {
-  const res = await axios.get(`/api/v2/users/${userId}`);
+export const fetchUser = () => async (dispatch) => {
+  const res = await axios.get('/api/v2/users/');
 
   dispatch({
     type: FETCH_USER,
