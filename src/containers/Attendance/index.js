@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 import dayjs from 'dayjs';
@@ -6,12 +7,14 @@ import weekOfYear from 'dayjs/plugin/weekOfYear';
 import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
 
+import getId from '../../store/reducers/index';
+
 import fiveDayData from './mock-data/fiveDayData.json';
 import ChartClassPresence from '../../components/ChartClassPresence';
 
 dayjs.extend(weekOfYear);
 
-export default class Attendance extends Component {
+class Attendance extends Component {
   constructor() {
     super();
     this.state = {
@@ -75,6 +78,7 @@ export default class Attendance extends Component {
     const { classHistoryData, loading, classHistoryDataMock } = this.state;
     const content = (
       <PageTemplate heading="Attendance">
+        {console.log(this.state)}
         <div className="Attendance">
           {/* Render graphs only when loading of data is complete. */}
           {loading
@@ -102,3 +106,10 @@ export default class Attendance extends Component {
     return content;
   }
 }
+
+
+const mapStateToProps = state => ({
+  userId: getId(state),
+});
+
+export default connect(mapStateToProps)(Attendance);
