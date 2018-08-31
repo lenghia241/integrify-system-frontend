@@ -60,6 +60,7 @@ export default function (state = initState, action) {
       return {
         ...state,
         token: null,
+        user: null,
       };
 
     default:
