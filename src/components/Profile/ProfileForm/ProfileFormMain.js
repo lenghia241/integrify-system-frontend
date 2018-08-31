@@ -29,8 +29,8 @@ class ProfileFormMain extends Component {
       { label: 'Examples of Work', Component: ProfileFormExamplesOfWork },
       { label: 'Experience', Component: ProfileFormWorkExperience },
       { label: 'Languages', Component: ProfileFormLanguages },
-      { label: 'Summary', Component: Summary },
-      { label: 'CV', Component: ProfileCv },
+      // { label: 'Summary', Component: Summary },
+      { label: 'Cv', Component: ProfileCv },
     ];
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
@@ -38,7 +38,7 @@ class ProfileFormMain extends Component {
 
   componentDidMount() {
     const { fetchUserProfile } = this.props;
-    fetchUserProfile();
+    fetchUserProfile('5b7ab1957c9b3c63007d5c8c');
   }
 
   nextPage() {
@@ -65,7 +65,7 @@ class ProfileFormMain extends Component {
             <button
               className="profile-tab active"
               type="button"
-              key={`${i + 1}`}
+              key={`${form.label}`}
               onClick={() => this.setState({ page: i })}
             >
               {form.label}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
-import renderField from '../../../utils/RenderField';
+import renderField from '../../renderField';
 import validate from '../../../utils/validate';
 
 const ProfileFormPhotoBio = (props) => {
