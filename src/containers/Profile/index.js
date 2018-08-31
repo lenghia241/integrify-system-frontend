@@ -16,8 +16,8 @@ const Profile = () => {
   ));
   return (
     <PageTemplate heading="Profile">
-      <div className="Profile">{renderComponents}</div>
-      <div>
+      <div className="Profile">
+        {renderComponents}
         <AssignmentMain />
       </div>
     </PageTemplate>
