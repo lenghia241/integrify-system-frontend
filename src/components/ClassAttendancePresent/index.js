@@ -5,8 +5,8 @@ import {
 import PropTypes from 'prop-types';
 import './index.css';
 
-const ClassAttendanceWasPresent = (props) => {
-  const { data, attendanceColorStyle } = props;
+const ClassAttendancePresent = (props) => {
+  const { data } = props;
 
   return (
     <BarChart width={600} height={300} data={data}
@@ -18,16 +18,15 @@ const ClassAttendanceWasPresent = (props) => {
       <YAxis/>
       <Tooltip/>
       <Legend />
-      <Bar dataKey="partial" stackId="a" fill="#ffbf00" />
       <Bar dataKey="full" stackId="a" fill="#00ff00" />
+      <Bar dataKey="partial" stackId="a" fill="#ffbf00" />
     </BarChart>
   );
 };
 
 
-ClassAttendanceWasPresent.propTypes = {
+ClassAttendancePresent.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  attendanceColorStyle: PropTypes.func.isRequired,
 };
 
-export default ClassAttendanceWasPresent;
+export default ClassAttendancePresent;

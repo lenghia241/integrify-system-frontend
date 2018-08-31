@@ -5,7 +5,8 @@ import dayjs from 'dayjs';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
-import ClassAttendanceWasPresent from '../../components/ClassAttendanceWasPresent';
+import ClassAttendancePresent from '../../components/ClassAttendancePresent';
+import ClassAttendanceAbsent from '../../components/ClassAttendanceAbsent';
 import PageGrid from '../../components/PageGrid';
 
 import fiveDayData from './mock-data/fiveDayData.json';
@@ -18,6 +19,7 @@ export default class Attendance extends Component {
     super();
     this.state = {
       classHistoryData: {},
+      classWasPresentData: [],
       loading: true,
       classHistoryDataMock: this.dataFilter(fiveDayData, '5b7ab1952cc5b5a552cfda72'),
     };
@@ -25,9 +27,12 @@ export default class Attendance extends Component {
 
   async componentDidMount() {
     const res = await axios.get('/api/v1/attendance/history');
-    const filteredData = this.dataFilter(res.data, '5b7ab1952cc5b5a552cfda72');
+    const filteredData = this.dataFilter(res.data, '5b7c5ade5f49453eecccf351');
+    console.log('filteredData', filteredData);
+    const classWasPresentData = this.classAttendanceFilter(classHistory);
     this.setState({
       classHistoryData: filteredData,
+      classWasPresentData,
       loading: false,
     });
   }
@@ -49,11 +54,10 @@ export default class Attendance extends Component {
         }
       });
       newArray.push({
-        name: date.date, partial, full, absent, id: numId,
+        name: date.date, full, partial, absent, id: numId,
       });
       numId += 1;
     });
-    console.log('newArray', newArray);
     return newArray.reverse();
   }
 
@@ -96,8 +100,11 @@ export default class Attendance extends Component {
   };
 
   render() {
-    const { classHistoryData, loading, classHistoryDataMock } = this.state;
-    const content = loading || [<StudentAttendance
+    const {
+      classHistoryData, classWasPresentData, loading, classHistoryDataMock,
+    } = this.state;
+    const content = loading || [
+      <StudentAttendance
           key="attendance0"
           data={classHistoryDataMock}
           week={this.getWeek(classHistoryDataMock[0].date)}
@@ -111,24 +118,15 @@ export default class Attendance extends Component {
         loading={loading}
         attendanceColorStyle={this.attendanceColorStyle}
       />,
-      <StudentAttendance
-          key="attendance2"
-          data={classHistoryDataMock}
-          week={this.getWeek(classHistoryDataMock[0].date)}
-          loading={loading}
-          attendanceColorStyle={this.attendanceColorStyle}
-        />,
-      <StudentAttendance
-        key="attendance3"
-        data={classHistoryData}
-        week={this.getWeek(classHistoryData[0].date)}
-        loading={loading}
-        attendanceColorStyle={this.attendanceColorStyle}
+      <ClassAttendancePresent
+        key="attendance2"
+        data={classWasPresentData}
       />,
-      <ClassAttendanceWasPresent data={this.classAttendanceFilter(classHistory)} attendanceColorStyle={this.attendanceColorStyle}/>,
+      <ClassAttendanceAbsent
+      key="attendance3"
+      data={classWasPresentData}
+      />,
     ];
-
-    this.classAttendanceFilter(classHistory);
 
     return (
       <PageTemplate heading="Attendance">
