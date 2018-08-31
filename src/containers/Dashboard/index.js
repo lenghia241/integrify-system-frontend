@@ -9,7 +9,7 @@ import './Dashboard.css';
 const Dashboard = () => {
   const DashboardComponents = [
     { heading: 'Study-Sync/Lectures', componentBody: <StudySync />, link: '/studySync' },
-    { heading: 'Event Panel', componentBody: <EventPanel /> },
+    { heading: 'Event Panel', componentBody: <EventPanel />, link: '/eventPanel' },
     { heading: 'Assignments', componentBody: <Assignments /> },
     { heading: 'Notification ', componentBody: <div>Notification</div> },
   ];

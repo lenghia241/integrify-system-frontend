@@ -14,6 +14,7 @@ import * as actions from './store/actions/index';
 import { getAuth } from './store/reducers';
 import StudySyncDetail from './components/Dashboard/StudySync/StudySyncDetail';
 import AddStudySync from './components/Dashboard/StudySync/AddStudySync';
+import EventPanelDetailed from './components/Dashboard/EventPanel/EventPanelDetailed';
 
 class App extends Component {
   componentDidMount() {
@@ -30,6 +31,7 @@ class App extends Component {
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/studySync" render={() => <StudySyncDetail />} />
         <Route exact path="/addStudySync" render={() => <AddStudySync />} />
+        <Route exact path="/eventPanel" render ={() => <EventPanelDetailed/> } />
         <Route exact path="/" component={Dashboard} />
       </Switch>
     ) : (
