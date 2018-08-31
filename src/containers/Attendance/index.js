@@ -28,7 +28,6 @@ export default class Attendance extends Component {
   async componentDidMount() {
     const res = await axios.get('/api/v1/attendance/history');
     const filteredData = this.dataFilter(res.data, '5b7c5ade5f49453eecccf351');
-    console.log('filteredData', filteredData);
     const classWasPresentData = this.classAttendanceFilter(classHistory);
     this.setState({
       classHistoryData: filteredData,
@@ -54,7 +53,7 @@ export default class Attendance extends Component {
         }
       });
       newArray.push({
-        name: date.date, full, partial, absent, id: numId,
+        name: date.date, dateDisplay: dayjs(date.date).format('ddd D MMM'), full, partial, absent, id: numId,
       });
       numId += 1;
     });
