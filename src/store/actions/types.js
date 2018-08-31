@@ -20,3 +20,6 @@ export const FETCH_STUDYSYNC = 'FETCH_STUDYSYNC';
 export const GET_EVENT_LIST = 'GET_EVENT_LIST';
 export const FETCH_ASSIGNMENT = 'FETCH_ASSIGNMENT';
 export const LOG_OUT = 'LOG_OUT';
+
+// action types for class charts
+export const GET_CLASS_ATTENDANCE = 'GET_CLASS_ATTENDANCE';
