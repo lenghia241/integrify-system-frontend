@@ -25,8 +25,9 @@ class Attendance extends Component {
   }
 
   async componentDidMount() {
+    const { userId } = this.props;
     const res = await axios.get('/api/v1/attendance/history');
-    const filteredData = this.studentAttendanceDataFilter(res.data, '5b7ab1952cc5b5a552cfda72');
+    const filteredData = this.studentAttendanceDataFilter(res.data, userId || '5b7c5ade5f49453eecccf351');
     this.setState({
       classHistoryData: filteredData,
       loading: false,
@@ -78,7 +79,7 @@ class Attendance extends Component {
     const { classHistoryData, loading, classHistoryDataMock } = this.state;
     const content = (
       <PageTemplate heading="Attendance">
-        {console.log(this.state)}
+        {console.log('this.props: ', this.props)}
         <div className="Attendance">
           {/* Render graphs only when loading of data is complete. */}
           {loading
