@@ -22,11 +22,35 @@ export default class Attendance extends Component {
   }
 
   async componentDidMount() {
-    const res = await axios.get('/api/attendance/history');
+    const res = await axios.get('/api/v1/attendance/history');
     const filteredData = this.dataFilter(res.data, '5b7ab1952cc5b5a552cfda72');
     this.setState({
       classHistoryData: filteredData,
       loading: false,
+    });
+  }
+
+  const data = [
+    {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
+    {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
+    {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
+    {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
+    {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
+    {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
+    {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
+  ];
+
+  classAttendanceFilter = (data) => {
+    const newArray = [];    
+    data.map((date) => {
+      const partial = 0;
+      const full = 0;
+      if (date.attendanceData.attendance === 'full') {
+        full++;
+      } else if (date.attendanceData.attendance === 'partial') {
+        partial++;
+      }
+      newArray.push({ name: date.date, partial, full });
     });
   }
 
