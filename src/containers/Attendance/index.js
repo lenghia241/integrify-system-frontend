@@ -7,7 +7,7 @@ import weekOfYear from 'dayjs/plugin/weekOfYear';
 import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
 
-import getId from '../../store/reducers/index';
+import { getId } from '../../store/reducers/index';
 
 import fiveDayData from './mock-data/fiveDayData.json';
 import ChartClassPresence from '../../components/ChartClassPresence';
