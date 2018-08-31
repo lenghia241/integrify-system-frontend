@@ -5,9 +5,11 @@ import dayjs from 'dayjs';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
+import ClassAttendanceWasPresent from '../../components/ClassAttendanceWasPresent';
 import PageGrid from '../../components/PageGrid';
 
 import fiveDayData from './mock-data/fiveDayData.json';
+import classHistory from './mock-data/classHistory.json';
 
 dayjs.extend(weekOfYear);
 
@@ -30,28 +32,29 @@ export default class Attendance extends Component {
     });
   }
 
-  const data = [
-    {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
-    {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
-    {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
-    {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
-    {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
-    {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
-    {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
-  ];
-
   classAttendanceFilter = (data) => {
-    const newArray = [];    
+    const newArray = [];
     data.map((date) => {
-      const partial = 0;
-      const full = 0;
-      if (date.attendanceData.attendance === 'full') {
-        full++;
-      } else if (date.attendanceData.attendance === 'partial') {
-        partial++;
-      }
-      newArray.push({ name: date.date, partial, full });
+      let partial = 0;
+      let full = 0;
+      let absent = 0;
+      let numId = 0;
+      date.attendanceData.forEach((person) => {
+        if (person.attendance === 'full') {
+          full += 1;
+        } else if (person.attendance === 'partial') {
+          partial += 1;
+        } else {
+          absent += 1;
+        }
+      });
+      newArray.push({
+        name: date.date, partial, full, absent, id: numId,
+      });
+      numId += 1;
     });
+    console.log('newArray', newArray);
+    return newArray.reverse();
   }
 
   // Takes date and returns week of the year.
@@ -122,7 +125,11 @@ export default class Attendance extends Component {
         loading={loading}
         attendanceColorStyle={this.attendanceColorStyle}
       />,
+      <ClassAttendanceWasPresent data={this.classAttendanceFilter(classHistory)} attendanceColorStyle={this.attendanceColorStyle}/>,
     ];
+
+    this.classAttendanceFilter(classHistory);
+
     return (
       <PageTemplate heading="Attendance">
         <PageGrid content={loading ? null : content}/>

@@ -24,13 +24,13 @@ class App extends Component {
   render() {
     const { token } = this.props;
 
-    const routes = !token ? (
+    const routes = token ? (
       <Switch>
         <Route exact path="/attendance" component={Attendance} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/studySync" render={() => <StudySyncDetail />} />
         <Route exact path="/addStudySync" render={() => <AddStudySync />} />
-        {/*<Route exact path="/" component={Dashboard} /> */}
+        <Route exact path="/" component={Dashboard} />
       </Switch>
     ) : (
       <Switch>
