@@ -14,8 +14,6 @@ import ProfileFormWorkExperience from './ProfileFormWorkExperience';
 import ProfileFormLanguages from './ProfileFormLanguages';
 import ProfileFormSkills from './ProfileFormSkills';
 
-import Summary from '../SummaryPage/SummaryPage';
-
 import '../ProfileStyles/Forms.css';
 
 class ProfileFormMain extends Component {
@@ -68,7 +66,8 @@ class ProfileFormMain extends Component {
               className="profile-tab active"
               type="button"
               key={`${form.label}`}
-              onClick={() => this.setState({ page: i })}>
+              onClick={() => this.setState({ page: i })}
+            >
               {form.label}
             </button>
           ))}
