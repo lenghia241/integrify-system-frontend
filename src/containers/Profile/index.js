@@ -1,8 +1,11 @@
 import React from 'react';
-import ProfileComponent from '../../components/Profile/ProfileComponent';
+
+import ProfileComponent from '../../components/Profile/ProfileComponent/ProfileComponent';
 import PageTemplate from '../../components/PageTemplate';
-import ProfileFormMain from './ProfileForm/ProfileFormMain';
-import './ProfileStyles/Profile.css';
+import ProfileFormMain from '../../components/Profile/ProfileForm/ProfileFormMain';
+import AssignmentMain from './AssignmentForm/AssignmentMain';
+
+import './Profile.css';
 
 const Profile = () => {
   const ProfileComponents = [{ heading: 'Profile Form', componentBody: <ProfileFormMain /> }];
@@ -13,7 +16,10 @@ const Profile = () => {
   ));
   return (
     <PageTemplate heading="Profile">
-      <div className="Profile">{renderComponents}</div>
+      <div className="Profile">
+        {renderComponents}
+        <AssignmentMain />
+      </div>
     </PageTemplate>
   );
 };

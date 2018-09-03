@@ -1,24 +1,21 @@
 import React from 'react';
 import { FieldArray, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
 import { PropTypes } from 'prop-types';
-import renderSkills from './render/RenderSkills';
+
+import renderLanguages from './render/RenderLanguages';
 import validate from '../../../utils/validate';
 
-const ProfileFormSkills = (props) => {
-  const { handleSubmit, previousPage, nextPage } = props;
+const ProfileFormLanguages = (props) => {
+  const { handleSubmit, previousPage } = props;
   return (
     <form onSubmit={handleSubmit} className="form-body">
-      <FieldArray name="skills" component={renderSkills} />
+      <FieldArray name="languages" component={renderLanguages} />
       <div className="buttons">
         <button
           type="button"
           className="btn-previous waves-effect waves-light btn"
-          onClick={previousPage}
-        >
+          onClick={previousPage}>
           Previous
-        </button>
-        <button type="submit" className="btn-next waves-effect waves-light btn" onClick={nextPage}>
-          Next
         </button>
         <button type="submit" className="btn-submit waves-effect waves-light btn">
           Save
@@ -29,7 +26,7 @@ const ProfileFormSkills = (props) => {
   );
 };
 
-ProfileFormSkills.propTypes = {
+ProfileFormLanguages.propTypes = {
   ...reduxFormPropTypes,
   previousPage: PropTypes.func.isRequired,
   nextPage: PropTypes.func.isRequired,
@@ -40,4 +37,4 @@ export default reduxForm({
   destroyOnUnmount: false, // <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   validate,
-})(ProfileFormSkills);
+})(ProfileFormLanguages);

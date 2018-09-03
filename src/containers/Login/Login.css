@@ -47,7 +47,8 @@
   background: none;
 }
 
-.btn, .btn:focus {
+.btn,
+.btn:focus {
   background: var(--primary-dark);
 }
 

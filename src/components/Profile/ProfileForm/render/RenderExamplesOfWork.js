@@ -1,21 +1,21 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Field } from 'redux-form';
-import renderField from '../../../../utils/RenderField';
+import renderField from '../../../renderField';
 
-const renderCompetencies = ({ fields, meta: { error } }) => (
+const renderExamplesOfWork = ({ fields, meta: { error } }) => (
   <ul>
     <li>
       <button
-        className="btn-add waves-effect waves-light btn"
         type="button"
+        className="btn-add waves-effect waves-light btn"
         onClick={() => fields.push()}
       >
-        Add Competence
+        Add Examples of Work
       </button>
     </li>
-    {fields.map((competence, index) => (
-      <li key={`${index + 1}`}>
+    {fields.map((work, index) => (
+      <li key={`${work}`}>
         <button
           type="button"
           className="btn-add waves-effect waves-light red btn"
@@ -24,10 +24,16 @@ const renderCompetencies = ({ fields, meta: { error } }) => (
           Remove
         </button>
         <Field
-          name={competence}
+          name={`${work}.title`}
           type="text"
           component={renderField}
-          label={`Competence #${index + 1}`}
+          label={`Title #${index + 1}`}
+        />
+        <Field
+          name={`${work}.github`}
+          type="text"
+          component={renderField}
+          label={`Github link #${index + 1}`}
         />
       </li>
     ))}
@@ -35,16 +41,16 @@ const renderCompetencies = ({ fields, meta: { error } }) => (
   </ul>
 );
 
-renderCompetencies.propTypes = {
+renderExamplesOfWork.propTypes = {
   fields: PropTypes.shape({}),
   meta: PropTypes.shape({
     error: PropTypes.string,
   }),
 };
 
-renderCompetencies.defaultProps = {
+renderExamplesOfWork.defaultProps = {
   fields: {},
   meta: {},
 };
 
-export default renderCompetencies;
+export default renderExamplesOfWork;

@@ -1,21 +1,20 @@
 import React from 'react';
 import { FieldArray, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
 import { PropTypes } from 'prop-types';
-import renderCompetencies from './render/RenderCompetencies';
-import validate from '../../../utils/validate';
-import '../ProfileStyles/Forms.css';
 
-const ProfileFormCompetencies = (props) => {
+import renderSkills from './render/RenderSkills';
+import validate from '../../../utils/validate';
+
+const ProfileFormSkills = (props) => {
   const { handleSubmit, previousPage, nextPage } = props;
   return (
     <form onSubmit={handleSubmit} className="form-body">
-      <FieldArray name="competences" component={renderCompetencies} />
+      <FieldArray name="skills" component={renderSkills} />
       <div className="buttons">
         <button
           type="button"
           className="btn-previous waves-effect waves-light btn"
-          onClick={previousPage}
-        >
+          onClick={previousPage}>
           Previous
         </button>
         <button type="submit" className="btn-next waves-effect waves-light btn" onClick={nextPage}>
@@ -30,7 +29,7 @@ const ProfileFormCompetencies = (props) => {
   );
 };
 
-ProfileFormCompetencies.propTypes = {
+ProfileFormSkills.propTypes = {
   ...reduxFormPropTypes,
   previousPage: PropTypes.func.isRequired,
   nextPage: PropTypes.func.isRequired,
@@ -41,4 +40,4 @@ export default reduxForm({
   destroyOnUnmount: false, // <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   validate,
-})(ProfileFormCompetencies);
+})(ProfileFormSkills);
