@@ -33,13 +33,15 @@ class Aside extends Component {
           <i className="material-icons z-depth-1-half">menu</i>
         </div>
         <div id="slide-out" className="sidenav sidenav-fixed">
-          <img
-            src="https://s3.eu-west-2.amazonaws.com/integrify-system-assets/logo-white.png"
-            alt="integrify-logo"
-            className="logo"
-          />
-          <div className="user-info center" href="#user">
-            <i className="material-icons right notificatio-bell">notifications</i>
+          <div className="background">
+            <img
+              src="https://s3.eu-west-2.amazonaws.com/integrify-system-assets/logo-white.png"
+              alt="integrify-logo"
+              className="logo"
+            />
+          </div>
+          <div className="user-info center">
+            <i className="material-icons right">notifications</i>
             <Link to="/profile" className="user-photo">
               <img
                 className="circle"

@@ -5,4 +5,5 @@ const StudySyncDetail = () => (
     <div>hello from studysync detail</div>
   </div>
 );
+
 export default StudySyncDetail;

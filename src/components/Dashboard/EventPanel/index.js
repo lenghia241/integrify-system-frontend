@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
+import '../../../App.css';
 import './index.css';
 
 import { getEventList as getEventsListAction } from '../../../store/actions';

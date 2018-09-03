@@ -66,7 +66,8 @@ class ProfileFormMain extends Component {
               className="profile-tab active"
               type="button"
               key={`${form.label}`}
-              onClick={() => this.setState({ page: i })}>
+              onClick={() => this.setState({ page: i })}
+            >
               {form.label}
             </button>
           ))}
