@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import './index.css';
 
-const ClassAttendancePresent = (props) => {
+const ClassAttendanceMixed = (props) => {
   const { data } = props;
 
   return (
@@ -21,13 +21,14 @@ const ClassAttendancePresent = (props) => {
       <Brush dataKey="dateDisplay" height={20} stroke="#8884d8" />
       <Bar dataKey="full" stackId="a" fill="#00ff00" />
       <Bar dataKey="partial" stackId="a" fill="#ffbf00" />
+      <Bar dataKey="absent" fill="#ff0000" />
     </BarChart>
   );
 };
 
 
-ClassAttendancePresent.propTypes = {
+ClassAttendanceMixed.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
-export default ClassAttendancePresent;
+export default ClassAttendanceMixed;

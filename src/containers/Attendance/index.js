@@ -7,6 +7,7 @@ import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
 import ClassAttendancePresent from '../../components/ClassAttendancePresent';
 import ClassAttendanceAbsent from '../../components/ClassAttendanceAbsent';
+import ClassAttendanceMixed from '../../components/ClassAttendanceMixed';
 import PageGrid from '../../components/PageGrid';
 
 import fiveDayData from './mock-data/fiveDayData.json';
@@ -123,6 +124,10 @@ export default class Attendance extends Component {
       />,
       <ClassAttendanceAbsent
       key="attendance3"
+      data={classWasPresentData}
+    />,
+      <ClassAttendanceMixed
+      key="attendance4"
       data={classWasPresentData}
       />,
     ];

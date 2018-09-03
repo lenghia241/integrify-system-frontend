@@ -5,12 +5,12 @@
   grid-gap: 2vw;
   padding: 0 20px;
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 @media screen and (max-width: 992px) {
   .PageGrid {
     grid-template-columns: 1fr;
     grid-auto-rows: 50%;
-    overflow-x: hidden;
-    overflow-y: scroll;
   }
 }
