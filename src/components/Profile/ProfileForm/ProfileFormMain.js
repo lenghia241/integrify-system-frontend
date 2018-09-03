@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import { fetchUserProfileAction } from '../../../store/actions/index';
+import { getProfile, getId } from '../../../store/reducers';
+
 import ProfileFormPhotoBio from './ProfileFormPhotoBio';
 import ProfileFormCompetencies from './ProfileFormCompetencies';
 import ProfileFormMethodsAndTools from './ProfileFormMethodsAndTools';
@@ -10,7 +13,7 @@ import ProfileFormExamplesOfWork from './ProfileFormExamplesOfWork';
 import ProfileFormWorkExperience from './ProfileFormWorkExperience';
 import ProfileFormLanguages from './ProfileFormLanguages';
 import ProfileFormSkills from './ProfileFormSkills';
-import Summary from '../SummaryPage/SummaryPage';
+
 import '../ProfileStyles/Forms.css';
 
 class ProfileFormMain extends Component {
@@ -28,15 +31,14 @@ class ProfileFormMain extends Component {
       { label: 'Examples of Work', Component: ProfileFormExamplesOfWork },
       { label: 'Experience', Component: ProfileFormWorkExperience },
       { label: 'Languages', Component: ProfileFormLanguages },
-      // { label: 'Summary', Component: Summary },
     ];
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
   }
 
   componentDidMount() {
-    const { fetchUserProfile } = this.props;
-    fetchUserProfile();
+    const { fetchUserProfile, userId } = this.props;
+    fetchUserProfile(userId);
   }
 
   nextPage() {
@@ -64,8 +66,7 @@ class ProfileFormMain extends Component {
               className="profile-tab active"
               type="button"
               key={`${form.label}`}
-              onClick={() => this.setState({ page: i })}
-            >
+              onClick={() => this.setState({ page: i })}>
               {form.label}
             </button>
           ))}
@@ -84,6 +85,7 @@ class ProfileFormMain extends Component {
 ProfileFormMain.propTypes = {
   fetchUserProfile: PropTypes.func.isRequired,
   profile: PropTypes.shape({}),
+  userId: PropTypes.string.isRequired,
 };
 
 ProfileFormMain.defaultProps = {
@@ -91,7 +93,8 @@ ProfileFormMain.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile,
+  profile: getProfile(state),
+  userId: getId(state),
 });
 
 export default connect(

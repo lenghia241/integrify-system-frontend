@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {
-  FETCH_USER,
   AUTH_USER_SUCCESS,
   SIGN_UP_USER_SUCCESS,
   AUTH_USER_FAIL,
@@ -8,8 +7,6 @@ import {
   START_FETCHING,
   LOG_OUT,
 } from './types';
-
-import { getCookie, parseJwt } from '../../utils';
 
 export const startFetching = () => ({
   type: START_FETCHING,
@@ -19,15 +16,6 @@ export const authUserSuccess = token => ({
   type: AUTH_USER_SUCCESS,
   payload: token,
 });
-
-export const fetchUser = userId => async (dispatch) => {
-  const res = await axios.get(`/api/v2/users/${userId}`);
-
-  dispatch({
-    type: FETCH_USER,
-    payload: res.data,
-  });
-};
 
 export const authUser = values => async (dispatch) => {
   dispatch(startFetching());
@@ -69,9 +57,12 @@ export const logOut = () => async (dispatch) => {
 };
 
 export const checkUser = () => async (dispatch) => {
-  const token = getCookie('jwt_token');
-  if (token) {
-    const decodeToken = parseJwt(token);
-    dispatch(authUserSuccess(decodeToken));
+  dispatch(startFetching());
+  try {
+    const res = await axios.get('/api/v2/users/');
+
+    dispatch(authUserSuccess(res.data));
+  } catch (err) {
+    dispatch(logOut());
   }
 };

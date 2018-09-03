@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
 import dayjs from 'dayjs';
+
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
@@ -16,8 +16,8 @@ import classHistory from './mock-data/classHistory.json';
 dayjs.extend(weekOfYear);
 
 export default class Attendance extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       classHistoryData: {},
       classWasPresentData: [],
