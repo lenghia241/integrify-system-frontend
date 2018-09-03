@@ -11,8 +11,8 @@ import fiveDayData from './mock-data/fiveDayData.json';
 dayjs.extend(weekOfYear);
 
 export default class Attendance extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       classHistoryData: {},
       loading: true,
