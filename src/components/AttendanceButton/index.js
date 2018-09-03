@@ -7,13 +7,13 @@ import './index.css';
 
 class AttendanceButton extends Component {
   componentDidMount() {
-    const { getAttendance } = this.props;
-    getAttendance('5b7c5ade5f49453eecccf351');
+    const { getAttendance, id } = this.props;
+    getAttendance(id);
   }
 
   handleClick = () => {
-    const { updateAttendance } = this.props;
-    updateAttendance('5b7c5ade5f49453eecccf351');
+    const { updateAttendance, id } = this.props;
+    updateAttendance(id);
   };
 
   render() {
@@ -53,6 +53,7 @@ const mapStateToProps = state => ({
 AttendanceButton.propTypes = {
   attendance: PropTypes.shape({ students: PropTypes.shape({}), loading: PropTypes.bool })
     .isRequired,
+  id: PropTypes.string.isRequired,
   getAttendance: PropTypes.func.isRequired,
   updateAttendance: PropTypes.func.isRequired,
 };

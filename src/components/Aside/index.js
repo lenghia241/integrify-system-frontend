@@ -59,7 +59,7 @@ class Aside extends Component {
             <div className="user-name">Hello, {user.firstName}! </div>
           </div>
           <div className="user-status">
-            <AttendanceButton />
+            <AttendanceButton id={user.id}/>
           </div>
           <ul>{renderLinks}</ul>
           <div className="logout">
