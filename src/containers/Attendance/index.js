@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import dayjs from 'dayjs';
 
 import weekOfYear from 'dayjs/plugin/weekOfYear';
@@ -16,38 +16,33 @@ import ChartClassPresence from '../../components/ChartClassPresence';
 dayjs.extend(weekOfYear);
 
 class Attendance extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      classHistoryData: [],
+      // classHistoryData: {},
+      studentAttendanceData: [],
       loading: true,
       classHistoryDataMock: this.studentAttendanceDataFilter(
         fiveDayData,
         '5b7ab1952cc5b5a552cfda72',
       ),
-      classAttendanceTest: [],
     };
   }
 
   async componentDidMount() {
-    const { userId, fetchClassAttendance, classAttendance } = this.props;
+    const { fetchClassAttendance } = this.props;
     fetchClassAttendance();
-    const dataFromStore = classAttendance.class;
+  }
 
-    const res = await axios.get('/api/v1/attendance/history');
-    const filteredData = this.studentAttendanceDataFilter(
-      res.data,
-      userId || '5b7c5ade5f49453eecccf351',
-    );
-
-    console.log('props: ', this.props);
-    console.log('userId: ', userId);
-    console.log('state: ', this.state);
-    this.setState({
-      classHistoryData: filteredData,
-      loading: classAttendance.loading,
-      classAttendanceTest: dataFromStore,
-    });
+  componentDidUpdate(prevProps) {
+    const { classAttendance, userId } = this.props;
+    if (classAttendance.loading !== prevProps.classAttendance.loading) {
+      this.setState({
+        // classHistoryData: classAttendance,
+        studentAttendanceData: this.studentAttendanceDataFilter(classAttendance.class, userId),
+        loading: false,
+      });
+    }
   }
 
   // Takes date and returns week of the year.
@@ -92,16 +87,13 @@ class Attendance extends Component {
   };
 
   render() {
-    const { classHistoryData, loading, classHistoryDataMock } = this.state;
-    const { userId, classAttendance } = this.props;
+    const { loading, classHistoryDataMock, studentAttendanceData } = this.state;
 
-
-    // getClassAttendance(); // => this.props.getClassAttendance(); Cai nay no dung de test thoi
     const content = (
       <PageTemplate heading="Attendance">
         <div className="Attendance">
           {/* Render graphs only when loading of data is complete. */}
-          {classAttendance.loading || (
+          {loading || (
             <React.Fragment>
               <StudentAttendance
                 data={classHistoryDataMock}
@@ -110,8 +102,8 @@ class Attendance extends Component {
                 attendanceColorStyle={this.attendanceColorStyle}
               />
               <StudentAttendance
-                data={classHistoryData}
-                week={this.getWeek(classHistoryData[0].date)}
+                data={studentAttendanceData}
+                week={this.getWeek(studentAttendanceData[0].date)}
                 loading={loading}
                 attendanceColorStyle={this.attendanceColorStyle}
               />
@@ -133,6 +125,11 @@ const mapStateToProps = state => ({
   userId: getId(state),
   classAttendance: getClassAttendance(state),
 });
+
+Attendance.propTypes = {
+  userId: PropTypes.string.isRequired,
+  classAttendance: PropTypes.shape({}).isRequired,
+};
 
 export default connect(
   mapStateToProps,
