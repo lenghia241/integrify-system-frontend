@@ -1,72 +1,106 @@
-.background img {
-  width: 55%;
-  padding: 20px 32px 10px;
-}
-.sidenav div,
-.sidenav li span {
-  color: var(--on-dark);
-  line-height: 25px;
-  font-size: 1.3em;
-  font-weight: 200;
-}
-.sidenav .circle {
-  height: 130px;
-  width: 130px;
-}
-.sidenav .user-info {
-  background-color: var(--primary);
-  padding: 30px;
-}
-.sidenav,
-.background {
+.sidenav {
+  display: grid;
+  grid-template-areas:
+    "logo"
+    "user"
+    "checkout"
+    "links"
+    "logout";
+  grid-template-rows: 50px 210px 50px 1fr 50px;
   background-color: var(--secondary-dark);
+  width: 270px;
 }
-/* Notification bell in right upper corner */
-.sidenav .user-info i {
-  position: absolute;
-  right: 20px;
-}
+/* Style for text */
 .sidenav .user-name,
 .sidenav .user-check-status,
 .sidenav li a span,
-.sidenav .logout span {
+.sidenav .logout span,
+.switch label,
+.sidenav .collapsible-body li a span {
+  font-size: 1.2em;
+  font-weight: 300;
   font-variant: small-caps;
   text-transform: capitalize;
-}
-/* Switch for check in/out */
-.switch {
-  padding: 20px 0 10px 0;
-}
-.switch label {
-  display: flex;
-  padding: 0 20px;
-}
-/* Icons for nav-links */
-.sidenav li > a > #icons {
   color: var(--on-dark);
-  font-size: 2.2em;
 }
-.sidenav li > a:hover #icons,
-.sidenav .logout:hover .material-icons {
+/* Icons */
+.sidenav li > a > i,
+.sidenav li > a > [class^="mdi-"],
+.sidenav li > a li > a > [class*="mdi-"],
+.sidenav li > a > i.material-icons,
+.sidenav .logout i {
+  color: var(--on-dark);
+  font-size: 2em;
+  margin-right: 20px;
+}
+.sidenav li > a:hover > i.material-icons,
+.sidenav li > a:focus > i.material-icons {
   color: var(--primary);
 }
-/* Logout section */
+.sidenav .collapsible-header,
+.sidenav.fixed .collapsible-header,
+.sidenav li > a > i.material-icons {
+  line-height: auto;
+}
+/* Logo of Integrify*/
+.sidenav .background {
+  align-self: center;
+}
+.sidenav .logo {
+  grid-area: logo;
+  padding-left: 16px;
+  width: 40%;
+}
+/* Users info and photo */
+.sidenav .user-info {
+  grid-area: user;
+  display: grid;
+  grid-template-areas:
+    ". photo notification"
+    ". photo ."
+    "name name name";
+  grid-template-columns: 46px auto 1fr;
+  background-color: var(--primary);
+}
+/* Notifications */
+.sidenav .user-info i {
+  padding: 10px;
+  grid-area: notification;
+  margin: 0;
+  font-size: 1.8em;
+  color: var(--on-dark);
+}
+.sidenav .user-photo {
+  grid-area: photo;
+  align-self: center;
+}
+.sidenav .user-photo .circle {
+  width: 60%;
+  height: auto;
+}
+.sidenav .user-name {
+  grid-area: name;
+}
+/* Checkin / out button */
+.sidenav .user-status {
+  grid-area: checkout;
+  align-self: center;
+}
+/* Aside links */
+.sidenav .sidenav-links {
+  grid-area: links;
+}
+.sidenav .collapsible-body {
+  background-color: var(--secondary);
+  color: var(--on-dark);
+}
+/* Logout button */
 .sidenav .logout {
-  bottom: 55px;
-  position: fixed;
-  width: 100%;
-}
-.sidenav .logout a {
-  color: var(--on-dark);
-  padding: 15px 32px;
-  width: 100%;
-}
-.sidenav .logout .material-icons {
-  color: var(--on-dark);
-  margin: 0 32px 0 0;
-  font-size: 1.5em;
-  vertical-align: middle;
-  width: 22px;
+  grid-area: logout;
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  align-self: center;
+  padding: 10px 15px;
 }
 /* Navigation bar for hamburger menu */
 .sidenav-trigger i {
@@ -79,10 +113,16 @@
   border-radius: 50%;
   background: var(--primary);
   z-index: 2;
-  display:block;
+  display: block;
 }
 @media only screen and (min-width: 993px) {
   .sidenav-trigger i {
     display: none;
+  }
+}
+@media screen and (max-height: 320px) {
+  .sidenav .collapsible {
+    height: calc(100% - 400px);
+    overflow-y: auto;
   }
 }

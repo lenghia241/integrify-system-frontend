@@ -11,7 +11,6 @@ const ProfileFormPhotoBio = (props) => {
       <Field name="firstName" type="text" component={renderField} label="First Name" />
       <Field name="lastName" type="text" component={renderField} label="Last Name" />
       <Field name="bio" type="text" component={renderField} label="Bio" />
-      {/* <Field name="image" type="file" component={UploadImageInput} label="Last Name" /> */}
       <div className="buttons">
         <button type="button" className="btn-next waves-effect waves-light btn" onClick={nextPage}>
           Next
