@@ -54,7 +54,6 @@ class Aside extends Component {
           <div className="user-status">
             <AttendanceButton />
           </div>
-          {/* Dropdown menu content */}
           <Navigation navigationItems={navigationItems} className="collapsible" />
           <Link to="/" className="logout" onClick={logOut}>
             <i className="material-icons">power_settings_new</i>
