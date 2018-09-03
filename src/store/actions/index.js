@@ -1,23 +1,9 @@
-import axios from 'axios';
-import {
-  FETCH_USER, CHECK_IN, CHECK_OUT, LOG_OUT,
-} from './types';
+export {
+  checkUser, authUser, signUpUser, logOut,
+} from './authActions';
 
-export const fetchUser = () => dispatch => axios.get('https://integrify.network/users/5b7c5ade5f49453eecccf351').then((res) => {
-  dispatch({
-    type: FETCH_USER,
-    payload: res.data,
-  });
-});
+export {
+  getAssignmentsList, fetchStudySync, getEventList, getEvent,
+} from './dashboardActions';
 
-export const checkIn = () => ({
-  type: CHECK_IN,
-});
-
-export const checkOut = () => ({
-  type: CHECK_OUT,
-});
-
-export const logOut = () => ({
-  type: LOG_OUT,
-});
+export { default as fetchUserProfileAction } from './profileActions';

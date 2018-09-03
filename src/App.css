@@ -31,22 +31,112 @@
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
+
+.bold {
+  font-weight: 600;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
 .App {
-  display: grid;
   height: 100vh;
-  grid-template-columns: 300px 1fr;
-  grid-template-areas: 'App-Aside App-Body';
 }
+
+.App-body.login {
+  padding-left: 0;
+}
+
 .App-body {
-  grid-area: App-Body;
-  background-color: gray;
+  background-color: var(--background);
+  padding-left: 300px;
+  height: 100%;
 }
-.App-aside {
-  grid-area: App-Aside;
+
+@media only screen and (max-width: 992px) {
+  .App-body {
+    padding-left: 0;
+  }
 }
-@media only screen and (min-device-width: 892px) {
-  .App {
-    grid-template-columns: 1fr;
-    grid-template-areas: 'App-Body';
+time.icon {
+  font-size: 0.45em;
+  display: block;
+  position: relative;
+  width: 7em;
+  height: 7em;
+  background-color: var(--primary-light);
+  margin: 1em;
+  border-radius: 0.6em;
+  overflow: hidden;
+  transform-origin: 50% 10%;
+}
+
+time.icon * {
+  display: block;
+  width: 100%;
+  font-size: 0.5em;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+}
+
+time.icon strong {
+  position: absolute;
+  top: 0;
+  padding: 0.1vh;
+  color: var(--surface);
+  background-color: var(--secondary-light);
+  border-bottom: 1px dashed var(--secondary);
+  margin: 0;
+  font-size: 1.2vh;
+}
+
+time.icon span {
+  width: 100%;
+  font-size: 2.5em;
+  letter-spacing: -0.05em;
+  padding-top: 2vh;
+  color: var(--secondary-dark);
+}
+
+time.icon:hover,
+time.icon:focus {
+  -webkit-animation: swing 0.6s ease-out;
+  animation: swing 0.6s ease-out;
+}
+
+@-webkit-keyframes swing {
+  0% {
+    -webkit-transform: rotate(0deg) skewY(0deg);
+  }
+
+  20% {
+    -webkit-transform: rotate(12deg) skewY(4deg);
+  }
+
+  60% {
+    -webkit-transform: rotate(-9deg) skewY(-3deg);
+  }
+
+  80% {
+    -webkit-transform: rotate(6deg) skewY(-2deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(0deg) skewY(0deg);
+  }
+}
+@keyframes swing {
+  0% {
+    transform: rotate(0deg) skewY(0deg);
+  }
+
+  20% {
+    transform: rotate(12deg) skewY(4deg);
+  }
+
+  60% {
+    transform: rotate(-9deg) skewY(-3deg);
   }
 }

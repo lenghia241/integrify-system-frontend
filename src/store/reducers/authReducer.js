@@ -1,21 +1,60 @@
 import {
-  FETCH_USER, CHECK_IN, CHECK_OUT, LOG_OUT,
+  START_FETCHING,
+  AUTH_USER_FAIL,
+  SIGN_UP_USER_FAIL,
+  AUTH_USER_SUCCESS,
+  SIGN_UP_USER_SUCCESS,
+  LOG_OUT,
 } from '../actions/types';
 
-const initialState = {};
-export default function (state = initialState, action) {
+const initState = {
+  loading: false,
+  authErrors: null,
+  signUpErrors: null,
+  user: null,
+  signUpMsg: '',
+};
+
+export default function (state = initState, action) {
   switch (action.type) {
-    case FETCH_USER:
-      return action.payload;
-
-    case CHECK_IN:
-      return { ...state, present: true };
-
-    case CHECK_OUT:
-      return { ...state, present: false };
-
+    case START_FETCHING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case AUTH_USER_SUCCESS:
+      return {
+        ...state,
+        user: action.payload,
+        loading: false,
+        authErrors: null,
+        signUpErrors: null,
+      };
+    case AUTH_USER_FAIL:
+      return {
+        ...state,
+        loading: false,
+        authErrors: action.payload,
+      };
+    case SIGN_UP_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        signUpErrors: null,
+        signUpMsg: action.payload,
+      };
+    case SIGN_UP_USER_FAIL:
+      return {
+        ...state,
+        loading: false,
+        signUpErrors: action.payload,
+      };
     case LOG_OUT:
-      return state;
+      return {
+        ...state,
+        user: null,
+        loading: false,
+      };
 
     default:
       return state;

@@ -1,5 +1,27 @@
 import React from 'react';
 
-const Profile = () => <div>Profile</div>;
+import ProfileComponent from '../../components/Profile/ProfileComponent/ProfileComponent';
+import PageTemplate from '../../components/PageTemplate';
+import ProfileFormMain from '../../components/Profile/ProfileForm/ProfileFormMain';
+import AssignmentMain from '../../components/Profile/AssignmentForm/AssignmentMain';
+
+import './Profile.css';
+
+const Profile = () => {
+  const ProfileComponents = [
+    { heading: 'Profile Form', componentBody: <ProfileFormMain /> },
+    { heading: 'Assignments', componentBody: <AssignmentMain /> },
+  ];
+  const renderComponents = ProfileComponents.map(component => (
+    <ProfileComponent heading={component.heading} key={ProfileComponents.indexOf(component)}>
+      {component.componentBody}
+    </ProfileComponent>
+  ));
+  return (
+    <PageTemplate heading="Profile">
+      <div className="Profile">{renderComponents}</div>
+    </PageTemplate>
+  );
+};
 
 export default Profile;

@@ -1,35 +1,47 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import 'materialize-css/js/sidenav';
+import 'materialize-css/js/collapsible';
 
 import './Aside.css';
-import AsideSwitch from './AsideSwitch';
 
-const Aside = ({ auth, onChange, logOut }) => {
-  const links = [
-    { to: '/', linkName: 'Dashboard', iconsClassName: 'dashboard' },
-    { to: '/profile', linkName: 'Profile', iconsClassName: 'account_box' },
-    { to: '/attendance', linkName: 'Attendance', iconsClassName: 'today' },
-  ];
-  const renderLinks = links.map(link => (
-    <li key={links.indexOf(link)}>
-      <NavLink to={link.to} activeClassName="active" className="waves-effect waves-orange">
-        {link.linkName}
-        <i className="material-icons">{link.iconsClassName}</i>
-      </NavLink>
-    </li>
-  ));
-  return (
-    <ul className="sidenav sidenav-fixed center">
-      <li>
-        <div className="user-view">
+import { navigationItems } from './navigationItems';
+import { Navigation } from './Navigation';
+import AttendanceButton from '../AttendanceButton';
+
+class Aside extends Component {
+  componentDidMount = () => {
+    const elem = document.querySelector('.sidenav');
+
+    const elems = document.querySelectorAll('.collapsible');
+    this.instances = window.M.Collapsible.init(elems, {});
+
+    this.instance = window.M.Sidenav.init(elem, {
+      inDuration: 350,
+      outDuration: 350,
+      edge: 'left',
+    });
+  };
+
+  render() {
+    const { user, logOut } = this.props;
+
+    return (
+      <section className="nav-wrapper">
+        <div data-target="slide-out" className="sidenav-trigger">
+          <i className="material-icons z-depth-1-half">menu</i>
+        </div>
+        <div id="slide-out" className="sidenav sidenav-fixed">
           <div className="background">
             <img
-              src="https://s3.eu-west-2.amazonaws.com/integrify-system-assets/logo-black.png"
+              src="https://s3.eu-west-2.amazonaws.com/integrify-system-assets/logo-white.png"
               alt="integrify-logo"
+              className="logo"
             />
           </div>
-          <div className="user-info" href="#user">
+          <div className="user-info center">
+            <i className="material-icons right">notifications</i>
             <Link to="/profile" className="user-photo">
               <img
                 className="circle"
@@ -37,30 +49,25 @@ const Aside = ({ auth, onChange, logOut }) => {
                 src="https://i1.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?resize=256%2C256&quality=100&ssl=1"
               />
             </Link>
-
-            <div className="user-name">Hello, {auth.firstName}! </div>
-            <div className="user-status">
-              <AsideSwitch present={auth.present} onChange={onChange} />
-            </div>
+            <div className="user-name">Hello, {user.firstName}! </div>
           </div>
+          <div className="user-status">
+            <AttendanceButton />
+          </div>
+          <Navigation navigationItems={navigationItems} className="collapsible" />
+          <Link to="/" className="logout" onClick={logOut}>
+            <i className="material-icons">power_settings_new</i>
+            <span>Logout</span>
+          </Link>
         </div>
-      </li>
-      {renderLinks}
-      <li className="logout">
-        <div className="divider" />
-        <Link to="/" className="waves-effect waves-orange" onClick={logOut}>
-          Logout
-          <i className="material-icons">power_settings_new</i>
-        </Link>
-      </li>
-    </ul>
-  );
-};
+      </section>
+    );
+  }
+}
 
 Aside.propTypes = {
-  auth: PropTypes.shape({}).isRequired,
+  user: PropTypes.shape({}).isRequired,
   logOut: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
 
 export default Aside;
