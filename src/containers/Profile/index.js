@@ -4,14 +4,12 @@ import ProfileComponent from '../../components/Profile/ProfileComponent/ProfileC
 import PageTemplate from '../../components/PageTemplate';
 import ProfileFormMain from '../../components/Profile/ProfileForm/ProfileFormMain';
 import AssignmentMain from '../../components/Profile/AssignmentForm/AssignmentMain';
-import AddAssignmentForm from '../../components/Profile/AssignmentForm/AddAssignmentForm';
 
 import './Profile.css';
 
 const Profile = () => {
   const ProfileComponents = [
     { heading: 'Profile Form', componentBody: <ProfileFormMain /> },
-    { heading: 'Add Assignment Form', componentBody: <AddAssignmentForm /> },
     { heading: 'Assignments', componentBody: <AssignmentMain /> },
   ];
   const renderComponents = ProfileComponents.map(component => (

@@ -57,6 +57,7 @@ class AssignmentMain extends Component {
             <tbody>{itemsform}</tbody>
           </table>
         </div>
+        <AddAssignmentForm onSubmit={this.submit} />
       </div>
     );
   }
