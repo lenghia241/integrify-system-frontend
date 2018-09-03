@@ -43,9 +43,11 @@
 	line-height: auto;
 }
 /* Logo of Integrify*/
+.sidenav .background {
+	align-self: center;
+}
 .sidenav .logo {
 	grid-area: logo;
-	align-self: center;
 	padding-left: 16px;
 	width: 40%;
 }
@@ -117,4 +119,10 @@
   .sidenav-trigger i {
     display: none;
   }
+}
+@media screen and (max-height: 320px) {
+	.sidenav .collapsible {
+		height: calc(100% - 400px);
+		overflow-y: auto;
+	}
 }
