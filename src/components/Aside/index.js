@@ -60,8 +60,8 @@ class Aside extends Component {
             <i className="material-icons">power_settings_new</i>
             <span>Logout</span>
           </Link>
-        </div >
-      </section >
+        </div>
+      </section>
     );
   }
 }

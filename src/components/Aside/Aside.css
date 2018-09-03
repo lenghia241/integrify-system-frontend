@@ -1,14 +1,14 @@
 .sidenav {
-	display: grid;
-	grid-template-areas: 
-		"logo"
-		"user"
-		"checkout"
-		"links"
-		"logout";
-	grid-template-rows: 50px 210px  50px 1fr 50px;
-	background-color: var(--secondary-dark);
-	width: 270px;
+  display: grid;
+  grid-template-areas:
+    "logo"
+    "user"
+    "checkout"
+    "links"
+    "logout";
+  grid-template-rows: 50px 210px 50px 1fr 50px;
+  background-color: var(--secondary-dark);
+  width: 270px;
 }
 /* Style for text */
 .sidenav .user-name,
@@ -17,90 +17,90 @@
 .sidenav .logout span,
 .switch label,
 .sidenav .collapsible-body li a span {
-	font-size: 1.2em;
-	font-weight: 300;
-	font-variant: small-caps;
-	text-transform: capitalize;
-	color: var(--on-dark);
+  font-size: 1.2em;
+  font-weight: 300;
+  font-variant: small-caps;
+  text-transform: capitalize;
+  color: var(--on-dark);
 }
 /* Icons */
-.sidenav li > a > i, 
-.sidenav li > a > [class^="mdi-"], 
-.sidenav li > a li > a >[class*="mdi-"], 
+.sidenav li > a > i,
+.sidenav li > a > [class^="mdi-"],
+.sidenav li > a li > a > [class*="mdi-"],
 .sidenav li > a > i.material-icons,
 .sidenav .logout i {
-	color: var(--on-dark);
-	font-size: 2em;
-	margin-right: 20px; 
+  color: var(--on-dark);
+  font-size: 2em;
+  margin-right: 20px;
 }
 .sidenav li > a:hover > i.material-icons,
 .sidenav li > a:focus > i.material-icons {
-	color: var(--primary);
+  color: var(--primary);
 }
-.sidenav .collapsible-header, 
+.sidenav .collapsible-header,
 .sidenav.fixed .collapsible-header,
-.sidenav li>a>i.material-icons {
-	line-height: auto;
+.sidenav li > a > i.material-icons {
+  line-height: auto;
 }
 /* Logo of Integrify*/
 .sidenav .background {
-	align-self: center;
+  align-self: center;
 }
 .sidenav .logo {
-	grid-area: logo;
-	padding-left: 16px;
-	width: 40%;
+  grid-area: logo;
+  padding-left: 16px;
+  width: 40%;
 }
 /* Users info and photo */
 .sidenav .user-info {
-	grid-area: user;
-	display: grid;
-	grid-template-areas:  
-		". photo notification" 
-		". photo ."
-		"name name name";
-	grid-template-columns: 46px auto 1fr;
-	background-color: var(--primary);
+  grid-area: user;
+  display: grid;
+  grid-template-areas:
+    ". photo notification"
+    ". photo ."
+    "name name name";
+  grid-template-columns: 46px auto 1fr;
+  background-color: var(--primary);
 }
 /* Notifications */
 .sidenav .user-info i {
-	padding: 10px;
-	grid-area: notification;
-	margin: 0;
-	font-size: 1.8em;
-	color: var(--on-dark);
+  padding: 10px;
+  grid-area: notification;
+  margin: 0;
+  font-size: 1.8em;
+  color: var(--on-dark);
 }
 .sidenav .user-photo {
-	grid-area: photo;
-	align-self: center;
+  grid-area: photo;
+  align-self: center;
 }
 .sidenav .user-photo .circle {
-	width: 60%;
-	height: auto;
+  width: 60%;
+  height: auto;
 }
 .sidenav .user-name {
-	grid-area: name;
+  grid-area: name;
 }
 /* Checkin / out button */
 .sidenav .user-status {
-	grid-area: checkout;
-	align-self: center;
+  grid-area: checkout;
+  align-self: center;
 }
 /* Aside links */
 .sidenav .sidenav-links {
-	grid-area: links;
+  grid-area: links;
 }
 .sidenav .collapsible-body {
-	background-color: var(--secondary);
-	color: var(--on-dark);
+  background-color: var(--secondary);
+  color: var(--on-dark);
 }
 /* Logout button */
 .sidenav .logout {
-	grid-area: logout;
-	display: grid;
-	grid-template-columns: 46px 1fr;
-	align-self: center;
-	padding: 10px 15px;
+  grid-area: logout;
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  align-self: center;
+  padding: 10px 15px;
 }
 /* Navigation bar for hamburger menu */
 .sidenav-trigger i {
@@ -113,7 +113,7 @@
   border-radius: 50%;
   background: var(--primary);
   z-index: 2;
-  display:block;
+  display: block;
 }
 @media only screen and (min-width: 993px) {
   .sidenav-trigger i {
@@ -121,8 +121,8 @@
   }
 }
 @media screen and (max-height: 320px) {
-	.sidenav .collapsible {
-		height: calc(100% - 400px);
-		overflow-y: auto;
-	}
+  .sidenav .collapsible {
+    height: calc(100% - 400px);
+    overflow-y: auto;
+  }
 }

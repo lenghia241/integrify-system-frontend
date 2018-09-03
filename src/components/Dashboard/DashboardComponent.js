@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const DashboardComponent = ({ heading, children, link }) => (
   <div className="dashboard-component z-depth-1">
-      <div className="dashboard-component-footer">
+    <div className="dashboard-component-footer">
       <h5 className="white-text">{heading}</h5>
       <Link to={`${link}`}>
         <i className="small material-icons waves-effect waves-orange orange-text">zoom_out_map</i>

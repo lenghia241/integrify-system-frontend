@@ -1,16 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class AddStudySync extends Component {
-  //   constructor(props) {
-  //     super(props);
-  //   }
+const AddStudySync = () => (
+    <div>
+      <div>add new study sync</div>
+    </div>
+);
 
-  render() {
-    return (
-      <div>
-        <div>add new study sync</div>
-      </div>
-    );
-  }
-}
 export default AddStudySync;
