@@ -1,5 +1,4 @@
 import {
-  FETCH_USER,
   START_FETCHING,
   AUTH_USER_FAIL,
   SIGN_UP_USER_FAIL,
@@ -22,12 +21,6 @@ export default function (state = initState, action) {
       return {
         ...state,
         loading: true,
-      };
-    case FETCH_USER:
-      return {
-        ...state,
-        user: action.payload || false,
-        loading: false,
       };
     case AUTH_USER_SUCCESS:
       return {
@@ -59,7 +52,8 @@ export default function (state = initState, action) {
     case LOG_OUT:
       return {
         ...state,
-        token: null,
+        user: null,
+        loading: false,
       };
 
     default:

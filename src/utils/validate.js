@@ -1,6 +1,26 @@
 const validate = (values) => {
   const errors = {};
 
+  // Profile Assignment Form
+
+  if (!values.assignment) {
+    errors.assignment = 'Required';
+  } else if (!/^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/i.test(values.assignment)) {
+    errors.assignment = 'Invalid assignment name';
+  }
+
+  if (!values.github) {
+    errors.github = 'Required';
+  } else if (!/^(https:\/\/)?(github\.com)(\/[a-zA-Z0-9_-]{1,}){1,}$/i.test(values.github)) {
+    errors.github = 'Invalid github Link';
+  }
+
+  if (!values.teacher) {
+    errors.teacher = 'Required';
+  } else if (!/^[a-zA-Z\s]+$/i.test(values.teacher)) {
+    errors.teacher = 'Invalid name';
+  }
+
   // login form
   if (!values.email) {
     errors.email = 'Required';

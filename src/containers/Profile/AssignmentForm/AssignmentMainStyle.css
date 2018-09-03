@@ -1,0 +1,51 @@
+.assignment-main{
+    display: grid;
+    border:2px solid grey;
+    margin: 0 auto;
+    color:#515151;
+    width: 80%;
+ }
+ .assignment-main-header{
+    background-color:#F0F0F0;
+}
+.assignment-main tr{
+    background-color:rgb(250, 235, 215)(5, 215, 0.993);
+    margin: 5px;
+ }
+.mainTable{
+    width:80%;
+    margin:0 auto;
+    margin-bottom:10%;
+ }
+.h1{
+    font-size:2vw;
+     margin:4%
+ }
+.edit-btn{
+     background-color:#FF8C00;
+     color:white;
+     width:100px
+ }
+ .assignment-header{
+    display:flex;
+    justify-content: space-between
+}
+.add-btn{
+    background-color:#FF8C00;
+    color:white;
+    width:100px;
+    height:5%;
+    margin:4%
+}
+.table-header{
+     padding: 10px;
+     box-shadow: 1px 3px #DFDFDF;
+ }
+.table-row{
+    padding: 10px;
+    box-shadow: 1px 3px #DFDFDF;
+    margin-bottom:1%
+ }
+ .main-form{
+     background-color: F1EDE6;
+ }

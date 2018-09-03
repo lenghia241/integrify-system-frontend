@@ -3,6 +3,7 @@ import { reducer as reduxForm } from 'redux-form';
 import authReducer from './authReducer';
 import attendanceReducer from './attendanceReducer';
 import dashboardReducer from './dashboardReducer';
+import assignmentFormReducer from './assignmentFormReducer';
 import profileReducer from './profileReducer';
 import classAttendanceReducer from './classAttendanceReducer';
 
@@ -11,6 +12,7 @@ export default combineReducers({
   profile: profileReducer,
   auth: authReducer,
   attendance: attendanceReducer,
+  assignment: assignmentFormReducer,
   dashboard: dashboardReducer,
   classAttendance: classAttendanceReducer,
 });
@@ -22,3 +24,4 @@ export const getStudySyncs = state => state.dashboard.studysyncs;
 export const getEvents = state => state.dashboard.events;
 export const getAssignments = state => state.dashboard.assignments;
 export const getClassAttendance = state => state.classAttendance;
+export const getProfile = state => state.profile;
