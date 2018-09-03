@@ -1,4 +1,9 @@
-import { FETCH_STUDYSYNC, GET_EVENT_LIST, FETCH_ASSIGNMENT } from '../actions/types';
+import {
+  FETCH_STUDYSYNC,
+  GET_EVENT_LIST,
+  GET_EVENT,
+  FETCH_ASSIGNMENT,
+} from '../actions/types';
 
 const initialState = {
   studysyncs: [],
@@ -25,7 +30,11 @@ export default function (state = initialState, action) {
         ...state,
         events: action.payload,
       };
-
+    case GET_EVENT:
+      return {
+        ...state,
+        events: action.payload,
+      };
     default:
       return state;
   }

@@ -19,7 +19,7 @@ class EventPanelDetailed extends Component {
 
     <div className="event-list-detailed">
       { events.map(({
-        _id, title, description, time, venue,
+        _id, title, description, time, venue, eventUrl,
       }) => (
           <div className="row-event-detailed" key={_id}>
               <time className="col-time-detailed icon uppercase" dateTime={dayjs(time.slice(0, time.length - 7)).format('DD-MMM')}>
@@ -36,6 +36,9 @@ class EventPanelDetailed extends Component {
                 <i className="tiny material-icons">access_time</i>  {dayjs(time.slice(0, time.length - 7)).format('HH:mm A')}
                 <p className="row-location-detailed">
                   <i className="tiny material-icons">location_on</i>  {venue.address}, {venue.city}
+                </p>
+                <p className="row-url-detailed">
+                  <i className="tiny material-icons">web</i>  <a href={eventUrl}>{eventUrl}</a>
                 </p>
               </div>
           </div>
