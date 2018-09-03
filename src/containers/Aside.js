@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -8,15 +8,16 @@ import { getAuth } from '../store/reducers';
 
 import AsideComponent from '../components/Aside';
 
-const Aside = ({ user, logOut }) => <AsideComponent user={user} logOut={logOut} />;
+const Aside = ({ auth: { user }, logOut }) => <AsideComponent user={user} logOut={logOut} />;
 
 Aside.propTypes = {
   logOut: PropTypes.func.isRequired,
+  auth: PropTypes.shape({}).isRequired,
   user: PropTypes.shape({}).isRequired,
 };
 
 const mapStateToProps = state => ({
-  user: getAuth(state).user,
+  auth: getAuth(state),
 });
 
 export default connect(

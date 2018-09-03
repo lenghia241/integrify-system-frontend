@@ -11,8 +11,8 @@ import fiveDayData from './mock-data/fiveDayData.json';
 dayjs.extend(weekOfYear);
 
 export default class Attendance extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       classHistoryData: {},
       loading: true,
@@ -21,8 +21,8 @@ export default class Attendance extends Component {
   }
 
   async componentDidMount() {
-    const res = await axios.get('/api/attendance/history');
-    const filteredData = this.dataFilter(res.data, '5b7ab1952cc5b5a552cfda72');
+    const res = await axios.get('/api/v1/attendance/history');
+    const filteredData = this.dataFilter(res.data, '5b7c5ade5f49453eecccf351');
     this.setState({
       classHistoryData: filteredData,
       loading: false,
