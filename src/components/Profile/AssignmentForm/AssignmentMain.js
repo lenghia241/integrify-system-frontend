@@ -28,7 +28,7 @@ class AssignmentMain extends Component {
         <td />
         <td>{item.teacher}</td>
         <td>
-          <button className="waves-effect waves-light btn orange" type="submit">
+          <button className="waves-effect waves-light btn" type="submit">
             Edit
           </button>
         </td>
@@ -39,7 +39,7 @@ class AssignmentMain extends Component {
       <div className="main-form">
         <div className="assignment-main">
           <div className="assignment-header">
-            <button type="button" className="waves-effect waves-light btn orange">
+            <button type="button" className="waves-effect waves-light btn">
               Add
             </button>
           </div>
