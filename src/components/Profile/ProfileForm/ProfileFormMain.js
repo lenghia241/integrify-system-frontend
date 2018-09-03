@@ -33,7 +33,7 @@ class ProfileFormMain extends Component {
       { label: 'Examples of Work', Component: ProfileFormExamplesOfWork },
       { label: 'Experience', Component: ProfileFormWorkExperience },
       { label: 'Languages', Component: ProfileFormLanguages },
-      { label: 'Summary', Component: ProfileFormSummary },
+      { label: 'Summary', Component: Summary },
     ];
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
