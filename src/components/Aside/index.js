@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import 'materialize-css/js/sidenav';
-import 'materialize-css/js/collapsible';
 
 import './Aside.css';
 
