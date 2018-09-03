@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { GET_CLASS_ATTENDANCE } from './types';
+import { FETCH_CLASS_ATTENDANCE } from './types';
 
-const getClassAttendance = () => dispatch => axios.get('/api/v1/attendance/history/').then((res) => {
+const fetchClassAttendance = () => dispatch => axios.get('/api/v1/attendance/history/').then((res) => {
   dispatch({
-    type: GET_CLASS_ATTENDANCE,
+    type: FETCH_CLASS_ATTENDANCE,
     payload: res.data,
   });
 });
 
-export default getClassAttendance;
+export default fetchClassAttendance;

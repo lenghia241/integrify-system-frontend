@@ -6,4 +6,4 @@ export { getAssignmentsList, fetchStudySync, getEventList } from './dashboardAct
 
 export { default as fetchUserProfileAction } from './profileActions';
 
-export { default as getClassAttendance } from './classAttendanceActions';
+export { default as fetchClassAttendance } from './classAttendanceActions';

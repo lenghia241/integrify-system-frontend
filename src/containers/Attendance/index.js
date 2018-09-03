@@ -6,9 +6,9 @@ import dayjs from 'dayjs';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
-import { getClassAttendance as getClassAttendanceAction } from '../../store/actions';
+import { fetchClassAttendance as fetchClassAttendanceAction } from '../../store/actions';
 
-import { getId } from '../../store/reducers/index';
+import { getId, getClassAttendance } from '../../store/reducers/index';
 
 import fiveDayData from './mock-data/fiveDayData.json';
 import ChartClassPresence from '../../components/ChartClassPresence';
@@ -25,20 +25,28 @@ class Attendance extends Component {
         fiveDayData,
         '5b7ab1952cc5b5a552cfda72',
       ),
+      classAttendanceTest: [],
     };
   }
 
   async componentDidMount() {
-    const { userId, getClassAttendance } = this.props;
-    getClassAttendance();
+    const { userId, fetchClassAttendance, classAttendance } = this.props;
+    fetchClassAttendance();
+    const dataFromStore = classAttendance.class;
+
     const res = await axios.get('/api/v1/attendance/history');
     const filteredData = this.studentAttendanceDataFilter(
       res.data,
       userId || '5b7c5ade5f49453eecccf351',
     );
+
+    console.log('props: ', this.props);
+    console.log('userId: ', userId);
+    console.log('state: ', this.state);
     this.setState({
       classHistoryData: filteredData,
-      loading: false,
+      loading: classAttendance.loading,
+      classAttendanceTest: dataFromStore,
     });
   }
 
@@ -85,12 +93,15 @@ class Attendance extends Component {
 
   render() {
     const { classHistoryData, loading, classHistoryDataMock } = this.state;
+    const { userId, classAttendance } = this.props;
+
+
     // getClassAttendance(); // => this.props.getClassAttendance(); Cai nay no dung de test thoi
     const content = (
       <PageTemplate heading="Attendance">
         <div className="Attendance">
           {/* Render graphs only when loading of data is complete. */}
-          {loading || (
+          {classAttendance.loading || (
             <React.Fragment>
               <StudentAttendance
                 data={classHistoryDataMock}
@@ -120,9 +131,10 @@ class Attendance extends Component {
 
 const mapStateToProps = state => ({
   userId: getId(state),
+  classAttendance: getClassAttendance(state),
 });
 
 export default connect(
   mapStateToProps,
-  { getClassAttendance: getClassAttendanceAction },
+  { fetchClassAttendance: fetchClassAttendanceAction },
 )(Attendance);

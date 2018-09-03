@@ -22,4 +22,4 @@ export const FETCH_ASSIGNMENT = 'FETCH_ASSIGNMENT';
 export const LOG_OUT = 'LOG_OUT';
 
 // action types for class charts
-export const GET_CLASS_ATTENDANCE = 'GET_CLASS_ATTENDANCE';
+export const FETCH_CLASS_ATTENDANCE = 'FETCH_CLASS_ATTENDANCE';
