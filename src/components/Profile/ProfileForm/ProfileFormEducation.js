@@ -1,6 +1,7 @@
 import React from 'react';
-import { FieldArray, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
 import { PropTypes } from 'prop-types';
+import { FieldArray, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
+
 import renderEducation from './render/RenderEducation';
 import validate from '../../../utils/validate';
 
