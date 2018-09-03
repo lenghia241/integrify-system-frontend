@@ -1,10 +1,12 @@
 import React from 'react';
+
+import './Dashboard.css';
+
 import StudySync from '../../components/Dashboard/StudySync';
 import EventPanel from '../../components/Dashboard/EventPanel';
 import Assignments from '../../components/Dashboard/Assignment';
 import DashboardComponent from '../../components/Dashboard/DashboardComponent';
 import PageTemplate from '../../components/PageTemplate';
-import './Dashboard.css';
 
 const Dashboard = () => {
   const DashboardComponents = [
@@ -17,8 +19,7 @@ const Dashboard = () => {
     <DashboardComponent
       heading={component.heading}
       key={DashboardComponents.indexOf(component)}
-      link={component.link}
-    >
+      link={component.link}>
       {component.componentBody}
     </DashboardComponent>
   ));

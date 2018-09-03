@@ -1,5 +1,5 @@
 export {
-  checkUser, authUser, signUpUser, logOut, fetchUser,
+  checkUser, authUser, signUpUser, logOut,
 } from './authActions';
 
 export {

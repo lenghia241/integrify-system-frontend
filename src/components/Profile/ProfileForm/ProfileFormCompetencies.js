@@ -1,9 +1,11 @@
 import React from 'react';
-import { FieldArray, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
 import { PropTypes } from 'prop-types';
+import { FieldArray, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
+
+import '../ProfileStyles/Forms.css';
+
 import renderCompetencies from './render/RenderCompetencies';
 import validate from '../../../utils/validate';
-import '../ProfileStyles/Forms.css';
 
 const ProfileFormCompetencies = (props) => {
   const { handleSubmit, previousPage, nextPage } = props;
@@ -14,8 +16,7 @@ const ProfileFormCompetencies = (props) => {
         <button
           type="button"
           className="btn-previous waves-effect waves-light btn"
-          onClick={previousPage}
-        >
+          onClick={previousPage}>
           Previous
         </button>
         <button type="submit" className="btn-next waves-effect waves-light btn" onClick={nextPage}>

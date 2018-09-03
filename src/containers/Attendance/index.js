@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
 import dayjs from 'dayjs';
+
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
@@ -72,22 +72,22 @@ export default class Attendance extends Component {
     const content = (
       <PageTemplate heading="Attendance">
         <div className="Attendance">
-          {loading
-            || <StudentAttendance
+          {loading || (
+            <StudentAttendance
               data={classHistoryDataMock}
               week={this.getWeek(classHistoryDataMock[0].date)}
               loading={loading}
               attendanceColorStyle={this.attendanceColorStyle}
             />
-          }
-          {loading
-            || <StudentAttendance
+          )}
+          {loading || (
+            <StudentAttendance
               data={classHistoryData}
               week={this.getWeek(classHistoryData[0].date)}
               loading={loading}
               attendanceColorStyle={this.attendanceColorStyle}
             />
-          }
+          )}
         </div>
       </PageTemplate>
     );
