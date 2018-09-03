@@ -11,10 +11,11 @@ const renderSummary = (props) => {
         || className === 'experience')
       && fields !== null ? (
         <div className={`${className}-inner`}>
-          <h5>{title}</h5>
+
           {fields.map(
             item => (item !== null ? (
                 <div key={`${className}${item[0].value}`} className="fields-wrapper">
+                  <h5>{title}</h5>
                   {item.map(object => (
                     <div key={object.title} className="fields">
                       <p className="title">{object.title}</p>

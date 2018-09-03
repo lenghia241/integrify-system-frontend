@@ -3,13 +3,14 @@ import { PropTypes } from 'prop-types';
 
 const renderSummary = (props) => {
   const { className, title, fields } = props;
+  console.log('fields', fields);
   return (
     <div className={className}>
       {(className === 'personal'
         || className === 'education'
         || className === 'examplesOfWork'
         || className === 'experience')
-      && fields !== null ? (
+      && (fields !== null && fields !== []) ? (
         <div className={`${className}-inner`}>
           <h5>{title}</h5>
           {fields.map(
@@ -30,8 +31,8 @@ const renderSummary = (props) => {
         || className === 'skills'
         || className === 'tools'
         || className === 'languages')
-      && fields ? (
-        <div>
+      && (fields && fields !== []) ? (
+        <div className={`${className}-inner`}>
           <h5>{title}</h5>
           <ul>
             {fields.map(item => item.map(object => <li key={`value${object.title}`}>{object.value}</li>))}

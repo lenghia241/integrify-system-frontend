@@ -2,7 +2,7 @@ import React from 'react';
 import { getFormValues } from 'redux-form';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import RenderSummary from '../ProfileForm/render/RenderSummary';
+import RenderSummary from './render/RenderSummary';
 
 const ProfileFormSummary = (props) => {
   const { values } = props;
