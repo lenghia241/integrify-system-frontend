@@ -19,8 +19,7 @@ class Attendance extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // classHistoryData: {},
-      studentAttendanceData: [],
+      classHistoryData: {},
       loading: true,
       classHistoryDataMock: this.studentAttendanceDataFilter(
         fiveDayData,
@@ -29,23 +28,34 @@ class Attendance extends Component {
     };
   }
 
-  async componentDidMount() {
-    const { fetchClassAttendance } = this.props;
+  componentDidMount() {
+    const { fetchClassAttendance, classAttendance } = this.props;
     fetchClassAttendance();
+    this.setState({
+      classHistoryData: classAttendance,
+    });
   }
 
-  componentDidUpdate(prevProps) {
-    const { classAttendance, userId } = this.props;
-    if (classAttendance.loading !== prevProps.classAttendance.loading) {
-      this.setState({
-        // classHistoryData: classAttendance,
-        studentAttendanceData: this.studentAttendanceDataFilter(classAttendance.class, userId),
+  static getDerivedStateFromProps(props, state) {
+    if (!state.classHistoryData.loading === props.classAttendance.loading) {
+      return {
+        classHistoryData: props.classAttendance,
         loading: false,
-      });
+      };
     }
+    return null;
   }
 
-  // Takes date and returns week of the year.
+  // used for later setting state for each chart's data.
+
+  // newDataRecalculation = () => {
+  //   const { classHistoryData } = this.state;
+  //   const { userId } = this.props;
+  //   this.setState({
+  //     studentAttendanceData: this.studentAttendanceDataFilter(classHistoryData, userId),
+  //   });
+  // }
+
   getWeek = date => dayjs(date).week();
 
   studentAttendanceDataFilter = (json, id) => {
@@ -87,13 +97,16 @@ class Attendance extends Component {
   };
 
   render() {
-    const { loading, classHistoryDataMock, studentAttendanceData } = this.state;
+    const { loading, classHistoryDataMock, classHistoryData } = this.state;
+    const { userId, classAttendance } = this.props;
+
+    const studentAttendanceData = this.studentAttendanceDataFilter(classHistoryData.class, userId);
 
     const content = (
       <PageTemplate heading="Attendance">
         <div className="Attendance">
           {/* Render graphs only when loading of data is complete. */}
-          {loading || (
+          {classAttendance.loading || (
             <React.Fragment>
               <StudentAttendance
                 data={classHistoryDataMock}
@@ -117,10 +130,6 @@ class Attendance extends Component {
   }
 }
 
-// const mapDispatchToProps = dispatch => ({
-//   classAttendance: data => dispatch({ type: GET_CLASS_ATTENDANCE, data })
-// });
-
 const mapStateToProps = state => ({
   userId: getId(state),
   classAttendance: getClassAttendance(state),
@@ -129,6 +138,7 @@ const mapStateToProps = state => ({
 Attendance.propTypes = {
   userId: PropTypes.string.isRequired,
   classAttendance: PropTypes.shape({}).isRequired,
+  fetchClassAttendance: PropTypes.func.isRequired,
 };
 
 export default connect(
