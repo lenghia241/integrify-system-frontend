@@ -19,20 +19,18 @@ class StudySync extends Component {
       <div className="col s6">
         {studysyncs.length !== undefined
           && studysyncs.map((item, i) => (
-            <div className="card-panel hoverable list" key={`${i + 1}+${item.date}`}>
-              <div className="row">
-                <p className="col s8 bold capitalize">studysync</p>
-                <p className="col s4 bold capitalize">
-                  {dayjs(item.date).format('DD/MM/YYYY HH:mm:ss')}
-                </p>
-              </div>
-              <div className="title">
-                <p className="bold capitalize">{item.title}</p>
-              </div>
-              <div className="row">
-                <p className="col s8 capitalize">{item.description}</p>
-                <p className="col s4">{`${item.firstName} ${item.lastName}`}</p>
-              </div>
+            <div className="row-studysync" key={`${i + 1}+${item.date}`}>
+                <time className="col-time icon uppercase">
+                <strong>{dayjs(item.date.slice(0, item.date.length - 7)).format('MMM')}</strong>
+                    <span>{dayjs(item.date.slice(0, item.date.length - 7)).format('DD')}</span>
+                </time>
+                <div className="title">
+                  <p className="bold uppercase">{item.title}</p>
+                </div>
+                <div className="row">
+                  <p className="col s8 capitalize">{item.description}</p>
+                  <p className="col s4">{`${item.firstName} ${item.lastName}`}</p>
+                </div>
             </div>
           ))}
       </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './index.css';
+import '../../../App.css';
 import dayjs from 'dayjs';
 import { getEventList as getEventsListAction } from '../../../store/actions';
 import { getEvents } from '../../../store/reducers';

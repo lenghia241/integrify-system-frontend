@@ -1,11 +1,17 @@
-.row{
+.row-studysync{
     margin-bottom: 0;
+    display: flex;
+    padding: 7px 15px;
 }
-
+.row-studysync:hover {
+    background-color: var(--on-dark);
+   }
 .row>p{
     margin:0;
 }
-
+.col-title, .col-details{
+    padding: 1vh 0 0 2vw;
+}
 .title>p{
     margin:0;
 }
@@ -13,3 +19,4 @@
 .list{
     padding:10px;
 }
+
