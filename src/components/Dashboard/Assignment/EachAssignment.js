@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
-import './EachAssignment.css';
-
 const EachAssignment = ({ assignment }) => (
   <div className="row-event">
     <time className="col-time icon uppercase">
