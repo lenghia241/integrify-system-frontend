@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import M from 'materialize-css';
+import 'materialize-css/js/sidenav';
+import 'materialize-css/js/collapsible';
 
 import './Aside.css';
 
+import { navigationItems } from './navigationItems';
+import { Navigation } from './Navigation';
 import AttendanceButton from '../AttendanceButton';
 
 class Aside extends Component {
   componentDidMount = () => {
     const elem = document.querySelector('.sidenav');
-    this.instance = M.Sidenav.init(elem, {
+
+    const elems = document.querySelectorAll('.collapsible');
+    this.instances = window.M.Collapsible.init(elems, {});
+
+    this.instance = window.M.Sidenav.init(elem, {
       inDuration: 350,
       outDuration: 350,
       edge: 'left',
@@ -19,36 +26,20 @@ class Aside extends Component {
 
   render() {
     const { user, logOut } = this.props;
-    const links = [
-      { to: '/', linkName: 'Dashboard', iconsClassName: 'dashboard' },
-      { to: '/profile', linkName: 'Profile', iconsClassName: 'account_box' },
-      { to: '/attendance', linkName: 'Attendance', iconsClassName: 'today' },
-    ];
-    const renderLinks = links.map(link => (
-      <li key={links.indexOf(link)}>
-        <NavLink to={link.to} activeClassName="active" className="waves-effect waves-orange">
-          <span>{link.linkName}</span>
-          <i id="icons" className="material-icons">
-            {link.iconsClassName}
-          </i>
-        </NavLink>
-      </li>
-    ));
+
     return (
-      <div className="nav-wrapper">
+      <section className="nav-wrapper">
         <div data-target="slide-out" className="sidenav-trigger">
           <i className="material-icons z-depth-1-half">menu</i>
         </div>
         <div id="slide-out" className="sidenav sidenav-fixed">
-          <div className="background">
-            <img
-              src="https://s3.eu-west-2.amazonaws.com/integrify-system-assets/logo-white.png"
-              alt="integrify-logo"
-              className="logo"
-            />
-          </div>
+          <img
+            src="https://s3.eu-west-2.amazonaws.com/integrify-system-assets/logo-white.png"
+            alt="integrify-logo"
+            className="logo"
+          />
           <div className="user-info center" href="#user">
-            <i className="material-icons right">notifications</i>
+            <i className="material-icons right notificatio-bell">notifications</i>
             <Link to="/profile" className="user-photo">
               <img
                 className="circle"
@@ -61,16 +52,14 @@ class Aside extends Component {
           <div className="user-status">
             <AttendanceButton />
           </div>
-          <ul>{renderLinks}</ul>
-          <div className="logout">
-            <div className="divider" />
-            <Link to="/" className="waves-effect waves-orange" onClick={logOut}>
-              <i className="material-icons">power_settings_new</i>
-              <span>Logout</span>
-            </Link>
-          </div>
-        </div>
-      </div>
+          {/* Dropdown menu content */}
+          <Navigation navigationItems={navigationItems} className="collapsible" />
+          <Link to="/" className="logout" onClick={logOut}>
+            <i className="material-icons">power_settings_new</i>
+            <span>Logout</span>
+          </Link>
+        </div >
+      </section >
     );
   }
 }
