@@ -1,11 +1,5 @@
 .AddAssignmentForm {
-    border: 2px solid #ff8c00;
-    display: grid;
-    width: 80%;
-    margin: 0 auto;
-    padding: 2%;
-    margin-top: 2%;
-    height: 80%;
+  padding: 2%;
 }
 .heading {
   color: #ff8c00;
@@ -25,4 +19,7 @@ label {
 }
 .checkbox-label {
   font-size: 12px;
+}
+.assignment-form-body {
+  width: 80%;
 }
