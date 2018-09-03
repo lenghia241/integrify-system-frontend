@@ -5,8 +5,8 @@ import dayjs from 'dayjs';
 const EachAssignment = ({ assignment }) => (
   <div className="row-event">
     <time className="col-time icon uppercase">
-      <strong>{dayjs(assignment.date.slice(0, assignment.date.length - 7)).format('MMM')}</strong>
-      <span>{dayjs(assignment.date.slice(0, assignment.date.length - 7)).format('DD')}</span>
+      <strong>{dayjs(assignment.date).format('MMM')}</strong>
+      <span>{dayjs(assignment.date).format('DD')}</span>
     </time>
     <div className="col-details">
       <p className = "bold row-title uppercase">{assignment.titleOfAssignment}</p>
