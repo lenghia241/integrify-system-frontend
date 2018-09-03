@@ -2,6 +2,7 @@ import React from 'react';
 import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
 import './AssignmentFormStyle.css';
 import renderField from '../../renderField';
+import validate from '../../../utils/validate';
 
 const AddAssignmentForm = (props) => {
   const {
@@ -53,4 +54,5 @@ AddAssignmentForm.propTypes = {
 
 export default reduxForm({
   form: 'assignment', // a unique identifier for this form
+  validate,
 })(AddAssignmentForm);
