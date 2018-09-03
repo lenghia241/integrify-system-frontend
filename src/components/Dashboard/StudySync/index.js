@@ -22,16 +22,18 @@ class StudySync extends Component {
         {studysyncs.length !== undefined
           && studysyncs.map((item, i) => (
             <div className="row-studysync" key={`${i + 1}+${item.date}`}>
-                <time className="col-time icon uppercase">
-                <strong>{dayjs(item.date.slice(0, item.date.length - 7)).format('MMM')}</strong>
+                <div className="col-time" >
+                  <time className="icon uppercase">
+                    <strong>{dayjs(item.date.slice(0, item.date.length - 7)).format('MMM')}</strong>
                     <span>{dayjs(item.date.slice(0, item.date.length - 7)).format('DD')}</span>
-                </time>
-                <div className="title">
-                  <p className="bold uppercase">{item.title}</p>
+                  </time>
                 </div>
-                <div className="row">
-                  <p className="col s8 capitalize">{item.description}</p>
-                  <p className="col s4">{`${item.firstName} ${item.lastName}`}</p>
+                <div className="col-title">
+                  <div className = "row" >
+                    <span className="col s7 uppercase bold">{item.title}</span>
+                    <span className="col s5">{`${item.firstName} ${item.lastName}`}</span>
+                  </div>
+                  <p className="bold capitalize">{item.description}</p>
                 </div>
             </div>
           ))}

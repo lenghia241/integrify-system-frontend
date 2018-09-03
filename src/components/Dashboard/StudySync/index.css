@@ -1,22 +1,21 @@
-.row-studysync{
-    margin-bottom: 0;
-    display: flex;
-    padding: 7px 15px;
+.row-studysync {
+  margin-bottom: 0;
+  display: flex;
+  padding: 0px 15px;
 }
 .row-studysync:hover {
-    background-color: var(--on-dark);
-   }
-.row>p{
-    margin:0;
+  background-color: var(--on-dark);
 }
-.col-title, .col-details{
-    padding: 1vh 0 0 2vw;
+.row > p {
+  margin: 0;
 }
-.title>p{
-    margin:0;
+.col-title {
+  width: 100%;
+  padding: 1vh 0 0 2vw;
 }
-
-.list{
-    padding:10px;
+.col-title .row {
+  margin-bottom: 0;
 }
-
+.title > span {
+  margin: 0;
+}

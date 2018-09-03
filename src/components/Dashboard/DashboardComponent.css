@@ -27,7 +27,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background-color:var(--secondary-dark);
+  background-color:var(--secondary-light);
   z-index:1;
 }
 .dashboard-component-footer>h5{
