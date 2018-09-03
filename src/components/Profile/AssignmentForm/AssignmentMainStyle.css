@@ -1,7 +1,9 @@
 .assignment-main {
   display: grid;
+  border: 2px solid grey;
   margin: 0 auto;
   color: #515151;
+  width: 80%;
 }
 .assignment-main-header {
   background-color: #f0f0f0;
@@ -45,5 +47,5 @@
   margin-bottom: 1%;
 }
 .main-form {
-  background-color: F1EDE6;
+  background-color: #f1ede6;
 }
