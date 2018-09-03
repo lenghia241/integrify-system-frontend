@@ -47,7 +47,7 @@ class Aside extends Component {
               className="logo"
             />
           </div>
-          <div className="user-info center" href="#user">
+          <div className="user-info center">
             <i className="material-icons right">notifications</i>
             <Link to="/profile" className="user-photo">
               <img

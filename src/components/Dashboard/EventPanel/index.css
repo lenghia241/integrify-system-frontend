@@ -98,6 +98,7 @@ time.icon:focus {
 }
 
 .col-details {
+  width: 100%;
   padding: 1vh 0 0 2vw;
 }
 

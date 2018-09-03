@@ -29,9 +29,9 @@ class App extends Component {
       <Switch>
         <Route exact path="/attendance" component={Attendance} />
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/studySync" render={() => <StudySyncDetail />} />
-        <Route exact path="/addStudySync" render={() => <AddStudySync />} />
-        <Route exact path="/eventPanel" render ={() => <EventPanelDetailed/> } />
+        <Route exact path="/eventPanel" component ={EventPanelDetailed} />
+        <Route exact path="/studySync" component={StudySyncDetail} />
+        <Route exact path="/studySync/add" component={AddStudySync} />
         <Route exact path="/" component={Dashboard} />
       </Switch>
     ) : (

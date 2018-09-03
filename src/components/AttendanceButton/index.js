@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from '../../store/actions/attendanceActions';
-import { getAttendance as getAttendanceList } from '../../store/reducers';
+import { getAttendance as getAttendanceList, getId } from '../../store/reducers';
 import './index.css';
 
 class AttendanceButton extends Component {
   componentDidMount() {
-    const { getAttendance } = this.props;
-    getAttendance('5b7ab1952cc5b5a552cfda72');
+    const { getAttendance, userId } = this.props;
+    getAttendance(userId);
   }
 
   handleClick = () => {
-    const { updateAttendance } = this.props;
-    updateAttendance('5b7ab1952cc5b5a552cfda72');
+    const { updateAttendance, userId } = this.props;
+    updateAttendance(userId);
   };
 
   render() {
@@ -47,12 +47,14 @@ class AttendanceButton extends Component {
 }
 
 const mapStateToProps = state => ({
+  userId: getId(state),
   attendance: getAttendanceList(state),
 });
 
 AttendanceButton.propTypes = {
   attendance: PropTypes.shape({ students: PropTypes.shape({}), loading: PropTypes.bool })
     .isRequired,
+  userId: PropTypes.string.isRequired,
   getAttendance: PropTypes.func.isRequired,
   updateAttendance: PropTypes.func.isRequired,
 };
