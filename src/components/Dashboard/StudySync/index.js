@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './index.css';
 import { connect } from 'react-redux';
 import dayjs from 'dayjs';
 import { withRouter } from 'react-router-dom';
-import { getStudySyncs } from '../../../store/reducers';
+
+import './index.css';
+
+import { getStudySyncs, getId } from '../../../store/reducers';
 import { fetchStudySync as fetchStudySyncAction } from '../../../store/actions';
 
 class StudySync extends Component {
   componentDidMount = () => {
-    const { fetchStudySync } = this.props;
-    fetchStudySync();
+    const { fetchStudySync, userId } = this.props;
+    fetchStudySync(userId);
   };
 
   render() {
@@ -38,8 +40,15 @@ class StudySync extends Component {
   }
 }
 
+StudySync.propTypes = {
+  fetchStudySync: PropTypes.func.isRequired,
+  studysyncs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  userId: PropTypes.string.isRequired,
+};
+
 const mapStateToProps = state => ({
   studysyncs: getStudySyncs(state),
+  userId: getId(state),
 });
 
 export default withRouter(
@@ -48,8 +57,3 @@ export default withRouter(
     { fetchStudySync: fetchStudySyncAction },
   )(StudySync),
 );
-
-StudySync.propTypes = {
-  fetchStudySync: PropTypes.func.isRequired,
-  studysyncs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-};

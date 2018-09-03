@@ -18,7 +18,7 @@ class Aside extends Component {
   };
 
   render() {
-    const { auth, logOut } = this.props;
+    const { user, logOut } = this.props;
     const links = [
       { to: '/', linkName: 'Dashboard', iconsClassName: 'dashboard' },
       { to: '/profile', linkName: 'Profile', iconsClassName: 'account_box' },
@@ -56,7 +56,7 @@ class Aside extends Component {
                 src="https://i1.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?resize=256%2C256&quality=100&ssl=1"
               />
             </Link>
-            <div className="user-name">Hello, {auth.firstName}! </div>
+            <div className="user-name">Hello, {user.firstName}! </div>
           </div>
           <div className="user-status">
             <AttendanceButton />
@@ -76,7 +76,7 @@ class Aside extends Component {
 }
 
 Aside.propTypes = {
-  auth: PropTypes.shape({}).isRequired,
+  user: PropTypes.shape({}).isRequired,
   logOut: PropTypes.func.isRequired,
 };
 
