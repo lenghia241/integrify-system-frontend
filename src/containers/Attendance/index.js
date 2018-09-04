@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import dayjs from 'dayjs';
 
 import weekOfYear from 'dayjs/plugin/weekOfYear';
@@ -12,31 +13,57 @@ import ClassAttendanceSprintThree from '../../components/Charts/ClassAttendanceS
 import PageGrid from '../../components/PageGrid';
 
 import fiveDayData from './mock-data/fiveDayData.json';
-import classHistory from './mock-data/classHistory.json';
+import { fetchClassAttendance as fetchClassAttendanceAction } from '../../store/actions';
+
+import { getId, getClassAttendance } from '../../store/reducers/index';
+
+import ChartClassPresence from '../../components/ChartClassPresence';
 
 dayjs.extend(weekOfYear);
 
-export default class Attendance extends Component {
+class Attendance extends Component {
   constructor(props) {
     super(props);
     this.state = {
       classHistoryData: {},
-      classWasPresentData: [],
       loading: true,
-      classHistoryDataMock: this.dataFilter(fiveDayData, '5b7ab1952cc5b5a552cfda72'),
+      classHistoryDataMock: this.studentAttendanceDataFilter(
+        fiveDayData,
+        '5b7ab1952cc5b5a552cfda72',
+      ),
     };
   }
 
-  async componentDidMount() {
-    const res = await axios.get('/api/v1/attendance/history');
-    const filteredData = this.dataFilter(res.data, '5b7c5ade5f49453eecccf351');
-    const classWasPresentData = this.classAttendanceFilter(classHistory);
+  // Takes date and returns week of the year.
+  componentDidMount() {
+    const { fetchClassAttendance, classAttendance } = this.props;
+    fetchClassAttendance();
     this.setState({
-      classHistoryData: filteredData,
-      classWasPresentData,
-      loading: false,
+      classHistoryData: classAttendance,
     });
   }
+
+  static getDerivedStateFromProps(props, state) {
+    if (!state.classHistoryData.loading === props.classAttendance.loading) {
+      return {
+        classHistoryData: props.classAttendance,
+        loading: false,
+      };
+    }
+    return null;
+  }
+
+  // used for later setting state for each chart's data.
+
+  // newDataRecalculation = () => {
+  //   const { classHistoryData } = this.state;
+  //   const { userId } = this.props;
+  //   this.setState({
+  //     studentAttendanceData: this.studentAttendanceDataFilter(classHistoryData, userId),
+  //   });
+  // }
+
+  getWeek = date => dayjs(date).week();
 
   classAttendanceFilter = (data) => {
     const newArray = [];
@@ -62,21 +89,21 @@ export default class Attendance extends Component {
     return newArray.reverse();
   }
 
-  // Takes date and returns week of the year.
-  getWeek = date => dayjs(date).week();
-
-  dataFilter = (json, id) => {
+  studentAttendanceDataFilter = (json, id) => {
     const list = [];
     let numId = 0;
     json.forEach((day) => {
       day.attendanceData.forEach((entry) => {
         if (entry.studentId === id) {
+          const weekNum = this.getWeek(day.date);
+          const { timesStamp, attendance } = entry;
+
           list.push({
             date: day.date,
             dateDisplay: dayjs(day.date).format('ddd D MMM'),
-            timesStamp: entry.timesStamp,
-            attendance: entry.attendance,
-            index: 1,
+            timesStamp,
+            attendance,
+            index: weekNum,
             id: numId,
           });
         }
@@ -101,14 +128,16 @@ export default class Attendance extends Component {
   };
 
   render() {
-    const {
-      classHistoryData, classWasPresentData, loading, classHistoryDataMock,
-    } = this.state;
+    const { loading, classHistoryDataMock, classHistoryData } = this.state;
+    const { userId = '5b7c5ade5f49453eecccf351', classAttendance } = this.props;
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
     const chartWidth = windowWidth > 992 ? windowWidth / 3 : windowWidth / 1.3;
     const chartHeight = windowWidth > 992 ? windowHeight / 3 : windowHeight / 2;
-    const content = loading || [
+
+    const studentAttendanceData = this.studentAttendanceDataFilter(classHistoryData.class, userId);
+    const classWasPresentData = [];
+    const content = classAttendance.loading || [
       <StudentAttendance
           key="attendance0"
           chartWidth={chartWidth}
@@ -122,8 +151,8 @@ export default class Attendance extends Component {
         key="attendance1"
         chartWidth={chartWidth}
         chartHeight={chartHeight}
-        data={classHistoryData}
-        week={this.getWeek(classHistoryData[0].date)}
+        data={studentAttendanceData}
+        week={this.getWeek(studentAttendanceData[0].date)}
         loading={loading}
         attendanceColorStyle={this.attendanceColorStyle}
       />,
@@ -150,6 +179,7 @@ export default class Attendance extends Component {
     chartWidth={chartWidth}
     chartHeight={chartHeight}
     />,
+    <ChartClassPresence text="Chart Class Presence" />,
     ];
 
     return (
@@ -159,3 +189,19 @@ export default class Attendance extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  userId: getId(state),
+  classAttendance: getClassAttendance(state),
+});
+
+Attendance.propTypes = {
+  userId: PropTypes.string.isRequired,
+  classAttendance: PropTypes.shape({}).isRequired,
+  fetchClassAttendance: PropTypes.func.isRequired,
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchClassAttendance: fetchClassAttendanceAction },
+)(Attendance);
