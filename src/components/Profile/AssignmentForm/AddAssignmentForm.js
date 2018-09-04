@@ -6,7 +6,7 @@ import validate from '../../../utils/validate';
 
 const AddAssignmentForm = (props) => {
   const {
-    handleSubmit, pristine, submitting, invalid, reset, hidden, handleHidden,
+    handleSubmit, pristine, submitting, invalid, hidden, handleHidden,
   } = props;
 
   return (
@@ -34,9 +34,6 @@ const AddAssignmentForm = (props) => {
           >
             Submit
           </button>
-          <button type="button" onClick={reset} className="waves-effect waves-light btn">
-            Clear Values
-          </button>
           <button type="button" onClick={handleHidden} className="waves-effect waves-light btn">
             Cancel
           </button>
@@ -52,5 +49,6 @@ AddAssignmentForm.propTypes = {
 
 export default reduxForm({
   form: 'assignment', // a unique identifier for this form
+  destroyOnUnmount: true,
   validate,
 })(AddAssignmentForm);
