@@ -12,8 +12,9 @@ const Aside = ({ auth: { user }, logOut }) => <AsideComponent user={user} logOut
 
 Aside.propTypes = {
   logOut: PropTypes.func.isRequired,
-  auth: PropTypes.shape({}).isRequired,
-  user: PropTypes.shape({}).isRequired,
+  auth: PropTypes.shape({
+    user: PropTypes.shape({}),
+  }).isRequired,
 };
 
 const mapStateToProps = state => ({

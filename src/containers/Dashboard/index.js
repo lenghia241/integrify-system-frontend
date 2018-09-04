@@ -11,7 +11,7 @@ import PageTemplate from '../../components/PageTemplate';
 const Dashboard = () => {
   const DashboardComponents = [
     { heading: 'Study-Sync/Lectures', componentBody: <StudySync />, link: '/studySync' },
-    { heading: 'Event Panel', componentBody: <EventPanel />, link: '/eventPanel' },
+    { heading: 'Event Panel', componentBody: <EventPanel />, link: '/events' },
     { heading: 'Assignments', componentBody: <Assignments /> },
     { heading: 'Notification ', componentBody: <div>Notification</div> },
   ];

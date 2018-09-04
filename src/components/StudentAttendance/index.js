@@ -3,8 +3,8 @@ import {
   ScatterChart, Scatter, XAxis, YAxis, ZAxis, Tooltip, Cell,
 } from 'recharts';
 import PropTypes from 'prop-types';
-import ChartToolTip from '../ChartToolTip';
 import './index.css';
+import ChartTooltip from '../ChartToolTip';
 
 const StudentAttendance = (props) => {
   const {
@@ -35,13 +35,14 @@ const StudentAttendance = (props) => {
             <XAxis
               type="category"
               dataKey="dateDisplay"
+              name="xAxis"
               interval={0}
               tickLine={{ transform: 'translate(0, -3)' }}
             />
             <YAxis
               type="number"
               dataKey="index"
-              name="week"
+              name="yAxis"
               tick={false}
               tickLine={false}
               axisLine={false}
@@ -51,7 +52,7 @@ const StudentAttendance = (props) => {
             <Tooltip
               cursor={{ display: 'none' }}
               wrapperStyle={{ zIndex: 100 }}
-              content={ChartToolTip}
+              content={<ChartTooltip />}
             />
           </ScatterChart>
         </div>

@@ -9,7 +9,7 @@ const EachAssignment = ({ assignment }) => (
       <span>{dayjs(assignment.date).format('DD')}</span>
     </time>
     <div className="col-details">
-      <p className = "bold row-title uppercase">{assignment.titleOfAssignment}</p>
+      <p className="bold row-title uppercase">{assignment.titleOfAssignment}</p>
       <p>{assignment.description}</p>
     </div>
   </div>
