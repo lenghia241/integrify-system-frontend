@@ -59,7 +59,7 @@ export const logOut = () => async (dispatch) => {
 export const checkUser = () => async (dispatch) => {
   dispatch(startFetching());
   try {
-    const res = await axios.get('/api/v2/users/current');
+    const res = await axios.get('/api/v2/users/');
 
     dispatch(authUserSuccess(res.data));
   } catch (err) {

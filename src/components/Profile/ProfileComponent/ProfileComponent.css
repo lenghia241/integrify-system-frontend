@@ -3,7 +3,7 @@
   height: 100%;
   width: 100%;
   overflow-y: scroll;
-  margin-bottom: 4vw;
+  padding-bottom: 4vw;
 }
 .profile-component-header {
   min-height: 40px;
@@ -13,6 +13,10 @@
   padding: 0 20px;
   background-color: var(--secondary-light);
   z-index: 1;
+}
+.profile-component-header > h5 {
+  margin: 0;
+  vertical-align: center;
 }
 .profile-component-body {
   padding-top: 7.5px;
