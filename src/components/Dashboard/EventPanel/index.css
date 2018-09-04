@@ -94,7 +94,7 @@ time.icon:focus {
 
 .row-event:hover,
 .row-event-detailed:hover {
-  background-color: #e3ded4;
+  background-color: var(--on-hover);
 }
 
 .col-details {
