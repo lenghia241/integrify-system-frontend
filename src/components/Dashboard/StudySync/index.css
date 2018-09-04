@@ -4,7 +4,7 @@
   padding: 0px 15px;
 }
 .row-studysync:hover {
-  background-color: var(--on-dark);
+  background-color: #e3ded4;
 }
 .row > p {
   margin: 0;

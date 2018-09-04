@@ -1,16 +1,18 @@
 .profile-component {
-  background-color: white;
+  background-color: var( --surface );
   height: 100%;
   width: 100%;
-  padding: 15px;
   overflow-y: scroll;
+  margin-bottom: 4vw;
 }
 .profile-component-header {
+  min-height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 7.5px;
-  border-bottom: 1px dashed lightgray;
+  padding: 0 20px;
+  background-color: var(--secondary-light);
+  z-index: 1;
 }
 .profile-component-body {
   padding-top: 7.5px;
