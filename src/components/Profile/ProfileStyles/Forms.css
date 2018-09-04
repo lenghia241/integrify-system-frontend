@@ -13,22 +13,27 @@
   padding: 3px 5px;
 }
 .profile-tabs {
+  min-height:80px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: space-between;
-  height: 15vh;
+  height: 6vw;
   margin-bottom: 30px;
 }
 .profile-tab {
   padding: 5px 15px;
   cursor: pointer;
   border: none;
+  background: var(--surface);
 }
 .profile-tab:hover {
-  background-color: rgb(38, 166, 154);
+  background-color: var(--surface);
+}
+.profile-tab:active, .profile-tab:focus{
+  background-color: var(--active-light);
 }
 .error {
-  color: red;
+  color: var(--error);
 }
 .form-body {
   padding: 1% 10%;

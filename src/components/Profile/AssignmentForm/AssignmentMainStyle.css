@@ -47,5 +47,5 @@
   margin-bottom: 1%;
 }
 .main-form {
-  background-color: #f1ede6;
+  background-color: var(--surface);
 }
