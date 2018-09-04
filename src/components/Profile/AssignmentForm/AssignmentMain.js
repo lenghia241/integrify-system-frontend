@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
-import AssignmentMainStyle from './AssignmentMainStyle.css';
+import './AssignmentMainStyle.css';
 import AddAssignmentForm from './AddAssignmentForm';
 import { getInfo, addInfo } from '../../../store/actions/assignmentFormAction';
 
 class AssignmentMain extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hidden: true,
+    };
+  }
+
   componentDidMount() {
     const { getInfo: Info } = this.props;
     Info();
   }
+
+  handleHidden = () => {
+    this.setState(prevState => ({ hidden: !prevState.hidden }));
+  };
 
   submit = (values) => {
     const { addInfo: addInfoProp } = this.props;
@@ -19,7 +29,7 @@ class AssignmentMain extends Component {
 
   render() {
     const { assignmentItems: items } = this.props;
-
+    const { hidden } = this.state;
     const today = new Date();
     const date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
     const time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
@@ -29,7 +39,7 @@ class AssignmentMain extends Component {
       <tr key={item.title} className="table-row">
         <td>{dateTime}</td>
         <td>{item.title}</td>
-        <td>{item.status ? 'done' : 'notdone'}</td>
+        <td>{item.status ? 'done' : 'not done'}</td>
         <td>{item.githubLink}</td>
         <td>
           <button className="waves-effect waves-light btn" type="submit">
@@ -43,7 +53,11 @@ class AssignmentMain extends Component {
       <div className="main-form">
         <div className="assignment-main">
           <div className="assignment-header">
-            <button type="button" className="waves-effect waves-light btn">
+            <button
+              onClick={this.handleHidden}
+              type="button"
+              className="waves-effect waves-light btn add-btn"
+            >
               Add
             </button>
           </div>
@@ -60,7 +74,11 @@ class AssignmentMain extends Component {
             <tbody>{itemsform}</tbody>
           </table>
         </div>
-        <AddAssignmentForm onSubmit={this.submit} />
+        <AddAssignmentForm
+          handleHidden={this.handleHidden}
+          hidden={hidden}
+          onSubmit={this.submit}
+        />
       </div>
     );
   }
@@ -77,10 +95,7 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    AssignmentMainStyle,
-    reduxForm,
-    Field,
-    getInfo,
     addInfo,
+    getInfo,
   },
 )(AssignmentMain);
