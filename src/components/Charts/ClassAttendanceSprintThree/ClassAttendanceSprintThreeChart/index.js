@@ -1,11 +1,10 @@
 import React from 'react';
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Brush,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 import PropTypes from 'prop-types';
-import './index.css';
 
-const ClassAttendancePresent = (props) => {
+const ClassAttendanceSprintThree = (props) => {
   const { data, chartWidth, chartHeight } = props;
 
   return (
@@ -29,10 +28,10 @@ const ClassAttendancePresent = (props) => {
 };
 
 
-ClassAttendancePresent.propTypes = {
+ClassAttendanceSprintThree.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  chartWidth: PropTypes.string.isRequired,
+  chartWidth: PropTypes.number.isRequired,
   chartHeight: PropTypes.number.isRequired,
 };
 
-export default ClassAttendancePresent;
+export default ClassAttendanceSprintThree;

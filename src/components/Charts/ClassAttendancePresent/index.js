@@ -1,38 +1,37 @@
 import React from 'react';
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Brush,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 import PropTypes from 'prop-types';
-import './index.css';
 
-const ClassAttendanceAbsent = (props) => {
+const ClassAttendancePresent = (props) => {
   const { data, chartWidth, chartHeight } = props;
 
   return (
     <BarChart width={chartWidth} height={chartHeight} data={data}
-        margin={{
-          top: 5, right: 30, left: 20, bottom: 5,
-        }}>
+          margin={{
+            top: 20, right: 30, left: 20, bottom: 5,
+          }}>
       <CartesianGrid strokeDasharray="3 3"/>
       <XAxis
         dataKey="dateDisplay"
         angle={-45}
         textAnchor="end"
-        height={100}/>
+        height={100} />
       <YAxis/>
       <Tooltip/>
-      <Legend />
-      {/* <Brush dataKey="dateDisplay" height={20} stroke="#8884d8"/> */}
-      <Bar dataKey="absent" fill="#ff0000" />
+      <Legend/>
+      <Bar dataKey="full" stackId="a" fill="#00ff00" />
+      <Bar dataKey="partial" stackId="a" fill="#ffbf00" />
     </BarChart>
   );
 };
 
 
-ClassAttendanceAbsent.propTypes = {
+ClassAttendancePresent.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   chartWidth: PropTypes.number.isRequired,
   chartHeight: PropTypes.number.isRequired,
 };
 
-export default ClassAttendanceAbsent;
+export default ClassAttendancePresent;

@@ -5,9 +5,10 @@ import dayjs from 'dayjs';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
-import ClassAttendancePresent from '../../components/ClassAttendancePresent';
-import ClassAttendanceAbsent from '../../components/ClassAttendanceAbsent';
-import ClassAttendanceMixed from '../../components/ClassAttendanceMixed';
+import ClassAttendancePresent from '../../components/Charts/ClassAttendancePresent';
+import ClassAttendanceAbsent from '../../components/Charts/ClassAttendanceAbsent';
+import ClassAttendanceMixed from '../../components/Charts/ClassAttendanceMixed';
+import ClassAttendanceSprintThree from '../../components/Charts/ClassAttendanceSprintThree';
 import PageGrid from '../../components/PageGrid';
 
 import fiveDayData from './mock-data/fiveDayData.json';
@@ -106,7 +107,7 @@ export default class Attendance extends Component {
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
     const chartWidth = windowWidth > 992 ? windowWidth / 3 : windowWidth / 1.3;
-    const chartHeight = windowWidth > 992 ? windowHeight / 2.5 : windowHeight / 2;
+    const chartHeight = windowWidth > 992 ? windowHeight / 3 : windowHeight / 2;
     const content = loading || [
       <StudentAttendance
           key="attendance0"
@@ -137,6 +138,17 @@ export default class Attendance extends Component {
       chartWidth={chartWidth}
       chartHeight={chartHeight}
       data={classWasPresentData}
+    />,
+    <ClassAttendanceMixed
+    key="attendance4"
+    chartWidth={chartWidth}
+    chartHeight={chartHeight}
+    data={classWasPresentData}
+    />,
+    <ClassAttendanceSprintThree
+    key="attendance5"
+    chartWidth={chartWidth}
+    chartHeight={chartHeight}
     />,
     ];
 
