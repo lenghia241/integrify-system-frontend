@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './SignupRequests.css';
 import { connect } from 'react-redux';
 // import { getRequests as getRequestsAction } from '../../store/actions/index';
 import EachRequest from './EachRequest';
 
-class SignupRequests extends React.Component {
+class SignupRequests extends Component {
   componentDidMount() {
     this.getRequests();
   }
@@ -20,18 +20,12 @@ class SignupRequests extends React.Component {
   render() {
     return (
       <div>
-        <ul>
-          <EachRequest />
-          {/* {signupRequests.map(users => (
-            <EachRequest />
-          ))} */}
-        </ul>
+        <EachRequest />
       </div>
     );
   }
 }
 const mapStateToProps = state => ({ requests: state });
-
 const mapDispatchToProps = dispatch => ({
   getRequests: requests => dispatch({
     type: 'GET_REQUESTS',

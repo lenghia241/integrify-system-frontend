@@ -14,4 +14,4 @@ export {
   getSignupRequests,
   acceptSignupRequest,
   deleteSignupRequest,
-} from './signuprequestsActions';
+} from './signupRequestsActions';

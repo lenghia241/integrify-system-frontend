@@ -9,16 +9,16 @@ export const getSignupRequests = () => (dispatch) => {
     });
   });
 };
-export const acceptSignupRequest = () => (dispatch) => {
-  axios.post('/api/v2/users/signup/temp/:id').then((res) => {
+export const acceptSignupRequest = id => (dispatch) => {
+  axios.post(`/api/v2/users/signup/temp/${id}`).then((res) => {
     dispatch({
       type: ACCEPT_REQUEST,
       payload: res.data,
     });
   });
 };
-export const deleteSignupRequest = () => (dispatch) => {
-  axios.delete('/api/v2/users/signup/temp/:id').then((res) => {
+export const deleteSignupRequest = id => (dispatch) => {
+  axios.delete(`/api/v2/users/signup/temp/${id}`).then((res) => {
     dispatch({
       type: DELETE_REQUEST,
       payload: res.data,

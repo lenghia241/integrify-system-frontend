@@ -1,24 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../components/Button';
-import { reduxForm, Field } from 'redux-form';
 
-class EachRequest extends React.Component{
-render(){
-  componentDidMount(){
-    this.props.getRequests();
-  };
-  handleAccept = () => {
-    this.props.acceptRequest();
-  };
-  handleDecline = () => {
-    this.props.deleteRequest();
-  };
-return(
+const EachRequest = ({
+  firstName, lastName, email, handleAccept, handleDecline,
+}) => (
   <div className="card-panel hoverable">
-    <span className="bold">{user.firstName} </span>
-    <span>{user.lastName}</span>
-    <span>{user.email}</span>
+    <span className="bold">{firstName} </span>
+    <span>{lastName}</span>
+    <span>{email}</span>
     <select id="role" name="role" defaultValue="Student">
       <option value="student">Student</option>
       <option value="guest">Guest</option>
@@ -29,19 +19,15 @@ return(
       <option value="batch2">Batch 2</option>
       <option value="batch3">Batch 3</option>
     </select>
-    <Button label="Accept" onClick={this.props.handleAccept} />
-    <Button label="Decline" onClick={this.props.handleDecline} />
+    <Button label="Accept" onClick={handleAccept} />
+    <Button label="Decline" onClick={handleDecline} />
   </div>
-)
-}
-
-
+);
 EachRequest.propTypes = {
-  request: PropTypes.shape({
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    email: PropTypes.string,
-  }).isRequired,
+  handleAccept: PropTypes.func.isRequired,
+  handleDecline: PropTypes.func.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
 };
-
 export default EachRequest;
