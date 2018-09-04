@@ -10,6 +10,9 @@
   background-color: var(--secondary-dark);
   width: 270px;
 }
+.sidenav .sidenav-fixed {
+  padding: 0;
+}
 /* Style for text */
 .sidenav .user-name,
 .sidenav .user-check-status,
@@ -53,24 +56,21 @@
 }
 /* Users info and photo */
 .sidenav .user-info {
+  padding: 20px;
   grid-area: user;
-  display: grid;
-  grid-template-areas:
-    ". photo notification"
-    ". photo ."
-    "name name name";
-  grid-template-columns: 46px auto 1fr;
+  position: relative;
   background-color: var(--primary);
 }
 /* Notifications */
 .sidenav .user-info i {
-  padding: 10px;
-  grid-area: notification;
-  margin: 0;
+  position: absolute;
+  top: 10px;
+  right: 10px;
   font-size: 1.8em;
   color: var(--on-dark);
 }
 .sidenav .user-photo {
+  justify-self: center;
   grid-area: photo;
   align-self: center;
 }
@@ -118,11 +118,5 @@
 @media only screen and (min-width: 993px) {
   .sidenav-trigger i {
     display: none;
-  }
-}
-@media screen and (max-height: 320px) {
-  .sidenav .collapsible {
-    height: calc(100% - 400px);
-    overflow-y: auto;
   }
 }
