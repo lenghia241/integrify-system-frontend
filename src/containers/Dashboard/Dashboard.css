@@ -1,14 +1,15 @@
+.Dashboard-header {
+  overflow: hidden;
+  height: 100%;
+  padding-bottom: 60px;
+}
+
 .Dashboard {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 40% 40%;
+  grid-template-rows: 44% 44%;
   grid-gap: 2vw;
-  padding: 20px;
-  height: 100%;
-}
-
-.Dashboard-header{
-  overflow:hidden;
+  padding: 0 20px;
   height: 100%;
 }
 
@@ -16,5 +17,7 @@
   .Dashboard {
     grid-template-columns: 1fr;
     grid-auto-rows: 50%;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
 }

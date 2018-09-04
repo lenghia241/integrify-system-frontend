@@ -1,8 +1,13 @@
 .switch label .lever {
   background-color: var(--error-light);
+  width: 27px;
+  height: 10px;
+  margin-right: 16px;
 }
 .switch label .lever:after {
   background-color: var(--error);
+  height: 15px;
+  width: 15px;
 }
 .switch label input[type="checkbox"]:checked + .lever {
   background-color: var(--active-light);
@@ -20,10 +25,10 @@
   color: var(--active);
 }
 .switch label {
-  font-variant: small-caps;
-  text-transform: capitalize;
-  font-weight: 200;
-  font-size: 0.8em;
   display: flex;
   align-items: center;
+}
+.switch .red-text,
+.switch .green-text {
+  font-weight: 400;
 }

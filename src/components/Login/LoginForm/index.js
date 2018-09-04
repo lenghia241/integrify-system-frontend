@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
-import FormField from '../FormField';
-import { formValidate as validate } from '../../../utils';
+import renderField from '../../renderField';
+import validate from '../../../utils/validate';
 
 const LoginForm = ({ handleSubmit, submitErrors }) => (
   <React.Fragment>
@@ -15,8 +15,8 @@ const LoginForm = ({ handleSubmit, submitErrors }) => (
       ))
       : null}
     <form onSubmit={handleSubmit}>
-      <Field name="email" component={FormField} type="email" label="Email" />
-      <Field name="password" component={FormField} type="password" label="Password" />
+      <Field name="email" component={renderField} type="email" label="Email" />
+      <Field name="password" component={renderField} type="password" label="Password" />
       <small>
         <Link to="/forgot-password/" className="right-align forgot-pw">
           Forgot your password?

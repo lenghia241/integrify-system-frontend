@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { withRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -9,9 +9,13 @@ import Profile from './containers/Profile';
 import Login from './containers/Login';
 import Dashboard from './containers/Dashboard';
 import Aside from './containers/Aside';
+import SignupRequests from './containers/SignupRequests';
 
 import * as actions from './store/actions/index';
 import { getAuth } from './store/reducers';
+import StudySyncDetail from './components/Dashboard/StudySync/StudySyncDetail';
+import AddStudySync from './components/Dashboard/StudySync/AddStudySync';
+import EventPanelDetailed from './components/Dashboard/EventPanel/EventPanelDetailed';
 
 class App extends Component {
   componentDidMount() {
@@ -20,13 +24,18 @@ class App extends Component {
   }
 
   render() {
-    const { token } = this.props;
+    const { user } = this.props;
 
-    const routes = token ? (
+    const routes = user ? (
       <Switch>
         <Route exact path="/attendance" component={Attendance} />
         <Route exact path="/profile" component={Profile} />
+        <Route exact path="/eventPanel" component={EventPanelDetailed} />
+        <Route exact path="/studySync" component={StudySyncDetail} />
+        <Route exact path="/studySync/add" component={AddStudySync} />
         <Route exact path="/" component={Dashboard} />
+
+        <Route exact path="/signupRequests" component={SignupRequests} />
       </Switch>
     ) : (
       <Switch>
@@ -34,31 +43,33 @@ class App extends Component {
       </Switch>
     );
 
-    const aside = token ? <Aside className="App-aside" /> : null;
+    const aside = user ? <Aside className="App-aside" /> : null;
 
     return (
       <div className="App">
         {aside}
-        <div className={token ? 'App-body' : 'App-body login'}>{routes}</div>
+        <div className={user ? 'App-body' : 'App-body login'}>{routes}</div>
       </div>
     );
   }
 }
 
 App.defaultProps = {
-  token: null,
+  user: null,
 };
 
 App.propTypes = {
-  token: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.bool]),
+  user: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.bool]),
   checkUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  token: getAuth(state).token,
+  user: getAuth(state).user,
 });
 
-export default connect(
-  mapStateToProps,
-  actions,
-)(App);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    actions,
+  )(App),
+);
