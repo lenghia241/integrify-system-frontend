@@ -5,6 +5,7 @@ import attendanceReducer from './attendanceReducer';
 import dashboardReducer from './dashboardReducer';
 import assignmentFormReducer from './assignmentFormReducer';
 import profileReducer from './profileReducer';
+import classAttendanceReducer from './classAttendanceReducer';
 
 export default combineReducers({
   form: reduxForm,
@@ -13,6 +14,7 @@ export default combineReducers({
   attendance: attendanceReducer,
   assignment: assignmentFormReducer,
   dashboard: dashboardReducer,
+  classAttendance: classAttendanceReducer,
 });
 
 export const getAuth = state => state.auth;
@@ -22,4 +24,5 @@ export const getStudySyncs = state => state.dashboard.studysyncs;
 export const getEvents = state => state.dashboard.events;
 export const getEventDetail = state => state.dashboard.event;
 export const getAssignments = state => state.dashboard.assignments;
+export const getClassAttendance = state => state.classAttendance;
 export const getProfile = state => state.profile;
