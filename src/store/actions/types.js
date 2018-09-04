@@ -24,3 +24,8 @@ export const GET_INFO = 'GET_INFO';
 export const ADD_INFO = 'ADD_INFO';
 export const CHECK_OUT = 'CHECK_OUT';
 export const LOG_OUT = 'LOG_OUT';
+
+// Admin request list
+export const GET_REQUEST_LIST = 'GET_REQUEST_LIST';
+export const ACCEPT_REQUEST = 'ACCEPT_REQUEST';
+export const DECLINE_REQUEST = 'DECLINE_REQUEST';
