@@ -8,7 +8,7 @@ import './index.css';
 
 const StudentAttendance = (props) => {
   const {
-    chartWidth, data, week, loading, attendanceColorStyle,
+    chartWidth, chartHeight, data, week, loading, attendanceColorStyle,
   } = props;
   if (!loading) {
     return (
@@ -16,7 +16,7 @@ const StudentAttendance = (props) => {
         <div>
           <ScatterChart
             width={chartWidth}
-            height={160}
+            height={chartHeight}
             margin={{
               top: 30,
               right: 0,
@@ -67,7 +67,8 @@ const StudentAttendance = (props) => {
 
 
 StudentAttendance.propTypes = {
-  chartWidth: PropTypes.string.isRequired,
+  chartWidth: PropTypes.number.isRequired,
+  chartHeight: PropTypes.number.isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   week: PropTypes.number.isRequired,
   loading: PropTypes.bool.isRequired,

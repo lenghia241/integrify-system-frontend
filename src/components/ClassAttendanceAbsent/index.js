@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 import './index.css';
 
 const ClassAttendanceAbsent = (props) => {
-  const { data, chartWidth } = props;
+  const { data, chartWidth, chartHeight } = props;
 
   return (
-    <BarChart width={chartWidth} height={380} data={data}
+    <BarChart width={chartWidth} height={chartHeight} data={data}
         margin={{
           top: 5, right: 30, left: 20, bottom: 5,
         }}>
@@ -31,7 +31,8 @@ const ClassAttendanceAbsent = (props) => {
 
 ClassAttendanceAbsent.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  chartWidth: PropTypes.string.isRequired,
+  chartWidth: PropTypes.number.isRequired,
+  chartHeight: PropTypes.number.isRequired,
 };
 
 export default ClassAttendanceAbsent;
