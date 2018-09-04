@@ -16,6 +16,7 @@ import StudySyncDetail from './components/Dashboard/StudySync/StudySyncDetail';
 import AddStudySync from './components/Dashboard/StudySync/AddStudySync';
 import EventPanelDetailed from './components/Dashboard/EventPanel/EventPanelDetailed';
 import ForgotPassword from './containers/ForgotPassword';
+import ConfirmPassword from './containers/ConfirmPassword';
 
 class App extends Component {
   componentDidMount() {
@@ -37,6 +38,7 @@ class App extends Component {
       </Switch>
     ) : (
       <Switch>
+        <Route exact path="/confirm-password" component={ConfirmPassword} />
         <Route exact path="/forgot-password" component={ForgotPassword} />
         <Route exact path="/" component={Login} />
       </Switch>
