@@ -6,10 +6,21 @@ import AddAssignmentForm from './AddAssignmentForm';
 import { getInfo } from '../../../store/actions/assignmentFormAction';
 
 class AssignmentMain extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hidden: true,
+    };
+  }
+
   componentDidMount() {
     const { getInfo: Info } = this.props;
     Info();
   }
+
+  handleHidden = () => {
+    this.setState(prevState => ({ hidden: !prevState.hidden }));
+  };
 
   submit = (values) => {
     const { addInfo: addInfoProp } = this.props;
