@@ -1,4 +1,4 @@
-export const navigationItems = [
+const navigationItems = [
   {
     label: 'Dashboard',
     icon: 'dashboard',
@@ -51,3 +51,4 @@ export const navigationItems = [
     ],
   },
 ];
+export default navigationItems;

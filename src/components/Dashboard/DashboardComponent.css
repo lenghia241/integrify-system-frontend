@@ -4,6 +4,7 @@
   width: 100%;
   display: grid;
   grid-template-rows: 10% 90%;
+  margin-bottom: 5vw;
 }
 
 /* width */
