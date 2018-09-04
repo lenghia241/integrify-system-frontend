@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 import './Aside.css';
 
-import { navigationItems } from './navigationItems';
-import { Navigation } from './Navigation';
+import navigationItems from './navigationItems';
+import Navigation from './Navigation';
 import AttendanceButton from '../AttendanceButton';
 
 class Aside extends Component {

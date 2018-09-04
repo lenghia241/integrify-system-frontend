@@ -4,6 +4,7 @@
   width: 100%;
   display: grid;
   grid-template-rows: 10% 90%;
+  margin-bottom: 5vw;
 }
 
 /* width */
@@ -21,7 +22,7 @@
   background: var(--primary);
 }
 
-.dashboard-component-footer {
+.dashboard-component-header {
   min-height: 40px;
   display: flex;
   justify-content: space-between;
@@ -30,7 +31,7 @@
   background-color: var(--secondary-light);
   z-index: 1;
 }
-.dashboard-component-footer > h5 {
+.dashboard-component-header > h5 {
   margin: 0;
   vertical-align: center;
 }

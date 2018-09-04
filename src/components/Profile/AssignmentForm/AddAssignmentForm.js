@@ -6,18 +6,18 @@ import validate from '../../../utils/validate';
 
 const AddAssignmentForm = (props) => {
   const {
-    handleSubmit, pristine, reset, submitting, invalid,
+    handleSubmit, pristine, submitting, invalid, hidden, handleHidden,
   } = props;
 
   return (
-    <form onSubmit={handleSubmit} className="AddAssignmentForm">
+    <form onSubmit={handleSubmit} className={`${hidden ? 'hidden' : ''}`}>
       <div className="form-body">
         <div>
-          <Field name="assignment" component={renderField} type="text" label="Assignment" />
+          <Field name="title" component={renderField} type="text" label="Assignment" />
         </div>
         <div>
           <div>
-            <Field name="github" component={renderField} type="text" label="Github" />
+            <Field name="githubLink" component={renderField} type="text" label="Github" />
           </div>
         </div>
         <div>
@@ -34,13 +34,8 @@ const AddAssignmentForm = (props) => {
           >
             Submit
           </button>
-          <button
-            type="button"
-            disabled={pristine || submitting}
-            onClick={reset}
-            className="waves-effect waves-light btn"
-          >
-            Clear Values
+          <button type="button" onClick={handleHidden} className="waves-effect waves-light btn">
+            Cancel
           </button>
         </div>
       </div>
@@ -54,5 +49,6 @@ AddAssignmentForm.propTypes = {
 
 export default reduxForm({
   form: 'assignment', // a unique identifier for this form
+  destroyOnUnmount: true,
   validate,
 })(AddAssignmentForm);
