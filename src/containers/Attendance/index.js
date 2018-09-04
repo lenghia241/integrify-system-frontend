@@ -101,7 +101,6 @@ class Attendance extends Component {
     const { userId = '5b7c5ade5f49453eecccf351', classAttendance } = this.props;
 
     const studentAttendanceData = this.studentAttendanceDataFilter(classHistoryData.class, userId);
-    console.log(userId);
 
     const content = (
       <PageTemplate heading="Attendance">
