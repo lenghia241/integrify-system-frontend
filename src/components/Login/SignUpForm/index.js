@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm, propTypes as reduxFormPropTypes } from 'redux-form';
-import FormField from '../FormField';
+import renderField from '../../renderField';
 import validate from '../../../utils/validate';
 
 const SignUpForm = ({
@@ -17,9 +17,9 @@ const SignUpForm = ({
       : null}
     {signUpMsg ? <div className="green-text">{signUpMsg}</div> : null}
     <form onSubmit={handleSubmit}>
-      <Field name="firstName" component={FormField} type="text" label="First Name" />
-      <Field name="lastName" component={FormField} type="text" label="Last Name" />
-      <Field name="email" component={FormField} type="email" label="Email" />
+      <Field name="firstName" component={renderField} type="text" label="First Name" />
+      <Field name="lastName" component={renderField} type="text" label="Last Name" />
+      <Field name="email" component={renderField} type="email" label="Email" />
       <div className="center">
         <button type="submit" className="btn" disabled={invalid}>
           Submit

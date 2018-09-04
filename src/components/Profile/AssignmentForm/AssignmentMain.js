@@ -28,7 +28,7 @@ class AssignmentMain extends Component {
         <td />
         <td>{item.teacher}</td>
         <td>
-          <button className="waves-effect waves-light btn orange" type="submit">
+          <button className="waves-effect waves-light btn" type="submit">
             Edit
           </button>
         </td>
@@ -39,8 +39,9 @@ class AssignmentMain extends Component {
       <div className="main-form">
         <div className="assignment-main">
           <div className="assignment-header">
-            <h1 className="h1">Assignments</h1>
-            <button type="button" className="waves-effect waves-light btn orange">Add</button>
+            <button type="button" className="waves-effect waves-light btn">
+              Add
+            </button>
           </div>
           <table className="responsive-table mainTable">
             <thead className="assignment-main-header table-header">

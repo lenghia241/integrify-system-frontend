@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
+import '../../../App.css';
 import './index.css';
 
 import { getEventList as getEventsListAction } from '../../../store/actions';
@@ -24,7 +25,8 @@ class EventPanel extends Component {
           <div className="row-event" key={_id}>
             <time
               className="col-time icon uppercase"
-              dateTime={dayjs(time.slice(0, time.length - 7)).format('DD-MMM')}>
+              dateTime={dayjs(time.slice(0, time.length - 7)).format('DD-MMM')}
+            >
               <strong>{dayjs(time.slice(0, time.length - 7)).format('MMM')}</strong>
               <span>{dayjs(time.slice(0, time.length - 7)).format('DD')}</span>
             </time>

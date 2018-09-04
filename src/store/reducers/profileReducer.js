@@ -2,7 +2,7 @@ import { FETCH_USER_PROFILE, USER_PROFILE_LOADING } from '../actions/types';
 
 const initialState = {
   profiledata: {},
-  loading: true,
+  loading: false,
 };
 
 export default function (state = initialState, action) {
