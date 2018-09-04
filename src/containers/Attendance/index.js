@@ -65,14 +65,14 @@ class Attendance extends Component {
 
   getWeek = date => dayjs(date).week();
 
-  classAttendanceFilter = (data) => {
+  chartPresentFilter = (data) => {
     const newArray = [];
-    data.map((date) => {
+    data.map((day) => {
       let partial = 0;
       let full = 0;
       let absent = 0;
       let numId = 0;
-      date.attendanceData.forEach((person) => {
+      day.attendanceData.forEach((person) => {
         if (person.attendance === 'full') {
           full += 1;
         } else if (person.attendance === 'partial') {
@@ -82,7 +82,7 @@ class Attendance extends Component {
         }
       });
       newArray.push({
-        name: date.date, dateDisplay: dayjs(date.date).format('ddd D MMM'), full, partial, absent, id: numId,
+        name: day.date, dateDisplay: dayjs(day.date).format('ddd D MMM'), full, partial, absent, id: numId,
       });
       numId += 1;
     });
@@ -136,51 +136,33 @@ class Attendance extends Component {
     const chartHeight = windowWidth > 992 ? windowHeight / 3 : windowHeight / 2;
 
     const studentAttendanceData = this.studentAttendanceDataFilter(classHistoryData.class, userId);
-    const classWasPresentData = [];
-    const content = classAttendance.loading || [
-      <StudentAttendance
-          key="attendance0"
-          chartWidth={chartWidth}
-          chartHeight={chartHeight}
-          data={classHistoryDataMock}
-          week={this.getWeek(classHistoryDataMock[0].date)}
-          loading={loading}
-          attendanceColorStyle={this.attendanceColorStyle}
-        />,
-      <StudentAttendance
-        key="attendance1"
-        chartWidth={chartWidth}
-        chartHeight={chartHeight}
-        data={studentAttendanceData}
-        week={this.getWeek(studentAttendanceData[0].date)}
-        loading={loading}
-        attendanceColorStyle={this.attendanceColorStyle}
-      />,
+    const content = !classAttendance.loading ? [
+
       <ClassAttendancePresent
         key="attendance2"
         chartWidth={chartWidth}
         chartHeight={chartHeight}
-        data={classWasPresentData}
+        data={this.chartPresentFilter(classHistoryData.class)}
       />,
       <ClassAttendanceAbsent
       key="attendance3"
       chartWidth={chartWidth}
       chartHeight={chartHeight}
-      data={classWasPresentData}
+      data={this.chartPresentFilter(classHistoryData.class)}
     />,
     <ClassAttendanceMixed
     key="attendance4"
     chartWidth={chartWidth}
     chartHeight={chartHeight}
-    data={classWasPresentData}
+    data={this.chartPresentFilter(classHistoryData.class)}
     />,
     <ClassAttendanceSprintThree
     key="attendance5"
     chartWidth={chartWidth}
     chartHeight={chartHeight}
     />,
-    <ChartClassPresence text="Chart Class Presence" />,
-    ];
+    <ChartClassPresence text="Chart Class Presence" key="attendance6" />,
+    ] : [<div key="attendance-div" />];
 
     return (
       <PageTemplate heading="Attendance">
