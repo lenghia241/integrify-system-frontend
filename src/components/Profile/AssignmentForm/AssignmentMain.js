@@ -7,6 +7,11 @@ import AddAssignmentForm from './AddAssignmentForm';
 import { getInfo, addInfo } from '../../../store/actions/assignmentFormAction';
 
 class AssignmentMain extends Component {
+  componentDidMount() {
+    const { getInfo: Info } = this.props;
+    Info();
+  }
+
   submit = (values) => {
     const { addInfo: addInfoProp } = this.props;
     addInfoProp(values);
@@ -23,10 +28,9 @@ class AssignmentMain extends Component {
     const itemsform = items.items.map(item => (
       <tr key={item.assignment} className="table-row">
         <td>{dateTime}</td>
-        <td>{item.assignment}</td>
-        <td>{item.github}</td>
-        <td />
-        <td>{item.teacher}</td>
+        <td>{item.title}</td>
+        <td>{item.status ? 'done' : 'notdone'}</td>
+        <td>{item.githubLink}</td>
         <td>
           <button className="waves-effect waves-light btn" type="submit">
             Edit
@@ -47,10 +51,9 @@ class AssignmentMain extends Component {
             <thead className="assignment-main-header table-header">
               <tr>
                 <th>Date</th>
-                <th>Assignment</th>
-                <th>GitHub</th>
+                <th>Title</th>
                 <th>Status</th>
-                <th>Teacher</th>
+                <th>GitHub Link</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -65,6 +68,7 @@ class AssignmentMain extends Component {
 
 AssignmentMain.propTypes = {
   addInfo: PropTypes.func.isRequired,
+  getInfo: PropTypes.func.isRequired,
   assignmentItems: PropTypes.shape({}).isRequired,
 };
 const mapStateToProps = state => ({
