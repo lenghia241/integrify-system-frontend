@@ -6,19 +6,22 @@ import PropTypes from 'prop-types';
 import './index.css';
 
 const ClassAttendancePresent = (props) => {
-  const { data } = props;
+  const { data, chartWidth } = props;
 
   return (
-    <BarChart width={600} height={300} data={data}
+    <BarChart width={chartWidth} height={380} data={data}
           margin={{
             top: 20, right: 30, left: 20, bottom: 5,
           }}>
       <CartesianGrid strokeDasharray="3 3"/>
-      <XAxis dataKey="dateDisplay" />
+      <XAxis
+        dataKey="dateDisplay"
+        angle={-45}
+        textAnchor="end"
+        height={100} />
       <YAxis/>
       <Tooltip/>
       <Legend/>
-      <Brush dataKey="dateDisplay" height={20} stroke="#8884d8" />
       <Bar dataKey="full" stackId="a" fill="#00ff00" />
       <Bar dataKey="partial" stackId="a" fill="#ffbf00" />
     </BarChart>
@@ -28,6 +31,7 @@ const ClassAttendancePresent = (props) => {
 
 ClassAttendancePresent.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  chartWidth: PropTypes.string.isRequired,
 };
 
 export default ClassAttendancePresent;

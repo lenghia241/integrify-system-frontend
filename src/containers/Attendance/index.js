@@ -103,9 +103,12 @@ export default class Attendance extends Component {
     const {
       classHistoryData, classWasPresentData, loading, classHistoryDataMock,
     } = this.state;
+    const windowWidth = window.innerWidth;
+    const chartWidth = windowWidth > 992 ? windowWidth / 3 : windowWidth / 1.3;
     const content = loading || [
       <StudentAttendance
           key="attendance0"
+          chartWidth={chartWidth}
           data={classHistoryDataMock}
           week={this.getWeek(classHistoryDataMock[0].date)}
           loading={loading}
@@ -113,6 +116,7 @@ export default class Attendance extends Component {
         />,
       <StudentAttendance
         key="attendance1"
+        chartWidth={chartWidth}
         data={classHistoryData}
         week={this.getWeek(classHistoryData[0].date)}
         loading={loading}
@@ -120,16 +124,14 @@ export default class Attendance extends Component {
       />,
       <ClassAttendancePresent
         key="attendance2"
+        chartWidth={chartWidth}
         data={classWasPresentData}
       />,
       <ClassAttendanceAbsent
       key="attendance3"
+      chartWidth={chartWidth}
       data={classWasPresentData}
     />,
-      <ClassAttendanceMixed
-      key="attendance4"
-      data={classWasPresentData}
-      />,
     ];
 
     return (

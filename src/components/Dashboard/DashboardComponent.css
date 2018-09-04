@@ -1,44 +1,43 @@
 .dashboard-component {
-  background-color: white;
+  background-color: var(--surface);
   height: 100%;
   width: 100%;
-  padding: 15px;
+  display: grid;
+  grid-template-rows: 10% 90%;
 }
 
 /* width */
 ::-webkit-scrollbar {
-  width: 0.5vw;
+  width: 0.25vw;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
+  box-shadow: inset 0 0 5px var(--secondary-dark);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: grey;
-  border-radius: 0.5vw;
+  background: var(--primary);
 }
 
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
-}
-
-.dashboard-component-header {
+.dashboard-component-footer {
+  min-height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 7.5px;
-  border-bottom: 1px dashed lightgray;
+  padding: 0 20px;
+  background-color: var(--secondary-light);
+  z-index: 1;
+}
+.dashboard-component-footer > h5 {
+  margin: 0;
+  vertical-align: center;
 }
 
 .dashboard-component-body {
-  padding-top: 7.5px;
+  padding-top: 24px;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 80%;
-  
+  height: 100%;
 }

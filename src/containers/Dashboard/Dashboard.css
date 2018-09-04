@@ -3,6 +3,7 @@
   height: 100%;
   padding-bottom: 60px;
 }
+
 .Dashboard {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -11,6 +12,7 @@
   padding: 0 20px;
   height: 100%;
 }
+
 @media screen and (max-width: 992px) {
   .Dashboard {
     grid-template-columns: 1fr;

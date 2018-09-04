@@ -18,7 +18,7 @@ const ClassAttendanceMixed = (props) => {
       <YAxis/>
       <Tooltip/>
       <Legend/>
-      <Brush dataKey="dateDisplay" height={20} stroke="#8884d8" />
+      {/*<Brush dataKey="dateDisplay" height={20} stroke="#8884d8" /> */}
       <Bar dataKey="full" stackId="a" fill="#00ff00" />
       <Bar dataKey="partial" stackId="a" fill="#ffbf00" />
       <Bar dataKey="absent" fill="#ff0000" />

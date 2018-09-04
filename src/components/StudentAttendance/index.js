@@ -8,15 +8,15 @@ import './index.css';
 
 const StudentAttendance = (props) => {
   const {
-    data, week, loading, attendanceColorStyle,
+    chartWidth, data, week, loading, attendanceColorStyle,
   } = props;
   if (!loading) {
     return (
       <div className="studentAttendance-container">
         <div>
           <ScatterChart
-            width={500}
-            height={80}
+            width={chartWidth}
+            height={160}
             margin={{
               top: 30,
               right: 0,
@@ -37,6 +37,9 @@ const StudentAttendance = (props) => {
               dataKey="dateDisplay"
               interval={0}
               tickLine={{ transform: 'translate(0, -3)' }}
+              angle={-45}
+              textAnchor="end"
+              height={100}
             />
             <YAxis
               type="number"
@@ -64,6 +67,7 @@ const StudentAttendance = (props) => {
 
 
 StudentAttendance.propTypes = {
+  chartWidth: PropTypes.string.isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   week: PropTypes.number.isRequired,
   loading: PropTypes.bool.isRequired,

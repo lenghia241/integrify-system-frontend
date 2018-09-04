@@ -14,17 +14,17 @@
   padding-left: 0;
 }
 .Enabled {
-  color: #95ff00;
+  color: var(--active-light);
 }
 .Disabled {
-  color: #ff0909;
+  color: var(--disabled);
 }
 .Pressed {
-  color: #0030b6;
+  color: var(--secondary);
 }
 .Success {
-  color: #5c9210;
+  color: var(--active);
 }
 .Danger {
-  color: #944317;
+  color: var(--error);
 }
