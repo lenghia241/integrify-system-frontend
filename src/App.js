@@ -15,6 +15,7 @@ import { getAuth } from './store/reducers';
 import StudySyncDetail from './components/Dashboard/StudySync/StudySyncDetail';
 import AddStudySync from './components/Dashboard/StudySync/AddStudySync';
 import EventPanelDetailed from './components/Dashboard/EventPanel/EventPanelDetailed';
+import ForgotPassword from './containers/ForgotPassword';
 
 class App extends Component {
   componentDidMount() {
@@ -29,13 +30,14 @@ class App extends Component {
       <Switch>
         <Route exact path="/attendance" component={Attendance} />
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/eventPanel" component ={EventPanelDetailed} />
+        <Route exact path="/eventPanel" component={EventPanelDetailed} />
         <Route exact path="/studySync" component={StudySyncDetail} />
         <Route exact path="/studySync/add" component={AddStudySync} />
         <Route exact path="/" component={Dashboard} />
       </Switch>
     ) : (
       <Switch>
+        <Route exact path="/forgot-password" component={ForgotPassword} />
         <Route exact path="/" component={Login} />
       </Switch>
     );
