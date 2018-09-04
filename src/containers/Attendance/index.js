@@ -1,49 +1,78 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import dayjs from 'dayjs';
 
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
+import { fetchClassAttendance as fetchClassAttendanceAction } from '../../store/actions';
+
+import { getId, getClassAttendance } from '../../store/reducers/index';
 
 import fiveDayData from './mock-data/fiveDayData.json';
+import ChartClassPresence from '../../components/ChartClassPresence';
 
 dayjs.extend(weekOfYear);
 
-export default class Attendance extends Component {
+class Attendance extends Component {
   constructor(props) {
     super(props);
     this.state = {
       classHistoryData: {},
       loading: true,
-      classHistoryDataMock: this.dataFilter(fiveDayData, '5b7ab1952cc5b5a552cfda72'),
+      classHistoryDataMock: this.studentAttendanceDataFilter(
+        fiveDayData,
+        '5b7ab1952cc5b5a552cfda72',
+      ),
     };
   }
 
-  async componentDidMount() {
-    const res = await axios.get('/api/v1/attendance/history');
-    const filteredData = this.dataFilter(res.data, '5b7c5ade5f49453eecccf351');
+  componentDidMount() {
+    const { fetchClassAttendance, classAttendance } = this.props;
+    fetchClassAttendance();
     this.setState({
-      classHistoryData: filteredData,
-      loading: false,
+      classHistoryData: classAttendance,
     });
   }
 
-  // Takes date and returns week of the year.
+  static getDerivedStateFromProps(props, state) {
+    if (!state.classHistoryData.loading === props.classAttendance.loading) {
+      return {
+        classHistoryData: props.classAttendance,
+        loading: false,
+      };
+    }
+    return null;
+  }
+
+  // used for later setting state for each chart's data.
+
+  // newDataRecalculation = () => {
+  //   const { classHistoryData } = this.state;
+  //   const { userId } = this.props;
+  //   this.setState({
+  //     studentAttendanceData: this.studentAttendanceDataFilter(classHistoryData, userId),
+  //   });
+  // }
+
   getWeek = date => dayjs(date).week();
 
-  dataFilter = (json, id) => {
+  studentAttendanceDataFilter = (json, id) => {
     const list = [];
     let numId = 0;
     json.forEach((day) => {
       day.attendanceData.forEach((entry) => {
         if (entry.studentId === id) {
+          const weekNum = this.getWeek(day.date);
+          const { timesStamp, attendance } = entry;
+
           list.push({
             date: day.date,
             dateDisplay: dayjs(day.date).format('ddd D MMM'),
-            timesStamp: entry.timesStamp,
-            attendance: entry.attendance,
-            index: 1,
+            timesStamp,
+            attendance,
+            index: weekNum,
             id: numId,
           });
         }
@@ -68,25 +97,32 @@ export default class Attendance extends Component {
   };
 
   render() {
-    const { classHistoryData, loading, classHistoryDataMock } = this.state;
+    const { loading, classHistoryDataMock, classHistoryData } = this.state;
+    const { userId = '5b7c5ade5f49453eecccf351', classAttendance } = this.props;
+
+    const studentAttendanceData = this.studentAttendanceDataFilter(classHistoryData.class, userId);
+    console.log(userId);
+
     const content = (
       <PageTemplate heading="Attendance">
         <div className="Attendance">
-          {loading || (
-            <StudentAttendance
-              data={classHistoryDataMock}
-              week={this.getWeek(classHistoryDataMock[0].date)}
-              loading={loading}
-              attendanceColorStyle={this.attendanceColorStyle}
-            />
-          )}
-          {loading || (
-            <StudentAttendance
-              data={classHistoryData}
-              week={this.getWeek(classHistoryData[0].date)}
-              loading={loading}
-              attendanceColorStyle={this.attendanceColorStyle}
-            />
+          {/* Render graphs only when loading of data is complete. */}
+          {classAttendance.loading || (
+            <React.Fragment>
+              <StudentAttendance
+                data={classHistoryDataMock}
+                week={this.getWeek(classHistoryDataMock[0].date)}
+                loading={loading}
+                attendanceColorStyle={this.attendanceColorStyle}
+              />
+              <StudentAttendance
+                data={studentAttendanceData}
+                week={this.getWeek(studentAttendanceData[0].date)}
+                loading={loading}
+                attendanceColorStyle={this.attendanceColorStyle}
+              />
+              <ChartClassPresence text="Chart Class Presence" />
+            </React.Fragment>
           )}
         </div>
       </PageTemplate>
@@ -94,3 +130,19 @@ export default class Attendance extends Component {
     return content;
   }
 }
+
+const mapStateToProps = state => ({
+  userId: getId(state),
+  classAttendance: getClassAttendance(state),
+});
+
+Attendance.propTypes = {
+  userId: PropTypes.string.isRequired,
+  classAttendance: PropTypes.shape({}).isRequired,
+  fetchClassAttendance: PropTypes.func.isRequired,
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchClassAttendance: fetchClassAttendanceAction },
+)(Attendance);

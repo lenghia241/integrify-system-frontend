@@ -24,3 +24,6 @@ export const GET_INFO = 'GET_INFO';
 export const ADD_INFO = 'ADD_INFO';
 export const CHECK_OUT = 'CHECK_OUT';
 export const LOG_OUT = 'LOG_OUT';
+
+// action types for class charts
+export const FETCH_CLASS_ATTENDANCE = 'FETCH_CLASS_ATTENDANCE';
