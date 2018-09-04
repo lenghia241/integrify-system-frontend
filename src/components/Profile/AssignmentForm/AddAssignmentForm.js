@@ -6,11 +6,11 @@ import validate from '../../../utils/validate';
 
 const AddAssignmentForm = (props) => {
   const {
-    handleSubmit, pristine, reset, submitting, invalid,
+    handleSubmit, pristine, reset, submitting, invalid, hidden,
   } = props;
 
   return (
-    <form onSubmit={handleSubmit} className="AddAssignmentForm">
+    <form onSubmit={handleSubmit} className={`${hidden ? 'hidden' : ''}`}>
       <div className="form-body">
         <div>
           <Field name="assignment" component={renderField} type="text" label="Assignment" />
