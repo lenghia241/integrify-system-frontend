@@ -20,7 +20,8 @@ class Attendance extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      classHistoryData: {},
+      // UN-COMMENT OUT if you require classHistoryData
+      // classHistoryData: {},
       studentHistoryData: {},
       loading: true,
       studentHistoryDataMock: fiveDayData,
@@ -28,37 +29,29 @@ class Attendance extends Component {
   }
 
   async componentDidMount() {
-    const { fetchClassAttendance, classAttendance, userId = '5b7c5ade5f49453eecccf351' } = this.props;
+    const { fetchClassAttendance, userId = '5b7c5ade5f49453eecccf351' } = this.props;
     fetchClassAttendance();
 
     // only works with week 33
     const fetchStudentHistoryData = await axios.get(`/api/v2/attendance/history/students/${userId}/weeks/33 `);
 
     this.setState({
-      classHistoryData: classAttendance,
+      // UN-COMMENT OUT if you require classHistoryData
+      // classHistoryData: classAttendance,
       studentHistoryData: fetchStudentHistoryData.data,
       loading: false,
     });
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (!state.classHistoryData.loading === props.classAttendance.loading) {
-      return {
-        classHistoryData: props.classAttendance,
-        loading: false,
-      };
-    }
-    return null;
-  }
-
-  // used for later setting state for each chart's data.
-
-  // newDataRecalculation = () => {
-  //   const { classHistoryData } = this.state;
-  //   const { userId } = this.props;
-  //   this.setState({
-  //     studentAttendanceData: this.studentAttendanceDataFilter(classHistoryData, userId),
-  //   });
+  // UN-COMMENT OUT if you require classHistoryData
+  // static getDerivedStateFromProps(props, state) {
+  //   if (!state.classHistoryData.loading === props.classAttendance.loading) {
+  //     return {
+  //       classHistoryData: props.classAttendance,
+  //       loading: false,
+  //     };
+  //   }
+  //   return null;
   // }
 
   getWeek = date => dayjs(date).week();
