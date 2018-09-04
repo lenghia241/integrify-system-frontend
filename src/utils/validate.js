@@ -3,16 +3,16 @@ const validate = (values) => {
 
   // Profile Assignment Form
 
-  if (!values.assignment) {
-    errors.assignment = 'Required';
-  } else if (!/^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/i.test(values.assignment)) {
-    errors.assignment = 'Invalid assignment name';
+  if (!values.title) {
+    errors.title = 'Required';
+  } else if (!/^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/i.test(values.title)) {
+    errors.title = 'Invalid assignment name';
   }
 
-  if (!values.github) {
-    errors.github = 'Required';
-  } else if (!/^(https:\/\/)?(github\.com)(\/[a-zA-Z0-9_-]{1,}){1,}$/i.test(values.github)) {
-    errors.github = 'Invalid github Link';
+  if (!values.githubLink) {
+    errors.githubLink = 'Required';
+  } else if (!/^(https:\/\/)?(github\.com)(\/[a-zA-Z0-9_-]{1,}){1,}$/i.test(values.githubLink)) {
+    errors.githubLink = 'Invalid github Link';
   }
 
   if (!values.teacher) {
