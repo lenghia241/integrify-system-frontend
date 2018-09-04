@@ -6,18 +6,18 @@ import validate from '../../../utils/validate';
 
 const AddAssignmentForm = (props) => {
   const {
-    handleSubmit, pristine, reset, submitting, invalid, hidden,
+    handleSubmit, pristine, submitting, invalid, reset, hidden, handleHidden,
   } = props;
 
   return (
     <form onSubmit={handleSubmit} className={`${hidden ? 'hidden' : ''}`}>
       <div className="form-body">
         <div>
-          <Field name="assignment" component={renderField} type="text" label="Assignment" />
+          <Field name="title" component={renderField} type="text" label="Assignment" />
         </div>
         <div>
           <div>
-            <Field name="github" component={renderField} type="text" label="Github" />
+            <Field name="githubLink" component={renderField} type="text" label="Github" />
           </div>
         </div>
         <div>
@@ -34,13 +34,11 @@ const AddAssignmentForm = (props) => {
           >
             Submit
           </button>
-          <button
-            type="button"
-            disabled={pristine || submitting}
-            onClick={reset}
-            className="waves-effect waves-light btn"
-          >
+          <button type="button" onClick={reset} className="waves-effect waves-light btn">
             Clear Values
+          </button>
+          <button type="button" onClick={handleHidden} className="waves-effect waves-light btn">
+            Cancel
           </button>
         </div>
       </div>

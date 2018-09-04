@@ -39,7 +39,7 @@ class AssignmentMain extends Component {
       <tr key={item.title} className="table-row">
         <td>{dateTime}</td>
         <td>{item.title}</td>
-        <td>{item.status ? 'done' : 'notdone'}</td>
+        <td>{item.status ? 'done' : 'not done'}</td>
         <td>{item.githubLink}</td>
         <td>
           <button className="waves-effect waves-light btn" type="submit">
@@ -56,7 +56,7 @@ class AssignmentMain extends Component {
             <button
               onClick={this.handleHidden}
               type="button"
-              className="waves-effect waves-light btn"
+              className="waves-effect waves-light btn add-btn"
             >
               Add
             </button>
@@ -74,7 +74,11 @@ class AssignmentMain extends Component {
             <tbody>{itemsform}</tbody>
           </table>
         </div>
-        <AddAssignmentForm hidden={hidden} onSubmit={this.submit} />
+        <AddAssignmentForm
+          handleHidden={this.handleHidden}
+          hidden={hidden}
+          onSubmit={this.submit}
+        />
       </div>
     );
   }
