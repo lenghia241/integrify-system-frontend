@@ -1,6 +1,5 @@
 .assignment-main {
   display: grid;
-  border: 2px solid grey;
   margin: 0 auto;
   color: #515151;
   width: 80%;
@@ -9,11 +8,9 @@
   background-color: #f0f0f0;
 }
 .assignment-main tr {
-  background-color: rgb(250, 235, 215) (5, 215, 0.993);
   margin: 5px;
 }
 .mainTable {
-  width: 80%;
   margin: 0 auto;
   margin-bottom: 10%;
 }
@@ -45,7 +42,4 @@
   padding: 10px;
   box-shadow: 1px 3px #dfdfdf;
   margin-bottom: 1%;
-}
-.main-form {
-  background-color: #f1ede6;
 }

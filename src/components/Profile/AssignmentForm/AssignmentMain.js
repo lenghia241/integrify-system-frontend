@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './AssignmentMainStyle.css';
 import AddAssignmentForm from './AddAssignmentForm';
-import { getInfo } from '../../../store/actions/assignmentFormAction';
+import { getInfo, addInfo } from '../../../store/actions/assignmentFormAction';
 
 class AssignmentMain extends Component {
   constructor(props) {
@@ -91,6 +91,7 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
+    addInfo,
     getInfo,
   },
 )(AssignmentMain);
