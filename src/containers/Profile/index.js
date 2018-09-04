@@ -18,9 +18,11 @@ const Profile = () => {
     </ProfileComponent>
   ));
   return (
-    <PageTemplate heading="Profile">
-      <div className="Profile">{renderComponents}</div>
-    </PageTemplate>
+    <div className = "Profile--container">
+      <PageTemplate heading="Profile">
+        <div className="Profile">{renderComponents}</div>
+      </PageTemplate>
+    </div>
   );
 };
 
