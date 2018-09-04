@@ -26,7 +26,7 @@ class AssignmentMain extends Component {
     const dateTime = `${date} ${time}`;
 
     const itemsform = items.items.map(item => (
-      <tr key={item.assignment} className="table-row">
+      <tr key={item.title} className="table-row">
         <td>{dateTime}</td>
         <td>{item.title}</td>
         <td>{item.status ? 'done' : 'notdone'}</td>
