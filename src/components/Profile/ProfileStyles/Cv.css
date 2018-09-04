@@ -1,32 +1,110 @@
 .resume {
   width: 90vw;
   margin: 5vw 5vw;
-}
-.companyLogo {
+ }
+ .companyLogo {
   width: 30%;
-}
-.resumeImage{
+ }
+ .resume span{
+  color:black;
+ }
+ .resumeImage{
   justify-self: center;
   height:100%;
   border-radius: none;
-  
-}
-.descriptionContainer {
+  }
+ .descriptionContainer {
   display: grid;
   grid-template-columns: 35% 60%;
+  margin-top:2vw;
   /* grid-column-gap: 5vw; */
-}
-.fullName {
+ }
+ .fullName {
   text-transform: uppercase;
   font-weight: bolder;
   font-size: 0.5cm;
-}
-.bio {
+ }
+ .bio {
   margin-top: 2vw;
-}
-.portfolioLinks {
+ }
+ .portfolioLinks {
   margin-top: 3vw;
-}
-.linkName {
+ }
+ .linkName {
   font-weight: bolder;
+ }
+ .detailsContainer{
+  display:grid;
+  grid-template-columns: 50% 50%;
+  column-gap: 1vw;
+  width:75vw;
+  margin:2vw auto;
+}
+ .column1,.column2{
+  width:100%
+ }
+ #experienceContainer,#languageContainer{
+  width:75vw;
+  margin:0 auto;
+ }
+ h5{
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+ }
+ #competences li,#skillsContainer li,#languageContainer li,#examplesOfWork .title{
+  list-style-type: disc;
+  text-transform: capitalize;
+  margin-left: 4vw;
+ }
+ #educationContainer{
+   text-transform: capitalize;
+ }
+ #educationContainer #degree,#educationContainer #field{
+   font-weight: 500;
+ }
+ #tilte{
+   margin-right:17vw;
+ }
+#duration{
+  float:right;
+  margin-right:3vw;
+}
+#examplesOfWork .title{
+  font-weight: bold;
+  text-transform: capitalize;
+}
+#experienceContainer{
+  width:75vw;
+  margin:2vw auto;
+}
+#examplesOfWork li{
+  list-style-type: none;
+  margin-left:2vw;
+}
+#experienceContainer #title{
+text-transform: capitalize;
+font-weight: 500;
+}
+#experienceContainer #company{
+  text-transform: lowercase;
+  margin-left:0.5vw;
+}
+#experienceContainer #location{
+  text-transform: capitalize;
+  margin-left: 0.5vw;
+}
+#experienceContainer .duration{
+  float:right;
+}
+.bold{
+  font-weight: 500;
+  margin-left:2vw;
+}
+#examplesOfWork .title{
+  list-style-type: disc;
+  margin-left: 2vw;
+}
+#examplesOfWork .description{
+  margin-left:2vw;
 }
