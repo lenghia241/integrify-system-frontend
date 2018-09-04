@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import './SignupRequests.css';
 import { connect } from 'react-redux';
 // import { getRequests as getRequestsAction } from '../../store/actions/index';
-import EachRequest from './EachRequest';
+import SignupRequest from '../../components/SignupRequest';
 
 class SignupRequests extends Component {
   componentDidMount() {
@@ -20,7 +19,7 @@ class SignupRequests extends Component {
   render() {
     return (
       <div>
-        <EachRequest />
+        <SignupRequest />
       </div>
     );
   }

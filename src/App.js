@@ -34,7 +34,6 @@ class App extends Component {
         <Route exact path="/studySync" component={StudySyncDetail} />
         <Route exact path="/studySync/add" component={AddStudySync} />
         <Route exact path="/" component={Dashboard} />
-
         <Route exact path="/signupRequests" component={SignupRequests} />
       </Switch>
     ) : (
