@@ -26,7 +26,7 @@ const Navigation = ({ navigationItems, className }) => (
 );
 
 Navigation.propTypes = {
-  navigationItems: PropTypes.shape({}).isRequired,
+  navigationItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   className: PropTypes.string.isRequired,
 };
 export default Navigation;
