@@ -48,6 +48,16 @@ const validate = (values) => {
     errors.password = 'Required';
   } else if (values.password.length < 6) {
     errors.password = 'Password must be longer than 6 characters.';
+  } else if (values.password2 && values.password2 !== values.password) {
+    errors.password2 = 'Password and password confirmation do not match.';
+  }
+
+  if (!values.password2) {
+    errors.password2 = 'Required';
+  } else if (values.password2.length < 6) {
+    errors.password2 = 'Password must be longer than 6 characters.';
+  } else if (values.password2 !== values.password) {
+    errors.password2 = 'Password and password confirmation do not match.';
   }
   // profile form
   if (!values.bio) {
