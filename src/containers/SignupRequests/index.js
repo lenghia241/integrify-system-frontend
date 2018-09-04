@@ -1,17 +1,30 @@
 import React from 'react';
 import './SignupRequests.css';
 import { connect } from 'react-redux';
-import { getRequests as getRequestsAction } from '../../store/actions/index';
+// import { getRequests as getRequestsAction } from '../../store/actions/index';
 import EachRequest from './EachRequest';
 
 class SignupRequests extends React.Component {
+  componentDidMount() {
+    this.getRequests();
+  }
+
+  handleAccept = () => {
+    this.acceptRequest();
+  };
+
+  handleDecline = () => {
+    this.deleteRequest();
+  };
+
   render() {
     return (
       <div>
         <ul>
-          {signupRequests.map(users => (
+          <EachRequest />
+          {/* {signupRequests.map(users => (
             <EachRequest />
-          ))}
+          ))} */}
         </ul>
       </div>
     );
@@ -35,5 +48,5 @@ const mapDispatchToProps = dispatch => ({
 });
 export default connect(
   mapStateToProps,
-  { getRequests: getRequestsAction },
+  mapDispatchToProps,
 )(SignupRequests);

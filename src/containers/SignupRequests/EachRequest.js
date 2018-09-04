@@ -1,16 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../components/Button';
-componentDidMount() {
-  this.props.getRequests();
-}
-handleAccept = () => {
-  this.props.acceptRequest();
-};
-handleDecline = () => {
-  this.props.deleteRequest();
-};
-const EachRequest = ({ user }) => (
+import { reduxForm, Field } from 'redux-form';
+
+class EachRequest extends React.Component{
+render(){
+  componentDidMount(){
+    this.props.getRequests();
+  };
+  handleAccept = () => {
+    this.props.acceptRequest();
+  };
+  handleDecline = () => {
+    this.props.deleteRequest();
+  };
+return(
   <div className="card-panel hoverable">
     <span className="bold">{user.firstName} </span>
     <span>{user.lastName}</span>
@@ -28,7 +32,9 @@ const EachRequest = ({ user }) => (
     <Button label="Accept" onClick={this.props.handleAccept} />
     <Button label="Decline" onClick={this.props.handleDecline} />
   </div>
-);
+)
+}
+
 
 EachRequest.propTypes = {
   request: PropTypes.shape({
