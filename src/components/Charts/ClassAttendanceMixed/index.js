@@ -12,7 +12,7 @@ import {
 import PropTypes from 'prop-types';
 
 const ClassAttendanceMixed = (props) => {
-  const { data, chartWidth, chartHeight } = props;
+  const { data } = props;
 
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -41,8 +41,6 @@ const ClassAttendanceMixed = (props) => {
 
 ClassAttendanceMixed.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  chartWidth: PropTypes.number.isRequired,
-  chartHeight: PropTypes.number.isRequired,
 };
 
 export default ClassAttendanceMixed;
