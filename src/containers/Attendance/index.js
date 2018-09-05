@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import PageTemplate from '../../components/PageTemplate';
 import StudentAttendance from '../../components/StudentAttendance';
+import classHistory from './mock-data/classHistory';
 import ClassAttendancePresent from '../../components/Charts/ClassAttendancePresent';
 import ClassAttendanceAbsent from '../../components/Charts/ClassAttendanceAbsent';
 import ClassAttendanceMixed from '../../components/Charts/ClassAttendanceMixed';
@@ -82,12 +83,17 @@ class Attendance extends Component {
         }
       });
       newArray.push({
-        name: day.date, dateDisplay: dayjs(day.date).format('ddd D MMM'), full, partial, absent, id: numId,
+        name: day.date,
+        dateDisplay: dayjs(day.date).format('ddd D MMM'),
+        full,
+        partial,
+        absent,
+        id: numId,
       });
       numId += 1;
     });
     return newArray.reverse();
-  }
+  };
 
   studentAttendanceDataFilter = (json, id) => {
     const list = [];
@@ -130,43 +136,19 @@ class Attendance extends Component {
   render() {
     const { loading, classHistoryDataMock, classHistoryData } = this.state;
     const { userId = '5b7c5ade5f49453eecccf351', classAttendance } = this.props;
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-    const chartWidth = windowWidth > 992 ? windowWidth / 3 : windowWidth / 1.3;
-    const chartHeight = windowWidth > 992 ? windowHeight / 3 : windowHeight / 2;
 
     const studentAttendanceData = this.studentAttendanceDataFilter(classHistoryData.class, userId);
-    const content = !classAttendance.loading ? [
-
-      <ClassAttendancePresent
-        key="attendance2"
-        chartWidth={chartWidth}
-        chartHeight={chartHeight}
-        data={this.chartPresentFilter(classHistoryData.class)}
-      />,
-      <ClassAttendanceAbsent
-      key="attendance3"
-      chartWidth={chartWidth}
-      chartHeight={chartHeight}
-      data={this.chartPresentFilter(classHistoryData.class)}
-    />,
-    <ClassAttendanceMixed
-    key="attendance4"
-    chartWidth={chartWidth}
-    chartHeight={chartHeight}
-    data={this.chartPresentFilter(classHistoryData.class)}
-    />,
-    <ClassAttendanceSprintThree
-    key="attendance5"
-    chartWidth={chartWidth}
-    chartHeight={chartHeight}
-    />,
-    <ChartClassPresence text="Chart Class Presence" key="attendance6" />,
-    ] : [<div key="attendance-div" />];
+    const content = [
+      <ClassAttendancePresent key="attendance2" data={this.chartPresentFilter(classHistory)} />,
+      <ClassAttendanceAbsent key="attendance3" data={this.chartPresentFilter(classHistory)} />,
+      <ClassAttendanceMixed key="attendance4" data={this.chartPresentFilter(classHistory)} />,
+      <ClassAttendanceSprintThree key="attendance5" />,
+      <ChartClassPresence text="Chart Class Presence" key="attendance6" />,
+    ];
 
     return (
       <PageTemplate heading="Attendance">
-        <PageGrid content={loading ? null : content}/>
+        <PageGrid content={loading ? null : content} />
       </PageTemplate>
     );
   }

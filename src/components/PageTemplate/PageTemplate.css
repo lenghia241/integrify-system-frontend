@@ -1,5 +1,5 @@
 .header {
-  overflow:hidden;
+  overflow: hidden;
   height: 100%;
   padding-bottom: 60px;
 }
@@ -10,7 +10,7 @@
   padding: 30px 20px 10px;
 }
 
-.page-heading>h1{
+.page-heading > h1 {
   font-size: 2.5em;
-  margin: 0px ;
+  margin: 0px;
 }
