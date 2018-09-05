@@ -1,9 +1,17 @@
 .Profile {
   display: grid;
   grid-template-columns: 1fr;
-  grid-auto-rows: 50vw;
   grid-gap: 20px;
   padding: 20px;
-  background-color: white;
+  background-color: var(--background);
   height: 100%;
+}
+
+@media screen and (max-width: 992px) {
+  .Profile {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 50%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
 }
