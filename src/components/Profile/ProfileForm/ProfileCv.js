@@ -20,16 +20,21 @@ class CvInfo extends Component {
     const { profile } = this.props;
     console.log(profile);
     const buttonStyle = {
-      width: '5vw',
+      marginLeft: '2vw',
+      textDecoration: 'none',
       border: 'none',
-      textalign: 'right',
+      backgroundColor: '#ff8c00',
+      color: 'white',
+      padding: '1vw',
+      fontWeight: 'bolder',
+      cursor: 'pointer',
     };
     return (
       <div className="summary">
         <ReactToPrint
           trigger={() => (
-            <button type="button" className="printButton" style={buttonStyle}>
-              <img className="printLogo" src={printLogo} style={buttonStyle} alt="printlogo" />
+            <button type="button" className="printButton" style={buttonStyle} >
+              Print Resume
             </button>
           )}
           content={() => this.componentRef}
