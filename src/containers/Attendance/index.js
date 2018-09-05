@@ -10,6 +10,7 @@ import classHistory from './mock-data/classHistory';
 import ClassAttendancePresent from '../../components/Charts/ClassAttendancePresent';
 import ClassAttendanceAbsent from '../../components/Charts/ClassAttendanceAbsent';
 import ClassAttendanceMixed from '../../components/Charts/ClassAttendanceMixed';
+import ClassAttendanceHundredPerc from '../../components/Charts/ClassAttendanceHundredPerc';
 import ClassAttendanceSprintThree from '../../components/Charts/ClassAttendanceSprintThree';
 import PageGrid from '../../components/PageGrid';
 
@@ -142,6 +143,8 @@ class Attendance extends Component {
       <ClassAttendancePresent key="attendance2" data={this.chartPresentFilter(classHistory)} />,
       <ClassAttendanceAbsent key="attendance3" data={this.chartPresentFilter(classHistory)} />,
       <ClassAttendanceMixed key="attendance4" data={this.chartPresentFilter(classHistory)} />,
+      <ClassAttendanceHundredPerc key="attendance4" data={this.chartPresentFilter(classHistory)} />,
+
       <ClassAttendanceSprintThree key="attendance5" />,
       <ChartClassPresence text="Chart Class Presence" key="attendance6" />,
     ];
