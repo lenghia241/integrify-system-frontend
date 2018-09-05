@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import dayjs from 'dayjs';
+import axios from 'axios';
 
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import PageTemplate from '../../components/PageTemplate';
@@ -27,42 +28,40 @@ class Attendance extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      classHistoryData: {},
+      // UN-COMMENT OUT if you require classHistoryData
+      // classHistoryData: {},
+      studentHistoryData: {},
       loading: true,
-      classHistoryDataMock: this.studentAttendanceDataFilter(
-        fiveDayData,
-        '5b7ab1952cc5b5a552cfda72',
-      ),
+      studentHistoryDataMock: fiveDayData,
     };
   }
 
-  // Takes date and returns week of the year.
-  componentDidMount() {
-    const { fetchClassAttendance, classAttendance } = this.props;
+  async componentDidMount() {
+    const { fetchClassAttendance, userId = '5b7c5ade5f49453eecccf351' } = this.props;
     fetchClassAttendance();
+
+    // only works with week 33
+    const fetchStudentHistoryData = await axios.get(
+      `/api/v2/attendance/history/students/${userId}/weeks/33 `,
+    );
+
     this.setState({
-      classHistoryData: classAttendance,
+      // UN-COMMENT OUT if you require classHistoryData
+      // classHistoryData: classAttendance,
+      studentHistoryData: fetchStudentHistoryData.data,
+      loading: false,
     });
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (!state.classHistoryData.loading === props.classAttendance.loading) {
-      return {
-        classHistoryData: props.classAttendance,
-        loading: false,
-      };
-    }
-    return null;
-  }
-
-  // used for later setting state for each chart's data.
-
-  // newDataRecalculation = () => {
-  //   const { classHistoryData } = this.state;
-  //   const { userId } = this.props;
-  //   this.setState({
-  //     studentAttendanceData: this.studentAttendanceDataFilter(classHistoryData, userId),
-  //   });
+  // UN-COMMENT OUT if you require classHistoryData
+  // static getDerivedStateFromProps(props, state) {
+  //   if (!state.classHistoryData.loading === props.classAttendance.loading) {
+  //     return {
+  //       classHistoryData: props.classAttendance,
+  //       loading: false,
+  //     };
+  //   }
+  //   return null;
   // }
 
   getWeek = date => dayjs(date).week();
@@ -96,26 +95,25 @@ class Attendance extends Component {
     return newArray.reverse();
   };
 
-  studentAttendanceDataFilter = (json, id) => {
+  stdAtndDataManip = (data) => {
+    if (!data) {
+      return '';
+    }
     const list = [];
     let numId = 0;
-    json.forEach((day) => {
-      day.attendanceData.forEach((entry) => {
-        if (entry.studentId === id) {
-          const weekNum = this.getWeek(day.date);
-          const { timesStamp, attendance } = entry;
+    data.forEach((day) => {
+      const { date, timestamp, attendance } = day;
+      const weekNum = this.getWeek(date);
 
-          list.push({
-            date: day.date,
-            dateDisplay: dayjs(day.date).format('ddd D MMM'),
-            timesStamp,
-            attendance,
-            index: weekNum,
-            id: numId,
-          });
-        }
-        numId += 1;
+      list.push({
+        date,
+        dateDisplay: dayjs(day.date).format('ddd D MMM'),
+        timestamp,
+        attendance,
+        index: weekNum,
+        id: numId,
       });
+      numId += 1;
     });
     return list.reverse();
   };
@@ -135,23 +133,39 @@ class Attendance extends Component {
   };
 
   render() {
-    const { loading, classHistoryDataMock, classHistoryData } = this.state;
-    const { userId = '5b7c5ade5f49453eecccf351', classAttendance } = this.props;
+    const { loading, studentHistoryDataMock, studentHistoryData } = this.state;
+    const studentAttendanceData = this.stdAtndDataManip(studentHistoryData.attendanceData);
+    const studentAttendanceDataMock = this.stdAtndDataManip(studentHistoryDataMock.attendanceData);
+    console.log(studentAttendanceDataMock);
 
-    const studentAttendanceData = this.studentAttendanceDataFilter(classHistoryData.class, userId);
     const content = [
+      <StudentAttendance
+        key="attendance0"
+        data={studentAttendanceDataMock}
+        week={this.getWeek(studentAttendanceDataMock[0].date)}
+        loading={loading}
+        attendanceColorStyle={this.attendanceColorStyle}
+      />,
+      studentAttendanceData && (
+        <StudentAttendance
+          key="attendance1"
+          data={studentAttendanceData}
+          week={this.getWeek(studentAttendanceData[0].date)}
+          loading={loading}
+          attendanceColorStyle={this.attendanceColorStyle}
+        />
+      ),
       <ClassAttendancePresent key="attendance2" data={this.chartPresentFilter(classHistory)} />,
       <ClassAttendanceAbsent key="attendance3" data={this.chartPresentFilter(classHistory)} />,
       <ClassAttendanceMixed key="attendance4" data={this.chartPresentFilter(classHistory)} />,
-      <ClassAttendanceHundredPerc key="attendance4" data={this.chartPresentFilter(classHistory)} />,
-
-      <ClassAttendanceSprintThree key="attendance5" />,
-      <ChartClassPresence text="Chart Class Presence" key="attendance6" />,
+      <ClassAttendanceHundredPerc key="attendance5" data={this.chartPresentFilter(classHistory)} />,
+      <ClassAttendanceSprintThree key="attendance6" />,
+      <ChartClassPresence key="attendance7" text="Chart Class Presence" />,
     ];
 
     return (
       <PageTemplate heading="Attendance">
-        <PageGrid content={loading ? null : content} />
+        <PageGrid content={content} />
       </PageTemplate>
     );
   }
