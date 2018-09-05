@@ -3,10 +3,10 @@ export {
 } from './authActions';
 
 export {
-  getSignupRequests,
-  acceptSignupRequest,
-  deleteSignupRequest,
-} from './signupRequestsActions';
+  getSignUpRequestsAction,
+  acceptSignUpRequestAction,
+  deleteSignUpRequestAction,
+} from './signUpRequestsActions';
 
 export {
   getAssignmentsList, fetchStudySync, getEventList, getEvent,

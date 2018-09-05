@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
-import './SignupRequest.css';
+import './SignUpRequest.css';
 
-const EachRequest = ({
-  firstName, lastName, email, handleAccept, handleDecline,
-}) => (
+const SignUpRequest = ({ firstName, lastName, email }) => (
   <div className="card-panel hoverable">
-    <span className="bold">{firstName} </span>
-    <span>{lastName}</span>
-    <span>{email}</span>
+    <p className="bold">{firstName} </p>
+    <p>{lastName}</p>
+    <p>{email}</p>
     <select id="role" name="role" defaultValue="Student">
       <option value="student">Student</option>
       <option value="guest">Guest</option>
@@ -20,15 +18,15 @@ const EachRequest = ({
       <option value="batch2">Batch 2</option>
       <option value="batch3">Batch 3</option>
     </select>
-    <Button label="Accept" onClick={handleAccept} />
-    <Button label="Decline" onClick={handleDecline} />
+    <Button label="Accept" />
+    <Button label="Decline" />
   </div>
 );
-EachRequest.propTypes = {
-  handleAccept: PropTypes.func.isRequired,
-  handleDecline: PropTypes.func.isRequired,
+SignUpRequest.propTypes = {
+  // handleAccept: PropTypes.func.isRequired,
+  // handleDecline: PropTypes.func.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
 };
-export default EachRequest;
+export default SignUpRequest;

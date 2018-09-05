@@ -1,45 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { getRequests as getRequestsAction } from '../../store/actions/index';
-import SignupRequest from '../../components/SignupRequest';
+import { getSignUpRequestsAction } from '../../store/actions';
+import SignUpRequest from '../../components/SignUpRequest';
+import { getSignUpRequests } from '../../store/reducers';
 
-class SignupRequests extends Component {
-  componentDidMount() {
-    this.getRequests();
-  }
-
-  handleAccept = () => {
-    this.acceptRequest();
-  };
-
-  handleDecline = () => {
-    this.deleteRequest();
+class SignUpRequests extends Component {
+  componentDidMount = () => {
+    const { getSignUpRequestsAction } = this.props;
+    getSignUpRequestsAction();
   };
 
   render() {
+    const { signUpRequests } = this.props;
+
+    const renderSignUpRequests = signUpRequests.map(({
+      firstName, lastName, email, id,
+    }) => (
+      <SignUpRequest key={id} firstName={firstName} lastName={lastName} email={email} />
+    ));
     return (
       <div>
-        <SignupRequest />
+        <div>{renderSignUpRequests}</div>
       </div>
     );
   }
 }
-const mapStateToProps = state => ({ requests: state });
-const mapDispatchToProps = dispatch => ({
-  getRequests: requests => dispatch({
-    type: 'GET_REQUESTS',
-    requests,
-  }),
-  acceptRequest: requests => dispatch({
-    type: 'ACCEPT_REQUEST',
-    requests,
-  }),
-  deleteRequest: requests => dispatch({
-    type: 'DELETE_REQUEST',
-    requests,
-  }),
+
+const mapStateToProps = state => ({
+  signUpRequests: getSignUpRequests(state),
 });
+
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(SignupRequests);
+  { getSignUpRequestsAction },
+)(SignUpRequests);

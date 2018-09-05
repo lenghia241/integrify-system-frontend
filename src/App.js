@@ -9,7 +9,7 @@ import Profile from './containers/Profile';
 import Login from './containers/Login';
 import Dashboard from './containers/Dashboard';
 import Aside from './containers/Aside';
-import SignupRequests from './containers/SignupRequests';
+import SignUpRequests from './containers/SignUpRequests';
 
 import * as actions from './store/actions/index';
 import { getAuth } from './store/reducers';
@@ -34,7 +34,7 @@ class App extends Component {
         <Route exact path="/studySync" component={StudySyncDetail} />
         <Route exact path="/studySync/add" component={AddStudySync} />
         <Route exact path="/" component={Dashboard} />
-        <Route exact path="/signupRequests" component={SignupRequests} />
+        <Route exact path="/signUpRequests" component={SignUpRequests} />
       </Switch>
     ) : (
       <Switch>

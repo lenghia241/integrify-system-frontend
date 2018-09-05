@@ -1,6 +1,6 @@
 import { GET_REQUESTS, ACCEPT_REQUEST, DELETE_REQUEST } from '../actions/types';
 
-const signupRequestsReducer = (state = [], action) => {
+const signUpRequestsReducer = (state = [], action) => {
   switch (action.type) {
     case GET_REQUESTS:
       return [...state, ...action.payload];
@@ -12,4 +12,4 @@ const signupRequestsReducer = (state = [], action) => {
       return state;
   }
 };
-export default signupRequestsReducer;
+export default signUpRequestsReducer;
