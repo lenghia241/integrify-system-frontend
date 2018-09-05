@@ -17,6 +17,10 @@ export const USER_PROFILE_LOADING = 'USER_PROFILE_LOADING';
 // action types for event panel
 export const GET_EVENT_LIST = 'GET_EVENT_LIST';
 export const GET_EVENT = 'GET_EVENT';
+export const ADD_EVENT = 'ADD_EVENT';
+export const DELETE_EVENT = 'DELETE_EVENT';
+
+export const UPDATE_EVENT = 'UPDATE_EVENT';
 export const FETCH_STUDYSYNC = 'FETCH_STUDYSYNC';
 export const FETCH_ASSIGNMENT = 'FETCH_ASSIGNMENT';
 export const CHECK_IN = 'CHECK_IN';
