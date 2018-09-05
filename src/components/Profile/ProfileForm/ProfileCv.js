@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ReactToPrint from 'react-to-print';
 import RenderCvInfo from './render/RenderCvInfo';
-import printLogo from '../logosForCv/Printer.png';
-import '../ProfileStyles/Cv.css';
 
 import { fetchUserProfileAction } from '../../../store/actions';
 import { getProfile, getId } from '../../../store/reducers';
@@ -18,7 +16,6 @@ class CvInfo extends Component {
 
   render() {
     const { profile } = this.props;
-    console.log(profile);
     const buttonStyle = {
       marginLeft: '2vw',
       textDecoration: 'none',

@@ -117,7 +117,3 @@ font-weight: 800;
 	.companyLogo	{ display: block; page-break-before: always; }
 }
 
-.summery .printButton{
-  border:none;
-  width:13vw;
-}

@@ -73,8 +73,7 @@ class RenderCvInfo extends Component {
                       <div>
                         <span id="school"> {education.school}</span>
                         <span id="duration">
-                          {dayjs(education.from).format('YYYY')} -
-                          {dayjs(education.from).format('YYYY')}
+                          2004 - 2008
                         </span>
                       </div>
                     </li>
@@ -103,7 +102,7 @@ class RenderCvInfo extends Component {
                   <span id="title">{work.title}</span>,<span id="company">{work.company}</span>,
                   <span id="location">{work.location}</span>
                   <span className="duration">
-                    {dayjs(work.from).format('YYYY')} - {dayjs(work.to).format('YYYY')}
+                    2009 - 2012
                   </span>
                 </div>
                 <p id="responsibility">
