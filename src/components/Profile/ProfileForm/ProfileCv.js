@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ReactToPrint from 'react-to-print';
 import RenderCvInfo from './render/RenderCvInfo';
+import printLogo from '../logosForCv/Printer.png';
+import '../ProfileStyles/Cv.css';
 
 import { fetchUserProfileAction } from '../../../store/actions';
 import { getProfile, getId } from '../../../store/reducers';
 
-class CvInfo extends Component {  
+class CvInfo extends Component {
   componentDidMount() {
     const { fetchUserProfile, userId } = this.props;
     fetchUserProfile(userId);
@@ -17,11 +19,19 @@ class CvInfo extends Component {
   render() {
     const { profile } = this.props;
     console.log(profile);
-
+    const buttonStyle = {
+      width: '5vw',
+      border: 'none',
+      textalign: 'right',
+    };
     return (
       <div className="summary">
         <ReactToPrint
-          trigger={() => <button type="button">Print Resume</button>}
+          trigger={() => (
+            <button type="button" className="printButton" style={buttonStyle}>
+              <img className="printLogo" src={printLogo} style={buttonStyle} alt="printlogo" />
+            </button>
+          )}
           content={() => this.componentRef}
         />
         <RenderCvInfo

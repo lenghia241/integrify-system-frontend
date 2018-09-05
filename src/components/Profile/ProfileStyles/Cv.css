@@ -4,7 +4,8 @@
  }
  .companyLogo {
   width: 30%;
- }
+  position: running(companyLogo);
+}
  .resume span{
   color:black;
  }
@@ -84,7 +85,7 @@
 }
 #experienceContainer #title{
 text-transform: capitalize;
-font-weight: 500;
+font-weight: 800;
 }
 #experienceContainer #company{
   text-transform: lowercase;
@@ -98,7 +99,7 @@ font-weight: 500;
   float:right;
 }
 .bold{
-  font-weight: 500;
+  font-weight: bold;
   margin-left:2vw;
 }
 #examplesOfWork .title{
@@ -107,4 +108,16 @@ font-weight: 500;
 }
 #examplesOfWork .description{
   margin-left:2vw;
+}
+@media all {
+	.companyLogo { display: none; }
+}
+
+@media print {
+	.companyLogo	{ display: block; page-break-before: always; }
+}
+
+.summery .printButton{
+  border:none;
+  width:13vw;
 }
