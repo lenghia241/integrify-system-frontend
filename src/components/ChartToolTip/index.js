@@ -19,11 +19,11 @@ const ChartTooltip = (properties) => {
             </p>
             <p>
               <span>In: </span>
-              {data.timesStamp.timeIn}
+              {data.timestamp.timeIn}
             </p>
             <p>
               <span>Out: </span>
-              {data.timesStamp.timeOut}
+              {data.timestamp.timeOut}
             </p>
           </React.Fragment>
         ) : (
